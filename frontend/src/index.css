@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(26, 32, 44, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Metric card */
+.metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Card badge */
+.card-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Deck container */
+.deck-container {
+  background: rgba(26, 32, 44, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ff4500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom tab active indicator */
+.tab-active {
+  border-bottom: 2px solid #ffd700;
+  color: #ffd700;
+}
+
+/* Responsive table wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom select styling */
+select {
+  background-color: #1a202c;
+  color: #e2e8f0;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Custom input styling */
+input[type='number'],
+input[type='text'] {
+  background-color: #1a202c;
+  color: #e2e8f0;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideUp 0.3s ease-out;
+}
+
+.toast-success {
+  background: #276749;
+  border: 1px solid #48bb78;
+}
+
+.toast-error {
+  background: #9b2c2c;
+  border: 1px solid #fc8181;
+}
+
+.toast-info {
+  background: #2a4365;
+  border: 1px solid #63b3ed;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+}
+
+/* Custom Recharts tooltip */
+.custom-tooltip {
+  background: rgba(26, 32, 44, 0.95) !important;
+  border: 1px solid rgba(255, 215, 0, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+}
