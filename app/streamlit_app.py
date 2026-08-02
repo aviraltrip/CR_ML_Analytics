@@ -27,6 +27,11 @@ def load_ml_model():
 
 model, card_vocab = load_ml_model()
 
+
+def calculate_aec(deck_cards: list, card_elixir: dict) -> float:
+    costs = [card_elixir.get(c, 3.5) for c in deck_cards]
+    return sum(costs) / len(costs)
+
 # Set page configuration
 st.set_page_config(
     page_title="Clash Royale Best Deck Finder",
@@ -116,10 +121,11 @@ def load_data():
     leaderboard_path = os.path.join(base_dir, "data", "deck_leaderboard.csv")
     card_stats_path = os.path.join(base_dir, "data", "card_stats.csv")
     model_leaderboard_path = os.path.join(base_dir, "data", "model_leaderboard.csv")
+    elixir_path = os.path.join(base_dir, "models", "card_elixir.json")
     
     # Check if files exist
     if not os.path.exists(processed_path) or not os.path.exists(leaderboard_path) or not os.path.exists(card_stats_path):
-        return None, None, None, None
+        return None, None, None, None, None
         
     df_battles = pd.read_csv(processed_path)
     df_leaderboard = pd.read_csv(leaderboard_path)
@@ -130,9 +136,15 @@ def load_data():
     else:
         df_model_leaderboard = None
         
-    return df_battles, df_leaderboard, df_card_stats, df_model_leaderboard
+    if os.path.exists(elixir_path):
+        with open(elixir_path, "r", encoding="utf-8") as f:
+            card_elixir = json.load(f)
+    else:
+        card_elixir = {}
+        
+    return df_battles, df_leaderboard, df_card_stats, df_model_leaderboard, card_elixir
 
-df_battles, df_leaderboard, df_card_stats, df_model_leaderboard = load_data()
+df_battles, df_leaderboard, df_card_stats, df_model_leaderboard, card_elixir = load_data()
 
 # Render fallbacks if data is missing
 if df_battles is None or df_leaderboard is None or df_card_stats is None:
@@ -283,13 +295,14 @@ with tab_leaderboard:
             display_model_df["win_rate"] = display_model_df["win_rate"].map(lambda x: f"{x:.1%}")
             
             st.dataframe(
-                display_model_df[["Predictive_Rank", "simulated_win_rate", "win_rate", "matches_played", "wins", "losses", "deck"]],
+                display_model_df[["Predictive_Rank", "simulated_win_rate", "elixir_cost", "win_rate", "matches_played", "wins", "losses", "deck"]],
                 use_container_width=True,
                 hide_index=True,
                 column_config={
                     "Predictive_Rank": st.column_config.NumberColumn("ML Rank"),
                     "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
                     "simulated_win_rate": st.column_config.NumberColumn("Simulated Win Rate", help="Model-predicted expected win rate against the meta"),
+                    "elixir_cost": st.column_config.NumberColumn("Avg Elixir", format="%.2f", help="Average Elixir Cost of this deck"),
                     "win_rate": st.column_config.NumberColumn("Historical Win Rate"),
                     "matches_played": st.column_config.NumberColumn("Historical Matches"),
                 }
@@ -311,7 +324,8 @@ with tab_leaderboard:
                 
                 # Mini stat callout
                 st.markdown(
-                    f"**Simulated Win Rate against Meta**: `{selected_deck_row['simulated_win_rate']:.1%}`. "
+                    f"**Simulated Win Rate against Meta**: `{selected_deck_row['simulated_win_rate']:.1%}` | "
+                    f"**Avg Elixir Cost**: `{selected_deck_row.get('elixir_cost', 0.0):.2f}`\n\n"
                     f"**Historical Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
                     f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**."
                 )
@@ -471,11 +485,22 @@ with tab_evaluator:
                             
                     presence_diff = v_sel - v_opp
                     level_diff = v_sel_lvl - v_opp_lvl
-                    X_eval.append(np.concatenate([presence_diff, level_diff]))
+                    X_eval.append(np.concatenate([presence_diff, level_diff, [0.0]]))
                     
                 X_eval = np.array(X_eval)
                 probs = model.predict_proba(X_eval)[:, 1]
-                pred_win_rate = np.mean(probs)
+                
+                # Calculate AEC and elixir penalty for the selected deck
+                costs = [card_elixir.get(c, 3.5) for c in selected_cards]
+                aec = sum(costs) / len(costs)
+                if 2.8 <= aec <= 4.2:
+                    penalty = 0.0
+                elif aec < 2.8:
+                    penalty = ((2.8 - aec) ** 2) * 0.15
+                else:
+                    penalty = ((aec - 4.2) ** 2) * 0.15
+                    
+                pred_win_rate = max(0.0, min(1.0, np.mean(probs) - penalty))
                 
                 # Estimate Rank among the 200 meta decks
                 meta_rates = df_model_leaderboard["simulated_win_rate"].tolist()
@@ -486,11 +511,13 @@ with tab_evaluator:
                     else:
                         break
                         
-                c1, c2 = st.columns(2)
+                c1, c2, c3 = st.columns(3)
                 with c1:
                     st.metric("Predicted Win Rate against Meta", f"{pred_win_rate:.1%}")
                 with c2:
                     st.metric("Estimated ML Rank", f"#{estimated_rank} / {num_meta}")
+                with c3:
+                    st.metric("Avg Elixir Cost", f"{aec:.2f}")
             else:
                 st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
 
@@ -548,6 +575,166 @@ with tab_evaluator:
         else:
             st.write("⚖️ **Balanced Deck**: A mix of card types with standard baseline performance.")
 
+        # Auto-suggestions engine
+        st.markdown("---")
+        st.markdown("### 💡 Auto-Suggestions (Optimized Deck Builder)")
+        st.write(
+            "This engine uses the ML synergy model to identify the weakest card in your deck and loops through "
+            "alternative cards to suggest the top 3 upgrades that will increase your deck's simulated win rate."
+        )
+        
+        if model is None or card_vocab is None or df_model_leaderboard is None:
+            st.warning("⚠️ Machine learning models are not loaded. Run retraining first.")
+        else:
+            if st.button("🚀 Find Optimal Card Swaps", key="btn_optimize"):
+                with st.spinner("Analyzing synergies and calculating replacements..."):
+                    # Step 1: Run LOO to identify the weakest card in the selected deck
+                    v_base = np.zeros(len(card_vocab))
+                    v_base_lvl = np.zeros(len(card_vocab))
+                    for c in selected_cards:
+                        if c in card_vocab:
+                            idx = card_vocab[c]
+                            v_base[idx] = 1.0
+                            v_base_lvl[idx] = 11.0
+                            
+                    meta_decks = df_model_leaderboard["deck"].tolist()
+                    
+                    # Compute base win rate
+                    X_base = []
+                    for opp in meta_decks:
+                        v_opp = np.zeros(len(card_vocab))
+                        v_opp_lvl = np.zeros(len(card_vocab))
+                        for card in opp.split(","):
+                            if card in card_vocab:
+                                idx_o = card_vocab[card]
+                                v_opp[idx_o] = 1.0
+                                v_opp_lvl[idx_o] = 11.0
+                        
+                        presence_diff = v_base - v_opp
+                        level_diff = v_base_lvl - v_opp_lvl
+                        X_base.append(np.concatenate([presence_diff, level_diff, [0.0]]))
+                        
+                    X_base = np.array(X_base)
+                    base_wr_raw = np.mean(model.predict_proba(X_base)[:, 1])
+                    
+                    # Calculate Elixir Penalty for base deck
+                    aec_base = calculate_aec(selected_cards, card_elixir)
+                    if 2.8 <= aec_base <= 4.2:
+                        penalty_base = 0.0
+                    elif aec_base < 2.8:
+                        penalty_base = ((2.8 - aec_base) ** 2) * 0.15
+                    else:
+                        penalty_base = ((aec_base - 4.2) ** 2) * 0.15
+                    base_wr = max(0.0, min(1.0, base_wr_raw - penalty_base))
+                    
+                    # Run LOO to find the weakest card
+                    loo_impacts = {}
+                    for c in selected_cards:
+                        v_mod = v_base.copy()
+                        v_mod_lvl = v_base_lvl.copy()
+                        if c in card_vocab:
+                            v_mod[card_vocab[c]] = 0.0
+                            v_mod_lvl[card_vocab[c]] = 0.0
+                            
+                        X_mod = []
+                        for opp in meta_decks:
+                            v_opp = np.zeros(len(card_vocab))
+                            v_opp_lvl = np.zeros(len(card_vocab))
+                            for card in opp.split(","):
+                                if card in card_vocab:
+                                    idx_o = card_vocab[card]
+                                    v_opp[idx_o] = 1.0
+                                    v_opp_lvl[idx_o] = 11.0
+                            presence_diff = v_mod - v_opp
+                            level_diff = v_mod_lvl - v_opp_lvl
+                            X_mod.append(np.concatenate([presence_diff, level_diff, [0.0]]))
+                        X_mod = np.array(X_mod)
+                        mod_wr_raw = np.mean(model.predict_proba(X_mod)[:, 1])
+                        loo_impacts[c] = base_wr_raw - mod_wr_raw
+                        
+                    # Weakest card has the lowest impact on win rate
+                    weakest_card = min(loo_impacts, key=loo_impacts.get)
+                    weakest_impact = loo_impacts[weakest_card]
+                    
+                    st.markdown(f"🔍 **Weakest Link identified:** **{weakest_card}** (LOO synergy contribution: `{weakest_impact:+.1%}`)")
+                    
+                    # Step 2: Try alternative cards to replace weakest_card
+                    all_cards = list(card_vocab.keys())
+                    candidates = [c for c in all_cards if c not in selected_cards]
+                    
+                    results = []
+                    # Pre-encode meta opponent decks to speed up execution
+                    opp_vectors = []
+                    for opp in meta_decks:
+                        v_opp = np.zeros(len(card_vocab))
+                        v_opp_lvl = np.zeros(len(card_vocab))
+                        for card in opp.split(","):
+                            if card in card_vocab:
+                                idx_o = card_vocab[card]
+                                v_opp[idx_o] = 1.0
+                                v_opp_lvl[idx_o] = 11.0
+                        opp_vectors.append((v_opp, v_opp_lvl))
+                        
+                    # Iterate through candidates
+                    for cand in candidates:
+                        v_mut = v_base.copy()
+                        v_mut_lvl = v_base_lvl.copy()
+                        
+                        # Remove weakest card
+                        v_mut[card_vocab[weakest_card]] = 0.0
+                        v_mut_lvl[card_vocab[weakest_card]] = 0.0
+                        
+                        # Add candidate card
+                        v_mut[card_vocab[cand]] = 1.0
+                        v_mut_lvl[card_vocab[cand]] = 11.0
+                        
+                        # Evaluate mutated deck
+                        X_mut = []
+                        for v_opp, v_opp_lvl in opp_vectors:
+                            presence_diff = v_mut - v_opp
+                            level_diff = v_mut_lvl - v_opp_lvl
+                            X_mut.append(np.concatenate([presence_diff, level_diff, [0.0]]))
+                            
+                        X_mut = np.array(X_mut)
+                        mut_wr_raw = np.mean(model.predict_proba(X_mut)[:, 1])
+                        
+                        # Apply Elixir Penalty to candidate deck
+                        cand_deck_cards = [c for c in selected_cards if c != weakest_card] + [cand]
+                        aec = calculate_aec(cand_deck_cards, card_elixir)
+                        
+                        if 2.8 <= aec <= 4.2:
+                            penalty = 0.0
+                        elif aec < 2.8:
+                            penalty = ((2.8 - aec) ** 2) * 0.15
+                        else:
+                            penalty = ((aec - 4.2) ** 2) * 0.15
+                            
+                        final_mut_wr = max(0.0, min(1.0, mut_wr_raw - penalty))
+                        
+                        results.append({
+                            "candidate": cand,
+                            "simulated_win_rate": final_mut_wr,
+                            "elixir_cost": aec,
+                            "improvement": final_mut_wr - base_wr
+                        })
+                        
+                    results_df = pd.DataFrame(results).sort_values(by="improvement", ascending=False)
+                    
+                    st.markdown("#### 🌟 Top Recommended Card Swaps:")
+                    top_swaps = results_df.head(3)
+                    
+                    for idx_s, row_s in top_swaps.iterrows():
+                        if row_s["improvement"] > 0:
+                            st.success(
+                                f"➕ Swap in **{row_s['candidate']}**: expected win rate increases from `{base_wr:.1%}` to **`{row_s['simulated_win_rate']:.1%}`** "
+                                f"(`+{row_s['improvement']:.1%}` gain). Deck Avg Elixir: `{row_s['elixir_cost']:.2f}`."
+                            )
+                        else:
+                            st.info(
+                                f"➕ Swap in **{row_s['candidate']}**: expected win rate would be `{row_s['simulated_win_rate']:.1%}` "
+                                f"(`{row_s['improvement']:.1%}` change). Deck Avg Elixir: `{row_s['elixir_cost']:.2f}`."
+                            )
+
 # TAB 4: MATCHUP PREDICTOR
 with tab_predictor:
     st.markdown("### 🔮 Matchup Predictor (Machine Learning Model)")
@@ -572,6 +759,8 @@ with tab_predictor:
                 max_selections=8
             )
             
+            p1_tr_val = st.slider("Your Trophies:", 1000, 15000, 11500, key="p1_tr_slider")
+            
             deck1_levels = {}
             if len(deck1_selection) == 8:
                 with st.expander("Adjust Your Card Levels (Defaults to 11)"):
@@ -591,6 +780,8 @@ with tab_predictor:
                 key="p2_select",
                 max_selections=8
             )
+            
+            p2_tr_val = st.slider("Opponent's Trophies:", 1000, 15000, 11500, key="p2_tr_slider")
             
             deck2_levels = {}
             if len(deck2_selection) == 8:
@@ -624,7 +815,8 @@ with tab_predictor:
                 
             presence_diff = v1 - v2
             level_diff = v1_lvl - v2_lvl
-            x_input = np.concatenate([presence_diff, level_diff]).reshape(1, -1)
+            trophy_diff = (float(p1_tr_val) - float(p2_tr_val)) / 1000.0
+            x_input = np.concatenate([presence_diff, level_diff, [trophy_diff]]).reshape(1, -1)
             
             # Predict
             prob = model.predict_proba(x_input)[0][1]
@@ -686,7 +878,7 @@ with tab_predictor:
                 
                 presence_diff_mod = v1_mod - v2
                 level_diff_mod = v1_lvl_mod - v2_lvl
-                x_mod = np.concatenate([presence_diff_mod, level_diff_mod]).reshape(1, -1)
+                x_mod = np.concatenate([presence_diff_mod, level_diff_mod, [trophy_diff]]).reshape(1, -1)
                 
                 prob_mod = model.predict_proba(x_mod)[0][1]
                 impact = base_prob - prob_mod
@@ -706,7 +898,7 @@ with tab_predictor:
                 
                 presence_diff_mod = v1 - v2_mod
                 level_diff_mod = v1_lvl - v2_lvl_mod
-                x_mod = np.concatenate([presence_diff_mod, level_diff_mod]).reshape(1, -1)
+                x_mod = np.concatenate([presence_diff_mod, level_diff_mod, [trophy_diff]]).reshape(1, -1)
                 
                 prob_mod = model.predict_proba(x_mod)[0][1]
                 impact = prob_mod - base_prob
