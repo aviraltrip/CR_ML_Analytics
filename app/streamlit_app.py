@@ -15,7 +15,7 @@ import numpy as np
 @st.cache_resource
 def load_ml_model():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    model_path = os.path.join(base_dir, "models", "matchup_predictor.pkl")
+    model_path = os.path.join(base_dir, "models", "synergy_predictor.pkl")
     vocab_path = os.path.join(base_dir, "models", "card_vocab.json")
     if not os.path.exists(model_path) or not os.path.exists(vocab_path):
         return None, None
@@ -115,18 +115,24 @@ def load_data():
     processed_path = os.path.join(base_dir, "data", "processed_battles.csv")
     leaderboard_path = os.path.join(base_dir, "data", "deck_leaderboard.csv")
     card_stats_path = os.path.join(base_dir, "data", "card_stats.csv")
+    model_leaderboard_path = os.path.join(base_dir, "data", "model_leaderboard.csv")
     
     # Check if files exist
     if not os.path.exists(processed_path) or not os.path.exists(leaderboard_path) or not os.path.exists(card_stats_path):
-        return None, None, None
+        return None, None, None, None
         
     df_battles = pd.read_csv(processed_path)
     df_leaderboard = pd.read_csv(leaderboard_path)
     df_card_stats = pd.read_csv(card_stats_path)
     
-    return df_battles, df_leaderboard, df_card_stats
+    if os.path.exists(model_leaderboard_path):
+        df_model_leaderboard = pd.read_csv(model_leaderboard_path)
+    else:
+        df_model_leaderboard = None
+        
+    return df_battles, df_leaderboard, df_card_stats, df_model_leaderboard
 
-df_battles, df_leaderboard, df_card_stats = load_data()
+df_battles, df_leaderboard, df_card_stats, df_model_leaderboard = load_data()
 
 # Render fallbacks if data is missing
 if df_battles is None or df_leaderboard is None or df_card_stats is None:
@@ -205,51 +211,110 @@ tab_leaderboard, tab_cards, tab_evaluator, tab_predictor = st.tabs([
 
 # TAB 1: DECK LEADERBOARD
 with tab_leaderboard:
-    st.markdown("### 🏆 Confidence-Adjusted Deck Leaderboard")
-    st.write(
-        "Decks are ranked by the **Wilson Score Lower Bound** of their win rate. "
-        "This prevents low-sample flukes (like a deck going 2-0) from dominating the leaderboard "
-        "and prioritizes decks that win consistently over a larger number of matches."
+    st.markdown("### 🏆 Deck Leaderboards")
+    
+    leaderboard_type = st.radio(
+        "Select Leaderboard View:",
+        options=["Historical (Wilson Score Adjusted)", "ML-Predicted (Simulated Round-Robin Synergy)"],
+        horizontal=True
     )
     
-    # Format table for display
-    display_df = df_leaderboard_filtered.copy()
-    display_df["win_rate"] = display_df["win_rate"].map(lambda x: f"{x:.1%}")
-    display_df["wilson_score"] = display_df["wilson_score"].map(lambda x: f"{x:.3f}")
-    
-    # Show main table
-    st.dataframe(
-        display_df[["Rank", "wilson_score", "win_rate", "matches_played", "wins", "losses", "deck"]],
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
-            "wilson_score": st.column_config.NumberColumn("Wilson Score", help="Adjusted win rate lower bound"),
-            "win_rate": st.column_config.NumberColumn("Raw Win Rate"),
-            "matches_played": st.column_config.NumberColumn("Matches"),
-        }
-    )
-    
-    # Inspector
-    st.markdown("#### 🔍 Deck Inspector")
-    selected_rank = st.number_input("Enter Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_leaderboard_filtered)), value=1)
-    
-    if len(df_leaderboard_filtered) > 0:
-        selected_deck_row = df_leaderboard_filtered.iloc[selected_rank - 1]
-        cards = selected_deck_row["deck"].split(",")
-        
-        st.markdown(f"**Deck Rank #{selected_rank} Roster:**")
-        
-        # Display cards as custom HTML badges
-        badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
-        st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
-        
-        # Mini stat callout
-        st.markdown(
-            f"**Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
-            f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**. "
-            f"Wilson Confidence Score: `{selected_deck_row['wilson_score']:.3f}`."
+    if leaderboard_type == "Historical (Wilson Score Adjusted)":
+        st.write(
+            "Decks are ranked by the **Wilson Score Lower Bound** of their historical win rate. "
+            "This prevents low-sample flukes (like a deck going 2-0) from dominating the leaderboard "
+            "and prioritizes decks that win consistently over a larger number of matches."
         )
+        
+        # Format table for display
+        display_df = df_leaderboard_filtered.copy()
+        display_df["win_rate"] = display_df["win_rate"].map(lambda x: f"{x:.1%}")
+        display_df["wilson_score"] = display_df["wilson_score"].map(lambda x: f"{x:.3f}")
+        
+        # Show main table
+        st.dataframe(
+            display_df[["Rank", "wilson_score", "win_rate", "matches_played", "wins", "losses", "deck"]],
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
+                "wilson_score": st.column_config.NumberColumn("Wilson Score", help="Adjusted win rate lower bound"),
+                "win_rate": st.column_config.NumberColumn("Raw Win Rate"),
+                "matches_played": st.column_config.NumberColumn("Matches"),
+            }
+        )
+        
+        # Inspector
+        st.markdown("#### 🔍 Deck Inspector")
+        selected_rank = st.number_input("Enter Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_leaderboard_filtered)), value=1, key="hist_inspect")
+        
+        if len(df_leaderboard_filtered) > 0:
+            selected_deck_row = df_leaderboard_filtered.iloc[selected_rank - 1]
+            cards = selected_deck_row["deck"].split(",")
+            
+            st.markdown(f"**Deck Rank #{selected_rank} Roster:**")
+            
+            # Display cards as custom HTML badges
+            badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
+            st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
+            
+            # Mini stat callout
+            st.markdown(
+                f"**Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
+                f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**. "
+                f"Wilson Confidence Score: `{selected_deck_row['wilson_score']:.3f}`."
+            )
+    else:
+        if df_model_leaderboard is None:
+            st.warning("⚠️ ML-Predicted Leaderboard data is missing! Please run `python src/simulated_round_robin.py` to generate it first.")
+        else:
+            st.write(
+                "Decks are ranked by their **Expected Win Rate** against the rest of the meta, "
+                "simulated using our trained non-linear **MLP Synergy Model**. "
+                "This highlights decks with strong overall synergy and counter-matchup profiles."
+            )
+            
+            # Filter model leaderboard dynamically based on minimum games slider
+            df_model_filtered = df_model_leaderboard[df_model_leaderboard["matches_played"] >= min_games].copy().reset_index(drop=True)
+            df_model_filtered["Predictive_Rank"] = df_model_filtered.index + 1
+            
+            display_model_df = df_model_filtered.copy()
+            display_model_df["simulated_win_rate"] = display_model_df["simulated_win_rate"].map(lambda x: f"{x:.1%}")
+            display_model_df["win_rate"] = display_model_df["win_rate"].map(lambda x: f"{x:.1%}")
+            
+            st.dataframe(
+                display_model_df[["Predictive_Rank", "simulated_win_rate", "win_rate", "matches_played", "wins", "losses", "deck"]],
+                use_container_width=True,
+                hide_index=True,
+                column_config={
+                    "Predictive_Rank": st.column_config.NumberColumn("ML Rank"),
+                    "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
+                    "simulated_win_rate": st.column_config.NumberColumn("Simulated Win Rate", help="Model-predicted expected win rate against the meta"),
+                    "win_rate": st.column_config.NumberColumn("Historical Win Rate"),
+                    "matches_played": st.column_config.NumberColumn("Historical Matches"),
+                }
+            )
+            
+            # Inspector
+            st.markdown("#### 🔍 Deck Inspector (ML Ranked)")
+            selected_rank_ml = st.number_input("Enter ML Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_model_filtered)), value=1, key="ml_inspect")
+            
+            if len(df_model_filtered) > 0:
+                selected_deck_row = df_model_filtered.iloc[selected_rank_ml - 1]
+                cards = selected_deck_row["deck"].split(",")
+                
+                st.markdown(f"**ML Deck Rank #{selected_rank_ml} Roster:**")
+                
+                # Display cards as custom HTML badges
+                badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
+                st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
+                
+                # Mini stat callout
+                st.markdown(
+                    f"**Simulated Win Rate against Meta**: `{selected_deck_row['simulated_win_rate']:.1%}`. "
+                    f"**Historical Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
+                    f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**."
+                )
 
 # TAB 2: OVERRATED VS UNDERRATED CARDS
 with tab_cards:
@@ -368,7 +433,66 @@ with tab_evaluator:
             with c3:
                 st.metric("Wilson Score", f"{match_row['wilson_score']:.3f}")
         else:
-            st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
+            if model is not None and card_vocab is not None and df_model_leaderboard is not None:
+                st.info("ℹ️ This exact deck has no historical battles in the database. Let's calculate its predicted strength using the ML Synergy Model!")
+                
+                # Add expander to adjust levels for the live simulation
+                sel_levels = {}
+                with st.expander("Adjust Your Card Levels for Prediction (Defaults to 11)"):
+                    level_cols = st.columns(4)
+                    for idx_c, card in enumerate(selected_cards):
+                        col_idx = idx_c % 4
+                        with level_cols[col_idx]:
+                            sel_levels[card] = st.number_input(
+                                f"{card}", min_value=1, max_value=16, value=11, key=f"eval_lvl_{card}"
+                            )
+                
+                meta_decks = df_model_leaderboard["deck"].tolist()
+                num_meta = len(meta_decks)
+                
+                # Multi-hot vector and level vector for selected deck
+                v_sel = np.zeros(len(card_vocab))
+                v_sel_lvl = np.zeros(len(card_vocab))
+                for card in selected_cards:
+                    if card in card_vocab:
+                        idx_v = card_vocab[card]
+                        v_sel[idx_v] = 1.0
+                        v_sel_lvl[idx_v] = sel_levels.get(card, 11.0)
+                        
+                X_eval = []
+                for opponent_deck in meta_decks:
+                    v_opp = np.zeros(len(card_vocab))
+                    v_opp_lvl = np.zeros(len(card_vocab))
+                    for card in opponent_deck.split(","):
+                        if card in card_vocab:
+                            idx_o = card_vocab[card]
+                            v_opp[idx_o] = 1.0
+                            v_opp_lvl[idx_o] = 11.0 # Assume standard tournament level for opponent meta decks
+                            
+                    presence_diff = v_sel - v_opp
+                    level_diff = v_sel_lvl - v_opp_lvl
+                    X_eval.append(np.concatenate([presence_diff, level_diff]))
+                    
+                X_eval = np.array(X_eval)
+                probs = model.predict_proba(X_eval)[:, 1]
+                pred_win_rate = np.mean(probs)
+                
+                # Estimate Rank among the 200 meta decks
+                meta_rates = df_model_leaderboard["simulated_win_rate"].tolist()
+                estimated_rank = 1
+                for rate in meta_rates:
+                    if pred_win_rate < rate:
+                        estimated_rank += 1
+                    else:
+                        break
+                        
+                c1, c2 = st.columns(2)
+                with c1:
+                    st.metric("Predicted Win Rate against Meta", f"{pred_win_rate:.1%}")
+                with c2:
+                    st.metric("Estimated ML Rank", f"#{estimated_rank} / {num_meta}")
+            else:
+                st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
 
         # Card-by-card stats breakdown
         st.markdown("#### 🃏 Individual Card Breakdown")
@@ -428,12 +552,12 @@ with tab_evaluator:
 with tab_predictor:
     st.markdown("### 🔮 Matchup Predictor (Machine Learning Model)")
     st.write(
-        "This tool uses a trained **Logistic Regression** model (accuracy: 59.08%) to predict "
-        "the win probability between two decks based on individual card coefficients and matchups."
+        "This tool uses a trained non-linear **Multi-Layer Perceptron (MLP) Synergy Model** (accuracy: 59.34%) to predict "
+        "the win probability between two decks based on complex card-to-card synergies and counters."
     )
     
     if model is None or card_vocab is None:
-        st.warning("⚠️ Machine learning model artifacts are missing. Run `python src/train_model.py` to train the model first.")
+        st.warning("⚠️ Machine learning model artifacts are missing. Run `python src/train_synergy_model.py` to train the model first.")
     else:
         all_cards_list = sorted(list(card_vocab.keys()))
         
@@ -448,6 +572,17 @@ with tab_predictor:
                 max_selections=8
             )
             
+            deck1_levels = {}
+            if len(deck1_selection) == 8:
+                with st.expander("Adjust Your Card Levels (Defaults to 11)"):
+                    level_cols = st.columns(4)
+                    for i, card in enumerate(deck1_selection):
+                        col_idx = i % 4
+                        with level_cols[col_idx]:
+                            deck1_levels[card] = st.number_input(
+                                f"{card}", min_value=1, max_value=16, value=11, key=f"p1_lvl_{card}"
+                            )
+            
         with col_deck2:
             st.markdown("#### 👿 Opponent's Deck")
             deck2_selection = st.multiselect(
@@ -457,19 +592,39 @@ with tab_predictor:
                 max_selections=8
             )
             
+            deck2_levels = {}
+            if len(deck2_selection) == 8:
+                with st.expander("Adjust Opponent's Card Levels (Defaults to 11)"):
+                    level_cols = st.columns(4)
+                    for i, card in enumerate(deck2_selection):
+                        col_idx = i % 4
+                        with level_cols[col_idx]:
+                            deck2_levels[card] = st.number_input(
+                                f"{card}", min_value=1, max_value=16, value=11, key=f"p2_lvl_{card}"
+                            )
+            
         if len(deck1_selection) == 8 and len(deck2_selection) == 8:
-            # Multi-hot vector encoding
-            num_features = len(card_vocab)
-            v1 = np.zeros(num_features)
-            v2 = np.zeros(num_features)
+            # Multi-hot vector and level vector encoding
+            num_cards = len(card_vocab)
+            v1 = np.zeros(num_cards)
+            v2 = np.zeros(num_cards)
+            v1_lvl = np.zeros(num_cards)
+            v2_lvl = np.zeros(num_cards)
             
             for c in deck1_selection:
-                v1[card_vocab[c]] = 1.0
+                if c in card_vocab:
+                    idx = card_vocab[c]
+                    v1[idx] = 1.0
+                    v1_lvl[idx] = deck1_levels.get(c, 11.0)
             for c in deck2_selection:
-                v2[card_vocab[c]] = 1.0
+                if c in card_vocab:
+                    idx = card_vocab[c]
+                    v2[idx] = 1.0
+                    v2_lvl[idx] = deck2_levels.get(c, 11.0)
                 
-            # X_input = v1 - v2
-            x_input = (v1 - v2).reshape(1, -1)
+            presence_diff = v1 - v2
+            level_diff = v1_lvl - v2_lvl
+            x_input = np.concatenate([presence_diff, level_diff]).reshape(1, -1)
             
             # Predict
             prob = model.predict_proba(x_input)[0][1]
@@ -515,46 +670,70 @@ with tab_predictor:
             else:
                 st.info(f"⚖️ **Even Matchup**: You have a **{prob:.1%}** chance of winning. This matchup is a coin flip and will rely heavily on in-game skill and play style.")
                 
-            # Cards contribution analysis
+            # Cards contribution analysis using Model-Agnostic Leave-One-Out (LOO) Contribution
             st.markdown("#### 🧬 Matchup Analysis (Why?)")
             
-            # Extract coefficients
-            coefs = model.coef_[0]
-            
-            # Display My Deck strengths vs weaknesses
             contribs = []
+            base_prob = prob
+            
+            # Evaluate impact of Your cards (removing 1 card)
             for c in deck1_selection:
-                weight = coefs[card_vocab[c]]
-                contribs.append({"card": c, "owner": "You", "impact": weight})
+                v1_mod = v1.copy()
+                v1_lvl_mod = v1_lvl.copy()
+                
+                v1_mod[card_vocab[c]] = 0.0
+                v1_lvl_mod[card_vocab[c]] = 0.0
+                
+                presence_diff_mod = v1_mod - v2
+                level_diff_mod = v1_lvl_mod - v2_lvl
+                x_mod = np.concatenate([presence_diff_mod, level_diff_mod]).reshape(1, -1)
+                
+                prob_mod = model.predict_proba(x_mod)[0][1]
+                impact = base_prob - prob_mod
+                contribs.append({
+                    "card": c, 
+                    "owner": "You (Advantage)" if impact >= 0 else "You (Disadvantage)", 
+                    "impact": impact
+                })
+                
+            # Evaluate impact of Opponent cards (removing 1 card)
             for c in deck2_selection:
-                weight = -coefs[card_vocab[c]] # Negative impact since it's opponent's card
-                contribs.append({"card": c, "owner": "Opponent", "impact": weight})
+                v2_mod = v2.copy()
+                v2_lvl_mod = v2_lvl.copy()
+                
+                v2_mod[card_vocab[c]] = 0.0
+                v2_lvl_mod[card_vocab[c]] = 0.0
+                
+                presence_diff_mod = v1 - v2_mod
+                level_diff_mod = v1_lvl - v2_lvl_mod
+                x_mod = np.concatenate([presence_diff_mod, level_diff_mod]).reshape(1, -1)
+                
+                prob_mod = model.predict_proba(x_mod)[0][1]
+                impact = prob_mod - base_prob
+                contribs.append({
+                    "card": c, 
+                    "owner": "Opponent (Weakness)" if impact >= 0 else "Opponent (Threat)", 
+                    "impact": impact
+                })
                 
             contrib_df = pd.DataFrame(contribs).sort_values("impact", ascending=False)
             
             c_left, c_right = st.columns(2)
             with c_left:
-                st.markdown("**👍 Your Key Matchup Advantages:**")
+                st.markdown("**👍 Key Matchup Advantages:**")
                 advs = contrib_df[contrib_df["impact"] > 0].head(3)
                 if len(advs) > 0:
                     for _, row in advs.iterrows():
-                        if row["owner"] == "You":
-                            st.write(f" - **{row['card']}** in your deck provides a positive boost (`{row['impact']:+.3f}`).")
-                        else:
-                            st.write(f" - **{row['card']}** in opponent's deck is historically weak against you (`{row['impact']:+.3f}`).")
+                        st.write(f" - **{row['card']}**: impact = `{row['impact']:+.1%}` ({row['owner']})")
                 else:
                     st.write("No clear advantages detected.")
                     
             with c_right:
-                st.markdown("**👎 Your Key Matchup Disadvantages:**")
-                disadvs = contrib_df[contrib_df["impact"] < 0].tail(3)
-                disadvs = disadvs.sort_values("impact")
+                st.markdown("**👎 Key Matchup Disadvantages:**")
+                disadvs = contrib_df[contrib_df["impact"] < 0].sort_values("impact", ascending=True).head(3)
                 if len(disadvs) > 0:
                     for _, row in disadvs.iterrows():
-                        if row["owner"] == "Opponent":
-                            st.write(f" - Opponent's **{row['card']}** is statistically strong in this matchup (`{row['impact']:.3f}`).")
-                        else:
-                            st.write(f" - Your **{row['card']}** has a negative weight in this matchup (`{row['impact']:.3f}`).")
+                        st.write(f" - **{row['card']}**: impact = `{row['impact']:.1%}` ({row['owner']})")
                 else:
                     st.write("No clear disadvantages detected.")
         else:
