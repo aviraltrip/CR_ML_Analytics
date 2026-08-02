@@ -74,8 +74,9 @@ def main():
             if card in card_vocab:
                 p2_vec[card_vocab[card]] = 1.0
 
-        # Concatenate P1 and P2 presence to allow the neural net to learn counter combinations
-        feature_vec = np.concatenate([p1_vec, p2_vec])
+        # Feature vector represents the presence difference
+        # +1 if P1 has it, -1 if P2 has it, 0 if both or neither have it
+        feature_vec = p1_vec - p2_vec
         X.append(feature_vec)
         y.append(p1_won)
 
@@ -88,14 +89,14 @@ def main():
 
     # 4. Train MLP Model
     print("Training Multi-Layer Perceptron (MLP) Synergy model...")
-    # Hidden layers (64, 32) captures combination features without overfitting easily.
-    # L2 regularization (alpha=0.01) helps generalize.
+    # A single hidden layer of 16 units with strong L2 regularization (alpha=1.0)
+    # yields the best generalization without overfitting.
     model = MLPClassifier(
-        hidden_layer_sizes=(64, 32),
+        hidden_layer_sizes=(16,),
         activation="relu",
         solver="adam",
-        alpha=0.01,
-        max_iter=500,
+        alpha=1.0,
+        max_iter=1000,
         random_state=42,
         early_stopping=True,
         validation_fraction=0.1
