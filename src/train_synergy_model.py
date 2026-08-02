@@ -52,7 +52,7 @@ def main():
     num_cards = len(card_vocab)
     print(f"Using vocabulary with {num_cards} unique cards.")
 
-    # 2. Build feature matrix X (concatenated decks for synergy) and target y
+    # 2. Build feature matrix X (presence and level differences) and target y
     print("Building synergy feature matrix (X) and target labels (y)...")
     X = []
     y = []
@@ -60,23 +60,32 @@ def main():
     for _, row in df.iterrows():
         p1_cards = str(row["p1_deck"]).split(",")
         p2_cards = str(row["p2_deck"]).split(",")
+        p1_levels = [float(lvl) for lvl in str(row["p1_levels"]).split(",")]
+        p2_levels = [float(lvl) for lvl in str(row["p2_levels"]).split(",")]
         p1_won = row["p1_won"]
 
-        # Create multi-hot vectors
+        # Create presence and level vectors
         p1_vec = np.zeros(num_cards)
         p2_vec = np.zeros(num_cards)
+        p1_lvl_vec = np.zeros(num_cards)
+        p2_lvl_vec = np.zeros(num_cards)
 
-        for card in p1_cards:
+        for card, lvl in zip(p1_cards, p1_levels):
             if card in card_vocab:
-                p1_vec[card_vocab[card]] = 1.0
+                idx = card_vocab[card]
+                p1_vec[idx] = 1.0
+                p1_lvl_vec[idx] = lvl
 
-        for card in p2_cards:
+        for card, lvl in zip(p2_cards, p2_levels):
             if card in card_vocab:
-                p2_vec[card_vocab[card]] = 1.0
+                idx = card_vocab[card]
+                p2_vec[idx] = 1.0
+                p2_lvl_vec[idx] = lvl
 
-        # Feature vector represents the presence difference
-        # +1 if P1 has it, -1 if P2 has it, 0 if both or neither have it
-        feature_vec = p1_vec - p2_vec
+        # Concatenate presence differences and card level differences
+        presence_diff = p1_vec - p2_vec
+        level_diff = p1_lvl_vec - p2_lvl_vec
+        feature_vec = np.concatenate([presence_diff, level_diff])
         X.append(feature_vec)
         y.append(p1_won)
 

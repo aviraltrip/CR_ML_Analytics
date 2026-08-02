@@ -69,18 +69,24 @@ def main():
             
             # Encode deck i
             v_i = np.zeros(num_cards)
+            v_i_lvl = np.zeros(num_cards)
             for card in decks[i].split(","):
                 if card in card_vocab:
                     v_i[card_vocab[card]] = 1.0
+                    v_i_lvl[card_vocab[card]] = 11.0
 
             # Encode deck j
             v_j = np.zeros(num_cards)
+            v_j_lvl = np.zeros(num_cards)
             for card in decks[j].split(","):
                 if card in card_vocab:
                     v_j[card_vocab[card]] = 1.0
+                    v_j_lvl[card_vocab[card]] = 11.0
 
-            # Feature vector: presence difference
-            X_matchups.append(v_i - v_j)
+            # Feature vector: presence difference followed by card level difference
+            presence_diff = v_i - v_j
+            level_diff = v_i_lvl - v_j_lvl
+            X_matchups.append(np.concatenate([presence_diff, level_diff]))
             matchup_pairs.append((i, j))
 
     X_matchups = np.array(X_matchups)
