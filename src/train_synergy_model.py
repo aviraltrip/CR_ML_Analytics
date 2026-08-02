@@ -6,19 +6,26 @@ import argparse
 import json
 import os
 import pickle
+
 import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score, classification_report, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import accuracy_score, classification_report, roc_auc_score
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--in-csv", default="data/processed_battles.csv",
-                         help="Input path to processed battles CSV")
-    parser.add_argument("--out-dir", default="models",
-                         help="Directory to save the trained model artifacts")
+    parser.add_argument(
+        "--in-csv",
+        default="data/processed_battles.csv",
+        help="Input path to processed battles CSV",
+    )
+    parser.add_argument(
+        "--out-dir",
+        default="models",
+        help="Directory to save the trained model artifacts",
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.in_csv):
@@ -46,9 +53,9 @@ def main():
             p2_cards = str(row["p2_deck"]).split(",")
             all_cards.update(p1_cards)
             all_cards.update(p2_cards)
-        card_list = sorted(list(all_cards))
+        card_list = sorted(all_cards)
         card_vocab = {card: idx for idx, card in enumerate(card_list)}
-        
+
     num_cards = len(card_vocab)
     print(f"Using vocabulary with {num_cards} unique cards.")
 
@@ -83,8 +90,12 @@ def main():
                 p2_lvl_vec[idx] = lvl
 
         # Extract starting trophies and construct scaled trophy difference
-        p1_tr = float(row.get("p1_trophies", 0) if pd.notna(row.get("p1_trophies")) else 0.0)
-        p2_tr = float(row.get("p2_trophies", 0) if pd.notna(row.get("p2_trophies")) else 0.0)
+        p1_tr = float(
+            row.get("p1_trophies", 0) if pd.notna(row.get("p1_trophies")) else 0.0
+        )
+        p2_tr = float(
+            row.get("p2_trophies", 0) if pd.notna(row.get("p2_trophies")) else 0.0
+        )
         trophy_diff = (p1_tr - p2_tr) / 1000.0
 
         # Concatenate presence differences, card level differences, and scaled trophy differences
@@ -98,7 +109,9 @@ def main():
     y = np.array(y)
 
     # 3. Train/test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
     print(f"Train size: {len(X_train)}, Test size: {len(X_test)}")
 
     # 4. Train MLP Model
@@ -113,7 +126,7 @@ def main():
         max_iter=1000,
         random_state=42,
         early_stopping=True,
-        validation_fraction=0.1
+        validation_fraction=0.1,
     )
     model.fit(X_train, y_train)
 

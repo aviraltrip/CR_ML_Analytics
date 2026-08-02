@@ -6,19 +6,26 @@ import argparse
 import json
 import os
 import pickle
+
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, roc_auc_score
+from sklearn.model_selection import train_test_split
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--in-csv", default="../data/processed_battles.csv",
-                         help="Input path to processed battles CSV")
-    parser.add_argument("--out-dir", default="../models",
-                         help="Directory to save the trained model artifacts")
+    parser.add_argument(
+        "--in-csv",
+        default="../data/processed_battles.csv",
+        help="Input path to processed battles CSV",
+    )
+    parser.add_argument(
+        "--out-dir",
+        default="../models",
+        help="Directory to save the trained model artifacts",
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.in_csv):
@@ -36,8 +43,8 @@ def main():
         p2_cards = row["p2_deck"].split(",")
         all_cards.update(p1_cards)
         all_cards.update(p2_cards)
-        
-    card_list = sorted(list(all_cards))
+
+    card_list = sorted(all_cards)
     card_vocab = {card: idx for idx, card in enumerate(card_list)}
     num_cards = len(card_vocab)
     print(f"Found {num_cards} unique cards in the dataset.")
@@ -74,7 +81,9 @@ def main():
     y = np.array(y)
 
     # 3. Train/test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
     print(f"Train size: {len(X_train)}, Test size: {len(X_test)}")
 
     # 4. Train Model
@@ -104,12 +113,12 @@ def main():
 
     # 6. Save artifacts
     os.makedirs(args.out_dir, exist_ok=True)
-    
+
     # Save model
     model_path = os.path.join(args.out_dir, "matchup_predictor.pkl")
     with open(model_path, "wb") as f:
         pickle.dump(model, f)
-        
+
     # Save card vocabulary
     vocab_path = os.path.join(args.out_dir, "card_vocab.json")
     with open(vocab_path, "w", encoding="utf-8") as f:

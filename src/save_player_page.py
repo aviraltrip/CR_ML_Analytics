@@ -18,8 +18,14 @@ except ImportError:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tag", default="2Y0V8PG", help="Clash Royale player tag (without #)")
-    parser.add_argument("--out", default="../data/sample_player_page.html", help="Path to save the HTML file")
+    parser.add_argument(
+        "--tag", default="2Y0V8PG", help="Clash Royale player tag (without #)"
+    )
+    parser.add_argument(
+        "--out",
+        default="../data/sample_player_page.html",
+        help="Path to save the HTML file",
+    )
     args = parser.parse_args()
 
     # Normalize tag
@@ -39,13 +45,15 @@ def main():
         page.goto(url, wait_until="commit", timeout=0)
 
         # Prompt the user to solve the captcha and load the battles
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("ACTION REQUIRED:")
         print("1. Solve the Cloudflare Turnstile challenge in the browser window.")
         print("2. Ensure the page finishes loading and shows the player's battles.")
-        print("3. Once the page is fully loaded, return to this terminal and press ENTER.")
-        print("="*60 + "\n")
-        
+        print(
+            "3. Once the page is fully loaded, return to this terminal and press ENTER."
+        )
+        print("=" * 60 + "\n")
+
         input("Press Enter here once the battles page is fully loaded...")
 
         # Get HTML source

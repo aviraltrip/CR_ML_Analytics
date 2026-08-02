@@ -42,7 +42,7 @@ def fetch_battlelog(session: requests.Session, tag: str) -> list | None:
                 return None
             print(f"  unexpected status {resp.status_code} for {tag}")
             return None
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"  error fetching {tag}: {e}")
             time.sleep(2)
     return None
