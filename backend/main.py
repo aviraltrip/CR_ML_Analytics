@@ -233,6 +233,8 @@ def get_model_leaderboard(min_games: int = 5):
             .copy()
             .reset_index(drop=True)
         )
+        if "Predictive_Rank" in df_filtered.columns:
+            df_filtered = df_filtered.drop(columns=["Predictive_Rank"])
         df_filtered.insert(0, "Predictive_Rank", df_filtered.index + 1)
 
         return {
