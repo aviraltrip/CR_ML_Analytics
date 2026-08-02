@@ -1,719 +1,917 @@
 deck,matches_played,wins,losses,win_rate,wilson_score
 "Balloon,Barbarian Barrel,Bats,Giant Snowball,Ice Golem,Inferno Tower,Rascals,Skeleton Barrel",30,29,1,0.9666666666666667,0.8332924860304112
 "Bomber,Dark Prince,Fireball,Giant,Mega Minion,Prince,Rage,Zap",18,18,0,1.0,0.8241154494176252
+"Arrows,Balloon,Goblin Gang,Lumberjack,Mirror,Ram Rider,Ronin,Valkyrie",15,15,0,1.0,0.7961107336956521
+"Cannon,Firecracker,Guards,Knight,Lumberjack,Mega Knight,The Log,Wall Breakers",27,25,2,0.9259259259259259,0.7663002270926939
 "Arrows,Baby Dragon,Elixir Golem,Firecracker,Mirror,Prince,Skeleton Army,Witch",11,11,0,1.0,0.7411599827511859
 "Goblin Barrel,Goblin Gang,Hog Rider,Ice Spirit,Inferno Tower,Princess,The Log,Valkyrie",16,15,1,0.9375,0.7167073163197013
+"Arrows,Elite Barbarians,Hog Rider,Knight,Skeletons,Tesla,Valkyrie,Witch",9,9,0,1.0,0.7008472464490406
 "Barbarians,Elixir Golem,Executioner,Firecracker,Goblin Barrel,Minions,The Log,Valkyrie",8,8,0,1.0,0.6755843804891231
 "Firecracker,Lumberjack,Minion Horde,Monk,P.E.K.K.A,Skeleton Army,Sparky,Void",30,25,5,0.8333333333333334,0.6643529481431982
-"Berserker,Goblin Barrel,Goblin Gang,Knight,Princess,Tesla,The Log,Wall Breakers",7,7,0,1.0,0.6456611570247934
 "Bats,Boss Bandit,Ice Spirit,Mega Knight,P.E.K.K.A,Prince,Skeletons,The Log",7,7,0,1.0,0.6456611570247934
+"Arrows,Baby Dragon,Fireball,Firecracker,Hog Rider,Mega Knight,Tesla,Wizard",7,7,0,1.0,0.6456611570247934
+"Berserker,Goblin Barrel,Goblin Gang,Knight,Princess,Tesla,The Log,Wall Breakers",7,7,0,1.0,0.6456611570247934
 "Arrows,Elite Barbarians,Furnace,Heal Spirit,Mega Knight,Mini P.E.K.K.A,P.E.K.K.A,Rage",31,25,6,0.8064516129032258,0.6371939644454012
 "Arrows,Bats,Dark Prince,Firecracker,Goblin Gang,Goblin Giant,Prince,Zap",23,19,4,0.8260869565217391,0.6286194521470434
+"Arrows,Dark Prince,Elite Barbarians,Firecracker,Goblin Drill,Minions,Rage,Valkyrie",30,24,6,0.8,0.6269395261897257
 "Firecracker,Hog Rider,Ice Spirit,Rocket,Skeletons,Tesla,The Log,Valkyrie",30,24,6,0.8,0.6269395261897257
 "Baby Dragon,Bats,Elixir Golem,Firecracker,Goblin Gang,Knight,Mirror,Valkyrie",11,10,1,0.9090909090909091,0.6226353745137962
+"Firecracker,Goblins,Hog Rider,Mega Knight,Tesla,The Log,Vines,Witch",25,20,5,0.8,0.6086866446346176
 "Fireball,Firecracker,Goblin Barrel,Hog Rider,Skeletons,Tesla,The Log,Valkyrie",31,24,7,0.7741935483870968,0.6018723994130262
 "Arrows,Elixir Golem,Firecracker,Goblin Barrel,Tombstone,Valkyrie,Witch,Wizard",10,9,1,0.9,0.5958436145024277
-"Arrows,Bats,Giant,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Sparky,Zap",28,21,7,0.75,0.566439747592954
+"Lightning,Monk,Royal Ghost,Royal Giant,Tesla,Valkyrie,Witch,Zap",30,23,7,0.7666666666666667,0.5907132766967573
+"Goblin Gang,Inferno Tower,Knight,Miner,Minion Horde,Princess,The Log,Wall Breakers",16,13,3,0.8125,0.5699064013154177
+"Arrows,Bats,Giant,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Sparky,Zap",31,23,8,0.7419354838709677,0.567535275722849
+"Goblin Barrel,Ice Spirit,Knight,Little Prince,Poison,Skeletons,Tesla,The Log",19,15,4,0.7894736842105263,0.5666528575973391
 "Electro Wizard,Executioner,Firecracker,Knight,Ram Rider,Ronin,The Log,Valkyrie",28,21,7,0.75,0.566439747592954
 "Arrows,Electro Wizard,Firecracker,Hog Rider,Mega Knight,Ronin,Skeleton Army,Tesla",25,19,6,0.76,0.5656994004476144
 "Arrows,Firecracker,Ice Spirit,Knight,P.E.K.K.A,Ronin,Wizard,Zap",5,5,0,1.0,0.565508505247919
+"Arrows,Cannon,Dart Goblin,Golden Knight,Inferno Dragon,Mega Knight,Skeleton Army,The Log",9,8,1,0.8888888888888888,0.5649937852319398
 "Bats,Dart Goblin,Firecracker,Mini P.E.K.K.A,Prince,Princess,Skeleton Army,Valkyrie",9,8,1,0.8888888888888888,0.5649937852319398
+"Balloon,Barbarian Barrel,Bowler,Freeze,Inferno Dragon,Lumberjack,Tornado,Wizard",30,22,8,0.7333333333333333,0.5555169795568831
 "Firecracker,Goblin Barrel,Goblin Gang,Mega Knight,Mini P.E.K.K.A,Skeletons,The Log,Vines",30,22,8,0.7333333333333333,0.5555169795568831
+"Barbarian Barrel,Fireball,Firecracker,Hog Rider,Knight,Ronin,Royal Ghost,Tesla",30,22,8,0.7333333333333333,0.5555169795568831
 "Cannon,Dart Goblin,Golden Knight,Mega Knight,Royal Hogs,Skeleton Army,Skeletons,The Log",30,22,8,0.7333333333333333,0.5555169795568831
 "Arrows,Balloon,Electro Giant,Firecracker,Goblin Gang,Mini P.E.K.K.A,Minions,Valkyrie",12,10,2,0.8333333333333334,0.5519636426153274
+"Goblin Barrel,Goblin Gang,Knight,Magic Archer,P.E.K.K.A,Rocket,Tesla,Tornado",21,16,5,0.7619047619047619,0.5490841802765406
+"Archers,Boss Bandit,Firecracker,Mega Knight,Miner,Prince,Skeletons,The Log",15,12,3,0.8,0.5481406466534955
 "Bats,Bowler,Goblin Gang,Inferno Dragon,Mega Knight,Miner,Skeleton Barrel,Zap",15,12,3,0.8,0.5481406466534955
 "Cannon,Firecracker,Hog Rider,Minions,Ronin,The Log,Valkyrie,Witch",29,21,8,0.7241379310344828,0.5428252365556403
+"Barbarian Barrel,Fireball,Firecracker,Hunter,Knight,Ronin,Royal Giant,Skeletons",29,21,8,0.7241379310344828,0.5428252365556403
 "Balloon,Electro Wizard,Elite Barbarians,Firecracker,Goblin Barrel,Ice Wizard,Lumberjack,Zap",23,17,6,0.7391304347826086,0.5352960945624944
-"Dark Prince,Electro Dragon,Golem,Guards,Lumberjack,Mega Minion,The Log,Tornado",28,20,8,0.7142857142857143,0.529403642629825
+"Goblin Barrel,Goblin Gang,Ice Spirit,Inferno Tower,Princess,Rocket,The Log,Valkyrie",49,33,16,0.673469387755102,0.5337894368740628
 "Arrows,Cannon,Executioner,Knight,Mega Knight,Miner,Mini P.E.K.K.A,Skeletons",28,20,8,0.7142857142857143,0.529403642629825
+"Bats,Firecracker,Mega Knight,Musketeer,Skeletons,Tesla,Wall Breakers,Zap",28,20,8,0.7142857142857143,0.529403642629825
+"Dark Prince,Electro Dragon,Golem,Guards,Lumberjack,Mega Minion,The Log,Tornado",28,20,8,0.7142857142857143,0.529403642629825
+"Bowler,Golden Knight,Guards,Mega Knight,Minions,Rage,Royal Hogs,Witch",8,7,1,0.875,0.5291051942301385
 "Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Lightning,Princess,Tesla,The Log",17,13,4,0.7647058823529411,0.5273775411082839
-"Goblin Barrel,Goblin Gang,Ice Spirit,Inferno Tower,Princess,Rocket,The Log,Valkyrie",48,32,16,0.6666666666666666,0.5253984633247204
+"Arrows,Battle Healer,Elixir Golem,Executioner,Giant Skeleton,Minion Horde,Sparky,Witch",17,13,4,0.7647058823529411,0.5273775411082839
+"Firecracker,Furnace,Hog Rider,Ice Spirit,Mega Knight,Ronin,Skeleton Army,The Log",17,13,4,0.7647058823529411,0.5273775411082839
+"Arrows,Firecracker,Golem,Mini P.E.K.K.A,Prince,Royal Delivery,Wizard,Zap",25,18,7,0.72,0.524230281034417
 "Bandit,Electro Wizard,Firecracker,Hog Rider,P.E.K.K.A,The Log,Valkyrie,Wizard",25,18,7,0.72,0.524230281034417
+"Arrows,Bats,Battle Ram,Electro Wizard,Inferno Tower,P.E.K.K.A,The Log,Valkyrie",11,9,2,0.8181818181818182,0.5230138624217553
 "Furnace,Goblin Gang,Ice Spirit,Mortar,Royal Delivery,Skeleton Barrel,Skeleton King,The Log",11,9,2,0.8181818181818182,0.5230138624217553
-"Giant Snowball,Hog Rider,Ice Spirit,Mini P.E.K.K.A,Prince,Witch,Wizard,Zap",30,21,9,0.7,0.5212387898833981
+"Electro Wizard,Fireball,Golden Knight,Knight,Musketeer,P.E.K.K.A,Valkyrie,Zap",30,21,9,0.7,0.5212387898833981
+"Arrows,Baby Dragon,Balloon,Hog Rider,Minions,Princess,Ronin,Valkyrie",30,21,9,0.7,0.5212387898833981
 "Baby Dragon,Hog Rider,Inferno Dragon,Musketeer,Prince,Skeleton Army,Valkyrie,Witch",30,21,9,0.7,0.5212387898833981
 "Bowler,Firecracker,Goblin Gang,Hog Rider,Mini P.E.K.K.A,Poison,Tesla,The Log",30,21,9,0.7,0.5212387898833981
+"Giant Snowball,Hog Rider,Ice Spirit,Mini P.E.K.K.A,Prince,Witch,Wizard,Zap",30,21,9,0.7,0.5212387898833981
 "Bowler,Cannon,Electro Wizard,Fireball,Goblin Barrel,Mini P.E.K.K.A,The Log,Witch",30,21,9,0.7,0.5212387898833981
-"Electro Wizard,Fireball,Golden Knight,Knight,Musketeer,P.E.K.K.A,Valkyrie,Zap",30,21,9,0.7,0.5212387898833981
 "Barbarian Barrel,Dart Goblin,Goblin Barrel,Golden Knight,Knight,P.E.K.K.A,Princess,Witch",22,16,6,0.7272727272727273,0.5184787630099803
 "Arrows,Balloon,Battle Ram,Dart Goblin,Electro Wizard,Inferno Tower,Lumberjack,The Log",22,16,6,0.7272727272727273,0.5184787630099803
 "Bowler,Dart Goblin,Firecracker,Knight,Lumberjack,Prince,Valkyrie,Witch",27,19,8,0.7037037037037037,0.515189666191624
 "Archers,Electro Spirit,Fireball,Ice Golem,Skeletons,Tesla,The Log,X-Bow",27,19,8,0.7037037037037037,0.515189666191624
-"Archers,Arrows,Golden Knight,Hog Rider,Skeleton Barrel,Tombstone,Valkyrie,Witch",19,14,5,0.7368421052631579,0.5120803155892935
+"Barbarian Barrel,Electro Wizard,Inferno Tower,Knight,Miner,Poison,Skeletons,Wall Breakers",27,19,8,0.7037037037037037,0.515189666191624
+"Arrows,Barbarian Barrel,Fireball,Goblin Cage,Musketeer,Royal Hogs,Royal Recruits,Zappies",27,19,8,0.7037037037037037,0.515189666191624
+"Arrows,Executioner,Golem,Ice Golem,Minion Horde,Princess,Skeleton Army,Wizard",19,14,5,0.7368421052631579,0.5120803155892935
 "Barbarian Barrel,Dark Prince,Goblin Barrel,Mega Knight,Minions,Musketeer,Wall Breakers,Zap",19,14,5,0.7368421052631579,0.5120803155892935
 "Arrows,Electro Wizard,Fireball,Hog Rider,Hunter,Knight,P.E.K.K.A,Tesla",19,14,5,0.7368421052631579,0.5120803155892935
-"Barbarian Barrel,Electro Spirit,Fireball,Fisherman,Hunter,Royal Ghost,Royal Giant,Skeletons",95,58,37,0.6105263157894737,0.5100005506874276
 "Arrows,Inferno Dragon,Mega Knight,Mini P.E.K.K.A,Royal Hogs,Skeleton Army,Witch,Wizard",29,20,9,0.6896551724137931,0.5076952952728147
 "Archer Queen,Electro Spirit,Goblin Barrel,Hunter,Inferno Dragon,Royal Ghost,Royal Giant,The Log",16,12,4,0.75,0.5050123107060135
+"Dart Goblin,Fireball,Firecracker,Goblin Barrel,Hog Rider,Mini P.E.K.K.A,Skeletons,Witch",16,12,4,0.75,0.5050123107060135
+"Electro Wizard,Elite Barbarians,Goblin Curse,Inferno Tower,Knight,Rage,Skeleton Army,Valkyrie",16,12,4,0.75,0.5050123107060135
 "Barbarian Barrel,Bats,Electro Spirit,Fireball,Fisherman,Hunter,Royal Giant,Skeletons",31,21,10,0.6774193548387096,0.501406855599508
-"Fireball,Goblin Barrel,Goblin Gang,Knight,Prince,Princess,Rascals,The Log",26,18,8,0.6923076923076923,0.5001138848576876
-"Boss Bandit,Goblin Barrel,Inferno Dragon,P.E.K.K.A,The Log,Valkyrie,Wizard,Zap",26,18,8,0.6923076923076923,0.5001138848576876
+"Arrows,Balloon,Mega Knight,Minions,Musketeer,Valkyrie,Wizard,Zap",21,15,6,0.7142857142857143,0.5004322617716241
 "Arrows,Hog Rider,Mega Knight,Mighty Miner,Skeletons,Tesla,The Log,Witch",26,18,8,0.6923076923076923,0.5001138848576876
-"Cannon,Dart Goblin,Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,The Log",38,25,13,0.6578947368421053,0.4989181162907454
+"Boss Bandit,Goblin Barrel,Inferno Dragon,P.E.K.K.A,The Log,Valkyrie,Wizard,Zap",26,18,8,0.6923076923076923,0.5001138848576876
+"Fireball,Goblin Barrel,Goblin Gang,Knight,Prince,Princess,Rascals,The Log",26,18,8,0.6923076923076923,0.5001138848576876
 "Archers,Goblin Gang,Golden Knight,Lightning,Mega Knight,Skeletons,Tesla,Witch",13,10,3,0.7692307692307693,0.49743126004873084
+"Cannon,Dart Goblin,Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,The Log",40,26,14,0.65,0.4950559699353738
 "Dart Goblin,Goblin Barrel,Inferno Tower,Knight,Princess,Rocket,Ronin,Skeleton Army",23,16,7,0.6956521739130435,0.4913387093942739
+"Bats,Boss Bandit,Firecracker,Giant Snowball,Hog Rider,Mega Knight,Skeleton Army,The Log",18,13,5,0.7222222222222222,0.49126922453805477
 "Arrows,Baby Dragon,Firecracker,Goblin Gang,Mega Knight,Skeleton Barrel,Tesla,Valkyrie",18,13,5,0.7222222222222222,0.49126922453805477
 "Firecracker,Goblin Gang,Hog Rider,Ice Spirit,Knight,Skeletons,Tesla,The Log",10,8,2,0.8,0.49015684672072346
-"Arrows,Bowler,Giant,Giant Snowball,Graveyard,Mini P.E.K.K.A,Minions,Witch",10,8,2,0.8,0.49015684672072346
-"Arrows,Bandit,Elite Barbarians,Hog Rider,Inferno Tower,Minions,Skeleton Army,Zap",30,20,10,0.6666666666666666,0.4877972581383026
-"Bats,Bomb Tower,Dark Prince,Dart Goblin,Firecracker,Golem,Hog Rider,Ronin",30,20,10,0.6666666666666666,0.4877972581383026
-"Arrows,Firecracker,Goblin Barrel,Golden Knight,Hog Rider,Knight,Tesla,Witch",30,20,10,0.6666666666666666,0.4877972581383026
-"Arrows,Dark Prince,Electro Wizard,Magic Archer,Minion Horde,Prince,Ronin,The Log",30,20,10,0.6666666666666666,0.4877972581383026
-"Arrows,Baby Dragon,Hog Rider,Mini P.E.K.K.A,Mortar,Skeleton Army,Valkyrie,Witch",30,20,10,0.6666666666666666,0.4877972581383026
-"Boss Bandit,Magic Archer,Mini P.E.K.K.A,Prince,Ronin,Valkyrie,Witch,Wizard",30,20,10,0.6666666666666666,0.4877972581383026
-"Bowler,Executioner,Goblin Gang,Mega Knight,Mega Minion,Musketeer,The Log,Valkyrie",30,20,10,0.6666666666666666,0.4877972581383026
 "Cannon,Fireball,Firecracker,Hog Rider,Knight,Musketeer,Skeletons,The Log",30,20,10,0.6666666666666666,0.4877972581383026
-"Bowler,Golden Knight,Guards,Mega Knight,Minions,Rage,Royal Hogs,Witch",7,6,1,0.8571428571428571,0.4868654966809702
+"Boss Bandit,Firecracker,Inferno Dragon,Mega Knight,Musketeer,Skeleton Army,The Log,Wizard",30,20,10,0.6666666666666666,0.4877972581383026
+"Boss Bandit,Magic Archer,Mini P.E.K.K.A,Prince,Ronin,Valkyrie,Witch,Wizard",30,20,10,0.6666666666666666,0.4877972581383026
+"Bats,Bomb Tower,Dark Prince,Dart Goblin,Firecracker,Golem,Hog Rider,Ronin",30,20,10,0.6666666666666666,0.4877972581383026
+"Arrows,Dark Prince,Electro Wizard,Magic Archer,Minion Horde,Prince,Ronin,The Log",30,20,10,0.6666666666666666,0.4877972581383026
+"Arrows,Bandit,Elite Barbarians,Hog Rider,Inferno Tower,Minions,Skeleton Army,Zap",30,20,10,0.6666666666666666,0.4877972581383026
+"Dart Goblin,Goblin Barrel,Mega Knight,Minions,Skeleton Army,The Log,Valkyrie,Witch",30,20,10,0.6666666666666666,0.4877972581383026
+"Barbarian Barrel,Goblin Hut,Graveyard,Ice Wizard,Knight,Poison,Vines,Witch",30,20,10,0.6666666666666666,0.4877972581383026
+"Earthquake,Firecracker,Hog Rider,Ice Spirit,Skeletons,Tesla,The Log,Valkyrie",30,20,10,0.6666666666666666,0.4877972581383026
+"Bowler,Executioner,Goblin Gang,Mega Knight,Mega Minion,Musketeer,The Log,Valkyrie",30,20,10,0.6666666666666666,0.4877972581383026
+"Arrows,Firecracker,Goblin Barrel,Golden Knight,Hog Rider,Knight,Tesla,Witch",30,20,10,0.6666666666666666,0.4877972581383026
+"Arrows,Baby Dragon,Hog Rider,Mini P.E.K.K.A,Mortar,Skeleton Army,Valkyrie,Witch",30,20,10,0.6666666666666666,0.4877972581383026
+"Cannon,Fireball,Hog Rider,Ice Golem,Ice Spirit,Musketeer,Skeletons,The Log",261,143,118,0.5478927203065134,0.48725196254045705
+"Firecracker,Furnace,Hog Rider,Ice Spirit,Mega Knight,Mini P.E.K.K.A,Skeleton Army,The Log",7,6,1,0.8571428571428571,0.4868654966809702
 "Archer Queen,Goblin Gang,Mega Knight,Prince,Royal Delivery,Skeleton Barrel,The Log,Wall Breakers",7,6,1,0.8571428571428571,0.4868654966809702
+"Barbarian Barrel,Electro Spirit,Fireball,Fisherman,Hunter,Royal Ghost,Royal Giant,Skeletons",109,63,46,0.5779816513761468,0.4841617801567371
 "Arrows,Executioner,Goblin Gang,Golem,Inferno Dragon,Minion Horde,Skeleton King,Valkyrie",25,17,8,0.68,0.48409913734576715
-"Bowler,Dart Goblin,Fireball,Firecracker,Hog Rider,Knight,Tesla,Witch",20,14,6,0.7,0.4810232237710205
+"Balloon,Dart Goblin,Lumberjack,Minion Horde,Ram Rider,Ronin,Royal Hogs,Witch",25,17,8,0.68,0.48409913734576715
 "Arrows,Barbarians,Goblin Barrel,Golden Knight,Hog Rider,Skeleton Army,Witch,Wizard",20,14,6,0.7,0.4810232237710205
+"Bowler,Dart Goblin,Fireball,Firecracker,Hog Rider,Knight,Tesla,Witch",20,14,6,0.7,0.4810232237710205
+"Archers,Arrows,Golden Knight,Hog Rider,Skeleton Barrel,Tombstone,Valkyrie,Witch",20,14,6,0.7,0.4810232237710205
+"Archers,Magic Archer,Mega Knight,Mini P.E.K.K.A,Rage,Skeleton Army,Valkyrie,Witch",20,14,6,0.7,0.4810232237710205
+"Goblin Gang,Hog Rider,Ice Spirit,Knight,Magic Archer,Ronin,Witch,Zap",15,11,4,0.7333333333333333,0.48049110342313245
+"Executioner,Hog Rider,Mega Knight,Minion Horde,Ronin,Skeleton Army,The Log,Wizard",15,11,4,0.7333333333333333,0.48049110342313245
 "Bats,Firecracker,Goblin Barrel,Golden Knight,Hog Rider,Mega Knight,Rage,The Log",15,11,4,0.7333333333333333,0.48049110342313245
+"Dart Goblin,Hog Rider,Ice Spirit,Knight,Mini P.E.K.K.A,Poison,Tesla,Zap",27,18,9,0.6666666666666666,0.47824419872105484
 "Bowler,Dark Prince,Dart Goblin,Fireball,Furnace,Mini P.E.K.K.A,Suspicious Bush,Zappies",27,18,9,0.6666666666666666,0.47824419872105484
-"Cannon,Fireball,Hog Rider,Ice Golem,Ice Spirit,Musketeer,Skeletons,The Log",200,109,91,0.545,0.47578485036961143
 "Arrows,Balloon,Electro Wizard,Fireball,Goblin Gang,Lumberjack,Minions,Ronin",29,19,10,0.6551724137931034,0.47344776507155995
-"Arrows,Electro Wizard,Firecracker,Goblin Gang,Mega Knight,Mini P.E.K.K.A,Sparky,Wizard",22,15,7,0.6818181818181818,0.4731822278283934
 "Electro Wizard,Firecracker,Goblin Barrel,Mini P.E.K.K.A,Ram Rider,Tesla,Witch,Zap",22,15,7,0.6818181818181818,0.4731822278283934
+"Arrows,Electro Wizard,Firecracker,Goblin Gang,Mega Knight,Mini P.E.K.K.A,Sparky,Wizard",22,15,7,0.6818181818181818,0.4731822278283934
+"Bats,Dart Goblin,Firecracker,Goblin Barrel,Goblin Gang,Prince,Skeleton Barrel,Valkyrie",31,20,11,0.6451612903225806,0.46947638042814893
 "Electro Wizard,Elixir Golem,Executioner,Firecracker,P.E.K.K.A,The Log,Wizard,Zap",17,12,5,0.7058823529411765,0.468664666737861
+"Arrows,Firecracker,Goblin Barrel,Skeleton Army,Tesla,The Log,Valkyrie,Wall Breakers",12,9,3,0.75,0.4676896608793401
 "Fireball,Firecracker,Goblin Barrel,Goblin Gang,Hog Rider,Knight,Tesla,The Log",12,9,3,0.75,0.4676896608793401
 "Arrows,Elixir Collector,Executioner,Golem,Inferno Tower,Minion Horde,Night Witch,Skeleton Army",12,9,3,0.75,0.4676896608793401
-"Arrows,Firecracker,Goblin Barrel,Skeleton Army,Tesla,The Log,Valkyrie,Wall Breakers",12,9,3,0.75,0.4676896608793401
 "Bats,Bowler,Dark Prince,Fireball,Goblin Cage,Musketeer,Skeletons,Tornado",24,16,8,0.6666666666666666,0.46705959494080457
 "Arrows,Dart Goblin,Fireball,Goblin Barrel,Goblin Gang,Knight,Mega Knight,Tesla",24,16,8,0.6666666666666666,0.46705959494080457
 "Cannon,Firecracker,Ice Spirit,Mighty Miner,Rocket,Skeletons,The Log,Wall Breakers",26,17,9,0.6538461538461539,0.46220229009632996
+"Barbarian Barrel,Bats,Dart Goblin,Earthquake,Fisherman,Goblinstein,Royal Giant,Tombstone",26,17,9,0.6538461538461539,0.46220229009632996
 "Arrows,Boss Bandit,Mega Knight,P.E.K.K.A,Prince,Skeleton Army,Tesla,Wizard",19,13,6,0.6842105263157895,0.4601001017506463
-"Arrows,Fireball,Firecracker,Ice Wizard,Knight,Mega Knight,Mini P.E.K.K.A,Valkyrie",28,18,10,0.6428571428571429,0.4582997758222724
-"Earthquake,Firecracker,Hog Rider,Ice Spirit,Skeletons,Tesla,The Log,Valkyrie",28,18,10,0.6428571428571429,0.4582997758222724
 "Archers,Arrows,Dart Goblin,Fireball,Hog Rider,Mega Knight,Mini P.E.K.K.A,Witch",28,18,10,0.6428571428571429,0.4582997758222724
 "Dart Goblin,Firecracker,Giant Skeleton,Mega Minion,Ram Rider,The Log,Valkyrie,Zap",28,18,10,0.6428571428571429,0.4582997758222724
-"Baby Dragon,Barbarian Barrel,Bats,Hog Rider,Knight,Magic Archer,Skeleton Army,Witch",28,18,10,0.6428571428571429,0.4582997758222724
 "Archer Queen,Electro Wizard,Firecracker,Mega Knight,Mini P.E.K.K.A,Skeleton Army,The Log,Valkyrie",28,18,10,0.6428571428571429,0.4582997758222724
-"Bats,Goblin Barrel,Goblin Cage,Mini P.E.K.K.A,Rage,The Log,Valkyrie,Witch",30,19,11,0.6333333333333333,0.4551324643360493
-"Dart Goblin,Goblin Barrel,Goblin Gang,Knight,Prince,Princess,Rascals,The Log",30,19,11,0.6333333333333333,0.4551324643360493
-"Arrows,Baby Dragon,Cannon,Hog Rider,Inferno Dragon,Skeleton Army,Sparky,Witch",30,19,11,0.6333333333333333,0.4551324643360493
-"Elite Barbarians,Freeze,Mega Knight,Mirror,Tesla,The Log,Wizard,Zap",30,19,11,0.6333333333333333,0.4551324643360493
+"Baby Dragon,Barbarian Barrel,Bats,Hog Rider,Knight,Magic Archer,Skeleton Army,Witch",28,18,10,0.6428571428571429,0.4582997758222724
+"Arrows,Fireball,Firecracker,Ice Wizard,Knight,Mega Knight,Mini P.E.K.K.A,Valkyrie",28,18,10,0.6428571428571429,0.4582997758222724
+"Archers,Fireball,Ice Spirit,Knight,Skeletons,Tesla,The Log,X-Bow",68,39,29,0.5735294117647058,0.455165693769645
+"Arrows,Goblin Barrel,Hog Rider,Magic Archer,Mega Knight,Skeleton Army,Tesla,Valkyrie",30,19,11,0.6333333333333333,0.4551324643360493
 "Barbarians,Fireball,Firecracker,Mini P.E.K.K.A,Minions,Princess,Royal Giant,Zap",30,19,11,0.6333333333333333,0.4551324643360493
-"Golden Knight,Inferno Dragon,Mother Witch,Prince,Ram Rider,Ronin,Witch,Wizard",30,19,11,0.6333333333333333,0.4551324643360493
-"Arrows,Firecracker,Freeze,Goblin Barrel,Goblin Gang,Mini P.E.K.K.A,Skeleton Army,Wall Breakers",30,19,11,0.6333333333333333,0.4551324643360493
 "Arrows,Balloon,Bats,Bowler,Fireball,Inferno Dragon,Mega Knight,Mini P.E.K.K.A",30,19,11,0.6333333333333333,0.4551324643360493
+"Arrows,Firecracker,Freeze,Goblin Barrel,Goblin Gang,Mini P.E.K.K.A,Skeleton Army,Wall Breakers",30,19,11,0.6333333333333333,0.4551324643360493
+"Bats,Goblin Barrel,Goblin Cage,Mini P.E.K.K.A,Rage,The Log,Valkyrie,Witch",30,19,11,0.6333333333333333,0.4551324643360493
+"Hog Rider,Ice Spirit,Knight,Musketeer,Royal Delivery,Skeletons,Tesla,The Log",30,19,11,0.6333333333333333,0.4551324643360493
+"Golden Knight,Inferno Dragon,Mother Witch,Prince,Ram Rider,Ronin,Witch,Wizard",30,19,11,0.6333333333333333,0.4551324643360493
+"Arrows,Balloon,Inferno Dragon,Mega Knight,Minion Horde,P.E.K.K.A,Prince,Valkyrie",30,19,11,0.6333333333333333,0.4551324643360493
 "Arrows,Balloon,Bats,Fireball,Knight,Lumberjack,Skeletons,Tesla",30,19,11,0.6333333333333333,0.4551324643360493
+"Arrows,Baby Dragon,Fireball,Furnace,Golem,Graveyard,Guards,Night Witch",30,19,11,0.6333333333333333,0.4551324643360493
+"Dart Goblin,Goblin Barrel,Goblin Gang,Knight,Prince,Princess,Rascals,The Log",30,19,11,0.6333333333333333,0.4551324643360493
+"Elite Barbarians,Freeze,Mega Knight,Mirror,Tesla,The Log,Wizard,Zap",30,19,11,0.6333333333333333,0.4551324643360493
+"Arrows,Baby Dragon,Cannon,Hog Rider,Inferno Dragon,Skeleton Army,Sparky,Witch",30,19,11,0.6333333333333333,0.4551324643360493
 "Arrows,Elite Barbarians,Goblin Barrel,Mini P.E.K.K.A,Rage,Skeleton Army,Tesla,Wizard",30,19,11,0.6333333333333333,0.4551324643360493
 "Baby Dragon,Firecracker,Goblin Cage,Ice Spirit,Poison,Skeleton King,The Log,Witch",21,14,7,0.6666666666666666,0.45373075657210293
 "Dart Goblin,Electro Wizard,Goblin Gang,Hog Rider,Mega Knight,Mini P.E.K.K.A,Tesla,Zap",21,14,7,0.6666666666666666,0.45373075657210293
-"Archers,Baby Dragon,Knight,Mega Knight,Miner,Rage,Skeleton Army,Witch",14,10,4,0.7142857142857143,0.4535045882751561
 "Cannon,Giant Snowball,Goblin Demolisher,Goblin Drill,Ice Spirit,Knight,Skeletons,The Log",14,10,4,0.7142857142857143,0.4535045882751561
-"Battle Ram,Dark Prince,Dart Goblin,Executioner,Fireball,Giant Snowball,P.E.K.K.A,Skeleton Army",14,10,4,0.7142857142857143,0.4535045882751561
 "Archers,Fireball,Goblin Gang,Mega Knight,Royal Hogs,Valkyrie,Witch,Zap",14,10,4,0.7142857142857143,0.4535045882751561
-"Bats,Goblin Barrel,Goblin Gang,Hog Rider,Mega Knight,The Log,Witch,Zap",9,7,2,0.7777777777777778,0.4525833436728054
+"Battle Ram,Dark Prince,Dart Goblin,Executioner,Fireball,Giant Snowball,P.E.K.K.A,Skeleton Army",14,10,4,0.7142857142857143,0.4535045882751561
+"Archers,Baby Dragon,Knight,Mega Knight,Miner,Rage,Skeleton Army,Witch",14,10,4,0.7142857142857143,0.4535045882751561
 "Bats,Dart Goblin,Giant Snowball,Ice Golem,Rocket,Skeletons,Valkyrie,X-Bow",9,7,2,0.7777777777777778,0.4525833436728054
+"Bats,Goblin Barrel,Goblin Gang,Hog Rider,Mega Knight,The Log,Witch,Zap",9,7,2,0.7777777777777778,0.4525833436728054
 "Arrows,Elite Barbarians,Executioner,Guards,Hog Rider,Ice Spirit,Knight,Skeletons",9,7,2,0.7777777777777778,0.4525833436728054
 "Bomb Tower,Earthquake,Firecracker,Goblins,Hog Rider,Ice Spirit,Mighty Miner,The Log",32,20,12,0.625,0.4525410058952512
 "Baby Dragon,Bomb Tower,Dart Goblin,Firecracker,Mega Knight,Mini P.E.K.K.A,The Log,Witch",27,17,10,0.6296296296296297,0.442289046234463
-"Arrows,Baby Dragon,Bandit,Mega Knight,Sparky,The Log,Witch,Zap",29,18,11,0.6206896551724138,0.4400222620928496
-"Electro Wizard,Fire Spirit,Goblin Barrel,Hog Rider,Inferno Tower,Princess,Skeleton Army,The Log",29,18,11,0.6206896551724138,0.4400222620928496
+"Bats,Cannon,Electro Wizard,Firecracker,Hog Rider,P.E.K.K.A,Vines,Zap",27,17,10,0.6296296296296297,0.442289046234463
 "Baby Dragon,Barbarians,Hunter,Mega Knight,Prince,Rocket,Ronin,Witch",29,18,11,0.6206896551724138,0.4400222620928496
 "Arrows,Barbarians,Electro Wizard,Furnace,Hog Rider,Prince,Skeleton Barrel,Wizard",29,18,11,0.6206896551724138,0.4400222620928496
+"Electro Wizard,Fire Spirit,Goblin Barrel,Hog Rider,Inferno Tower,Princess,Skeleton Army,The Log",29,18,11,0.6206896551724138,0.4400222620928496
+"Arrows,Baby Dragon,Bandit,Mega Knight,Sparky,The Log,Witch,Zap",29,18,11,0.6206896551724138,0.4400222620928496
 "Bats,Firecracker,Hog Rider,Mini P.E.K.K.A,Royal Giant,Skeletons,The Log,Zap",29,18,11,0.6206896551724138,0.4400222620928496
-"Cannon,Electro Spirit,Furnace,Goblins,Hog Rider,Lightning,Mighty Miner,The Log",31,19,12,0.6129032258064516,0.43823801141131963
 "Bats,Executioner,Fireball,Ice Spirit,Mini P.E.K.K.A,Royal Giant,Tesla,The Log",31,19,12,0.6129032258064516,0.43823801141131963
-"Baby Dragon,Boss Bandit,Mega Knight,Prince,Ronin,Valkyrie,Witch,Wizard",18,12,6,0.6666666666666666,0.4374906934425036
+"Cannon,Electro Spirit,Furnace,Goblins,Hog Rider,Lightning,Mighty Miner,The Log",31,19,12,0.6129032258064516,0.43823801141131963
+"Arrows,Barbarian Barrel,Battle Healer,Magic Archer,Monk,Night Witch,Prince,Skeleton King",31,19,12,0.6129032258064516,0.43823801141131963
 "Cannon,Firecracker,Goblin Gang,Hog Rider,Knight,P.E.K.K.A,Rocket,The Log",18,12,6,0.6666666666666666,0.4374906934425036
-"Barbarian Barrel,Mega Knight,Royal Hogs,Skeleton Army,Skeletons,Valkyrie,Witch,Wizard",6,5,1,0.8333333333333334,0.4364905634363539
+"Barbarian Barrel,Goblin Barrel,Lumberjack,Musketeer,Ronin,Royal Giant,Tesla,Wizard",18,12,6,0.6666666666666666,0.4374906934425036
+"Baby Dragon,Boss Bandit,Mega Knight,Prince,Ronin,Valkyrie,Witch,Wizard",18,12,6,0.6666666666666666,0.4374906934425036
+"Earthquake,Firecracker,Hog Rider,Ice Spirit,Mighty Miner,Skeletons,Tesla,The Log",6,5,1,0.8333333333333334,0.4364905634363539
 "Arrows,Dart Goblin,Goblin Barrel,Goblin Cage,Goblin Gang,Knight,Mega Knight,Skeleton Barrel",6,5,1,0.8333333333333334,0.4364905634363539
+"Barbarian Barrel,Mega Knight,Royal Hogs,Skeleton Army,Skeletons,Valkyrie,Witch,Wizard",6,5,1,0.8333333333333334,0.4364905634363539
 "Archer Queen,Earthquake,Rage,Rocket,Ronin,Royal Delivery,Royal Hogs,Tesla",6,5,1,0.8333333333333334,0.4364905634363539
+"Arrows,Balloon,Fireball,Goblin Gang,Lumberjack,Ram Rider,Ronin,Valkyrie",11,8,3,0.7272727272727273,0.4343497069897538
 "Baby Dragon,Balloon,Giant Skeleton,Guards,Ice Wizard,Miner,Tornado,Zap",11,8,3,0.7272727272727273,0.4343497069897538
 "Arrows,Firecracker,Goblin Barrel,Goblin Cage,Goblin Gang,Knight,Mega Knight,Skeleton Barrel",11,8,3,0.7272727272727273,0.4343497069897538
 "Goblin Barrel,Goblin Gang,Mini P.E.K.K.A,Minion Horde,Rage,Royal Delivery,Skeleton Army,Witch",20,13,7,0.65,0.43285051021946475
-"Electro Wizard,Fireball,Goblin Barrel,Goblin Gang,Knight,Mini P.E.K.K.A,The Log,Witch",22,14,8,0.6363636363636364,0.4295134934371804
-"Baby Dragon,Barbarians,Executioner,Goblin Barrel,Goblin Machine,Skeleton Army,Witch,Wizard",22,14,8,0.6363636363636364,0.4295134934371804
 "Fireball,Goblin Barrel,Goblin Gang,Inferno Tower,Knight,Princess,Skeletons,The Log",22,14,8,0.6363636363636364,0.4295134934371804
-"Arrows,Dart Goblin,Firecracker,Goblin Barrel,Knight,Mega Knight,Skeleton Army,The Log",24,15,9,0.625,0.42709619037907065
+"Baby Dragon,Barbarians,Executioner,Goblin Barrel,Goblin Machine,Skeleton Army,Witch,Wizard",22,14,8,0.6363636363636364,0.4295134934371804
+"Electro Wizard,Fireball,Goblin Barrel,Goblin Gang,Knight,Mini P.E.K.K.A,The Log,Witch",22,14,8,0.6363636363636364,0.4295134934371804
 "Bats,Elite Barbarians,Hog Rider,Mega Knight,Rage,Sparky,Witch,Wizard",24,15,9,0.625,0.42709619037907065
+"Baby Dragon,Goblin Demolisher,Goblin Gang,Hog Rider,Minions,Skeleton Barrel,Spear Goblins,Zap",24,15,9,0.625,0.42709619037907065
+"Arrows,Dart Goblin,Firecracker,Goblin Barrel,Knight,Mega Knight,Skeleton Army,The Log",24,15,9,0.625,0.42709619037907065
 "Arrows,Elite Barbarians,Golden Knight,Hog Rider,Ronin,Skeleton Army,Valkyrie,Witch",24,15,9,0.625,0.42709619037907065
 "Cannon,Firecracker,Hog Rider,Ice Spirit,Knight,Poison,Skeletons,The Log",26,16,10,0.6153846153846154,0.4253452003942009
-"Firecracker,Furnace,Lumberjack,Prince,Skeleton Army,Skeleton King,The Log,Witch",26,16,10,0.6153846153846154,0.4253452003942009
+"Electro Spirit,Fireball,Goblin Barrel,Goblin Gang,Inferno Tower,The Log,Valkyrie,Vines",26,16,10,0.6153846153846154,0.4253452003942009
 "Balloon,Electro Wizard,Firecracker,Lumberjack,Mini P.E.K.K.A,Tesla,Valkyrie,Witch",26,16,10,0.6153846153846154,0.4253452003942009
 "Arrows,Firecracker,Goblin Gang,Golden Knight,Hog Rider,Inferno Dragon,Mega Knight,Witch",26,16,10,0.6153846153846154,0.4253452003942009
-"Dart Goblin,Electro Dragon,Electro Giant,Firecracker,Goblin Barrel,Mega Knight,Skeleton King,Wizard",28,17,11,0.6071428571428571,0.42408726034906297
+"Firecracker,Furnace,Lumberjack,Prince,Skeleton Army,Skeleton King,The Log,Witch",26,16,10,0.6153846153846154,0.4253452003942009
 "Baby Dragon,Giant Skeleton,Night Witch,Prince,Sparky,Valkyrie,Witch,Wizard",28,17,11,0.6071428571428571,0.42408726034906297
 "Arrows,Baby Dragon,Bats,Ice Wizard,Knight,Magic Archer,Royal Delivery,Royal Hogs",28,17,11,0.6071428571428571,0.42408726034906297
-"Arrows,Dark Prince,Electro Wizard,Firecracker,Hog Rider,P.E.K.K.A,Valkyrie,Zap",30,18,12,0.6,0.42320052498273836
+"Barbarian Barrel,Bats,Miner,Poison,Spear Goblins,Tesla,Valkyrie,Wall Breakers",28,17,11,0.6071428571428571,0.42408726034906297
+"Dart Goblin,Electro Dragon,Electro Giant,Firecracker,Goblin Barrel,Mega Knight,Skeleton King,Wizard",28,17,11,0.6071428571428571,0.42408726034906297
+"Electro Wizard,Firecracker,Golden Knight,Hog Rider,Hunter,Mega Knight,Tesla,Witch",13,9,4,0.6923076923076923,0.4236888781333764
+"Arrows,Elixir Golem,Executioner,Giant Skeleton,Minion Horde,Ronin,Sparky,Witch",13,9,4,0.6923076923076923,0.4236888781333764
+"Freeze,Goblin Barrel,Lumberjack,Mini P.E.K.K.A,Prince,Skeleton Army,The Log,Witch",52,29,23,0.5576923076923077,0.4233952499151638
 "Arrows,Executioner,Firecracker,Knight,Mini P.E.K.K.A,Ram Rider,Tesla,Zap",30,18,12,0.6,0.42320052498273836
-"Arrows,Goblin Barrel,Goblins,Ice Wizard,Lightning,Mini P.E.K.K.A,Musketeer,Wall Breakers",30,18,12,0.6,0.42320052498273836
-"Arrows,Goblin Barrel,Golden Knight,Mega Knight,Princess,Skeleton Army,Valkyrie,Witch",30,18,12,0.6,0.42320052498273836
-"Arrows,Baby Dragon,Bandit,Bats,Mega Knight,Ronin,The Log,Wizard",30,18,12,0.6,0.42320052498273836
-"Elixir Golem,Mega Knight,Mini P.E.K.K.A,Minion Horde,Mirror,Mother Witch,Royal Hogs,Wizard",30,18,12,0.6,0.42320052498273836
-"Bats,Boss Bandit,Dart Goblin,Electro Giant,Mirror,Skeleton Army,Sparky,Zap",30,18,12,0.6,0.42320052498273836
-"Arrows,Freeze,Hog Rider,Inferno Tower,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Witch",30,18,12,0.6,0.42320052498273836
-"Archers,Hog Rider,Mini P.E.K.K.A,Minions,Valkyrie,Witch,Wizard,Zap",30,18,12,0.6,0.42320052498273836
-"Cannon,Electro Wizard,Fireball,Lumberjack,Mega Knight,Mini P.E.K.K.A,Wizard,Zap",30,18,12,0.6,0.42320052498273836
 "Balloon,Bats,Firecracker,Inferno Dragon,Mega Knight,Rage,Skeleton Army,Valkyrie",30,18,12,0.6,0.42320052498273836
-"Baby Dragon,Bats,Lumberjack,Mega Knight,Ram Rider,Tesla,The Log,Wizard",30,18,12,0.6,0.42320052498273836
+"Arrows,Baby Dragon,Bandit,Bats,Mega Knight,Ronin,The Log,Wizard",30,18,12,0.6,0.42320052498273836
+"Archers,Hog Rider,Mini P.E.K.K.A,Minions,Valkyrie,Witch,Wizard,Zap",30,18,12,0.6,0.42320052498273836
+"Arrows,Baby Dragon,Bats,Electro Wizard,Lumberjack,P.E.K.K.A,Skeleton Army,Wizard",30,18,12,0.6,0.42320052498273836
+"Arrows,Freeze,Hog Rider,Inferno Tower,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Witch",30,18,12,0.6,0.42320052498273836
+"Electro Wizard,Mother Witch,Rage,Royal Giant,Skeleton Army,Skeleton King,Valkyrie,Witch",30,18,12,0.6,0.42320052498273836
 "Electro Wizard,Knight,Mega Knight,Mini P.E.K.K.A,Rage,Ram Rider,Valkyrie,Witch",30,18,12,0.6,0.42320052498273836
-"Archers,Fireball,Ice Spirit,Knight,Skeletons,Tesla,The Log,X-Bow",36,21,15,0.5833333333333334,0.4219996966427768
-"Goblin Barrel,Hog Rider,Knight,Little Prince,Princess,Rocket,Tesla,The Log",15,10,5,0.6666666666666666,0.4171312515121298
-"Archers,Fireball,Firecracker,Goblin Gang,Mega Knight,Valkyrie,Witch,Zap",15,10,5,0.6666666666666666,0.4171312515121298
+"Bandit,Electro Wizard,Fireball,Firecracker,Hunter,Skeleton Barrel,The Log,Tombstone",30,18,12,0.6,0.42320052498273836
+"Elixir Golem,Mega Knight,Mini P.E.K.K.A,Minion Horde,Mirror,Mother Witch,Royal Hogs,Wizard",30,18,12,0.6,0.42320052498273836
+"Arrows,Dark Prince,Electro Wizard,Firecracker,Hog Rider,P.E.K.K.A,Valkyrie,Zap",30,18,12,0.6,0.42320052498273836
+"Bats,Dark Prince,Firecracker,Goblin Barrel,Inferno Dragon,Mega Knight,Tesla,The Log",30,18,12,0.6,0.42320052498273836
+"Cannon,Electro Wizard,Fireball,Lumberjack,Mega Knight,Mini P.E.K.K.A,Wizard,Zap",30,18,12,0.6,0.42320052498273836
+"Cannon,Giant Snowball,Goblin Barrel,Hog Rider,Ice Spirit,Knight,The Log,Witch",30,18,12,0.6,0.42320052498273836
+"Bats,Boss Bandit,Dart Goblin,Electro Giant,Mirror,Skeleton Army,Sparky,Zap",30,18,12,0.6,0.42320052498273836
+"Arrows,Goblin Barrel,Golden Knight,Mega Knight,Princess,Skeleton Army,Valkyrie,Witch",30,18,12,0.6,0.42320052498273836
+"Arrows,Goblin Barrel,Goblins,Ice Wizard,Lightning,Mini P.E.K.K.A,Musketeer,Wall Breakers",30,18,12,0.6,0.42320052498273836
+"Baby Dragon,Bats,Lumberjack,Mega Knight,Ram Rider,Tesla,The Log,Wizard",30,18,12,0.6,0.42320052498273836
+"Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,Rocket,Tesla,The Log",15,10,5,0.6666666666666666,0.4171312515121298
 "Arrows,Barbarians,Goblin Barrel,Hog Rider,Inferno Tower,Minion Horde,Valkyrie,Wizard",15,10,5,0.6666666666666666,0.4171312515121298
-"Boss Bandit,Goblin Barrel,Mega Knight,P.E.K.K.A,Prince,Princess,Valkyrie,Wizard",17,11,6,0.6470588235294118,0.4129996672121183
-"Barbarian Barrel,Electro Wizard,Fireball,Golden Knight,Mini P.E.K.K.A,Ronin,Tesla,Witch",17,11,6,0.6470588235294118,0.4129996672121183
+"Goblin Barrel,Hog Rider,Knight,Little Prince,Princess,Rocket,Tesla,The Log",15,10,5,0.6666666666666666,0.4171312515121298
+"Arrows,Bats,Battle Ram,Electro Wizard,Fireball,P.E.K.K.A,Skeleton Army,Witch",15,10,5,0.6666666666666666,0.4171312515121298
+"Dart Goblin,Firecracker,Hog Rider,Mega Knight,Mini P.E.K.K.A,Tesla,The Log,Witch",15,10,5,0.6666666666666666,0.4171312515121298
+"Archers,Fireball,Firecracker,Goblin Gang,Mega Knight,Valkyrie,Witch,Zap",15,10,5,0.6666666666666666,0.4171312515121298
 "Archer Queen,Arrows,Barbarian Barrel,Goblin Barrel,Ice Spirit,Mortar,Skeletons,Valkyrie",17,11,6,0.6470588235294118,0.4129996672121183
-"Bats,Clone,Firecracker,Golden Knight,Ice Spirit,Skeleton Barrel,Valkyrie,Witch",19,12,7,0.631578947368421,0.41039157498156714
-"Electro Wizard,Firecracker,Knight,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Valkyrie,Witch",19,12,7,0.631578947368421,0.41039157498156714
+"Barbarian Barrel,Electro Wizard,Fireball,Golden Knight,Mini P.E.K.K.A,Ronin,Tesla,Witch",17,11,6,0.6470588235294118,0.4129996672121183
+"Boss Bandit,Goblin Barrel,Mega Knight,P.E.K.K.A,Prince,Princess,Valkyrie,Wizard",17,11,6,0.6470588235294118,0.4129996672121183
 "Dart Goblin,Furnace,Giant Snowball,Lumberjack,P.E.K.K.A,Ronin,Vines,Wizard",19,12,7,0.631578947368421,0.41039157498156714
+"Electro Wizard,Firecracker,Knight,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Valkyrie,Witch",19,12,7,0.631578947368421,0.41039157498156714
+"Bats,Clone,Firecracker,Golden Knight,Ice Spirit,Skeleton Barrel,Valkyrie,Witch",19,12,7,0.631578947368421,0.41039157498156714
+"Barbarians,Electro Wizard,Knight,Miner,P.E.K.K.A,Skeleton Army,Valkyrie,Witch",19,12,7,0.631578947368421,0.41039157498156714
 "Bats,Elixir Golem,Furnace,Mega Knight,Poison,Skeleton Army,The Log,Wizard",19,12,7,0.631578947368421,0.41039157498156714
-"Bats,Fireball,Firecracker,Goblin Barrel,Hog Rider,Mega Knight,Valkyrie,Witch",8,6,2,0.75,0.40926987910258916
 "Arrows,Dart Goblin,Giant Skeleton,Monk,Royal Hogs,Skeleton Barrel,Skeletons,Wizard",8,6,2,0.75,0.40926987910258916
-"Goblin Gang,Golden Knight,Inferno Dragon,Mini P.E.K.K.A,Princess,Royal Hogs,Skeleton Army,Skeleton Dragons",21,13,8,0.6190476190476191,0.40878295815501514
+"Bats,Fireball,Firecracker,Goblin Barrel,Hog Rider,Mega Knight,Valkyrie,Witch",8,6,2,0.75,0.40926987910258916
+"Dart Goblin,Furnace,Hog Rider,Ice Spirit,Mighty Miner,Minions,Tesla,The Log",8,6,2,0.75,0.40926987910258916
 "Arrows,Bats,Giant Skeleton,Mini P.E.K.K.A,Ronin,Skeletons,Wall Breakers,Witch",21,13,8,0.6190476190476191,0.40878295815501514
-"Earthquake,Electro Spirit,Firecracker,Hog Rider,Mighty Miner,Skeletons,Tesla,The Log",33,19,14,0.5757575757575758,0.4080697369146003
+"Goblin Gang,Golden Knight,Inferno Dragon,Mini P.E.K.K.A,Princess,Royal Hogs,Skeleton Army,Skeleton Dragons",21,13,8,0.6190476190476191,0.40878295815501514
 "Barbarian Barrel,Fireball,Firecracker,Goblin Gang,Royal Giant,Tesla,Valkyrie,Witch",23,14,9,0.6086956521739131,0.40785179603745997
+"Berserker,Cannon,Earthquake,Firecracker,Hog Rider,Ice Spirit,Ronin,The Log",23,14,9,0.6086956521739131,0.40785179603745997
 "Cannon,Elite Barbarians,Minions,Princess,Skeleton Army,Skeletons,Valkyrie,Wall Breakers",31,18,13,0.5806451612903226,0.4076596435202097
-"Arrows,Bats,Giant,Mini P.E.K.K.A,Mortar,Skeleton Army,Witch,Zap",31,18,13,0.5806451612903226,0.4076596435202097
 "Arrows,Balloon,Bats,Dart Goblin,Ice Golem,Lumberjack,Royal Delivery,Tesla",31,18,13,0.5806451612903226,0.4076596435202097
-"Bats,Goblin Gang,Inferno Dragon,Mega Knight,Miner,Skeleton Barrel,Spear Goblins,Zap",25,15,10,0.6,0.4073912778512734
+"Arrows,Bats,Giant,Mini P.E.K.K.A,Mortar,Skeleton Army,Witch,Zap",31,18,13,0.5806451612903226,0.4076596435202097
 "Bats,Bowler,Dart Goblin,Ice Spirit,Mortar,Rascals,Skeletons,The Log",25,15,10,0.6,0.4073912778512734
 "Earthquake,Firecracker,Hog Rider,Ice Spirit,Ronin,Skeletons,Tesla,The Log",25,15,10,0.6,0.4073912778512734
 "Arrows,Clone,Lava Hound,Minions,Mirror,Skeleton Army,Witch,Wizard",25,15,10,0.6,0.4073912778512734
-"Fireball,Goblin Barrel,Minions,Prince,Princess,The Log,Valkyrie,Witch",29,17,12,0.5862068965517241,0.4073752847851524
-"Arrows,Boss Bandit,Elixir Golem,Mega Knight,Minion Horde,Rage,Witch,Wizard",29,17,12,0.5862068965517241,0.4073752847851524
 "Battle Ram,Goblin Barrel,Mega Knight,Mini P.E.K.K.A,Prince,Rage,Royal Delivery,Wizard",29,17,12,0.5862068965517241,0.4073752847851524
-"Arrows,Barbarians,Giant Skeleton,Minion Horde,Mirror,Princess,Spear Goblins,Witch",29,17,12,0.5862068965517241,0.4073752847851524
-"Barbarians,Fireball,Magic Archer,Ram Rider,Royal Delivery,Skeleton Army,The Log,Witch",29,17,12,0.5862068965517241,0.4073752847851524
 "Arrows,Hog Rider,Mini P.E.K.K.A,Ronin,Skeleton Army,Valkyrie,Witch,Wizard",29,17,12,0.5862068965517241,0.4073752847851524
+"Arrows,Boss Bandit,Elixir Golem,Mega Knight,Minion Horde,Rage,Witch,Wizard",29,17,12,0.5862068965517241,0.4073752847851524
+"Arrows,Electro Wizard,Hog Rider,Ice Spirit,Knight,Tesla,Witch,Wizard",29,17,12,0.5862068965517241,0.4073752847851524
+"Fireball,Goblin Barrel,Minions,Prince,Princess,The Log,Valkyrie,Witch",29,17,12,0.5862068965517241,0.4073752847851524
+"Barbarians,Fireball,Magic Archer,Ram Rider,Royal Delivery,Skeleton Army,The Log,Witch",29,17,12,0.5862068965517241,0.4073752847851524
+"Arrows,Barbarians,Giant Skeleton,Minion Horde,Mirror,Princess,Spear Goblins,Witch",29,17,12,0.5862068965517241,0.4073752847851524
 "Baby Dragon,Dart Goblin,Giant Skeleton,Mega Knight,Mini P.E.K.K.A,Prince,The Log,Wizard",27,16,11,0.5925925925925926,0.4072638305536409
-"Earthquake,Firecracker,Hog Rider,Knight,Royal Delivery,Skeletons,Tesla,The Log",27,16,11,0.5925925925925926,0.4072638305536409
+"Dart Goblin,Goblin Barrel,Goblin Gang,Ice Spirit,Inferno Tower,Princess,Skeleton Barrel,Valkyrie",27,16,11,0.5925925925925926,0.4072638305536409
 "Firecracker,Goblin Barrel,Goblin Gang,P.E.K.K.A,Rascals,Tesla,The Log,Valkyrie",27,16,11,0.5925925925925926,0.4072638305536409
 "Electro Wizard,Firecracker,Hog Rider,Mega Knight,Musketeer,Rage,Skeleton Barrel,Valkyrie",10,7,3,0.7,0.3967732199795652
 "Arrows,Dark Prince,Electro Wizard,Knight,Mini P.E.K.K.A,Royal Hogs,Witch,Zap",10,7,3,0.7,0.3967732199795652
-"Archer Queen,Cannon,Earthquake,Ice Spirit,Royal Delivery,Royal Hogs,Skeletons,The Log",102,50,52,0.49019607843137253,0.39531235331103515
-"Arrows,Baby Dragon,Barbarians,Battle Ram,Electro Wizard,Mighty Miner,Skeleton Army,Wall Breakers",30,17,13,0.5666666666666667,0.39197009545408734
-"Archers,Bandit,Elite Barbarians,Executioner,Goblins,Miner,Mini P.E.K.K.A,Witch",30,17,13,0.5666666666666667,0.39197009545408734
-"Electro Wizard,Goblin Gang,Golden Knight,Hog Rider,Mega Knight,Skeleton Army,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
-"Archers,Electro Spirit,Fireball,Giant Snowball,Knight,Skeletons,Tesla,X-Bow",30,17,13,0.5666666666666667,0.39197009545408734
-"Archer Queen,Arrows,Bomb Tower,Firecracker,Knight,Royal Ghost,Skeleton Army,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
-"Arrows,Goblins,Golden Knight,Knight,Mini P.E.K.K.A,Ram Rider,Tesla,Witch",30,17,13,0.5666666666666667,0.39197009545408734
-"Archers,Cannon,Dark Prince,Dart Goblin,Guards,Minions,Prince,Zap",30,17,13,0.5666666666666667,0.39197009545408734
-"Dart Goblin,Executioner,Freeze,Hog Rider,Mini P.E.K.K.A,Skeleton Army,Valkyrie,Zap",30,17,13,0.5666666666666667,0.39197009545408734
+"Balloon,Barbarian Barrel,Bowler,Electro Dragon,Freeze,Inferno Dragon,Lumberjack,Tornado",36,20,16,0.5555555555555556,0.39580787316003413
+"Earthquake,Electro Spirit,Firecracker,Hog Rider,Mighty Miner,Skeletons,Tesla,The Log",34,19,15,0.5588235294117647,0.3945361778918369
+"Arrows,Dart Goblin,Fireball,Goblin Barrel,Mini P.E.K.K.A,P.E.K.K.A,Skeleton Army,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
+"Barbarian Hut,Boss Bandit,Lightning,Mega Knight,Mirror,Ronin,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
+"Arrows,Cannon,Goblin Barrel,Knight,Magic Archer,Skeletons,Spear Goblins,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
 "Bats,Goblin Barrel,Mini P.E.K.K.A,Minion Horde,Skeleton Army,The Log,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
+"Arrows,Goblin Hut,Ice Wizard,Knight,Royal Giant,Valkyrie,Witch,Zap",30,17,13,0.5666666666666667,0.39197009545408734
+"Arrows,Goblins,Golden Knight,Knight,Mini P.E.K.K.A,Ram Rider,Tesla,Witch",30,17,13,0.5666666666666667,0.39197009545408734
+"Archers,Bandit,Elite Barbarians,Executioner,Goblins,Miner,Mini P.E.K.K.A,Witch",30,17,13,0.5666666666666667,0.39197009545408734
 "Arrows,Bats,Firecracker,Goblin Barrel,Hog Rider,Knight,Mega Knight,Witch",30,17,13,0.5666666666666667,0.39197009545408734
+"Cannon,Dart Goblin,Fireball,Ice Spirit,Magic Archer,Skeleton Barrel,The Log,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
+"Arrows,Dart Goblin,Giant,Golden Knight,Mini P.E.K.K.A,Minions,Valkyrie,Witch",30,17,13,0.5666666666666667,0.39197009545408734
+"Dart Goblin,Elite Barbarians,Goblin Gang,Golden Knight,Mega Knight,Minion Horde,Valkyrie,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
+"Dart Goblin,Executioner,Freeze,Hog Rider,Mini P.E.K.K.A,Skeleton Army,Valkyrie,Zap",30,17,13,0.5666666666666667,0.39197009545408734
 "Arrows,Dart Goblin,Executioner,Goblin Barrel,Prince,Skeleton Army,Tombstone,Wall Breakers",30,17,13,0.5666666666666667,0.39197009545408734
+"Bandit,Bats,Goblin Barrel,Magic Archer,Princess,Skeleton Army,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
+"Electro Wizard,Goblin Gang,Golden Knight,Hog Rider,Mega Knight,Skeleton Army,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
 "Bandit,Goblin Gang,Hog Rider,Mini P.E.K.K.A,Mirror,Valkyrie,Witch,Zap",30,17,13,0.5666666666666667,0.39197009545408734
 "Balloon,Elixir Golem,Firecracker,Goblin Barrel,Lumberjack,Minion Horde,Skeleton Army,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
+"Arrows,Baby Dragon,Barbarians,Battle Ram,Electro Wizard,Mighty Miner,Skeleton Army,Wall Breakers",30,17,13,0.5666666666666667,0.39197009545408734
+"Archers,Cannon,Dark Prince,Dart Goblin,Guards,Minions,Prince,Zap",30,17,13,0.5666666666666667,0.39197009545408734
+"Archers,Electro Spirit,Fireball,Giant Snowball,Knight,Skeletons,Tesla,X-Bow",30,17,13,0.5666666666666667,0.39197009545408734
+"Baby Dragon,Golden Knight,Mini P.E.K.K.A,Skeleton Dragons,The Log,Valkyrie,Wall Breakers,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
 "Firecracker,Goblin Barrel,Goblin Gang,Mega Knight,Mini P.E.K.K.A,Skeletons,The Log,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
-"Firecracker,Giant Skeleton,Hog Rider,Ice Spirit,Mighty Miner,Skeleton Army,Witch,Zap",30,17,13,0.5666666666666667,0.39197009545408734
-"Bandit,Bats,Goblin Barrel,Magic Archer,Princess,Skeleton Army,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
-"Barbarian Hut,Boss Bandit,Lightning,Mega Knight,Mirror,Ronin,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
-"Dart Goblin,Elite Barbarians,Goblin Gang,Golden Knight,Mega Knight,Minion Horde,Valkyrie,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
 "Baby Dragon,Goblin Barrel,Goblin Gang,Inferno Tower,Mega Knight,Musketeer,The Log,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
-"Cannon,Dart Goblin,Fireball,Ice Spirit,Magic Archer,Skeleton Barrel,The Log,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
+"Firecracker,Giant Skeleton,Hog Rider,Ice Spirit,Mighty Miner,Skeleton Army,Witch,Zap",30,17,13,0.5666666666666667,0.39197009545408734
 "Baby Dragon,Dark Prince,Goblin Barrel,Mini P.E.K.K.A,Skeleton Dragons,The Log,Witch,Wizard",30,17,13,0.5666666666666667,0.39197009545408734
-"Arrows,Bandit,Electro Wizard,Goblin Barrel,P.E.K.K.A,Valkyrie,Witch,Wizard",28,16,12,0.5714285714285714,0.390704789856154
-"Bats,Firecracker,Hog Rider,Ice Golem,Mini P.E.K.K.A,Mirror,Skeleton Army,Zap",28,16,12,0.5714285714285714,0.390704789856154
+"Archer Queen,Arrows,Bomb Tower,Firecracker,Knight,Royal Ghost,Skeleton Army,Valkyrie",30,17,13,0.5666666666666667,0.39197009545408734
 "Fireball,Golden Knight,P.E.K.K.A,Princess,Skeleton Army,The Log,Wizard,Zap",28,16,12,0.5714285714285714,0.390704789856154
+"Bats,Firecracker,Hog Rider,Ice Golem,Mini P.E.K.K.A,Mirror,Skeleton Army,Zap",28,16,12,0.5714285714285714,0.390704789856154
 "Barbarians,Battle Ram,Dark Prince,Giant Skeleton,Mega Minion,Ronin,Witch,Zap",28,16,12,0.5714285714285714,0.390704789856154
-"Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,Rocket,Tesla,The Log",12,8,4,0.6666666666666666,0.3906175873976139
+"Bats,Goblin Barrel,Mega Knight,Mini P.E.K.K.A,Minions,Skeleton Army,Tombstone,Wizard",28,16,12,0.5714285714285714,0.390704789856154
+"Bats,Goblin Gang,Inferno Dragon,Mega Knight,Miner,Skeleton Barrel,Spear Goblins,Zap",28,16,12,0.5714285714285714,0.390704789856154
+"Arrows,Bandit,Electro Wizard,Goblin Barrel,P.E.K.K.A,Valkyrie,Witch,Wizard",28,16,12,0.5714285714285714,0.390704789856154
+"Earthquake,Firecracker,Hog Rider,Knight,Royal Delivery,Skeletons,Tesla,The Log",28,16,12,0.5714285714285714,0.390704789856154
 "Bats,Clone,Firecracker,Ice Spirit,Mini P.E.K.K.A,Skeleton Barrel,Valkyrie,Witch",12,8,4,0.6666666666666666,0.3906175873976139
-"Boss Bandit,Cannon,Dart Goblin,Elite Barbarians,Firecracker,Prince,The Log,Valkyrie",24,14,10,0.5833333333333334,0.3883433764938864
+"Archers,Electro Dragon,Giant Skeleton,Giant Snowball,Mega Minion,Mini P.E.K.K.A,Prince,Zap",26,15,11,0.5769230769230769,0.3894829692111983
 "Bandit,Fireball,Knight,Royal Giant,Skeleton Army,Witch,Wizard,Zap",24,14,10,0.5833333333333334,0.3883433764938864
+"Boss Bandit,Cannon,Dart Goblin,Elite Barbarians,Firecracker,Prince,The Log,Valkyrie",24,14,10,0.5833333333333334,0.3883433764938864
+"Arrows,Bats,Bowler,Firecracker,Poison,Princess,Ronin,Witch",14,9,5,0.6428571428571429,0.3876400468214041
+"Arrows,Dart Goblin,Freeze,Goblinstein,Hog Rider,Lumberjack,Mega Knight,Ronin",14,9,5,0.6428571428571429,0.3876400468214041
 "Barbarian Barrel,Freeze,Goblin Cage,Hog Rider,Inferno Dragon,Knight,Skeleton Army,Witch",14,9,5,0.6428571428571429,0.3876400468214041
 "Dart Goblin,Goblin Barrel,Knight,Miner,Musketeer,Poison,Tesla,Valkyrie",14,9,5,0.6428571428571429,0.3876400468214041
 "Elixir Golem,Mega Knight,Mighty Miner,Minion Horde,Princess,Royal Hogs,Skeleton Army,Valkyrie",22,13,9,0.5909090909090909,0.3873447738289381
 "Baby Dragon,Battle Ram,Electro Dragon,Hunter,Lumberjack,Mini P.E.K.K.A,Ram Rider,Royal Recruits",22,13,9,0.5909090909090909,0.3873447738289381
-"Arrows,Baby Dragon,Dart Goblin,Ice Spirit,Mini P.E.K.K.A,Skeleton Barrel,Valkyrie,Witch",20,12,8,0.6,0.38657794231520604
 "Arrows,Electro Wizard,Freeze,Hog Rider,Mini P.E.K.K.A,Princess,Royal Ghost,Witch",20,12,8,0.6,0.38657794231520604
-"Arrows,Goblin Barrel,Goblin Gang,Mega Knight,Musketeer,Rocket,Tesla,Valkyrie",16,10,6,0.625,0.38640647097934805
-"Arrows,Elixir Golem,Firecracker,Goblin Barrel,Princess,Valkyrie,Witch,Wizard",16,10,6,0.625,0.38640647097934805
-"Arrows,Bats,Elixir Golem,Firecracker,Golem,Lightning,Mini P.E.K.K.A,Wizard",16,10,6,0.625,0.38640647097934805
-"Arrows,Boss Bandit,Dark Prince,Goblin Barrel,Mini P.E.K.K.A,Minions,Royal Delivery,Valkyrie",16,10,6,0.625,0.38640647097934805
+"Bats,Dart Goblin,Goblin Barrel,Skeleton King,Skeletons,Tesla,The Log,Wizard",20,12,8,0.6,0.38657794231520604
+"Arrows,Baby Dragon,Dart Goblin,Ice Spirit,Mini P.E.K.K.A,Skeleton Barrel,Valkyrie,Witch",20,12,8,0.6,0.38657794231520604
 "Barbarian Barrel,Cannon,Fireball,Firecracker,Hog Rider,Mega Knight,Mini P.E.K.K.A,Witch",16,10,6,0.625,0.38640647097934805
+"Arrows,Elixir Golem,Firecracker,Goblin Barrel,Princess,Valkyrie,Witch,Wizard",16,10,6,0.625,0.38640647097934805
+"Arrows,Boss Bandit,Dark Prince,Goblin Barrel,Mini P.E.K.K.A,Minions,Royal Delivery,Valkyrie",16,10,6,0.625,0.38640647097934805
+"Arrows,Bats,Elixir Golem,Firecracker,Golem,Lightning,Mini P.E.K.K.A,Wizard",16,10,6,0.625,0.38640647097934805
+"Cannon,Executioner,Goblins,Hog Rider,Ice Spirit,Lightning,The Log,Valkyrie",16,10,6,0.625,0.38640647097934805
+"Arrows,Goblin Barrel,Goblin Gang,Mega Knight,Musketeer,Rocket,Tesla,Valkyrie",16,10,6,0.625,0.38640647097934805
+"Baby Dragon,Barbarian Barrel,Dark Prince,Fireball,Firecracker,Goblin Cage,Ronin,Witch",18,11,7,0.6111111111111112,0.3861866858065617
+"Archer Queen,Cannon,Earthquake,Ice Spirit,Royal Delivery,Royal Hogs,Skeletons,The Log",126,59,67,0.46825396825396826,0.38335752175424204
 "Baby Dragon,Balloon,Electro Wizard,Fireball,Freeze,Skeleton Army,Sparky,Wizard",31,17,14,0.5483870967741935,0.37771879603669134
-"Bomb Tower,Dart Goblin,Furnace,Mini P.E.K.K.A,Ram Rider,Skeleton Army,Valkyrie,Vines",31,17,14,0.5483870967741935,0.37771879603669134
 "Fireball,Mega Knight,Mini P.E.K.K.A,Prince,Princess,Ronin,Valkyrie,Witch",31,17,14,0.5483870967741935,0.37771879603669134
+"Bomb Tower,Dart Goblin,Furnace,Mini P.E.K.K.A,Ram Rider,Skeleton Army,Valkyrie,Vines",31,17,14,0.5483870967741935,0.37771879603669134
 "Arrows,Goblin Barrel,Lightning,Minion Horde,Musketeer,Prince,Skeleton Army,Valkyrie",31,17,14,0.5483870967741935,0.37771879603669134
-"Barbarian Barrel,Dark Prince,Electro Wizard,Heal Spirit,Mega Knight,Mega Minion,Prince,Zap",5,4,1,0.8,0.37552826411853885
-"Cannon,Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,Rocket,The Log",5,4,1,0.8,0.37552826411853885
-"Clone,Fireball,Hog Rider,Lumberjack,Mega Knight,Minions,The Log,Zap",5,4,1,0.8,0.37552826411853885
 "Arrows,Bats,Fireball,Firecracker,Goblin Gang,Hog Rider,Mega Knight,Mini P.E.K.K.A",5,4,1,0.8,0.37552826411853885
+"Cannon Cart,Goblin Curse,Goblin Gang,Inferno Dragon,Mega Knight,Mortar,Rage,Tesla",5,4,1,0.8,0.37552826411853885
+"Fireball,Firecracker,Heal Spirit,Mini P.E.K.K.A,Mother Witch,Rage,Skeleton Army,Wall Breakers",5,4,1,0.8,0.37552826411853885
+"Arrows,Cannon,Goblin Gang,Mini P.E.K.K.A,Prince,Royal Ghost,Skeleton Barrel,Wizard",5,4,1,0.8,0.37552826411853885
 "Dart Goblin,Goblin Barrel,Ronin,Royal Delivery,Skeleton Barrel,Skeletons,Tesla,The Log",5,4,1,0.8,0.37552826411853885
+"Clone,Fireball,Hog Rider,Lumberjack,Mega Knight,Minions,The Log,Zap",5,4,1,0.8,0.37552826411853885
+"Arrows,Bats,Battle Ram,Fireball,P.E.K.K.A,Skeleton Army,Witch,Wizard",5,4,1,0.8,0.37552826411853885
+"Barbarian Barrel,Dark Prince,Electro Wizard,Heal Spirit,Mega Knight,Mega Minion,Prince,Zap",5,4,1,0.8,0.37552826411853885
+"Cannon,Firecracker,Hog Rider,Hunter,Ice Spirit,Mega Knight,Skeletons,The Log",29,16,13,0.5517241379310345,0.37547667068067625
+"Bats,Cannon,Fireball,Hog Rider,Ice Golem,Skeleton King,The Log,Witch",29,16,13,0.5517241379310345,0.37547667068067625
 "Arrows,Balloon,Knight,Lava Hound,Lightning,Mega Minion,Minions,Rage",29,16,13,0.5517241379310345,0.37547667068067625
 "Electro Wizard,Goblin Barrel,Ice Wizard,Mini P.E.K.K.A,Rage,Valkyrie,Witch,Wizard",29,16,13,0.5517241379310345,0.37547667068067625
-"Cannon,Firecracker,Hog Rider,Hunter,Ice Spirit,Mega Knight,Skeletons,The Log",29,16,13,0.5517241379310345,0.37547667068067625
-"Cannon,Dart Goblin,Goblin Barrel,Ice Spirit,Knight,Princess,Skeleton Army,The Log",27,15,12,0.5555555555555556,0.3731271947957688
-"Barbarians,Electro Wizard,Furnace,Magic Archer,Ronin,Royal Hogs,Valkyrie,Zap",27,15,12,0.5555555555555556,0.3731271947957688
 "Arrows,Cannon,Giant Skeleton,Goblin Gang,Ice Spirit,Magic Archer,Mirror,Valkyrie",27,15,12,0.5555555555555556,0.3731271947957688
 "Bats,Dart Goblin,Executioner,Firecracker,Goblin Gang,Mega Knight,Mini P.E.K.K.A,The Log",27,15,12,0.5555555555555556,0.3731271947957688
-"Archers,Bats,Berserker,Bomber,Dark Prince,Electro Wizard,Prince,Princess",27,15,12,0.5555555555555556,0.3731271947957688
+"Cannon,Dart Goblin,Goblin Barrel,Ice Spirit,Knight,Princess,Skeleton Army,The Log",27,15,12,0.5555555555555556,0.3731271947957688
+"Barbarians,Electro Wizard,Furnace,Magic Archer,Ronin,Royal Hogs,Valkyrie,Zap",27,15,12,0.5555555555555556,0.3731271947957688
+"Dark Prince,Electro Wizard,Elite Barbarians,Goblin Giant,Heal Spirit,Rage,Sparky,Zap",70,34,36,0.4857142857142857,0.3724568238273813
+"Cannon,Dark Prince,Mega Knight,Skeleton Barrel,Skeletons,Valkyrie,Vines,Witch",25,14,11,0.56,0.37067017019564436
 "Fireball,Firecracker,Golden Knight,Hog Rider,Mega Knight,Tesla,The Log,Witch",25,14,11,0.56,0.37067017019564436
-"Dark Prince,Electro Wizard,Elite Barbarians,Goblin Giant,Heal Spirit,Rage,Sparky,Zap",45,23,22,0.5111111111111111,0.37004224326489743
+"Giant Snowball,Goblin Demolisher,Goblin Drill,Ice Spirit,Knight,Skeletons,Tesla,The Log",25,14,11,0.56,0.37067017019564436
+"Arrows,Cannon,Goblin Gang,Mini P.E.K.K.A,Royal Ghost,Royal Recruits,Skeleton Barrel,Wizard",25,14,11,0.56,0.37067017019564436
+"Arrows,Clone,Dart Goblin,Electro Wizard,Firecracker,Giant Skeleton,Ice Spirit,Witch",25,14,11,0.56,0.37067017019564436
+"Knight,Lightning,Magic Archer,Mega Knight,Skeletons,The Log,Wall Breakers,Wizard",23,13,10,0.5652173913043478,0.36811049305016963
+"Baby Dragon,Giant Skeleton,Lightning,Mega Knight,Minion Horde,Prince,Skeleton Army,Valkyrie",21,12,9,0.5714285714285714,0.3654621629703245
 "Hog Rider,Ice Spirit,Knight,Musketeer,Poison,Skeletons,Tesla,The Log",21,12,9,0.5714285714285714,0.3654621629703245
-"Fireball,Firecracker,Goblin Barrel,Goblin Gang,Ice Spirit,Tesla,The Log,Valkyrie",19,11,8,0.5789473684210527,0.3627555146516011
-"Balloon,Ice Spirit,Knight,Magic Archer,Minion Horde,Skeleton Army,The Log,Witch",19,11,8,0.5789473684210527,0.3627555146516011
-"Dark Prince,Fireball,Firecracker,Golden Knight,Ice Spirit,P.E.K.K.A,Wall Breakers,Witch",19,11,8,0.5789473684210527,0.3627555146516011
-"Elixir Golem,Firecracker,Mother Witch,Prince,Princess,Valkyrie,Vines,Wizard",19,11,8,0.5789473684210527,0.3627555146516011
 "Archers,Arrows,Firecracker,Goblin Barrel,Goblin Gang,Mega Knight,Musketeer,P.E.K.K.A",19,11,8,0.5789473684210527,0.3627555146516011
+"Fireball,Firecracker,Goblin Barrel,Goblin Gang,Ice Spirit,Tesla,The Log,Valkyrie",19,11,8,0.5789473684210527,0.3627555146516011
 "Balloon,Elite Barbarians,Executioner,Ice Spirit,Inferno Dragon,Minion Horde,Royal Ghost,The Log",19,11,8,0.5789473684210527,0.3627555146516011
-"Executioner,Hog Rider,Hunter,Knight,Ronin,Skeleton Barrel,Tesla,The Log",30,16,14,0.5333333333333333,0.36142013281525043
-"Arrows,Firecracker,Mega Knight,Minions,Ronin,Tesla,Valkyrie,Wall Breakers",30,16,14,0.5333333333333333,0.36142013281525043
-"Cannon,Firecracker,Magic Archer,Mega Knight,Mini P.E.K.K.A,Skeletons,The Log,Tornado",30,16,14,0.5333333333333333,0.36142013281525043
-"Elite Barbarians,Fireball,Little Prince,Minion Horde,Tombstone,Valkyrie,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
-"Barbarians,Electro Dragon,Electro Spirit,Elixir Golem,Executioner,Mirror,Rage,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
-"Arrows,Bandit,Bowler,Goblin Barrel,Mini P.E.K.K.A,Monk,Royal Ghost,Witch",30,16,14,0.5333333333333333,0.36142013281525043
-"Balloon,Barbarians,Freeze,Goblins,Hog Rider,Ice Wizard,Princess,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Elixir Golem,Firecracker,Mother Witch,Prince,Princess,Valkyrie,Vines,Wizard",19,11,8,0.5789473684210527,0.3627555146516011
+"Dark Prince,Fireball,Firecracker,Golden Knight,Ice Spirit,P.E.K.K.A,Wall Breakers,Witch",19,11,8,0.5789473684210527,0.3627555146516011
+"Balloon,Ice Spirit,Knight,Magic Archer,Minion Horde,Skeleton Army,The Log,Witch",19,11,8,0.5789473684210527,0.3627555146516011
 "Bandit,Electro Wizard,Lumberjack,Miner,Mother Witch,Ronin,Royal Ghost,Sparky",30,16,14,0.5333333333333333,0.36142013281525043
-"Arrows,Dart Goblin,Knight,Minions,Musketeer,Ram Rider,Skeleton Army,Valkyrie",30,16,14,0.5333333333333333,0.36142013281525043
-"Bowler,Fireball,Giant Skeleton,Goblin Hut,Prince,Skeletons,Tornado,Witch",30,16,14,0.5333333333333333,0.36142013281525043
-"Arrows,Bats,Electro Wizard,Giant Skeleton,Goblin Barrel,Magic Archer,Skeleton Army,Tornado",30,16,14,0.5333333333333333,0.36142013281525043
-"Barbarians,Dark Prince,Fireball,Firecracker,Goblin Barrel,Mirror,Musketeer,Valkyrie",30,16,14,0.5333333333333333,0.36142013281525043
-"Barbarians,Fireball,Mega Knight,Mini P.E.K.K.A,Royal Recruits,Skeleton King,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
-"Arrows,Barbarians,Electro Wizard,Elite Barbarians,Executioner,Goblin Barrel,Valkyrie,Zap",30,16,14,0.5333333333333333,0.36142013281525043
-"Cannon,Firecracker,Goblin Barrel,Goblin Gang,Ice Spirit,Mega Knight,Witch,Zap",30,16,14,0.5333333333333333,0.36142013281525043
-"Baby Dragon,Battle Ram,Fireball,Goblin Barrel,Mega Knight,Minions,Valkyrie,Witch",30,16,14,0.5333333333333333,0.36142013281525043
-"Fireball,Golden Knight,Mini P.E.K.K.A,Royal Ghost,Skeleton Army,Valkyrie,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Executioner,Hog Rider,Hunter,Knight,Ronin,Skeleton Barrel,Tesla,The Log",30,16,14,0.5333333333333333,0.36142013281525043
 "Arrows,Cannon,Goblin Barrel,Inferno Dragon,Mini P.E.K.K.A,Mother Witch,Skeleton Army,Witch",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Barbarians,Electro Wizard,Elite Barbarians,Executioner,Goblin Barrel,Valkyrie,Zap",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Bats,Electro Wizard,Giant Skeleton,Goblin Barrel,Magic Archer,Skeleton Army,Tornado",30,16,14,0.5333333333333333,0.36142013281525043
+"Baby Dragon,Battle Ram,Fireball,Goblin Barrel,Mega Knight,Minions,Valkyrie,Witch",30,16,14,0.5333333333333333,0.36142013281525043
+"Cannon,Firecracker,Magic Archer,Mega Knight,Mini P.E.K.K.A,Skeletons,The Log,Tornado",30,16,14,0.5333333333333333,0.36142013281525043
+"Cannon,Firecracker,Goblin Barrel,Goblin Gang,Ice Spirit,Mega Knight,Witch,Zap",30,16,14,0.5333333333333333,0.36142013281525043
+"Barbarians,Dark Prince,Fireball,Firecracker,Goblin Barrel,Mirror,Musketeer,Valkyrie",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Dart Goblin,Knight,Minions,Musketeer,Ram Rider,Skeleton Army,Valkyrie",30,16,14,0.5333333333333333,0.36142013281525043
+"Barbarians,Electro Dragon,Electro Spirit,Elixir Golem,Executioner,Mirror,Rage,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Elite Barbarians,Fireball,Little Prince,Minion Horde,Tombstone,Valkyrie,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Cannon,Fireball,Hog Rider,Inferno Dragon,Ram Rider,Valkyrie,Witch",30,16,14,0.5333333333333333,0.36142013281525043
+"Balloon,Barbarians,Freeze,Goblins,Hog Rider,Ice Wizard,Princess,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Fireball,Golden Knight,Mini P.E.K.K.A,Royal Ghost,Skeleton Army,Valkyrie,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Bandit,Bowler,Goblin Barrel,Mini P.E.K.K.A,Monk,Royal Ghost,Witch",30,16,14,0.5333333333333333,0.36142013281525043
+"Bowler,Fireball,Giant Skeleton,Goblin Hut,Prince,Skeletons,Tornado,Witch",30,16,14,0.5333333333333333,0.36142013281525043
+"Arrows,Firecracker,Mega Knight,Minions,Ronin,Tesla,Valkyrie,Wall Breakers",30,16,14,0.5333333333333333,0.36142013281525043
+"Barbarians,Fireball,Mega Knight,Mini P.E.K.K.A,Royal Recruits,Skeleton King,Witch,Wizard",30,16,14,0.5333333333333333,0.36142013281525043
+"Dart Goblin,Electro Giant,Fireball,Firecracker,Goblin Barrel,Lumberjack,Skeleton Army,Wizard",17,10,7,0.5882352941176471,0.3600507438551554
+"Archers,Ice Spirit,Knight,Mortar,Rocket,Skeletons,The Log,Tornado",17,10,7,0.5882352941176471,0.3600507438551554
 "Baby Dragon,Barbarians,Fireball,Inferno Dragon,Rage,Ronin,Valkyrie,Wizard",17,10,7,0.5882352941176471,0.3600507438551554
 "Arrows,Barbarian Barrel,Dart Goblin,Mini P.E.K.K.A,Mirror,Royal Giant,Skeleton Army,Wizard",7,5,2,0.7142857142857143,0.35892909014821267
-"Balloon,Clone,Dark Prince,Giant Skeleton,Minion Horde,Valkyrie,Witch,Wizard",7,5,2,0.7142857142857143,0.35892909014821267
-"Electro Wizard,Freeze,Golden Knight,Inferno Dragon,Mega Knight,Mini P.E.K.K.A,Sparky,Witch",7,5,2,0.7142857142857143,0.35892909014821267
+"Arrows,Bats,Battle Healer,Bowler,Firecracker,Poison,Princess,Witch",7,5,2,0.7142857142857143,0.35892909014821267
+"Firecracker,Golden Knight,Inferno Dragon,Prince,Royal Delivery,Skeleton Army,Wizard,Zap",7,5,2,0.7142857142857143,0.35892909014821267
 "Barbarian Barrel,Electro Spirit,Fisherman,Hunter,Lightning,Ronin,Royal Ghost,Royal Giant",7,5,2,0.7142857142857143,0.35892909014821267
-"Dart Goblin,Fire Spirit,Minion Horde,Skeleton Army,Skeleton Barrel,Skeleton King,Vines,Wall Breakers",7,5,2,0.7142857142857143,0.35892909014821267
-"Archers,Arrows,Hog Rider,Knight,Mega Knight,P.E.K.K.A,Skeleton King,Witch",28,15,13,0.5357142857142857,0.35812395142101666
 "Arrows,Bats,Cannon,Dart Goblin,Elixir Golem,Mega Knight,Rage,Skeleton Army",28,15,13,0.5357142857142857,0.35812395142101666
+"Archers,Arrows,Hog Rider,Knight,Mega Knight,P.E.K.K.A,Skeleton King,Witch",28,15,13,0.5357142857142857,0.35812395142101666
+"Arrows,Magic Archer,Mega Knight,Minion Horde,Royal Hogs,Skeleton Army,Witch,Zap",28,15,13,0.5357142857142857,0.35812395142101666
 "Arrows,Cannon,Firecracker,Goblin Barrel,Hog Rider,Mega Knight,Ronin,The Log",15,9,6,0.6,0.357464427565077
 "Archers,Bats,Elixir Golem,Fireball,Firecracker,Magic Archer,Witch,Wizard",15,9,6,0.6,0.357464427565077
+"Bats,Boss Bandit,Cannon,Executioner,Giant Skeleton,Graveyard,Musketeer,The Log",13,8,5,0.6153846153846154,0.3552248097226855
 "Dark Prince,Electro Wizard,Fireball,Goblin Giant,Knight,Minions,Rage,Sparky",13,8,5,0.6153846153846154,0.3552248097226855
 "Arrows,Boss Bandit,Firecracker,Goblins,Hog Rider,Mega Knight,Witch,Wizard",13,8,5,0.6153846153846154,0.3552248097226855
-"Bats,Boss Bandit,Cannon,Executioner,Giant Skeleton,Graveyard,Musketeer,The Log",13,8,5,0.6153846153846154,0.3552248097226855
 "Barbarian Barrel,Boss Bandit,Fire Spirit,Goblin Gang,Lumberjack,Skeleton Barrel,Tesla,Witch",26,14,12,0.5384615384615384,0.35457636204430115
-"Barbarian Barrel,Bats,Bomb Tower,Fireball,Miner,Ronin,Spear Goblins,Wall Breakers",9,6,3,0.6666666666666666,0.35419734749908977
-"Arrows,Hog Rider,Mega Knight,Ronin,Tesla,Vines,Witch,Wizard",9,6,3,0.6666666666666666,0.35419734749908977
-"Cannon Cart,Electro Wizard,Executioner,Fisherman,Lightning,Mega Knight,Mother Witch,Valkyrie",9,6,3,0.6666666666666666,0.35419734749908977
+"Firecracker,Heal Spirit,Mini P.E.K.K.A,Mirror,Mother Witch,Rage,Skeleton Army,Wall Breakers",9,6,3,0.6666666666666666,0.35419734749908977
 "Cannon,Hog Rider,Knight,Magic Archer,Royal Delivery,Skeletons,Witch,Zap",9,6,3,0.6666666666666666,0.35419734749908977
 "Arrows,Barbarian Barrel,Bats,Hog Rider,Princess,Wall Breakers,Witch,Wizard",9,6,3,0.6666666666666666,0.35419734749908977
-"Firecracker,Goblin Gang,Mega Knight,Minion Horde,Musketeer,Royal Recruits,The Log,Valkyrie",11,7,4,0.6363636363636364,0.35379677689163724
-"Furnace,Giant Snowball,Lumberjack,P.E.K.K.A,Ronin,Skeleton Barrel,Vines,Wizard",11,7,4,0.6363636363636364,0.35379677689163724
+"Electro Wizard,Freeze,Golden Knight,Inferno Dragon,Mega Knight,Mini P.E.K.K.A,Sparky,Witch",9,6,3,0.6666666666666666,0.35419734749908977
+"Cannon Cart,Electro Wizard,Executioner,Fisherman,Lightning,Mega Knight,Mother Witch,Valkyrie",9,6,3,0.6666666666666666,0.35419734749908977
+"Arrows,Hog Rider,Mega Knight,Ronin,Tesla,Vines,Witch,Wizard",9,6,3,0.6666666666666666,0.35419734749908977
+"Barbarian Barrel,Bats,Bomb Tower,Fireball,Miner,Ronin,Spear Goblins,Wall Breakers",9,6,3,0.6666666666666666,0.35419734749908977
 "Baby Dragon,Firecracker,Goblin Barrel,Inferno Tower,P.E.K.K.A,Witch,Wizard,Zap",11,7,4,0.6363636363636364,0.35379677689163724
-"Arrows,Barbarians,Dark Prince,Executioner,Hog Rider,Mini P.E.K.K.A,Skeleton Dragons,Tombstone",31,16,15,0.5161290322580645,0.3484011828697317
-"Cannon,Hog Rider,Knight,Musketeer,Rage,Skeleton Army,The Log,Witch",31,16,15,0.5161290322580645,0.3484011828697317
-"Elite Barbarians,Elixir Collector,Goblin Barrel,Golem,Minions,Skeleton King,The Log,Wizard",31,16,15,0.5161290322580645,0.3484011828697317
+"Bats,Clone,Giant Skeleton,Mega Knight,Skeleton Army,Skeleton Barrel,Witch,Wizard",11,7,4,0.6363636363636364,0.35379677689163724
+"Furnace,Giant Snowball,Lumberjack,P.E.K.K.A,Ronin,Skeleton Barrel,Vines,Wizard",11,7,4,0.6363636363636364,0.35379677689163724
+"Firecracker,Goblin Gang,Mega Knight,Minion Horde,Musketeer,Royal Recruits,The Log,Valkyrie",11,7,4,0.6363636363636364,0.35379677689163724
+"Baby Dragon,Barbarian Barrel,Golem,Lightning,Lumberjack,Mega Minion,Night Witch,Tornado",11,7,4,0.6363636363636364,0.35379677689163724
+"Archers,Fireball,Goblin Barrel,Ice Spirit,Prince,Ronin,Valkyrie,Wizard",11,7,4,0.6363636363636364,0.35379677689163724
 "Arrows,Cannon,Goblin Curse,Mini P.E.K.K.A,Minions,Royal Giant,Spear Goblins,Valkyrie",31,16,15,0.5161290322580645,0.3484011828697317
+"Elite Barbarians,Elixir Collector,Goblin Barrel,Golem,Minions,Skeleton King,The Log,Wizard",31,16,15,0.5161290322580645,0.3484011828697317
+"Cannon,Hog Rider,Knight,Musketeer,Rage,Skeleton Army,The Log,Witch",31,16,15,0.5161290322580645,0.3484011828697317
 "Baby Dragon,Barbarian Barrel,Golem,Mini P.E.K.K.A,Royal Ghost,Skeleton Dragons,Vines,Zappies",22,12,10,0.5454545454545454,0.3465947328904156
 "Bowler,Firecracker,Giant Snowball,Hog Rider,P.E.K.K.A,Tesla,The Log,Witch",29,15,14,0.5172413793103449,0.34430737970569164
-"Arrows,Baby Dragon,Goblin Barrel,Inferno Dragon,Mini P.E.K.K.A,P.E.K.K.A,Valkyrie,Witch",29,15,14,0.5172413793103449,0.34430737970569164
 "Dart Goblin,Goblin Barrel,Knight,Mega Knight,The Log,Tombstone,Vines,Witch",29,15,14,0.5172413793103449,0.34430737970569164
+"Barbarians,Battle Ram,Elite Barbarians,Inferno Dragon,P.E.K.K.A,Rocket,Skeleton King,Wizard",29,15,14,0.5172413793103449,0.34430737970569164
+"Arrows,Baby Dragon,Goblin Barrel,Inferno Dragon,Mini P.E.K.K.A,P.E.K.K.A,Valkyrie,Witch",29,15,14,0.5172413793103449,0.34430737970569164
 "Barbarians,Fireball,Inferno Tower,Mega Knight,Prince,Valkyrie,Witch,Wizard",20,11,9,0.55,0.34208200830759966
+"Arrows,Firecracker,Hog Rider,Musketeer,Skeleton Army,Tesla,Valkyrie,Zap",20,11,9,0.55,0.34208200830759966
 "Arrows,Freeze,Goblin Gang,Hog Rider,Mega Knight,Mini P.E.K.K.A,Mirror,Witch",27,14,13,0.5185185185185185,0.33985324586210425
+"Goblin Barrel,Goblin Gang,Ice Spirit,Inferno Tower,Knight,Princess,Rocket,The Log",187,76,111,0.40641711229946526,0.33858934743722635
 "Mega Knight,Royal Hogs,Skeleton Army,Skeletons,The Log,Valkyrie,Witch,Wizard",18,10,8,0.5555555555555556,0.33716069428251627
 "Balloon,Barbarian Barrel,Ice Golem,Ice Wizard,Musketeer,Ronin,Skeletons,Tesla",18,10,8,0.5555555555555556,0.33716069428251627
 "Arrows,Balloon,Dart Goblin,Goblin Gang,Inferno Tower,Lumberjack,Valkyrie,Zap",25,13,12,0.52,0.3349821795314731
+"Golem,Ice Wizard,Inferno Tower,Minions,Princess,Royal Recruits,Skeleton King,The Log",25,13,12,0.52,0.3349821795314731
+"Barbarian Barrel,Cannon Cart,Fireball,Goblins,Minions,Mortar,Rascals,Skeleton Barrel",128,53,75,0.4140625,0.3324500931647407
 "Barbarian Barrel,Electro Wizard,Goblin Barrel,Knight,Mega Knight,Skeleton Army,Valkyrie,Wizard",16,9,7,0.5625,0.3317819560677652
-"Dart Goblin,Goblin Barrel,Ice Spirit,Inferno Tower,Knight,Princess,Skeleton Army,The Log",16,9,7,0.5625,0.3317819560677652
-"Arrows,Electro Wizard,Firecracker,Magic Archer,Mega Knight,Mini P.E.K.K.A,Tesla,Zap",30,15,15,0.5,0.3315385122717376
-"Cannon,Dark Prince,Executioner,Firecracker,Ronin,Royal Delivery,Skeletons,The Log",30,15,15,0.5,0.3315385122717376
-"Arrows,Dark Prince,Electro Wizard,Fireball,Firecracker,Hog Rider,Knight,Mega Knight",30,15,15,0.5,0.3315385122717376
-"Arrows,Dart Goblin,Firecracker,Goblin Gang,Hog Rider,Knight,P.E.K.K.A,The Log",30,15,15,0.5,0.3315385122717376
-"Boss Bandit,Fireball,Goblin Barrel,Inferno Tower,Minion Horde,Princess,Skeleton Army,The Log",30,15,15,0.5,0.3315385122717376
-"Bats,Hog Rider,Ice Spirit,Ice Wizard,Royal Ghost,Skeleton Army,The Log,Zap",30,15,15,0.5,0.3315385122717376
-"Archers,Goblin Barrel,Golden Knight,Lumberjack,Ram Rider,Skeleton Army,Valkyrie,Wizard",30,15,15,0.5,0.3315385122717376
-"Dark Prince,Goblin Barrel,Inferno Dragon,Knight,Skeleton Army,Skeleton Barrel,Skeleton Dragons,Skeleton King",30,15,15,0.5,0.3315385122717376
 "Dart Goblin,Executioner,Firecracker,Knight,Ram Rider,Tombstone,Valkyrie,Zap",30,15,15,0.5,0.3315385122717376
+"Boss Bandit,Fireball,Goblin Barrel,Inferno Tower,Minion Horde,Princess,Skeleton Army,The Log",30,15,15,0.5,0.3315385122717376
+"Cannon,Dark Prince,Executioner,Firecracker,Ronin,Royal Delivery,Skeletons,The Log",30,15,15,0.5,0.3315385122717376
+"Arrows,Electro Wizard,Firecracker,Magic Archer,Mega Knight,Mini P.E.K.K.A,Tesla,Zap",30,15,15,0.5,0.3315385122717376
+"Archers,Bats,Berserker,Bomber,Dark Prince,Electro Wizard,Prince,Princess",30,15,15,0.5,0.3315385122717376
+"Arrows,Dart Goblin,Hog Rider,Mini P.E.K.K.A,Musketeer,Ronin,Valkyrie,Wall Breakers",30,15,15,0.5,0.3315385122717376
+"Dark Prince,Goblin Barrel,Inferno Dragon,Knight,Skeleton Army,Skeleton Barrel,Skeleton Dragons,Skeleton King",30,15,15,0.5,0.3315385122717376
+"Archers,Goblin Barrel,Golden Knight,Lumberjack,Ram Rider,Skeleton Army,Valkyrie,Wizard",30,15,15,0.5,0.3315385122717376
+"Arrows,Dark Prince,Electro Wizard,Fireball,Firecracker,Hog Rider,Knight,Mega Knight",30,15,15,0.5,0.3315385122717376
+"Bats,Hog Rider,Ice Spirit,Ice Wizard,Royal Ghost,Skeleton Army,The Log,Zap",30,15,15,0.5,0.3315385122717376
+"Bomber,Electro Dragon,Golem,Lightning,Night Witch,Skeleton King,Tombstone,Tornado",30,15,15,0.5,0.3315385122717376
 "Electro Spirit,Fireball,Guards,Knight,Royal Giant,Tesla,The Log,Witch",30,15,15,0.5,0.3315385122717376
+"Arrows,Dart Goblin,Firecracker,Goblin Gang,Hog Rider,Knight,P.E.K.K.A,The Log",30,15,15,0.5,0.3315385122717376
 "Barbarian Barrel,Electro Wizard,Heal Spirit,Mega Knight,Mega Minion,Prince,Ronin,Zap",23,12,11,0.5217391304347826,0.32962429864218495
-"Goblin Barrel,Hog Rider,Ice Spirit,Mega Knight,Mini P.E.K.K.A,Valkyrie,Witch,Wizard",14,8,6,0.5714285714285714,0.3259026690286936
+"Balloon,Cannon,Earthquake,Goblin Gang,Miner,Musketeer,Valkyrie,Zap",28,14,14,0.5,0.32632846832446344
 "Baby Dragon,Bats,Elixir Golem,Goblin Gang,Knight,Magic Archer,Mirror,Valkyrie",14,8,6,0.5714285714285714,0.3259026690286936
-"Fireball,Firecracker,Furnace,Goblin Gang,Mega Knight,Mirror,Prince,Royal Hogs",14,8,6,0.5714285714285714,0.3259026690286936
 "Arrows,Dart Goblin,Giant Skeleton,Ice Spirit,Lumberjack,Mini P.E.K.K.A,Skeletons,Zap",14,8,6,0.5714285714285714,0.3259026690286936
+"Fireball,Firecracker,Furnace,Goblin Gang,Mega Knight,Mirror,Prince,Royal Hogs",14,8,6,0.5714285714285714,0.3259026690286936
+"Arrows,Bowler,Giant,Giant Snowball,Graveyard,Mini P.E.K.K.A,Minions,Witch",14,8,6,0.5714285714285714,0.3259026690286936
+"Goblin Barrel,Hog Rider,Ice Spirit,Mega Knight,Mini P.E.K.K.A,Valkyrie,Witch,Wizard",14,8,6,0.5714285714285714,0.3259026690286936
+"Baby Dragon,Balloon,Barbarian Barrel,Bowler,Freeze,Inferno Dragon,Lumberjack,Tornado",14,8,6,0.5714285714285714,0.3259026690286936
+"Arrows,Elite Barbarians,Executioner,Firecracker,Mega Knight,Minion Horde,Ronin,Witch",14,8,6,0.5714285714285714,0.3259026690286936
+"Arrows,Barbarians,Dark Prince,Executioner,Hog Rider,Mini P.E.K.K.A,Skeleton Dragons,Tombstone",33,16,17,0.48484848484848486,0.32503781646924224
+"Dart Goblin,Fire Spirit,Hog Rider,Mega Knight,Skeleton Army,Skeleton Barrel,Wall Breakers,Witch",21,11,10,0.5238095238095238,0.3236921790026675
+"Cannon Cart,Firecracker,Flying Machine,Freeze,Furnace,Mega Knight,Mirror,Mother Witch",21,11,10,0.5238095238095238,0.3236921790026675
 "Bats,Giant Snowball,Hog Rider,Musketeer,Princess,Tombstone,Valkyrie,Witch",31,15,16,0.4838709677419355,0.3196998603127883
-"Arrows,Fireball,Guards,Knight,Mini P.E.K.K.A,Minions,Royal Giant,Wizard",31,15,16,0.4838709677419355,0.3196998603127883
 "Executioner,Golden Knight,Mega Knight,Ronin,Skeleton Army,Tesla,Valkyrie,Vines",31,15,16,0.4838709677419355,0.3196998603127883
+"Arrows,Fireball,Guards,Knight,Mini P.E.K.K.A,Minions,Royal Giant,Wizard",31,15,16,0.4838709677419355,0.3196998603127883
+"Bomber,Dark Prince,Electro Giant,Goblin Cage,Inferno Dragon,Lightning,Mother Witch,Tornado",12,7,5,0.5833333333333334,0.3195073356553728
+"Archers,Bats,Elixir Golem,Fireball,Magic Archer,Valkyrie,Witch,Wizard",12,7,5,0.5833333333333334,0.3195073356553728
 "Arrows,Cannon,Electro Wizard,Firecracker,Hog Rider,Knight,Skeleton Barrel,Witch",12,7,5,0.5833333333333334,0.3195073356553728
 "Baby Dragon,Fireball,Inferno Dragon,Lava Hound,Lumberjack,Minions,The Log,Zap",12,7,5,0.5833333333333334,0.3195073356553728
-"Archers,Bats,Elixir Golem,Fireball,Magic Archer,Valkyrie,Witch,Wizard",12,7,5,0.5833333333333334,0.3195073356553728
-"Firecracker,Giant Snowball,Goblin Gang,Knight,Mega Knight,Minion Horde,Skeleton Army,Wizard",19,10,9,0.5263157894736842,0.31707482511825114
-"Archers,Boss Bandit,Fireball,Goblin Barrel,Goblin Gang,Tesla,The Log,Witch",19,10,9,0.5263157894736842,0.31707482511825114
-"Arrows,Firecracker,Goblin Barrel,Inferno Tower,Knight,Princess,Valkyrie,Witch",19,10,9,0.5263157894736842,0.31707482511825114
 "Balloon,Electro Wizard,Firecracker,Guards,Royal Recruits,Tesla,The Log,Wall Breakers",19,10,9,0.5263157894736842,0.31707482511825114
+"Archers,Boss Bandit,Fireball,Goblin Barrel,Goblin Gang,Tesla,The Log,Witch",19,10,9,0.5263157894736842,0.31707482511825114
+"Firecracker,Giant Snowball,Goblin Gang,Knight,Mega Knight,Minion Horde,Skeleton Army,Wizard",19,10,9,0.5263157894736842,0.31707482511825114
+"Arrows,Firecracker,Goblin Barrel,Inferno Tower,Knight,Princess,Valkyrie,Witch",19,10,9,0.5263157894736842,0.31707482511825114
 "Bats,Goblin Barrel,Hog Rider,Knight,Mega Knight,Ronin,Wizard,Zap",24,12,12,0.5,0.3142713162776308
 "Dart Goblin,Fireball,Goblin Gang,Goblins,P.E.K.K.A,Ronin,Valkyrie,Witch",29,14,15,0.4827586206896552,0.3138581933079522
 "Cannon Cart,Electro Spirit,Fireball,Firecracker,Knight,Mega Knight,Mini P.E.K.K.A,Witch",29,14,15,0.4827586206896552,0.3138581933079522
 "Arrows,Golden Knight,Hog Rider,Mini P.E.K.K.A,Royal Ghost,Skeleton Army,Witch,Wizard",29,14,15,0.4827586206896552,0.3138581933079522
-"Electro Spirit,Goblin Barrel,Knight,Mega Knight,Skeleton Army,Tesla,The Log,Witch",10,6,4,0.6,0.3126695474501863
-"Barbarian Barrel,Dart Goblin,Fireball,Hog Rider,Royal Delivery,Skeleton Army,Valkyrie,Witch",10,6,4,0.6,0.3126695474501863
 "Elixir Golem,Executioner,Firecracker,Goblin Barrel,Minions,Ronin,The Log,Valkyrie",10,6,4,0.6,0.3126695474501863
+"Barbarian Barrel,Dart Goblin,Fireball,Hog Rider,Royal Delivery,Skeleton Army,Valkyrie,Witch",10,6,4,0.6,0.3126695474501863
+"Electro Spirit,Goblin Barrel,Knight,Mega Knight,Skeleton Army,Tesla,The Log,Witch",10,6,4,0.6,0.3126695474501863
+"Arrows,Firecracker,Goblin Gang,Guards,Hog Rider,Mighty Miner,Royal Recruits,Wall Breakers",10,6,4,0.6,0.3126695474501863
+"Archers,Electro Spirit,Fireball,Knight,Skeletons,Tesla,The Log,X-Bow",150,58,92,0.38666666666666666,0.3124898876515768
+"Dart Goblin,Goblin Barrel,Ice Spirit,Inferno Tower,Knight,Princess,Skeleton Army,The Log",17,9,8,0.5294117647058824,0.3096289731154949
+"Firecracker,Golden Knight,Hog Rider,Hunter,Mega Knight,Minions,Tesla,Witch",17,9,8,0.5294117647058824,0.3096289731154949
+"Elite Barbarians,Elixir Golem,Fireball,Ice Wizard,Rage,Skeleton Army,Tesla,The Log",17,9,8,0.5294117647058824,0.3096289731154949
 "Archers,Guards,Hog Rider,Lumberjack,P.E.K.K.A,Princess,Valkyrie,Zap",17,9,8,0.5294117647058824,0.3096289731154949
 "Earthquake,Firecracker,Ronin,Royal Delivery,Royal Hogs,Skeletons,Tesla,The Log",17,9,8,0.5294117647058824,0.3096289731154949
-"Barbarian Barrel,Cannon Cart,Fireball,Goblins,Minions,Mortar,Rascals,Skeleton Barrel",103,41,62,0.39805825242718446,0.3088324252600616
 "Dart Goblin,Goblin Barrel,Knight,Little Prince,Princess,Skeleton Barrel,Skeletons,The Log",27,13,14,0.48148148148148145,0.3074295064970908
-"Goblin Barrel,Knight,Mirror,Skeleton Army,Spear Goblins,Valkyrie,Witch,Wizard",22,11,11,0.5,0.3072180469247956
 "Elite Barbarians,Firecracker,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Skeletons,The Log,Witch",22,11,11,0.5,0.3072180469247956
+"Goblin Barrel,Knight,Mirror,Skeleton Army,Spear Goblins,Valkyrie,Witch,Wizard",22,11,11,0.5,0.3072180469247956
 "Bomb Tower,Graveyard,Little Prince,Mega Knight,Ronin,Three Musketeers,Vines,Wizard",22,11,11,0.5,0.3072180469247956
-"Balloon,Barbarian Barrel,Bowler,Electro Dragon,Freeze,Inferno Dragon,Lumberjack,Tornado",22,11,11,0.5,0.3072180469247956
-"Dark Prince,Inferno Dragon,Knight,Lumberjack,Magic Archer,Mini P.E.K.K.A,Valkyrie,Witch",8,5,3,0.625,0.3057378545838018
 "Elite Barbarians,Goblin Barrel,Knight,Mirror,Skeleton Army,Skeleton Barrel,The Log,Wizard",8,5,3,0.625,0.3057378545838018
 "Elite Barbarians,Mini P.E.K.K.A,P.E.K.K.A,Rage,Vines,Witch,Wizard,Zap",8,5,3,0.625,0.3057378545838018
 "Elite Barbarians,Fireball,Hog Rider,Lumberjack,Minions,Skeleton Army,Valkyrie,Zap",8,5,3,0.625,0.3057378545838018
-"Bomber,Dark Prince,Electro Giant,Goblin Cage,Inferno Dragon,Lightning,Mother Witch,Tornado",8,5,3,0.625,0.3057378545838018
-"Barbarian Barrel,Bats,Bomb Tower,Fireball,Knight,Miner,Spear Goblins,Wall Breakers",8,5,3,0.625,0.3057378545838018
-"Balloon,Barbarian Barrel,Ice Golem,Ice Wizard,Musketeer,Skeletons,Tesla,Valkyrie",8,5,3,0.625,0.3057378545838018
 "Boss Bandit,Dart Goblin,Elite Barbarians,Firecracker,Prince,Tesla,The Log,Valkyrie",8,5,3,0.625,0.3057378545838018
-"Freeze,Goblin Barrel,Lumberjack,Mini P.E.K.K.A,Prince,Skeleton Army,The Log,Witch",30,14,16,0.4666666666666667,0.3023212722412823
+"Balloon,Clone,Dark Prince,Giant Skeleton,Minion Horde,Valkyrie,Witch,Wizard",8,5,3,0.625,0.3057378545838018
+"Archers,Fireball,Goblin Barrel,Goblins,Sparky,Valkyrie,Wall Breakers,Wizard",8,5,3,0.625,0.3057378545838018
+"Balloon,Barbarian Barrel,Ice Golem,Ice Wizard,Musketeer,Skeletons,Tesla,Valkyrie",8,5,3,0.625,0.3057378545838018
+"Dark Prince,Inferno Dragon,Knight,Lumberjack,Magic Archer,Mini P.E.K.K.A,Valkyrie,Witch",8,5,3,0.625,0.3057378545838018
+"Barbarian Barrel,Bats,Bomb Tower,Fireball,Knight,Miner,Spear Goblins,Wall Breakers",8,5,3,0.625,0.3057378545838018
+"Cannon,Fireball,Firecracker,Hog Rider,Ice Spirit,Mighty Miner,Skeletons,The Log",8,5,3,0.625,0.3057378545838018
+"Electro Wizard,Firecracker,Hog Rider,Inferno Tower,Lumberjack,Ronin,The Log,Witch",30,14,16,0.4666666666666667,0.3023212722412823
+"Bandit,Dark Prince,Electro Wizard,Firecracker,Goblin Gang,Hog Rider,Mega Knight,Zap",30,14,16,0.4666666666666667,0.3023212722412823
+"Goblin Barrel,Goblin Gang,Hog Rider,Princess,Tesla,The Log,Valkyrie,Witch",30,14,16,0.4666666666666667,0.3023212722412823
 "Bats,Fireball,Firecracker,Hog Rider,Mega Knight,Skeleton Army,Valkyrie,Witch",15,8,7,0.5333333333333333,0.3011663015105079
 "Archers,Arrows,Bowler,Electro Dragon,Firecracker,Ice Wizard,Mega Knight,Skeleton Army",15,8,7,0.5333333333333333,0.3011663015105079
-"Baby Dragon,Balloon,Firecracker,Ronin,Royal Ghost,Tesla,Witch,Wizard",15,8,7,0.5333333333333333,0.3011663015105079
 "Goblin Barrel,Goblin Gang,Mirror,Princess,Rocket,Tesla,The Log,Valkyrie",15,8,7,0.5333333333333333,0.3011663015105079
-"Arrows,Dart Goblin,Giant Skeleton,Ice Spirit,Ronin,Valkyrie,Wall Breakers,Zap",6,4,2,0.6666666666666666,0.2999883213415286
+"Baby Dragon,Balloon,Firecracker,Ronin,Royal Ghost,Tesla,Witch,Wizard",15,8,7,0.5333333333333333,0.3011663015105079
+"Arrows,Barbarian Barrel,Electro Spirit,Flying Machine,Goblin Cage,Royal Hogs,Royal Recruits,Zappies",25,12,13,0.48,0.30031003928960015
 "Arrows,Bats,Fireball,Firecracker,Goblin Gang,Hog Rider,Mega Knight,Tesla",6,4,2,0.6666666666666666,0.2999883213415286
+"Barbarian Barrel,Goblin Drill,Ice Spirit,Ice Wizard,Rocket,Royal Delivery,Tesla,Valkyrie",6,4,2,0.6666666666666666,0.2999883213415286
 "Barbarian Barrel,Firecracker,Goblins,Ice Spirit,Minions,Mortar,Rascals,Skeleton Barrel",6,4,2,0.6666666666666666,0.2999883213415286
+"Cannon,Goblin Barrel,Goblin Gang,Ice Spirit,Knight,Princess,Rocket,The Log",6,4,2,0.6666666666666666,0.2999883213415286
+"Fireball,Firecracker,Heal Spirit,Mini P.E.K.K.A,Musketeer,Rage,Skeleton Army,Wall Breakers",6,4,2,0.6666666666666666,0.2999883213415286
+"Battle Healer,Fireball,Firecracker,Heal Spirit,Mini P.E.K.K.A,Musketeer,Rage,Wall Breakers",6,4,2,0.6666666666666666,0.2999883213415286
 "Arrows,Balloon,Firecracker,Hog Rider,Rage,Skeleton King,Witch,Wizard",6,4,2,0.6666666666666666,0.2999883213415286
-"Elite Barbarians,Mega Knight,Minion Horde,Mirror,Mother Witch,Night Witch,Vines,Wizard",6,4,2,0.6666666666666666,0.2999883213415286
 "Arrows,Bats,Hog Rider,Mini P.E.K.K.A,Princess,Wall Breakers,Witch,Wizard",6,4,2,0.6666666666666666,0.2999883213415286
+"Arrows,Dart Goblin,Giant Skeleton,Ice Spirit,Ronin,Valkyrie,Wall Breakers,Zap",6,4,2,0.6666666666666666,0.2999883213415286
+"Dart Goblin,Fireball,Hog Rider,Magic Archer,Mini P.E.K.K.A,Tesla,The Log,Valkyrie",6,4,2,0.6666666666666666,0.2999883213415286
 "Bats,Golden Knight,Mega Knight,Rocket,Skeleton Army,Skeletons,Witch,Zap",28,13,15,0.4642857142857143,0.2953130373965958
 "Cannon,Fire Spirit,Fireball,Firecracker,Hog Rider,Ice Spirit,Knight,Skeletons",31,14,17,0.45161290322580644,0.29161482836586106
-"Baby Dragon,Balloon,Barbarian Barrel,Bowler,Freeze,Inferno Dragon,Lumberjack,Tornado",13,7,6,0.5384615384615384,0.29143432431832045
 "Baby Dragon,Boss Bandit,Firecracker,Hog Rider,Knight,Mini P.E.K.K.A,Musketeer,Valkyrie",13,7,6,0.5384615384615384,0.29143432431832045
-"Archers,Electro Spirit,Fireball,Knight,Skeletons,Tesla,The Log,X-Bow",97,37,60,0.38144329896907214,0.291045123554349
-"Dart Goblin,Electro Spirit,Mega Knight,Mini P.E.K.K.A,Ronin,Skeletons,The Log,Witch",18,9,9,0.5,0.2903070395897999
 "Fireball,Firecracker,Goblin Barrel,Goblin Gang,Hog Rider,Ronin,Tesla,The Log",18,9,9,0.5,0.2903070395897999
+"Dart Goblin,Electro Spirit,Mega Knight,Mini P.E.K.K.A,Ronin,Skeletons,The Log,Witch",18,9,9,0.5,0.2903070395897999
+"Baby Dragon,Barbarians,Goblin Barrel,Inferno Dragon,Mega Knight,Rage,Royal Ghost,Wizard",18,9,9,0.5,0.2903070395897999
+"Boss Bandit,Dart Goblin,Electro Wizard,Firecracker,Guards,Inferno Tower,Poison,Valkyrie",26,12,14,0.46153846153846156,0.28755582695234905
 "Cannon,Electro Spirit,Hog Rider,Ice Golem,Musketeer,Skeletons,The Log,Vines",26,12,14,0.46153846153846156,0.28755582695234905
 "Baby Dragon,Bomber,Elixir Golem,Firecracker,Giant Skeleton,Goblin Barrel,Mini P.E.K.K.A,Sparky",29,13,16,0.4482758620689655,0.2841291114874579
-"Arrows,Clone,Giant Skeleton,Goblin Barrel,Minion Horde,Skeleton Army,Sparky,Tesla",43,18,25,0.4186046511627907,0.28384334337485234
-"Goblin Barrel,Goblin Gang,Ice Spirit,Inferno Tower,Knight,Princess,Rocket,The Log",88,33,55,0.375,0.2810776628624691
-"Bowler,Cannon,Electro Wizard,Miner,Poison,Princess,The Log,Valkyrie",11,6,5,0.5454545454545454,0.2800877556899882
+"Cannon,Executioner,Fireball,Hog Rider,Minion Horde,Ronin,Tornado,Zap",21,10,11,0.47619047619047616,0.28343712296762946
+"Arrows,Barbarian Barrel,Dart Goblin,Ice Wizard,Mini P.E.K.K.A,Mortar,Skeletons,Wall Breakers",21,10,11,0.47619047619047616,0.28343712296762946
 "Dart Goblin,Electro Spirit,Mini P.E.K.K.A,Royal Giant,Skeletons,Tesla,The Log,Witch",11,6,5,0.5454545454545454,0.2800877556899882
+"Bowler,Cannon,Electro Wizard,Miner,Poison,Princess,The Log,Valkyrie",11,6,5,0.5454545454545454,0.2800877556899882
+"Baby Dragon,Barbarians,Goblin Barrel,Inferno Dragon,Rage,Royal Ghost,Skeleton Army,Wizard",11,6,5,0.5454545454545454,0.2800877556899882
+"Baby Dragon,Boss Bandit,Mini P.E.K.K.A,Mirror,Skeleton Army,Spirit Empress,Vines,Witch",16,8,8,0.5,0.2799923761135083
+"Balloon,Elixir Golem,Fireball,Firecracker,Goblin Gang,Lumberjack,Witch,Zappies",16,8,8,0.5,0.2799923761135083
 "Archer Queen,Earthquake,Mini P.E.K.K.A,Rage,Rocket,Royal Delivery,Royal Hogs,Tesla",24,11,13,0.4583333333333333,0.27891058351681425
-"Arrows,Bowler,Giant,Giant Snowball,Graveyard,Guards,Minions,Witch",44,18,26,0.4090909090909091,0.27687643879006824
-"Executioner,Fire Spirit,Goblin Barrel,Inferno Tower,Mega Knight,Mighty Miner,Skeleton Army,The Log",19,9,10,0.47368421052631576,0.2732950548744854
-"Bats,Dart Goblin,Fireball,Guards,Hog Rider,Prince,Valkyrie,Zap",19,9,10,0.47368421052631576,0.2732950548744854
+"Arrows,Baby Dragon,Barbarian Barrel,Battle Ram,Mega Knight,Mirror,Skeleton Army,X-Bow",30,13,17,0.43333333333333335,0.27377237430615114
 "Barbarians,Cannon,Firecracker,Goblin Barrel,Mega Knight,Royal Giant,The Log,Witch",19,9,10,0.47368421052631576,0.2732950548744854
+"Executioner,Fire Spirit,Goblin Barrel,Inferno Tower,Mega Knight,Mighty Miner,Skeleton Army,The Log",19,9,10,0.47368421052631576,0.2732950548744854
+"Arrows,Flying Machine,Goblin Cage,Guards,Ice Wizard,Rage,Ram Rider,Royal Recruits",19,9,10,0.47368421052631576,0.2732950548744854
 "Cannon,Electro Wizard,Little Prince,Miner,Poison,Princess,The Log,Valkyrie",19,9,10,0.47368421052631576,0.2732950548744854
-"Baby Dragon,Boss Bandit,Mini P.E.K.K.A,Mirror,Skeleton Army,Spirit Empress,Vines,Witch",14,7,7,0.5,0.2679886791947528
-"Elixir Golem,Firecracker,Goblinstein,Mega Knight,Mini P.E.K.K.A,Sparky,Valkyrie,Witch",14,7,7,0.5,0.2679886791947528
+"Bats,Dart Goblin,Fireball,Guards,Hog Rider,Prince,Valkyrie,Zap",19,9,10,0.47368421052631576,0.2732950548744854
+"Executioner,Goblins,Hog Rider,Ice Spirit,Rocket,The Log,Tornado,Valkyrie",19,9,10,0.47368421052631576,0.2732950548744854
 "Arrows,Cannon,Electro Wizard,Firecracker,Hog Rider,Knight,Ronin,Witch",14,7,7,0.5,0.2679886791947528
+"Balloon,Bowler,Executioner,Firecracker,Prince,Princess,Ronin,Wizard",14,7,7,0.5,0.2679886791947528
+"Arrows,Firecracker,Goblin Gang,Goblins,Mighty Miner,Royal Recruits,Skeleton Barrel,Wall Breakers",14,7,7,0.5,0.2679886791947528
 "Arrows,Firecracker,Goblins,Hog Rider,Mega Knight,Ronin,Witch,Wizard",14,7,7,0.5,0.2679886791947528
-"Cannon Cart,Firecracker,Flying Machine,Freeze,Furnace,Mega Knight,Mirror,Mother Witch",9,5,4,0.5555555555555556,0.26664734574402965
-"Cannon,Fireball,Hog Rider,Ice Spirit,Knight,Musketeer,Skeletons,The Log",9,5,4,0.5555555555555556,0.26664734574402965
-"Balloon,Dart Goblin,Inferno Tower,Mega Knight,Ronin,Skeleton Barrel,Valkyrie,Witch",9,5,4,0.5555555555555556,0.26664734574402965
+"Bandit,Battle Ram,Electro Wizard,Fireball,Magic Archer,P.E.K.K.A,Royal Ghost,Zap",89,32,57,0.3595505617977528,0.2675763432047396
 "Archers,Barbarian Barrel,Goblin Gang,Golden Knight,Mega Knight,Skeletons,Tesla,Witch",9,5,4,0.5555555555555556,0.26664734574402965
+"Elite Barbarians,Giant,Hog Rider,Mighty Miner,Mother Witch,Valkyrie,Witch,Wizard",9,5,4,0.5555555555555556,0.26664734574402965
+"Balloon,Dart Goblin,Inferno Tower,Mega Knight,Ronin,Skeleton Barrel,Valkyrie,Witch",9,5,4,0.5555555555555556,0.26664734574402965
+"Dart Goblin,Fire Spirit,Minion Horde,Skeleton Army,Skeleton Barrel,Skeleton King,Vines,Wall Breakers",9,5,4,0.5555555555555556,0.26664734574402965
+"Goblin Curse,Golem,Inferno Dragon,Miner,Night Witch,Skeleton Army,Skeleton King,Zap",43,17,26,0.3953488372093023,0.263651061984564
+"Dark Prince,Guards,Inferno Dragon,Monk,Musketeer,Prince,Spirit Empress,Wizard",17,8,9,0.47058823529411764,0.26164801196088106
 "Balloon,Dart Goblin,P.E.K.K.A,Ronin,Skeleton Army,Vines,Wizard,Zap",17,8,9,0.47058823529411764,0.26164801196088106
 "Dart Goblin,Electro Wizard,Ice Spirit,Mega Knight,Minions,Rage,Skeletons,Valkyrie",20,9,11,0.45,0.25819502085709295
-"Giant Snowball,Heal Spirit,Hunter,Mega Knight,Mini P.E.K.K.A,Prince,Valkyrie,Zap",23,10,13,0.43478260869565216,0.25634368332198654
+"Giant Snowball,Heal Spirit,Hunter,Mega Knight,Mini P.E.K.K.A,Prince,Valkyrie,Zap",29,12,17,0.41379310344827586,0.2551293527964552
+"Baby Dragon,Barbarians,Battle Healer,Electro Dragon,Elixir Collector,Golem,Lumberjack,Tornado",12,6,6,0.5,0.2537781703934222
 "Arrows,Firecracker,Inferno Dragon,Inferno Tower,Lumberjack,Minion Horde,Prince,The Log",12,6,6,0.5,0.2537781703934222
-"Balloon,Elite Barbarians,Executioner,Inferno Dragon,Mega Knight,Minion Horde,Rage,Wizard",12,6,6,0.5,0.2537781703934222
 "Barbarian Barrel,Dart Goblin,Fireball,Hog Rider,Skeleton Army,Skeleton Barrel,Valkyrie,Witch",12,6,6,0.5,0.2537781703934222
-"Barbarian Barrel,Cannon,Earthquake,Electro Spirit,Firecracker,Hog Rider,Mighty Miner,Skeletons",12,6,6,0.5,0.2537781703934222
+"Barbarians,Battle Ram,Bomber,Electro Dragon,Goblin Gang,Magic Archer,Skeleton King,Wall Breakers",12,6,6,0.5,0.2537781703934222
+"Electro Wizard,Elite Barbarians,Fireball,Firecracker,Inferno Dragon,Ronin,Tesla,Witch",12,6,6,0.5,0.2537781703934222
+"Cannon Cart,Goblin Curse,Goblin Gang,Little Prince,Mega Knight,Mortar,Rage,Tesla",12,6,6,0.5,0.2537781703934222
 "Arrows,Boss Bandit,Dart Goblin,Golden Knight,Ronin,Skeleton Barrel,Tesla,Valkyrie",12,6,6,0.5,0.2537781703934222
-"Bandit,Battle Ram,Electro Wizard,Fireball,Magic Archer,P.E.K.K.A,Royal Ghost,Zap",58,21,37,0.3620689655172414,0.25054734348500335
-"Arrows,Firecracker,Giant Snowball,Hog Rider,Ronin,Skeleton King,Witch,Wizard",7,4,3,0.5714285714285714,0.2504542304090258
-"Dart Goblin,Elite Barbarians,Elixir Golem,Firecracker,Freeze,Mega Knight,Valkyrie,Witch",7,4,3,0.5714285714285714,0.2504542304090258
 "Electro Wizard,Firecracker,Goblin Barrel,Lumberjack,Mini P.E.K.K.A,Ram Rider,Tesla,Zap",7,4,3,0.5714285714285714,0.2504542304090258
+"Arrows,Firecracker,Knight,Mega Knight,Musketeer,Prince,Tesla,Wizard",7,4,3,0.5714285714285714,0.2504542304090258
+"Baby Dragon,Goblin Curse,Hog Rider,Mega Knight,Mini P.E.K.K.A,Prince,Tornado,Valkyrie",7,4,3,0.5714285714285714,0.2504542304090258
 "Archers,Fireball,Goblin Barrel,Goblin Gang,Mega Knight,Tesla,The Log,Witch",7,4,3,0.5714285714285714,0.2504542304090258
-"Balloon,Mega Knight,Minion Horde,Prince,Ram Rider,Skeleton Army,Valkyrie,Wizard",7,4,3,0.5714285714285714,0.2504542304090258
-"Elixir Golem,Executioner,Goblin Curse,Night Witch,Rage,Skeleton Army,Skeleton King,Void",40,15,25,0.375,0.24222773535791722
+"Arrows,Firecracker,Giant Snowball,Hog Rider,Ronin,Skeleton King,Witch,Wizard",7,4,3,0.5714285714285714,0.2504542304090258
+"Boss Bandit,Dart Goblin,Fire Spirit,Ice Spirit,Spear Goblins,Suspicious Bush,The Log,Wall Breakers",7,4,3,0.5714285714285714,0.2504542304090258
+"Dart Goblin,Elite Barbarians,Elixir Golem,Firecracker,Freeze,Mega Knight,Valkyrie,Witch",7,4,3,0.5714285714285714,0.2504542304090258
+"Arrows,Barbarian Barrel,Flying Machine,Goblin Cage,Golden Knight,Royal Hogs,Royal Recruits,Zappies",42,16,26,0.38095238095238093,0.24999520898785943
+"Archers,Dart Goblin,Electro Wizard,Goblinstein,Golem,Heal Spirit,Princess,Wizard",15,7,8,0.4666666666666667,0.24809225259746442
+"Baby Dragon,Bats,Bowler,Fire Spirit,Hog Rider,Rage,Spear Goblins,Wizard",15,7,8,0.4666666666666667,0.24809225259746442
+"Barbarian Barrel,Cannon,Earthquake,Electro Spirit,Firecracker,Hog Rider,Mighty Miner,Skeletons",15,7,8,0.4666666666666667,0.24809225259746442
+"Fireball,Goblin Barrel,Mega Knight,Mini P.E.K.K.A,Ronin,Skeletons,Witch,Zap",15,7,8,0.4666666666666667,0.24809225259746442
+"Elixir Golem,Firecracker,Goblinstein,Mega Knight,Mini P.E.K.K.A,Sparky,Valkyrie,Witch",15,7,8,0.4666666666666667,0.24809225259746442
+"Balloon,Bowler,Electro Dragon,Executioner,Golem,Mirror,P.E.K.K.A,Tombstone",30,12,18,0.4,0.24590394326083398
+"Baby Dragon,Battle Healer,Elixir Collector,Golem,Mini P.E.K.K.A,Valkyrie,Vines,Zappies",53,19,34,0.3584905660377358,0.24301769841123622
 "Arrows,Firecracker,Golem,Sparky,The Log,Tombstone,Valkyrie,Wizard",31,12,19,0.3870967741935484,0.23732875351271562
-"Arrows,Firecracker,Monk,Royal Hogs,Skeleton Barrel,Skeletons,Tesla,Wizard",10,5,5,0.5,0.2365895936154873
+"Inferno Dragon,Mega Knight,Mirror,Prince,Royal Hogs,Skeleton Army,Witch,Wizard",10,5,5,0.5,0.2365895936154873
 "Arrows,Dart Goblin,Ice Spirit,Mega Knight,Musketeer,Valkyrie,Wall Breakers,Witch",10,5,5,0.5,0.2365895936154873
-"Dart Goblin,Goblin Barrel,Golden Knight,Miner,Musketeer,Poison,Tesla,Valkyrie",10,5,5,0.5,0.2365895936154873
-"Arrows,Bomber,Fisherman,Goblin Giant,Goblinstein,Guards,P.E.K.K.A,Rage",10,5,5,0.5,0.2365895936154873
+"Arrows,Firecracker,Monk,Royal Hogs,Skeleton Barrel,Skeletons,Tesla,Wizard",10,5,5,0.5,0.2365895936154873
 "Firecracker,Goblin Barrel,Goblin Gang,Miner,Princess,Skeleton King,Valkyrie,Wizard",10,5,5,0.5,0.2365895936154873
-"Barbarian Barrel,Battle Healer,Electro Dragon,Elixir Collector,Golem,Lumberjack,Skeleton Dragons,Tornado",51,18,33,0.35294117647058826,0.2363430538125979
+"Archer Queen,Giant Skeleton,Little Prince,Mega Knight,Mother Witch,P.E.K.K.A,Spirit Empress,Three Musketeers",10,5,5,0.5,0.2365895936154873
+"Dart Goblin,Goblin Barrel,Golden Knight,Miner,Musketeer,Poison,Tesla,Valkyrie",10,5,5,0.5,0.2365895936154873
+"Bomb Tower,Bomber,Dark Prince,Firecracker,Ice Golem,Mega Knight,Prince,Wizard",48,17,31,0.3541666666666667,0.23433457112685732
+"Balloon,Elite Barbarians,Executioner,Inferno Dragon,Mega Knight,Minion Horde,Rage,Wizard",13,6,7,0.46153846153846156,0.23205754301488138
+"Balloon,Freeze,Furnace,Giant,Mega Knight,Skeleton Army,Valkyrie,Witch",13,6,7,0.46153846153846156,0.23205754301488138
+"Arrows,Dart Goblin,Ice Spirit,Knight,Miner,Minion Horde,Mortar,Rascals",13,6,7,0.46153846153846156,0.23205754301488138
+"Bowler,Elixir Collector,Fire Spirit,Firecracker,Heal Spirit,Mighty Miner,Valkyrie,Vines",13,6,7,0.46153846153846156,0.23205754301488138
 "Earthquake,Firecracker,P.E.K.K.A,Royal Delivery,Royal Hogs,Skeletons,Tesla,The Log",13,6,7,0.46153846153846156,0.23205754301488138
-"Elite Barbarians,Firecracker,Goblin Barrel,Princess,Skeleton Army,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
-"Firecracker,Mega Knight,Minion Horde,Musketeer,Ronin,Royal Recruits,The Log,Valkyrie",5,3,2,0.6,0.23071993220883702
-"Bowler,Goblin Cage,Goblinstein,Graveyard,Ice Wizard,Lightning,Skeleton Army,Spear Goblins",5,3,2,0.6,0.23071993220883702
-"Firecracker,Goblin Barrel,Goblin Gang,Mega Knight,Princess,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
-"Arrows,Electro Wizard,Fireball,Hunter,Knight,P.E.K.K.A,Ronin,Tesla",5,3,2,0.6,0.23071993220883702
-"Arrows,Elite Barbarians,Firecracker,Goblin Barrel,Goblin Gang,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
-"Baby Dragon,Goblin Curse,Hog Rider,Mega Knight,Mini P.E.K.K.A,Prince,Tornado,Valkyrie",5,3,2,0.6,0.23071993220883702
-"Arrows,Firecracker,Goblin Gang,Goblins,Mighty Miner,Royal Recruits,Skeleton Barrel,Wall Breakers",5,3,2,0.6,0.23071993220883702
-"Fireball,Firecracker,Goblin Barrel,Hog Rider,Knight,Tesla,The Log,Witch",5,3,2,0.6,0.23071993220883702
-"Elite Barbarians,Knight,Mega Knight,Mirror,Skeleton Army,Skeleton Barrel,The Log,Wizard",5,3,2,0.6,0.23071993220883702
-"Archer Queen,Arrows,Barbarian Barrel,Goblin Barrel,Ice Spirit,Skeletons,Tesla,Valkyrie",5,3,2,0.6,0.23071993220883702
+"Bowler,Dart Goblin,Knight,Lumberjack,Mega Knight,Mini P.E.K.K.A,The Log,Witch",16,7,9,0.4375,0.2309836333518552
 "Arrows,Battle Ram,Electro Wizard,Golden Knight,Lumberjack,Mother Witch,P.E.K.K.A,Royal Ghost",5,3,2,0.6,0.23071993220883702
-"Dart Goblin,Firecracker,Goblin Barrel,Goblin Gang,Goblins,Skeleton Barrel,Tesla,Valkyrie",5,3,2,0.6,0.23071993220883702
-"Arrows,Clone,Inferno Dragon,Lava Hound,Minions,Mirror,Skeleton Army,Skeleton Barrel",5,3,2,0.6,0.23071993220883702
-"Firecracker,Golden Knight,Inferno Dragon,Prince,Royal Delivery,Skeleton Army,Wizard,Zap",5,3,2,0.6,0.23071993220883702
-"Firecracker,Goblin Barrel,Golden Knight,Mega Knight,P.E.K.K.A,Princess,Valkyrie,Witch",5,3,2,0.6,0.23071993220883702
 "Arrows,Barbarian Barrel,Dart Goblin,Mega Knight,Mini P.E.K.K.A,Mirror,Skeleton Army,Wizard",5,3,2,0.6,0.23071993220883702
+"Arrows,Clone,Inferno Dragon,Lava Hound,Minions,Mirror,Skeleton Army,Skeleton Barrel",5,3,2,0.6,0.23071993220883702
+"Balloon,Electro Giant,Elite Barbarians,Executioner,Mega Knight,Minion Horde,Skeleton Army,Sparky",5,3,2,0.6,0.23071993220883702
+"Earthquake,Firecracker,Hog Rider,Ice Spirit,Knight,Skeletons,Tesla,The Log",5,3,2,0.6,0.23071993220883702
+"Firecracker,Mega Knight,Minion Horde,Musketeer,Ronin,Royal Recruits,The Log,Valkyrie",5,3,2,0.6,0.23071993220883702
 "Dart Goblin,Goblins,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",5,3,2,0.6,0.23071993220883702
-"Arrows,Barbarian Barrel,Flying Machine,Goblin Cage,Golden Knight,Royal Hogs,Royal Recruits,Zappies",23,9,14,0.391304347826087,0.22157377982382145
-"Bomb Tower,Bomber,Dark Prince,Firecracker,Ice Golem,Mega Knight,Prince,Wizard",37,13,24,0.35135135135135137,0.21825406631100872
-"Firecracker,Goblins,Hog Rider,Hunter,Little Prince,Musketeer,Spear Goblins,Valkyrie",17,7,10,0.4117647058823529,0.21610786039131383
-"Baby Dragon,Battle Healer,Elixir Collector,Golem,Mini P.E.K.K.A,Valkyrie,Vines,Zappies",27,10,17,0.37037037037037035,0.21532287067936856
-"Arrows,Bats,Giant Skeleton,Goblin Barrel,Mini P.E.K.K.A,Ronin,Skeletons,Witch",8,4,4,0.5,0.2152125268244419
-"Furnace,Goblin Cage,Goblins,Prince,Rocket,Royal Ghost,Wall Breakers,Witch",8,4,4,0.5,0.2152125268244419
-"Boss Bandit,Firecracker,Giant Snowball,Goblin Gang,Minion Horde,Ronin,Skeleton Army,Wizard",8,4,4,0.5,0.2152125268244419
-"Boss Bandit,Fireball,Firecracker,Furnace,Goblin Gang,Mega Knight,Mirror,Royal Hogs",8,4,4,0.5,0.2152125268244419
+"Firecracker,Goblin Barrel,Golden Knight,Mega Knight,P.E.K.K.A,Princess,Valkyrie,Witch",5,3,2,0.6,0.23071993220883702
+"Elite Barbarians,Firecracker,Goblin Barrel,Princess,Skeleton Army,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
+"Dart Goblin,Firecracker,Goblin Barrel,Goblin Gang,Goblins,Skeleton Barrel,Tesla,Valkyrie",5,3,2,0.6,0.23071993220883702
+"Fireball,Firecracker,Goblin Barrel,Hog Rider,Knight,Tesla,The Log,Witch",5,3,2,0.6,0.23071993220883702
+"Archer Queen,Arrows,Barbarian Barrel,Goblin Barrel,Ice Spirit,Skeletons,Tesla,Valkyrie",5,3,2,0.6,0.23071993220883702
+"Arrows,Electro Wizard,Fireball,Hunter,Knight,P.E.K.K.A,Ronin,Tesla",5,3,2,0.6,0.23071993220883702
+"Bandit,Battle Ram,Dark Prince,Electro Wizard,Minions,P.E.K.K.A,Poison,Zap",5,3,2,0.6,0.23071993220883702
+"Firecracker,Goblin Barrel,Goblin Gang,Mega Knight,Princess,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
+"Arrows,Elite Barbarians,Firecracker,Goblin Barrel,Goblin Gang,Skeleton King,Valkyrie,Wizard",5,3,2,0.6,0.23071993220883702
+"Elite Barbarians,Knight,Mega Knight,Mirror,Skeleton Army,Skeleton Barrel,The Log,Wizard",5,3,2,0.6,0.23071993220883702
+"Barbarian Barrel,Battle Healer,Electro Dragon,Elixir Collector,Golem,Lumberjack,Skeleton Dragons,Tornado",56,19,37,0.3392857142857143,0.22919799319334652
+"Arrows,Bowler,Giant,Giant Snowball,Graveyard,Guards,Minions,Witch",56,19,37,0.3392857142857143,0.22919799319334652
+"Arrows,Clone,Giant Skeleton,Goblin Barrel,Minion Horde,Skeleton Army,Sparky,Tesla",56,19,37,0.3392857142857143,0.22919799319334652
+"Elixir Golem,Executioner,Goblin Curse,Night Witch,Rage,Skeleton Army,Skeleton King,Void",65,21,44,0.3230769230769231,0.22203729362311722
+"Bats,Clone,Golden Knight,Mega Knight,Skeleton Army,Skeleton Barrel,Witch,Wizard",17,7,10,0.4117647058823529,0.21610786039131383
+"Arrows,Bats,Battle Ram,Electro Wizard,Inferno Tower,Ronin,The Log,Valkyrie",17,7,10,0.4117647058823529,0.21610786039131383
+"Elite Barbarians,Mega Knight,Minion Horde,Mirror,Mother Witch,Night Witch,Vines,Wizard",8,4,4,0.5,0.2152125268244419
 "Earthquake,Electro Spirit,Fisherman,Guards,Hunter,Monk,Rage,Royal Giant",8,4,4,0.5,0.2152125268244419
+"Furnace,Goblin Cage,Goblins,Prince,Rocket,Royal Ghost,Wall Breakers,Witch",8,4,4,0.5,0.2152125268244419
+"Boss Bandit,Fireball,Firecracker,Furnace,Goblin Gang,Mega Knight,Mirror,Royal Hogs",8,4,4,0.5,0.2152125268244419
 "Cannon,Electro Wizard,Fireball,Mega Knight,Minions,Mirror,The Log,Valkyrie",8,4,4,0.5,0.2152125268244419
-"Mega Knight,Minion Horde,Mirror,Royal Hogs,Skeleton Army,Valkyrie,Witch,Wizard",8,4,4,0.5,0.2152125268244419
-"Arrows,Bats,Elixir Golem,Firecracker,Golem,Mini P.E.K.K.A,Ronin,Wizard",14,6,8,0.42857142857142855,0.21380509930400526
+"Arrows,Bats,Battle Ram,Dark Prince,Guards,Hunter,Lightning,Mega Knight",8,4,4,0.5,0.2152125268244419
+"Boss Bandit,Firecracker,Giant Snowball,Goblin Gang,Minion Horde,Ronin,Skeleton Army,Wizard",8,4,4,0.5,0.2152125268244419
+"Arrows,Bats,Giant Skeleton,Goblin Barrel,Mini P.E.K.K.A,Ronin,Skeletons,Witch",8,4,4,0.5,0.2152125268244419
+"Baby Dragon,Cannon Cart,Dark Prince,Dart Goblin,Guards,Prince,Royal Delivery,Valkyrie",8,4,4,0.5,0.2152125268244419
 "Archers,Hog Rider,Mini P.E.K.K.A,Ronin,Royal Delivery,Tesla,The Log,Wizard",14,6,8,0.42857142857142855,0.21380509930400526
+"Arrows,Bats,Elixir Golem,Firecracker,Golem,Mini P.E.K.K.A,Ronin,Wizard",14,6,8,0.42857142857142855,0.21380509930400526
 "Cannon,Dart Goblin,Goblin Barrel,Goblins,Ice Spirit,Ronin,Skeletons,The Log",14,6,8,0.42857142857142855,0.21380509930400526
-"Arrows,Dark Prince,Executioner,Lumberjack,Mini P.E.K.K.A,Minion Horde,Ronin,Royal Giant",14,6,8,0.42857142857142855,0.21380509930400526
-"Balloon,Fireball,Lava Hound,Mega Minion,Skeleton Dragons,Tombstone,Valkyrie,Zap",14,6,8,0.42857142857142855,0.21380509930400526
 "Bats,Bomb Tower,Knight,Magic Archer,Miner,Skeletons,The Log,Wall Breakers",14,6,8,0.42857142857142855,0.21380509930400526
+"Arrows,Dark Prince,Executioner,Lumberjack,Mini P.E.K.K.A,Minion Horde,Ronin,Royal Giant",14,6,8,0.42857142857142855,0.21380509930400526
+"Arrows,Bomber,Fisherman,Goblin Giant,Goblinstein,Guards,P.E.K.K.A,Rage",11,5,6,0.45454545454545453,0.21270957543988048
+"Cannon,Fireball,Hog Rider,Ice Spirit,Knight,Musketeer,Skeletons,The Log",11,5,6,0.45454545454545453,0.21270957543988048
 "Dart Goblin,Electro Spirit,Electro Wizard,Ice Spirit,Mega Knight,Minions,Skeletons,Valkyrie",11,5,6,0.45454545454545453,0.21270957543988048
-"Balloon,Freeze,Furnace,Giant,Mega Knight,Skeleton Army,Valkyrie,Witch",11,5,6,0.45454545454545453,0.21270957543988048
-"Baby Dragon,Barbarians,Battle Healer,Electro Dragon,Elixir Collector,Golem,Lumberjack,Tornado",11,5,6,0.45454545454545453,0.21270957543988048
 "Arrows,Fireball,Goblin Barrel,Mega Knight,Musketeer,Prince,Tombstone,Witch",11,5,6,0.45454545454545453,0.21270957543988048
-"Boss Bandit,Clone,Elixir Collector,Giant Skeleton,Golem,Lumberjack,Magic Archer,Musketeer",28,10,18,0.35714285714285715,0.20705611972458876
-"Balloon,Executioner,Goblin Giant,Mega Minion,Mini P.E.K.K.A,Sparky,Tombstone,Zap",32,11,21,0.34375,0.2041023335432855
-"Arrows,Barbarian Barrel,Electro Spirit,Flying Machine,Goblin Cage,Royal Hogs,Royal Recruits,Zappies",18,7,11,0.3888888888888889,0.2030499192693116
+"Balloon,Barbarian Barrel,Bomb Tower,Giant Snowball,Ice Golem,Miner,Musketeer,Skeletons",35,12,23,0.34285714285714286,0.20831495282688925
+"Electro Spirit,Fisherman,Giant Snowball,Monk,Ram Rider,Skeletons,Tombstone,Witch",21,8,13,0.38095238095238093,0.20750767797982508
+"Bats,Elite Barbarians,P.E.K.K.A,Rage,Sparky,Three Musketeers,Witch,Wizard",15,6,9,0.4,0.19824228082594664
+"Baby Dragon,Battle Ram,Dark Prince,Dart Goblin,Inferno Dragon,Mini P.E.K.K.A,Musketeer,Prince",15,6,9,0.4,0.19824228082594664
 "Dark Prince,Goblin Giant,Mega Minion,Mini P.E.K.K.A,Mother Witch,Rage,Sparky,Zap",15,6,9,0.4,0.19824228082594664
-"Executioner,Goblins,Hog Rider,Ice Spirit,Rocket,The Log,Tornado,Valkyrie",12,5,7,0.4166666666666667,0.19325746190524654
+"Arrows,Bats,Boss Bandit,Fireball,Mini P.E.K.K.A,Skeleton Army,Skeletons,Witch",22,8,14,0.36363636363636365,0.19732972772607899
 "Arrows,Fireball,Mega Knight,Musketeer,Prince,Spear Goblins,Tombstone,Witch",12,5,7,0.4166666666666667,0.19325746190524654
+"Freeze,Inferno Dragon,Mirror,Ram Rider,Royal Hogs,Skeleton Army,Valkyrie,Witch",12,5,7,0.4166666666666667,0.19325746190524654
+"Arrows,Bomber,Electro Wizard,Goblin Curse,Goblin Giant,Goblin Machine,P.E.K.K.A,Rage",38,12,26,0.3157894736842105,0.1908442002366664
+"Balloon,Executioner,Goblin Giant,Mega Minion,Mini P.E.K.K.A,Sparky,Tombstone,Zap",38,12,26,0.3157894736842105,0.1908442002366664
+"Bowler,Executioner,Freeze,Golden Knight,Graveyard,Inferno Dragon,Tornado,Zappies",38,12,26,0.3157894736842105,0.1908442002366664
+"Dart Goblin,Fire Spirit,Ice Spirit,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",46,14,32,0.30434782608695654,0.190796708074489
+"Baby Dragon,Barbarian Barrel,Boss Bandit,Firecracker,Ram Rider,Tombstone,Valkyrie,Witch",9,4,5,0.4444444444444444,0.188775429471914
+"Arrows,Inferno Tower,Mega Knight,Princess,Rage,Ram Rider,Rocket,Wizard",9,4,5,0.4444444444444444,0.188775429471914
+"Mega Knight,Minion Horde,Mirror,Royal Hogs,Skeleton Army,Valkyrie,Witch,Wizard",9,4,5,0.4444444444444444,0.188775429471914
 "Cannon,Earthquake,Firecracker,Hog Rider,Ice Spirit,Mighty Miner,Skeletons,The Log",9,4,5,0.4444444444444444,0.188775429471914
-"Inferno Dragon,Mega Knight,Mirror,Prince,Royal Hogs,Skeleton Army,Witch,Wizard",9,4,5,0.4444444444444444,0.188775429471914
-"Arrows,Lightning,Mega Knight,Mini P.E.K.K.A,Minion Horde,Valkyrie,Witch,Wizard",9,4,5,0.4444444444444444,0.188775429471914
-"Goblin Barrel,Goblin Gang,Inferno Tower,Knight,Princess,Rocket,Skeletons,The Log",9,4,5,0.4444444444444444,0.188775429471914
+"Firecracker,P.E.K.K.A,Rage,Skeleton Dragons,Skeleton King,Sparky,Valkyrie,Witch",9,4,5,0.4444444444444444,0.188775429471914
 "Arrows,Barbarian Barrel,Mega Knight,Mini P.E.K.K.A,Mirror,Royal Giant,Skeleton Army,Wizard",9,4,5,0.4444444444444444,0.188775429471914
-"Bats,Dart Goblin,Fireball,Guards,Prince,Ronin,Valkyrie,Zap",6,3,3,0.5,0.1876128068994087
-"Elite Barbarians,Giant,Hog Rider,Mighty Miner,Mother Witch,Valkyrie,Witch,Wizard",6,3,3,0.5,0.1876128068994087
-"Barbarian Barrel,Executioner,Goblins,Hog Rider,Ice Spirit,Rocket,Tornado,Valkyrie",6,3,3,0.5,0.1876128068994087
-"Boss Bandit,Dart Goblin,Fire Spirit,Ice Spirit,Spear Goblins,Suspicious Bush,The Log,Wall Breakers",6,3,3,0.5,0.1876128068994087
-"Baby Dragon,Mega Knight,Prince,Ronin,Tornado,Valkyrie,Witch,Wizard",6,3,3,0.5,0.1876128068994087
-"Balloon,Battle Healer,Elixir Collector,Elixir Golem,Firecracker,Poison,Royal Ghost,Witch",6,3,3,0.5,0.1876128068994087
 "Goblin Drill,Goblins,Ice Spirit,Knight,Musketeer,Poison,Tesla,The Log",6,3,3,0.5,0.1876128068994087
-"Archers,Balloon,Bats,Bomb Tower,Ice Spirit,Knight,Skeletons,The Log",6,3,3,0.5,0.1876128068994087
 "Cannon,Hog Rider,Knight,Prince,Royal Delivery,Skeletons,Witch,Zap",6,3,3,0.5,0.1876128068994087
-"Bats,Elixir Golem,Freeze,Mini P.E.K.K.A,Poison,Spirit Empress,Witch,Wizard",13,5,8,0.38461538461538464,0.17709446581236818
+"Executioner,Firecracker,Goblin Gang,Ice Spirit,Mega Knight,The Log,Valkyrie,Wizard",6,3,3,0.5,0.1876128068994087
+"Bats,Dart Goblin,Fireball,Guards,Prince,Ronin,Valkyrie,Zap",6,3,3,0.5,0.1876128068994087
+"Archers,Balloon,Bats,Bomb Tower,Ice Spirit,Knight,Skeletons,The Log",6,3,3,0.5,0.1876128068994087
+"Balloon,Elite Barbarians,Freeze,Mini P.E.K.K.A,Minion Horde,Prince,Rage,Wizard",6,3,3,0.5,0.1876128068994087
+"Barbarian Barrel,Executioner,Goblins,Hog Rider,Ice Spirit,Rocket,Tornado,Valkyrie",6,3,3,0.5,0.1876128068994087
+"Bowler,Goblin Cage,Goblinstein,Graveyard,Ice Wizard,Lightning,Skeleton Army,Spear Goblins",6,3,3,0.5,0.1876128068994087
+"Baby Dragon,Mega Knight,Prince,Ronin,Tornado,Valkyrie,Witch,Wizard",6,3,3,0.5,0.1876128068994087
+"Fireball,Goblin Machine,Golem,Magic Archer,Mega Knight,Mini P.E.K.K.A,Tesla,The Log",6,3,3,0.5,0.1876128068994087
+"Barbarian Barrel,Battle Ram,Giant Skeleton,Mother Witch,Royal Ghost,Vines,Wizard,Zappies",6,3,3,0.5,0.1876128068994087
+"Baby Dragon,Barbarian Barrel,Graveyard,Ice Wizard,Knight,Poison,Tombstone,Tornado",6,3,3,0.5,0.1876128068994087
+"Boss Bandit,Executioner,Freeze,Furnace,Giant Snowball,Guards,Hog Rider,Royal Ghost",68,19,49,0.27941176470588236,0.18677805007008424
+"Arrows,Berserker,Boss Bandit,Electro Dragon,Furnace,Golem,Spirit Empress,Tornado",16,6,10,0.375,0.18480982554752803
+"Electro Dragon,Electro Giant,Elixir Collector,Inferno Dragon,Lightning,Mega Knight,Witch,X-Bow",16,6,10,0.375,0.18480982554752803
+"Balloon,Fireball,Lava Hound,Mega Minion,Skeleton Dragons,Tombstone,Valkyrie,Zap",16,6,10,0.375,0.18480982554752803
+"Firecracker,Goblins,Hog Rider,Hunter,Little Prince,Musketeer,Spear Goblins,Valkyrie",20,7,13,0.35,0.1811895478679446
+"Boss Bandit,Clone,Elixir Collector,Giant Skeleton,Golem,Lumberjack,Magic Archer,Musketeer",32,10,22,0.3125,0.17952352116618736
+"Bomb Tower,Knight,Magic Archer,Miner,Spear Goblins,The Log,Tornado,Wall Breakers",28,9,19,0.32142857142857145,0.1793304754342074
 "Arrows,Electro Spirit,Firecracker,Knight,P.E.K.K.A,Ronin,Wizard,Zap",13,5,8,0.38461538461538464,0.17709446581236818
-"Bats,Dark Prince,Furnace,Lumberjack,Mini P.E.K.K.A,Skeleton Barrel,Zap,Zappies",13,5,8,0.38461538461538464,0.17709446581236818
-"Arrows,Cannon Cart,Goblin Gang,Ice Wizard,Mortar,Skeleton Barrel,Skeleton King,Spear Goblins",21,7,14,0.3333333333333333,0.17194536432683688
+"Barbarians,Battle Healer,Electro Dragon,Elixir Collector,Golem,Inferno Dragon,Lumberjack,Tornado",13,5,8,0.38461538461538464,0.17709446581236818
+"Arrows,Cannon Cart,Goblin Gang,Ice Wizard,Mortar,Skeleton Barrel,Skeleton King,Spear Goblins",29,9,20,0.3103448275862069,0.17275424489768065
+"Goblin Barrel,Goblin Gang,Inferno Tower,Knight,Princess,Rocket,Skeletons,The Log",10,4,6,0.4,0.16817758120350967
+"Balloon,Mega Knight,Minion Horde,Prince,Ram Rider,Skeleton Army,Valkyrie,Wizard",10,4,6,0.4,0.16817758120350967
+"Arrows,Battle Healer,Electro Dragon,Elite Barbarians,Elixir Golem,Heal Spirit,Inferno Dragon,Rage",10,4,6,0.4,0.16817758120350967
+"Bowler,Elite Barbarians,Ice Wizard,Miner,Minions,Rage,Royal Giant,Zap",10,4,6,0.4,0.16817758120350967
+"Bats,Clone,Heal Spirit,Lava Hound,Lumberjack,Skeleton Army,Three Musketeers,Zap",10,4,6,0.4,0.16817758120350967
+"Dart Goblin,Furnace,Golden Knight,Ice Wizard,Prince,Rage,Ram Rider,Valkyrie",10,4,6,0.4,0.16817758120350967
+"Arrows,Executioner,Fireball,Hog Rider,Inferno Tower,Mega Knight,Ronin,Wizard",10,4,6,0.4,0.16817758120350967
+"Arrows,Battle Healer,Dart Goblin,Electro Dragon,Elixir Golem,Night Witch,Phoenix,Rage",10,4,6,0.4,0.16817758120350967
+"Arrows,Bats,Boss Bandit,Mega Knight,Mini P.E.K.K.A,Skeleton Barrel,Wall Breakers,Wizard",10,4,6,0.4,0.16817758120350967
 "Arrows,Bowler,Firecracker,Knight,Mega Minion,Royal Hogs,Skeleton Barrel,Tesla",10,4,6,0.4,0.16817758120350967
 "Archers,Baby Dragon,Knight,Miner,Prince,Rage,Skeleton Army,Witch",10,4,6,0.4,0.16817758120350967
-"Bowler,Elite Barbarians,Ice Wizard,Miner,Minions,Rage,Royal Giant,Zap",10,4,6,0.4,0.16817758120350967
-"Freeze,Inferno Dragon,Mirror,Ram Rider,Royal Hogs,Skeleton Army,Valkyrie,Witch",10,4,6,0.4,0.16817758120350967
 "Bats,Dark Prince,Inferno Dragon,Mega Knight,Miner,Prince,Skeleton Army,Wizard",10,4,6,0.4,0.16817758120350967
-"Bomber,Electro Wizard,Guards,Lightning,Mega Knight,Mini P.E.K.K.A,Ram Rider,Void",14,5,9,0.35714285714285715,0.16344490737202735
+"Arrows,Lightning,Mega Knight,Mini P.E.K.K.A,Minion Horde,Valkyrie,Witch,Wizard",10,4,6,0.4,0.16817758120350967
+"Arrows,Bats,Elixir Golem,Firecracker,Mega Knight,Valkyrie,Witch,Wizard",14,5,9,0.35714285714285715,0.16344490737202735
 "Bowler,Furnace,Goblin Cage,Goblins,Rocket,Royal Ghost,Wall Breakers,Witch",14,5,9,0.35714285714285715,0.16344490737202735
-"Boss Bandit,Executioner,Freeze,Furnace,Giant Snowball,Guards,Hog Rider,Royal Ghost",59,15,44,0.2542372881355932,0.1605583829520582
+"Firecracker,Furnace,Goblin Giant,Goblin Machine,Phoenix,Ram Rider,Royal Hogs,Skeleton King",14,5,9,0.35714285714285715,0.16344490737202735
+"Archer Queen,Barbarians,Battle Ram,Bomb Tower,Elite Barbarians,Mega Knight,Skeleton Dragons,Witch",14,5,9,0.35714285714285715,0.16344490737202735
+"Bats,Elixir Golem,Freeze,Mini P.E.K.K.A,Poison,Spirit Empress,Witch,Wizard",14,5,9,0.35714285714285715,0.16344490737202735
+"Barbarians,Inferno Tower,Mega Knight,Mighty Miner,Mortar,Phoenix,Princess,Skeleton Dragons",27,8,19,0.2962962962962963,0.15852853317647564
+"Arrows,Cannon,Dart Goblin,Executioner,Hog Rider,Ice Spirit,Mighty Miner,Skeletons",7,3,4,0.42857142857142855,0.15821692226262685
+"Balloon,Battle Healer,Elixir Collector,Elixir Golem,Firecracker,Poison,Royal Ghost,Witch",7,3,4,0.42857142857142855,0.15821692226262685
+"Barbarian Barrel,Dart Goblin,Fireball,Goblin Gang,Hog Rider,Royal Delivery,Valkyrie,Witch",7,3,4,0.42857142857142855,0.15821692226262685
 "Electro Wizard,Heal Spirit,Ice Golem,Mighty Miner,Ram Rider,Ronin,Skeleton Barrel,Void",7,3,4,0.42857142857142855,0.15821692226262685
 "Bats,Boss Bandit,Cannon,Giant Skeleton,Golden Knight,Graveyard,Musketeer,The Log",7,3,4,0.42857142857142855,0.15821692226262685
+"Arrows,Electro Dragon,Elixir Golem,Goblin Curse,Lightning,Night Witch,Skeleton Army,Skeleton King",7,3,4,0.42857142857142855,0.15821692226262685
 "Barbarians,Dart Goblin,Goblins,Ice Golem,Ice Wizard,Royal Hogs,Skeleton King,Witch",7,3,4,0.42857142857142855,0.15821692226262685
-"Baby Dragon,Goblin Hut,Inferno Dragon,Lumberjack,Minion Horde,Skeleton Army,Valkyrie,Witch",7,3,4,0.42857142857142855,0.15821692226262685
-"Arrows,Cannon,Dart Goblin,Executioner,Hog Rider,Ice Spirit,Mighty Miner,Skeletons",7,3,4,0.42857142857142855,0.15821692226262685
-"Barbarian Barrel,Dart Goblin,Fireball,Goblin Gang,Hog Rider,Royal Delivery,Valkyrie,Witch",7,3,4,0.42857142857142855,0.15821692226262685
-"Bandit,Electro Wizard,Elite Barbarians,Goblin Gang,Hog Rider,Mega Minion,Rage,Valkyrie",7,3,4,0.42857142857142855,0.15821692226262685
-"Arrows,Bats,Boss Bandit,Mega Knight,Mini P.E.K.K.A,Skeleton Barrel,Wall Breakers,Wizard",7,3,4,0.42857142857142855,0.15821692226262685
 "Arrows,Bats,Dart Goblin,Hog Rider,Princess,Wall Breakers,Witch,Wizard",7,3,4,0.42857142857142855,0.15821692226262685
-"Arrows,Battle Healer,Electro Dragon,Elite Barbarians,Elixir Golem,Heal Spirit,Inferno Dragon,Rage",7,3,4,0.42857142857142855,0.15821692226262685
-"Arrows,Bats,Battle Ram,Dark Prince,Guards,Hunter,Lightning,Mega Knight",7,3,4,0.42857142857142855,0.15821692226262685
-"Electro Spirit,Fisherman,Giant Snowball,Monk,Ram Rider,Skeletons,Tombstone,Witch",19,6,13,0.3157894736842105,0.15364171004428598
-"Bowler,Executioner,Freeze,Golden Knight,Graveyard,Inferno Dragon,Tornado,Zappies",28,8,20,0.2857142857142857,0.15253815848329966
-"Electro Dragon,Electro Giant,Elixir Collector,Inferno Dragon,Lightning,Mega Knight,Witch,X-Bow",15,5,10,0.3333333333333333,0.15176100694691236
-"Dark Prince,Guards,Inferno Dragon,Monk,Musketeer,Prince,Spirit Empress,Wizard",11,4,7,0.36363636363636365,0.15166223614131386
-"Balloon,Barbarian Barrel,Bomb Tower,Giant Snowball,Ice Golem,Miner,Musketeer,Skeletons",25,7,18,0.28,0.14283673837381572
-"Goblin Curse,Golem,Inferno Dragon,Miner,Night Witch,Skeleton Army,Skeleton King,Zap",25,7,18,0.28,0.14283673837381572
-"Archers,Dart Goblin,Electro Wizard,Goblinstein,Golem,Heal Spirit,Princess,Wizard",8,3,5,0.375,0.13684175946152105
-"Dart Goblin,Firecracker,Goblin Barrel,Goblin Gang,Princess,Ronin,Tesla,The Log",8,3,5,0.375,0.13684175946152105
+"Arrows,Elixir Golem,Ice Wizard,Knight,Lightning,Royal Hogs,Skeletons,Wizard",7,3,4,0.42857142857142855,0.15821692226262685
+"Clone,Electro Wizard,Minion Horde,P.E.K.K.A,Skeleton Barrel,Void,Witch,Wizard",7,3,4,0.42857142857142855,0.15821692226262685
+"Dark Prince,Elixir Collector,Golden Knight,Minions,Mirror,Princess,Witch,Wizard",7,3,4,0.42857142857142855,0.15821692226262685
+"Barbarian Barrel,Fireball,Firecracker,Mega Knight,Ram Rider,Royal Delivery,Zap,Zappies",7,3,4,0.42857142857142855,0.15821692226262685
+"Balloon,Barbarian Barrel,Bats,Bomb Tower,Fireball,Ice Golem,Miner,Musketeer",7,3,4,0.42857142857142855,0.15821692226262685
+"Balloon,Elixir Golem,Giant Skeleton,Minion Horde,Mother Witch,Ronin,Skeleton Dragons,Wizard",28,8,20,0.2857142857142857,0.15253815848329966
+"Bats,Dark Prince,Furnace,Lumberjack,Mini P.E.K.K.A,Skeleton Barrel,Zap,Zappies",15,5,10,0.3333333333333333,0.15176100694691236
+"Arrows,Elixir Golem,Goblin Hut,Mega Knight,Rage,Three Musketeers,Valkyrie,Witch",15,5,10,0.3333333333333333,0.15176100694691236
+"Baby Dragon,Barbarians,Electro Wizard,Mini P.E.K.K.A,Prince,Skeleton Army,Spear Goblins,Zap",11,4,7,0.36363636363636365,0.15166223614131386
+"Earthquake,Elixir Golem,Mega Knight,Mini P.E.K.K.A,Phoenix,Rage,Valkyrie,Witch",11,4,7,0.36363636363636365,0.15166223614131386
+"Barbarians,Flying Machine,Goblin Curse,Lava Hound,Miner,Phoenix,Tombstone,Zap",20,6,14,0.3,0.14547527396899385
+"Battle Ram,Electro Wizard,Mirror,Mother Witch,P.E.K.K.A,Ram Rider,Sparky,Wizard",30,8,22,0.26666666666666666,0.14182495553910618
+"Arrows,Barbarian Barrel,Fireball,Flying Machine,Goblin Cage,Royal Hogs,Royal Recruits,Zappies",16,5,11,0.3125,0.14164435051961052
+"Barbarians,Freeze,Giant,Golden Knight,P.E.K.K.A,Rage,Sparky,Wizard",16,5,11,0.3125,0.14164435051961052
+"Battle Healer,Dart Goblin,Goblins,Lumberjack,Mini P.E.K.K.A,Mother Witch,Rage,Tombstone",12,4,8,0.3333333333333333,0.13811783989736134
+"Balloon,Freeze,Giant Skeleton,Mega Knight,Minion Horde,Skeleton Army,Wizard,Zap",12,4,8,0.3333333333333333,0.13811783989736134
+"Baby Dragon,Dark Prince,Fireball,Firecracker,Goblin Cage,Goblin Gang,Ronin,Witch",12,4,8,0.3333333333333333,0.13811783989736134
+"Dart Goblin,Knight,Lumberjack,Mega Knight,Mini P.E.K.K.A,Ronin,The Log,Witch",12,4,8,0.3333333333333333,0.13811783989736134
+"Elixir Golem,Firecracker,Minion Horde,Mirror,Skeleton Army,Sparky,Tornado,Wizard",8,3,5,0.375,0.13684175946152105
 "Archers,Arrows,Electro Wizard,Hog Rider,Mini P.E.K.K.A,Skeleton Army,Skeletons,Witch",8,3,5,0.375,0.13684175946152105
-"Firecracker,P.E.K.K.A,Rage,Skeleton Dragons,Skeleton King,Sparky,Valkyrie,Witch",8,3,5,0.375,0.13684175946152105
-"Boss Bandit,Elixir Golem,Goblin Hut,Mega Knight,Mother Witch,Princess,Witch,Wizard",8,3,5,0.375,0.13684175946152105
-"Dark Prince,Electro Wizard,Goblin Gang,Hog Rider,Knight,Magic Archer,The Log,Zap",8,3,5,0.375,0.13684175946152105
-"Baby Dragon,Bandit,Bats,Fire Spirit,Goblins,Minions,Skeleton Army,Valkyrie",8,3,5,0.375,0.13684175946152105
-"Cannon,Golden Knight,Hog Rider,Knight,Royal Delivery,Skeletons,Witch,Zap",8,3,5,0.375,0.13684175946152105
-"Clone,Flying Machine,Furnace,Graveyard,Lava Hound,Night Witch,Poison,Witch",8,3,5,0.375,0.13684175946152105
-"Dark Prince,Fireball,Goblin Giant,Knight,Minions,Rage,Ronin,Sparky",8,3,5,0.375,0.13684175946152105
-"Electro Wizard,Elixir Golem,Executioner,Lightning,Monk,P.E.K.K.A,Sparky,Wizard",8,3,5,0.375,0.13684175946152105
 "Barbarian Barrel,Dart Goblin,Goblin Barrel,Golden Knight,P.E.K.K.A,Princess,Skeletons,Witch",8,3,5,0.375,0.13684175946152105
-"Arrows,Berserker,Boss Bandit,Electro Dragon,Furnace,Golem,Spirit Empress,Tornado",13,4,9,0.3076923076923077,0.1268049716161809
-"Barbarians,Flying Machine,Goblin Curse,Lava Hound,Miner,Phoenix,Tombstone,Zap",18,5,13,0.2777777777777778,0.12499569146355476
-"Arrows,Bats,Goblin Drill,Goblins,Inferno Dragon,Mega Knight,Skeleton Barrel,Wall Breakers",9,3,6,0.3333333333333333,0.12058159868274292
-"Arrows,Executioner,Golem,Hunter,Inferno Dragon,Mega Knight,Prince,Ram Rider",9,3,6,0.3333333333333333,0.12058159868274292
-"Cannon,Fisherman,Giant Snowball,Guards,Knight,Mortar,Musketeer,Void",9,3,6,0.3333333333333333,0.12058159868274292
+"Dark Prince,Fireball,Goblin Giant,Knight,Minions,Rage,Ronin,Sparky",8,3,5,0.375,0.13684175946152105
+"Firecracker,Goblin Curse,Mega Knight,Minion Horde,Mortar,Mother Witch,Rage,Ram Rider",8,3,5,0.375,0.13684175946152105
+"Cannon,Golden Knight,Hog Rider,Knight,Royal Delivery,Skeletons,Witch,Zap",8,3,5,0.375,0.13684175946152105
+"Dart Goblin,Firecracker,Goblin Barrel,Goblin Gang,Princess,Ronin,Tesla,The Log",8,3,5,0.375,0.13684175946152105
+"Electro Wizard,Elixir Golem,Executioner,Lightning,Monk,P.E.K.K.A,Sparky,Wizard",8,3,5,0.375,0.13684175946152105
+"Dark Prince,Electro Wizard,Goblin Gang,Hog Rider,Knight,Magic Archer,The Log,Zap",8,3,5,0.375,0.13684175946152105
+"Arrows,Clone,Giant Skeleton,Lumberjack,Mega Minion,Mirror,Musketeer,Witch",8,3,5,0.375,0.13684175946152105
+"Dart Goblin,Elixir Golem,Firecracker,Goblins,Mega Knight,Minions,Valkyrie,Witch",8,3,5,0.375,0.13684175946152105
+"Bandit,Dark Prince,Electro Wizard,Firecracker,Goblin Drill,Royal Ghost,Royal Recruits,Wall Breakers",22,6,16,0.2727272727272727,0.13150582015814438
+"Dart Goblin,Fire Spirit,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",13,4,9,0.3076923076923077,0.1268049716161809
+"Boss Bandit,Elixir Golem,Goblin Hut,Mega Knight,Mother Witch,Princess,Witch,Wizard",13,4,9,0.3076923076923077,0.1268049716161809
+"Clone,Flying Machine,Furnace,Graveyard,Lava Hound,Night Witch,Poison,Witch",9,3,6,0.3333333333333333,0.12058159868274292
+"Baby Dragon,Goblin Hut,Inferno Dragon,Lumberjack,Minion Horde,Skeleton Army,Valkyrie,Witch",9,3,6,0.3333333333333333,0.12058159868274292
+"Bowler,Dark Prince,Fire Spirit,Goblin Curse,Mirror,Royal Giant,Suspicious Bush,Wall Breakers",9,3,6,0.3333333333333333,0.12058159868274292
+"Barbarians,Boss Bandit,Mega Knight,Mirror,Royal Hogs,Sparky,Witch,Wizard",9,3,6,0.3333333333333333,0.12058159868274292
+"Dart Goblin,Guards,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",9,3,6,0.3333333333333333,0.12058159868274292
+"Boss Bandit,Lightning,Mega Knight,Royal Recruits,Three Musketeers,Void,Wizard,X-Bow",9,3,6,0.3333333333333333,0.12058159868274292
+"Arrows,Electro Giant,Lightning,Mega Knight,Mini P.E.K.K.A,Monk,Tornado,Witch",9,3,6,0.3333333333333333,0.12058159868274292
 "Arrows,Barbarians,Goblin Barrel,Golden Knight,Skeleton Army,Tesla,Witch,Wizard",9,3,6,0.3333333333333333,0.12058159868274292
+"Baby Dragon,Bandit,Bats,Fire Spirit,Goblins,Minions,Skeleton Army,Valkyrie",9,3,6,0.3333333333333333,0.12058159868274292
 "Bomber,Clone,Dark Prince,Golden Knight,Inferno Dragon,Mini P.E.K.K.A,Mother Witch,Musketeer",9,3,6,0.3333333333333333,0.12058159868274292
-"Arrows,Battle Healer,Dart Goblin,Electro Dragon,Elixir Golem,Night Witch,Phoenix,Rage",9,3,6,0.3333333333333333,0.12058159868274292
-"Arrows,Bomber,Electro Wizard,Goblin Curse,Goblin Giant,Goblin Machine,P.E.K.K.A,Rage",24,6,18,0.25,0.11999203479342334
-"Balloon,Dark Prince,Furnace,Goblin Demolisher,Lightning,Mega Knight,Minion Horde,Musketeer",24,6,18,0.25,0.11999203479342334
-"Battle Ram,Electro Wizard,Mirror,Mother Witch,P.E.K.K.A,Ram Rider,Sparky,Wizard",19,5,14,0.2631578947368421,0.11806238339540162
-"Arrows,Electro Giant,Lightning,Mega Knight,Mini P.E.K.K.A,Monk,Tornado,Witch",5,2,3,0.4,0.11761823115925325
-"Baby Dragon,Cannon Cart,Dark Prince,Dart Goblin,Guards,Prince,Royal Delivery,Valkyrie",5,2,3,0.4,0.11761823115925325
+"Furnace,Goblin Demolisher,Goblin Giant,Night Witch,Phoenix,Sparky,Tombstone,Vines",5,2,3,0.4,0.11761823115925325
+"Arrows,Bats,Battle Healer,Bowler,Firecracker,Magic Archer,Poison,Witch",5,2,3,0.4,0.11761823115925325
 "Baby Dragon,Balloon,Firecracker,Knight,Lumberjack,Ronin,Royal Ghost,Witch",5,2,3,0.4,0.11761823115925325
-"Barbarian Barrel,Boss Bandit,Executioner,Firecracker,Freeze,Giant Snowball,Goblins,Hog Rider",5,2,3,0.4,0.11761823115925325
-"Barbarian Barrel,Electro Wizard,Golden Knight,Lightning,Mini P.E.K.K.A,Ronin,Tesla,Witch",5,2,3,0.4,0.11761823115925325
-"Barbarian Barrel,Battle Ram,Giant Skeleton,Mother Witch,Royal Ghost,Vines,Wizard,Zappies",5,2,3,0.4,0.11761823115925325
-"Arrows,Electro Dragon,Elixir Golem,Goblin Curse,Lightning,Night Witch,Skeleton Army,Skeleton King",5,2,3,0.4,0.11761823115925325
-"Baby Dragon,Barbarian Barrel,Boss Bandit,Firecracker,Ram Rider,Tombstone,Valkyrie,Witch",5,2,3,0.4,0.11761823115925325
-"Balloon,Freeze,Giant,Lumberjack,Minion Horde,Sparky,Wizard,Zap",5,2,3,0.4,0.11761823115925325
-"Goblin Barrel,Goblin Cage,Hog Rider,Knight,Mega Knight,Ronin,Wizard,Zap",5,2,3,0.4,0.11761823115925325
 "Bats,Dart Goblin,Giant Snowball,Ice Golem,Rocket,Ronin,Skeletons,Valkyrie",5,2,3,0.4,0.11761823115925325
-"Archers,Electro Dragon,Giant Skeleton,Giant Snowball,Mega Minion,Mini P.E.K.K.A,Prince,Zap",5,2,3,0.4,0.11761823115925325
-"Arrows,Barbarians,Battle Healer,Electro Dragon,Elixir Golem,Night Witch,Rage,Tornado",5,2,3,0.4,0.11761823115925325
-"Dart Goblin,Guards,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",5,2,3,0.4,0.11761823115925325
-"Arrows,Balloon,Minion Horde,Prince,Rage,Skeleton Army,Witch,Wizard",5,2,3,0.4,0.11761823115925325
-"Baby Dragon,Elite Barbarians,Elixir Golem,Executioner,Hog Rider,Mighty Miner,Mini P.E.K.K.A,Princess",5,2,3,0.4,0.11761823115925325
-"Dart Goblin,Fire Spirit,Ice Spirit,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",36,8,28,0.2222222222222222,0.11716192974839595
-"Arrows,Bats,Elixir Golem,Firecracker,Mega Knight,Valkyrie,Witch,Wizard",10,3,7,0.3,0.10778928748621182
-"Baby Dragon,Battle Ram,Dark Prince,Dart Goblin,Inferno Dragon,Mini P.E.K.K.A,Musketeer,Prince",10,3,7,0.3,0.10778928748621182
-"Dart Goblin,Fire Spirit,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",10,3,7,0.3,0.10778928748621182
-"Firecracker,Furnace,Goblin Giant,Goblin Machine,Phoenix,Ram Rider,Royal Hogs,Skeleton King",10,3,7,0.3,0.10778928748621182
-"Arrows,Clone,Freeze,Giant Skeleton,Lumberjack,Mini P.E.K.K.A,Mirror,Rage",10,3,7,0.3,0.10778928748621182
-"Barbarians,Inferno Tower,Mega Knight,Mighty Miner,Mortar,Phoenix,Princess,Skeleton Dragons",21,5,16,0.23809523809523808,0.10627856389112264
-"Bats,Boss Bandit,Elixir Golem,Goblin Curse,Hog Rider,Mega Knight,Mirror,Mother Witch",11,3,8,0.2727272727272727,0.09745880573921469
-"Arrows,Elixir Golem,Goblin Hut,Mega Knight,Rage,Three Musketeers,Valkyrie,Witch",11,3,8,0.2727272727272727,0.09745880573921469
-"Archer Queen,Barbarians,Battle Ram,Bomb Tower,Elite Barbarians,Mega Knight,Skeleton Dragons,Witch",11,3,8,0.2727272727272727,0.09745880573921469
-"Firecracker,Goblin Curse,Mega Knight,Minion Horde,Mortar,Mother Witch,Rage,Ram Rider",6,2,4,0.3333333333333333,0.09676933255921684
-"Elixir Collector,Executioner,Firecracker,Golem,Inferno Dragon,Night Witch,Skeleton Army,Zap",6,2,4,0.3333333333333333,0.09676933255921684
-"Elixir Golem,Furnace,Lightning,Mini P.E.K.K.A,Poison,Valkyrie,Witch,Wizard",6,2,4,0.3333333333333333,0.09676933255921684
-"Barbarian Barrel,Barbarians,Elite Barbarians,Flying Machine,Giant Skeleton,Golem,Mother Witch,Skeleton Dragons",6,2,4,0.3333333333333333,0.09676933255921684
-"Dart Goblin,Elixir Golem,Firecracker,Goblins,Mega Knight,Minions,Valkyrie,Witch",6,2,4,0.3333333333333333,0.09676933255921684
-"Archers,Golden Knight,Guards,Lumberjack,P.E.K.K.A,Princess,Valkyrie,Zap",6,2,4,0.3333333333333333,0.09676933255921684
+"Barbarians,Elixir Golem,Firecracker,Goblinstein,Inferno Dragon,Rage,Ram Rider,Skeleton Army",5,2,3,0.4,0.11761823115925325
+"Bandit,Dark Prince,Firecracker,Guards,Musketeer,Poison,Vines,Wizard",5,2,3,0.4,0.11761823115925325
+"Bats,Elixir Golem,Firecracker,Lumberjack,Skeleton Army,Skeleton King,Valkyrie,Witch",5,2,3,0.4,0.11761823115925325
+"Goblin Barrel,Goblin Cage,Hog Rider,Knight,Mega Knight,Ronin,Wizard,Zap",5,2,3,0.4,0.11761823115925325
+"Dart Goblin,Executioner,Firecracker,Inferno Dragon,Minion Horde,P.E.K.K.A,Prince,Witch",5,2,3,0.4,0.11761823115925325
+"Barbarian Barrel,Boss Bandit,Executioner,Firecracker,Freeze,Giant Snowball,Goblins,Hog Rider",5,2,3,0.4,0.11761823115925325
+"Balloon,Freeze,Giant,Lumberjack,Minion Horde,Sparky,Wizard,Zap",5,2,3,0.4,0.11761823115925325
+"Arrows,Bomber,Clone,Fireball,Knight,Magic Archer,P.E.K.K.A,Witch",5,2,3,0.4,0.11761823115925325
+"Dark Prince,Elixir Collector,Golem,Minion Horde,Mirror,Poison,Prince,Zap",5,2,3,0.4,0.11761823115925325
+"Arrows,Firecracker,Golem,Mini P.E.K.K.A,Ronin,Royal Delivery,Wizard,Zap",5,2,3,0.4,0.11761823115925325
+"Clone,Furnace,Goblin Demolisher,Night Witch,Phoenix,The Log,Tombstone,Void",5,2,3,0.4,0.11761823115925325
+"Barbarian Barrel,Electro Wizard,Golden Knight,Lightning,Mini P.E.K.K.A,Ronin,Tesla,Witch",5,2,3,0.4,0.11761823115925325
+"Balloon,Dark Prince,Furnace,Goblin Demolisher,Lightning,Mega Knight,Minion Horde,Musketeer",31,7,24,0.22580645161290322,0.113949915944988
+"Bomber,Electro Wizard,Guards,Lightning,Mega Knight,Mini P.E.K.K.A,Ram Rider,Void",20,5,15,0.25,0.11186005278940306
+"Mini P.E.K.K.A,Minion Horde,Minions,Poison,Ram Rider,Royal Giant,Skeleton Barrel,Tombstone",26,6,20,0.23076923076923078,0.11033699683676688
+"Earthquake,Electro Giant,Firecracker,Inferno Dragon,Tornado,Valkyrie,Witch,Zap",15,4,11,0.26666666666666666,0.10897276103182815
+"Arrows,Bomber,Elite Barbarians,Golem,Lumberjack,Mega Minion,Night Witch,Zap",10,3,7,0.3,0.10778928748621182
+"Bandit,Electro Wizard,Elite Barbarians,Goblin Gang,Hog Rider,Mega Minion,Rage,Valkyrie",10,3,7,0.3,0.10778928748621182
+"Arrows,Balloon,Guards,Lava Hound,Lightning,Mega Minion,Minions,Tombstone",53,10,43,0.18867924528301888,0.10585211943149556
+"Bats,Bomber,Dart Goblin,Hog Rider,Lumberjack,Mighty Miner,Valkyrie,Witch",22,5,17,0.22727272727272727,0.10122890794820355
+"Bats,Berserker,Bomb Tower,Fire Spirit,Magic Archer,Miner,Royal Delivery,Wall Breakers",100,16,84,0.16,0.10095202349473717
+"Electro Dragon,Elixir Collector,Firecracker,Freeze,Golem,Lumberjack,Skeleton Dragons,Tornado",11,3,8,0.2727272727272727,0.09745880573921469
+"Electro Giant,Executioner,Goblin Cage,Lightning,Mega Knight,Mini P.E.K.K.A,Mirror,Tornado",11,3,8,0.2727272727272727,0.09745880573921469
+"Barbarians,Boss Bandit,Cannon Cart,Clone,Freeze,Furnace,Minion Horde,Zappies",11,3,8,0.2727272727272727,0.09745880573921469
 "Arrows,Balloon,Clone,Executioner,Giant Skeleton,Lightning,Mega Knight,Witch",6,2,4,0.3333333333333333,0.09676933255921684
-"Arrows,Elixir Golem,Golem,Inferno Dragon,Night Witch,Rage,Skeleton Army,Skeleton King",6,2,4,0.3333333333333333,0.09676933255921684
+"Archers,Golden Knight,Guards,Lumberjack,P.E.K.K.A,Princess,Valkyrie,Zap",6,2,4,0.3333333333333333,0.09676933255921684
+"Arrows,Elixir Golem,Lightning,Night Witch,Rage,Skeleton Army,Skeleton King,Witch",6,2,4,0.3333333333333333,0.09676933255921684
+"Balloon,Clone,Firecracker,Lumberjack,Magic Archer,Royal Hogs,Sparky,Valkyrie",6,2,4,0.3333333333333333,0.09676933255921684
+"Baby Dragon,Barbarians,Battle Ram,Goblin Hut,Inferno Dragon,Mini P.E.K.K.A,Rocket,Royal Giant",6,2,4,0.3333333333333333,0.09676933255921684
+"Baby Dragon,Bandit,Battle Healer,Bomber,Dart Goblin,Electro Dragon,Elixir Golem,Flying Machine",6,2,4,0.3333333333333333,0.09676933255921684
+"Baby Dragon,Inferno Dragon,P.E.K.K.A,Prince,Rage,Skeleton Army,Valkyrie,Void",6,2,4,0.3333333333333333,0.09676933255921684
+"Baby Dragon,Elite Barbarians,Elixir Golem,Executioner,Hog Rider,Mighty Miner,Mini P.E.K.K.A,Princess",6,2,4,0.3333333333333333,0.09676933255921684
 "Cannon,Electro Wizard,Goblin Barrel,Musketeer,Prince,Ram Rider,The Log,Valkyrie",6,2,4,0.3333333333333333,0.09676933255921684
+"Bats,Dart Goblin,Furnace,Giant Skeleton,Mini P.E.K.K.A,Mortar,Mother Witch,Skeleton Barrel",6,2,4,0.3333333333333333,0.09676933255921684
+"Goblin Curse,Goblins,Golem,Inferno Dragon,Miner,Night Witch,Skeleton King,Zap",6,2,4,0.3333333333333333,0.09676933255921684
+"Cannon,Electro Dragon,Firecracker,Furnace,Goblin Barrel,Golden Knight,Prince,Ram Rider",6,2,4,0.3333333333333333,0.09676933255921684
 "Boss Bandit,Electro Giant,Firecracker,Inferno Tower,Lightning,Mega Knight,Mirror,Wizard",6,2,4,0.3333333333333333,0.09676933255921684
 "Cannon,Electro Spirit,Fireball,Hog Rider,Ice Golem,Musketeer,Skeletons,The Log",6,2,4,0.3333333333333333,0.09676933255921684
-"Baby Dragon,Barbarian Hut,Elixir Collector,Magic Archer,Mega Knight,Miner,Witch,Wizard",6,2,4,0.3333333333333333,0.09676933255921684
-"Bowler,Elixir Collector,Fire Spirit,Firecracker,Heal Spirit,Mighty Miner,Valkyrie,Vines",6,2,4,0.3333333333333333,0.09676933255921684
-"Arrows,Bomber,Bowler,Cannon,Electro Giant,Royal Recruits,Spirit Empress,Tornado",6,2,4,0.3333333333333333,0.09676933255921684
-"Clone,Electro Wizard,Minion Horde,P.E.K.K.A,Skeleton Barrel,Void,Witch,Wizard",6,2,4,0.3333333333333333,0.09676933255921684
-"Arrows,Bomber,Elite Barbarians,Golem,Lumberjack,Mega Minion,Night Witch,Zap",6,2,4,0.3333333333333333,0.09676933255921684
-"Dart Goblin,Goblin Drill,Goblin Giant,Inferno Tower,Poison,Rascals,Tornado,Witch",23,5,18,0.21739130434782608,0.09663835601719065
-"Bandit,Dark Prince,Electro Wizard,Firecracker,Goblin Drill,Royal Ghost,Royal Recruits,Wall Breakers",17,4,13,0.23529411764705882,0.09554889071675943
-"Arrows,Battle Healer,Electro Dragon,Elite Barbarians,Elixir Golem,Firecracker,Inferno Dragon,Rage",12,3,9,0.25,0.08894003962896137
-"Bomb Tower,Knight,Magic Archer,Miner,Spear Goblins,The Log,Tornado,Wall Breakers",12,3,9,0.25,0.08894003962896137
-"Balloon,Freeze,Giant,P.E.K.K.A,Skeleton Army,Sparky,Witch,Wizard",7,2,5,0.2857142857142857,0.08221716570901552
-"Arrows,Bats,Firecracker,Mini P.E.K.K.A,Royal Giant,Skeleton Army,Skeleton Barrel,Valkyrie",7,2,5,0.2857142857142857,0.08221716570901552
-"Battle Healer,Battle Ram,Furnace,Giant Skeleton,Hunter,Inferno Dragon,Sparky,Valkyrie",7,2,5,0.2857142857142857,0.08221716570901552
-"Arrows,Battle Healer,Electro Dragon,Elixir Golem,Mega Minion,Night Witch,Rage,Valkyrie",7,2,5,0.2857142857142857,0.08221716570901552
-"Bowler,Dark Prince,Fire Spirit,Goblin Curse,Mirror,Royal Giant,Suspicious Bush,Wall Breakers",7,2,5,0.2857142857142857,0.08221716570901552
-"Bats,Clone,Heal Spirit,Lava Hound,Lumberjack,Skeleton Army,Three Musketeers,Zap",7,2,5,0.2857142857142857,0.08221716570901552
+"Arrows,Balloon,Minion Horde,Prince,Rage,Skeleton Army,Witch,Wizard",6,2,4,0.3333333333333333,0.09676933255921684
+"Balloon,Bats,Bomber,Fire Spirit,Rage,Royal Giant,Spear Goblins,Vines",91,14,77,0.15384615384615385,0.09391127768535097
+"Dart Goblin,Firecracker,Lightning,Mega Knight,Mini P.E.K.K.A,Royal Hogs,Skeleton Army,Valkyrie",12,3,9,0.25,0.08894003962896137
+"Arrows,Bats,Goblin Drill,Goblins,Inferno Dragon,Mega Knight,Skeleton Barrel,Wall Breakers",12,3,9,0.25,0.08894003962896137
+"Cannon,Fisherman,Giant Snowball,Guards,Knight,Mortar,Musketeer,Void",12,3,9,0.25,0.08894003962896137
+"Arrows,Executioner,Golem,Hunter,Inferno Dragon,Mega Knight,Prince,Ram Rider",12,3,9,0.25,0.08894003962896137
+"Arrows,Balloon,Guards,Lightning,Lumberjack,Mirror,Prince,Wizard",12,3,9,0.25,0.08894003962896137
+"Balloon,Freeze,Giant,P.E.K.K.A,Skeleton Army,Sparky,Witch,Wizard",12,3,9,0.25,0.08894003962896137
+"Barbarians,Electro Wizard,Executioner,Inferno Dragon,Royal Hogs,Skeleton Army,Valkyrie,Wizard",12,3,9,0.25,0.08894003962896137
+"Arrows,Dart Goblin,Freeze,Goblinstein,Hog Rider,Mega Knight,Ronin,Tesla",12,3,9,0.25,0.08894003962896137
+"Barbarian Barrel,Barbarians,Elite Barbarians,Flying Machine,Giant Skeleton,Golem,Mother Witch,Skeleton Dragons",7,2,5,0.2857142857142857,0.08221716570901552
+"Elixir Golem,Furnace,Lightning,Mini P.E.K.K.A,Poison,Valkyrie,Witch,Wizard",7,2,5,0.2857142857142857,0.08221716570901552
 "Archer Queen,Arrows,Hunter,Mega Knight,Prince,Royal Hogs,Skeleton Army,Valkyrie",7,2,5,0.2857142857142857,0.08221716570901552
-"Bats,Boss Bandit,Mini P.E.K.K.A,Rage,Royal Hogs,Skeleton Army,Valkyrie,Witch",7,2,5,0.2857142857142857,0.08221716570901552
+"Electro Dragon,Electro Giant,Executioner,Golem,Mega Knight,Mirror,Sparky,Tornado",7,2,5,0.2857142857142857,0.08221716570901552
+"Arrows,Barbarians,Battle Healer,Electro Dragon,Elixir Golem,Night Witch,Rage,Tornado",7,2,5,0.2857142857142857,0.08221716570901552
 "Bats,Dart Goblin,Firecracker,Mini P.E.K.K.A,Princess,Royal Giant,Skeleton Army,Valkyrie",7,2,5,0.2857142857142857,0.08221716570901552
-"Barbarians,Boss Bandit,Cannon Cart,Clone,Freeze,Furnace,Minion Horde,Zappies",7,2,5,0.2857142857142857,0.08221716570901552
-"Battle Healer,Dart Goblin,Goblins,Lumberjack,Mini P.E.K.K.A,Mother Witch,Rage,Tombstone",7,2,5,0.2857142857142857,0.08221716570901552
-"Barbarians,Freeze,Giant,Golden Knight,P.E.K.K.A,Rage,Sparky,Wizard",13,3,10,0.23076923076923078,0.08179379092465708
-"Balloon,Barbarian Hut,Clone,Elite Barbarians,Executioner,Minion Horde,Rage,Three Musketeers",20,4,16,0.2,0.08065635327119998
-"Bats,Berserker,Bomb Tower,Fire Spirit,Magic Archer,Miner,Royal Delivery,Wall Breakers",78,11,67,0.14102564102564102,0.08060961324830107
-"Arrows,Giant,Goblin Hut,Minions,Poison,Prince,Spear Goblins,Valkyrie",14,3,11,0.21428571428571427,0.07571248336916371
-"Barbarians,Battle Ram,Bomber,Electro Dragon,Goblin Gang,Magic Archer,Skeleton King,Wall Breakers",8,2,6,0.25,0.07147768885802765
-"Barbarians,Boss Bandit,Mega Knight,Mirror,Royal Hogs,Sparky,Witch,Wizard",8,2,6,0.25,0.07147768885802765
-"Bats,Elite Barbarians,P.E.K.K.A,Rage,Sparky,Three Musketeers,Witch,Wizard",8,2,6,0.25,0.07147768885802765
-"Barbarians,Electro Wizard,Executioner,Inferno Dragon,Royal Hogs,Skeleton Army,Valkyrie,Wizard",8,2,6,0.25,0.07147768885802765
-"Barbarian Hut,Barbarians,Bats,Goblin Gang,Golden Knight,Minion Horde,Mirror,Ram Rider",8,2,6,0.25,0.07147768885802765
-"Balloon,Freeze,Giant Skeleton,Mega Knight,Minion Horde,Skeleton Army,Wizard,Zap",8,2,6,0.25,0.07147768885802765
-"Firecracker,Golden Knight,Golem,Mega Knight,Minion Horde,Mother Witch,Poison,Witch",8,2,6,0.25,0.07147768885802765
-"Earthquake,Electro Giant,Firecracker,Inferno Dragon,Tornado,Valkyrie,Witch,Zap",8,2,6,0.25,0.07147768885802765
-"Electro Dragon,Giant,Inferno Dragon,Lumberjack,Mirror,Mother Witch,Royal Hogs,Skeleton Army",8,2,6,0.25,0.07147768885802765
-"Electro Giant,Elite Barbarians,Firecracker,Inferno Dragon,Mega Knight,P.E.K.K.A,Witch,Wizard",8,2,6,0.25,0.07147768885802765
-"Electro Giant,Executioner,Goblin Cage,Lightning,Mega Knight,Mini P.E.K.K.A,Mirror,Tornado",8,2,6,0.25,0.07147768885802765
-"Electro Giant,Graveyard,Minion Horde,Poison,Royal Hogs,Valkyrie,Witch,Wizard",8,2,6,0.25,0.07147768885802765
+"Elixir Collector,Executioner,Firecracker,Golem,Inferno Dragon,Night Witch,Skeleton Army,Zap",7,2,5,0.2857142857142857,0.08221716570901552
+"Archer Queen,Clone,Fisherman,Inferno Tower,Mighty Miner,P.E.K.K.A,Suspicious Bush,Vines",13,3,10,0.23076923076923078,0.08179379092465708
+"Balloon,Electro Wizard,Elite Barbarians,Firecracker,Lumberjack,Ram Rider,Valkyrie,Witch",13,3,10,0.23076923076923078,0.08179379092465708
+"Bats,Battle Healer,Bomber,Elixir Golem,Mirror,Mother Witch,Rage,Skeleton Army",13,3,10,0.23076923076923078,0.08179379092465708
+"Barbarian Hut,Elite Barbarians,Freeze,Furnace,Mirror,Rocket,Royal Hogs,Royal Recruits",36,6,30,0.16666666666666666,0.07870340628564097
+"Electro Giant,Elixir Collector,Furnace,Giant Snowball,Mega Minion,Mother Witch,Princess,Witch",21,4,17,0.19047619047619047,0.07667440615177303
+"Baby Dragon,Barbarian Barrel,Bowler,Graveyard,Ice Wizard,Poison,Tombstone,Tornado",21,4,17,0.19047619047619047,0.07667440615177303
+"Arrows,Battle Healer,Electro Dragon,Elite Barbarians,Elixir Golem,Firecracker,Inferno Dragon,Rage",14,3,11,0.21428571428571427,0.07571248336916371
+"Arrows,Clone,Freeze,Giant Skeleton,Lumberjack,Mini P.E.K.K.A,Mirror,Rage",14,3,11,0.21428571428571427,0.07571248336916371
+"Dart Goblin,Goblin Drill,Goblin Giant,Inferno Tower,Poison,Rascals,Tornado,Witch",30,5,25,0.16666666666666666,0.07336434240351683
+"Battle Healer,Battle Ram,Furnace,Giant Skeleton,Hunter,Inferno Dragon,Sparky,Valkyrie",8,2,6,0.25,0.07147768885802765
 "Archers,Barbarian Barrel,Battle Ram,Heal Spirit,Hog Rider,Inferno Dragon,Mother Witch,Skeleton Army",8,2,6,0.25,0.07147768885802765
-"Archer Queen,Clone,Fisherman,Inferno Tower,Mighty Miner,P.E.K.K.A,Suspicious Bush,Vines",8,2,6,0.25,0.07147768885802765
-"Boss Bandit,Dart Goblin,Elixir Golem,Fisherman,Freeze,Rocket,Witch,Wizard",15,3,12,0.2,0.07047420643610411
-"Bats,Bomber,Dart Goblin,Hog Rider,Lumberjack,Mighty Miner,Valkyrie,Witch",15,3,12,0.2,0.07047420643610411
-"Arrows,Baby Dragon,Dart Goblin,Electro Dragon,Elixir Golem,Firecracker,Minions,Wizard",15,3,12,0.2,0.07047420643610411
-"Arrows,Electro Dragon,Elixir Golem,Goblin Curse,Night Witch,P.E.K.K.A,Rage,Skeleton King",16,3,13,0.1875,0.06591478773586763
-"Furnace,Lightning,Mega Knight,Mirror,Poison,Skeleton Army,Witch,Wizard",16,3,13,0.1875,0.06591478773586763
-"Dart Goblin,Firecracker,Lightning,Mega Knight,Mini P.E.K.K.A,Royal Hogs,Skeleton Army,Valkyrie",9,2,7,0.2222222222222222,0.0632237623122272
-"Arrows,Balloon,Guards,Lightning,Lumberjack,Mirror,Prince,Wizard",9,2,7,0.2222222222222222,0.0632237623122272
-"Balloon,Electro Wizard,Elite Barbarians,Firecracker,Lumberjack,Ram Rider,Valkyrie,Witch",9,2,7,0.2222222222222222,0.0632237623122272
-"Earthquake,Elixir Golem,Mega Knight,Mini P.E.K.K.A,Phoenix,Rage,Valkyrie,Witch",9,2,7,0.2222222222222222,0.0632237623122272
-"Baby Dragon,Dark Prince,Elixir Collector,Golem,Mega Minion,Prince,Tornado,Zap",9,2,7,0.2222222222222222,0.0632237623122272
-"Dark Prince,Elite Barbarians,Firecracker,Goblins,Magic Archer,Mega Knight,Mini P.E.K.K.A,Wizard",9,2,7,0.2222222222222222,0.0632237623122272
-"Arrows,Baby Dragon,Firecracker,Guards,Inferno Dragon,Lava Hound,Lightning,Miner",9,2,7,0.2222222222222222,0.0632237623122272
-"Archer Queen,Baby Dragon,Goblins,Royal Hogs,Skeleton Army,Void,Witch,Wizard",9,2,7,0.2222222222222222,0.0632237623122272
-"Electro Giant,Elixir Collector,Furnace,Giant Snowball,Mega Minion,Mother Witch,Princess,Witch",17,3,14,0.17647058823529413,0.06191013712548989
-"Barbarian Barrel,Goblin Cage,Graveyard,Ice Wizard,Knight,Poison,Vines,Witch",18,3,15,0.16666666666666666,0.058364704004657555
-"Balloon,Mega Knight,Minion Horde,Prince,Royal Hogs,Valkyrie,Witch,Wizard",10,2,8,0.2,0.05668094798069328
-"Electro Dragon,Elixir Collector,Firecracker,Freeze,Golem,Lumberjack,Skeleton Dragons,Tornado",10,2,8,0.2,0.05668094798069328
-"Balloon,Barbarians,Cannon Cart,Firecracker,Goblin Gang,Lumberjack,Mighty Miner,Wizard",19,3,16,0.15789473684210525,0.05520371039927826
-"Bats,Battle Healer,Bomber,Elixir Golem,Mirror,Mother Witch,Rage,Skeleton Army",11,2,9,0.18181818181818182,0.05136660067100062
-"Archers,Bats,Flying Machine,Miner,P.E.K.K.A,Rune Giant,Vines,Witch",11,2,9,0.18181818181818182,0.05136660067100062
-"Elixir Golem,Fire Spirit,Firecracker,Freeze,Lumberjack,Mega Knight,Minions,Mirror",11,2,9,0.18181818181818182,0.05136660067100062
-"Arrows,Balloon,Guards,Lava Hound,Lightning,Mega Minion,Minions,Tombstone",22,3,19,0.13636363636363635,0.04748917264236267
-"Bats,Berserker,Cannon,Elixir Golem,Firecracker,Furnace,Little Prince,Miner",22,3,19,0.13636363636363635,0.04748917264236267
-"Boss Bandit,Elixir Golem,Executioner,Freeze,Furnace,Mega Minion,Minions,Wizard",13,2,11,0.15384615384615385,0.04325726318273798
-"Barbarian Barrel,Goblin Hut,Graveyard,Ice Wizard,Poison,Valkyrie,Vines,Witch",13,2,11,0.15384615384615385,0.04325726318273798
-"Elixir Golem,Goblin Curse,Inferno Dragon,Mega Knight,Mirror,Monk,Mother Witch,Wizard",14,2,12,0.14285714285714285,0.04009307373792117
-"Baby Dragon,Barbarian Barrel,Bowler,Graveyard,Ice Wizard,Poison,Tombstone,Tornado",15,2,13,0.13333333333333333,0.037360469891359285
-"Baby Dragon,Bandit,Battle Healer,Bomber,Dart Goblin,Electro Dragon,Elixir Golem,Flying Machine",5,1,4,0.2,0.036223160969787456
-"Arrows,Baby Dragon,Barbarians,Flying Machine,Musketeer,Prince,Skeleton Army,Valkyrie",5,1,4,0.2,0.036223160969787456
-"Archers,Cannon,Hog Rider,Ice Spirit,Magic Archer,Mega Knight,Ronin,The Log",5,1,4,0.2,0.036223160969787456
-"Archer Queen,Arrows,Bandit,Bats,Mega Knight,Prince,Wall Breakers,Zap",5,1,4,0.2,0.036223160969787456
-"Baby Dragon,Barbarians,Bomber,Firecracker,Goblin Barrel,Golden Knight,Hunter,Lumberjack",5,1,4,0.2,0.036223160969787456
-"Baby Dragon,Boss Bandit,Executioner,Mega Knight,Minions,Mirror,Skeleton Army,Witch",5,1,4,0.2,0.036223160969787456
-"Baby Dragon,Inferno Dragon,P.E.K.K.A,Prince,Rage,Skeleton Army,Valkyrie,Void",5,1,4,0.2,0.036223160969787456
-"Elixir Golem,Flying Machine,Mirror,Mother Witch,Poison,Tombstone,Witch,Zap",5,1,4,0.2,0.036223160969787456
-"Elite Barbarians,Golden Knight,Mega Knight,Mini P.E.K.K.A,Mother Witch,Royal Hogs,Skeleton Army,Witch",5,1,4,0.2,0.036223160969787456
+"Baby Dragon,Dark Prince,Golem,Ice Wizard,Lightning,Mini P.E.K.K.A,Tornado,Valkyrie",8,2,6,0.25,0.07147768885802765
+"Baby Dragon,Barbarian Hut,Elixir Collector,Magic Archer,Mega Knight,Miner,Witch,Wizard",8,2,6,0.25,0.07147768885802765
+"Arrows,Balloon,Bats,Inferno Dragon,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Wizard",8,2,6,0.25,0.07147768885802765
+"Electro Giant,Elite Barbarians,Firecracker,Inferno Dragon,Mega Knight,P.E.K.K.A,Witch,Wizard",8,2,6,0.25,0.07147768885802765
+"Electro Giant,Graveyard,Minion Horde,Poison,Royal Hogs,Valkyrie,Witch,Wizard",8,2,6,0.25,0.07147768885802765
+"Arrows,Bomber,Bowler,Cannon,Electro Giant,Royal Recruits,Spirit Empress,Tornado",8,2,6,0.25,0.07147768885802765
+"Arrows,Firecracker,Knight,Royal Giant,Skeleton Dragons,Tesla,Valkyrie,Wizard",8,2,6,0.25,0.07147768885802765
+"Elixir Golem,Furnace,Lightning,Miner,Night Witch,Poison,Skeleton Barrel,Tombstone",8,2,6,0.25,0.07147768885802765
+"Arrows,Elixir Golem,Golem,Inferno Dragon,Night Witch,Rage,Skeleton Army,Skeleton King",8,2,6,0.25,0.07147768885802765
+"Bats,Boss Bandit,Elixir Golem,Goblin Curse,Hog Rider,Mega Knight,Mirror,Mother Witch",15,3,12,0.2,0.07047420643610411
+"Electro Spirit,Fisherman,Guards,Hunter,Lightning,Monk,Royal Giant,The Log",23,4,19,0.17391304347826086,0.06978540350612772
+"Archers,Bats,Flying Machine,Miner,P.E.K.K.A,Rune Giant,Vines,Witch",16,3,13,0.1875,0.06591478773586763
+"Arrows,Baby Dragon,Dart Goblin,Electro Dragon,Elixir Golem,Firecracker,Minions,Wizard",16,3,13,0.1875,0.06591478773586763
+"Balloon,Barbarian Hut,Clone,Elite Barbarians,Executioner,Minion Horde,Rage,Three Musketeers",25,4,21,0.16,0.06403347608577989
+"Bats,Boss Bandit,Mini P.E.K.K.A,Rage,Royal Hogs,Skeleton Army,Valkyrie,Witch",9,2,7,0.2222222222222222,0.0632237623122272
+"Arrows,Baby Dragon,Barbarians,Flying Machine,Musketeer,Prince,Skeleton Army,Valkyrie",9,2,7,0.2222222222222222,0.0632237623122272
+"Firecracker,Golden Knight,Golem,Mega Knight,Minion Horde,Mother Witch,Poison,Witch",9,2,7,0.2222222222222222,0.0632237623122272
+"Arrows,Bats,Firecracker,Mini P.E.K.K.A,Royal Giant,Skeleton Army,Skeleton Barrel,Valkyrie",9,2,7,0.2222222222222222,0.0632237623122272
+"Arrows,Battle Healer,Electro Dragon,Elixir Golem,Mega Minion,Night Witch,Rage,Valkyrie",9,2,7,0.2222222222222222,0.0632237623122272
+"Elite Barbarians,Executioner,Mini P.E.K.K.A,Minion Horde,Prince,Rage,Skeleton Army,Valkyrie",9,2,7,0.2222222222222222,0.0632237623122272
+"Furnace,Lightning,Mega Knight,Mirror,Poison,Skeleton Army,Witch,Wizard",17,3,14,0.17647058823529413,0.06191013712548989
+"Balloon,Battle Healer,Elite Barbarians,Firecracker,Freeze,Inferno Dragon,Mirror,Rage",26,4,22,0.15384615384615385,0.06149933998929479
+"Balloon,Barbarians,Cannon Cart,Firecracker,Goblin Gang,Lumberjack,Mighty Miner,Wizard",26,4,22,0.15384615384615385,0.06149933998929479
+"Barbarian Barrel,Goblin Cage,Graveyard,Ice Wizard,Knight,Poison,Vines,Witch",27,4,23,0.14814814814814814,0.0591583185964489
+"Arrows,Electro Dragon,Elixir Golem,Goblin Curse,Night Witch,P.E.K.K.A,Rage,Skeleton King",18,3,15,0.16666666666666666,0.058364704004657555
+"Dart Goblin,Fire Spirit,Goblins,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",10,2,8,0.2,0.05668094798069328
+"Bats,Boss Bandit,Goblin Barrel,Goblin Curse,Ice Golem,Night Witch,Royal Hogs,Valkyrie",10,2,8,0.2,0.05668094798069328
+"Arrows,Elixir Golem,Executioner,Mega Knight,Mini P.E.K.K.A,Mirror,Three Musketeers,Witch",10,2,8,0.2,0.05668094798069328
+"Baby Dragon,Dark Prince,Elixir Collector,Golem,Mega Minion,Prince,Tornado,Zap",10,2,8,0.2,0.05668094798069328
+"Balloon,Bandit,Fire Spirit,Inferno Dragon,Mirror,Poison,Rage,Skeleton Army",10,2,8,0.2,0.05668094798069328
+"Arrows,Giant,Goblin Hut,Minions,Poison,Prince,Spear Goblins,Valkyrie",19,3,16,0.15789473684210525,0.05520371039927826
+"Arrows,Balloon,Battle Healer,Goblin Demolisher,Graveyard,Royal Delivery,Royal Giant,Void",19,3,16,0.15789473684210525,0.05520371039927826
+"Boss Bandit,Dart Goblin,Elixir Golem,Fisherman,Freeze,Rocket,Witch,Wizard",20,3,17,0.15,0.05236779195949582
+"Barbarian Hut,Barbarians,Bats,Goblin Gang,Golden Knight,Minion Horde,Mirror,Ram Rider",11,2,9,0.18181818181818182,0.05136660067100062
+"Electro Dragon,Giant,Inferno Dragon,Lumberjack,Mirror,Mother Witch,Royal Hogs,Skeleton Army",11,2,9,0.18181818181818182,0.05136660067100062
+"Elite Barbarians,Freeze,Furnace,Lightning,Minion Horde,Ram Rider,Royal Giant,Valkyrie",11,2,9,0.18181818181818182,0.05136660067100062
+"Arrows,Baby Dragon,Firecracker,Guards,Inferno Dragon,Lava Hound,Lightning,Miner",11,2,9,0.18181818181818182,0.05136660067100062
+"Baby Dragon,Berserker,Inferno Dragon,Mega Knight,Ram Rider,Vines,Witch,Wizard",11,2,9,0.18181818181818182,0.05136660067100062
+"Dark Prince,Elite Barbarians,Firecracker,Goblins,Magic Archer,Mega Knight,Mini P.E.K.K.A,Wizard",11,2,9,0.18181818181818182,0.05136660067100062
+"Balloon,Mega Knight,Minion Horde,Prince,Royal Hogs,Valkyrie,Witch,Wizard",11,2,9,0.18181818181818182,0.05136660067100062
+"Barbarian Barrel,Bomb Tower,Dart Goblin,Rascals,Royal Ghost,Skeleton Barrel,Vines,Wall Breakers",11,2,9,0.18181818181818182,0.05136660067100062
+"Bats,Berserker,Cannon,Elixir Golem,Firecracker,Furnace,Little Prince,Miner",32,4,28,0.125,0.049700538444743
+"Archer Queen,Baby Dragon,Goblins,Royal Hogs,Skeleton Army,Void,Witch,Wizard",12,2,10,0.16666666666666666,0.046964147614822246
+"Bomb Tower,Bomber,Fire Spirit,Firecracker,Magic Archer,Royal Hogs,Skeleton Army,Tornado",12,2,10,0.16666666666666666,0.046964147614822246
+"Arrows,Giant,Miner,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Valkyrie,Wizard",12,2,10,0.16666666666666666,0.046964147614822246
+"Barbarians,Firecracker,Freeze,Golden Knight,Prince,Royal Hogs,Skeleton Army,Wizard",23,3,20,0.13043478260869565,0.04537576514344702
+"Elixir Golem,Fire Spirit,Firecracker,Freeze,Lumberjack,Mega Knight,Minions,Mirror",13,2,11,0.15384615384615385,0.04325726318273798
+"Battle Healer,Clone,Electro Dragon,Elixir Golem,Giant Skeleton,Mini P.E.K.K.A,Mirror,Tornado",13,2,11,0.15384615384615385,0.04325726318273798
+"Electro Giant,Graveyard,Lightning,Mega Knight,Mirror,P.E.K.K.A,Witch,Wizard",13,2,11,0.15384615384615385,0.04325726318273798
+"Boss Bandit,Elixir Golem,Executioner,Freeze,Furnace,Mega Minion,Minions,Wizard",14,2,12,0.14285714285714285,0.04009307373792117
+"Balloon,Barbarians,Clone,Inferno Dragon,Minion Horde,P.E.K.K.A,Witch,Wizard",5,1,4,0.2,0.036223160969787456
+"Balloon,Mega Knight,Mirror,P.E.K.K.A,Phoenix,Rage,Witch,Wizard",5,1,4,0.2,0.036223160969787456
+"Bandit,Firecracker,Giant Skeleton,Little Prince,Lumberjack,Poison,Sparky,Wizard",5,1,4,0.2,0.036223160969787456
+"Elite Barbarians,Lightning,Minion Horde,P.E.K.K.A,Royal Giant,Skeleton Army,Valkyrie,Wizard",5,1,4,0.2,0.036223160969787456
 "Bats,Dart Goblin,Golden Knight,Mighty Miner,Rage,Skeleton Army,Skeleton Barrel,Tombstone",5,1,4,0.2,0.036223160969787456
-"Bats,Cannon Cart,Clone,Dart Goblin,Giant Skeleton,Mirror,Skeleton Army,Skeleton Barrel",5,1,4,0.2,0.036223160969787456
-"Goblin Curse,Goblins,Golem,Inferno Dragon,Miner,Night Witch,Skeleton King,Zap",5,1,4,0.2,0.036223160969787456
+"Cannon,Fireball,Hog Rider,Ice Golem,Ice Spirit,Miner,Musketeer,Skeletons",5,1,4,0.2,0.036223160969787456
+"Bomber,Clone,Dart Goblin,Elixir Golem,Executioner,Inferno Dragon,Skeleton King,Witch",5,1,4,0.2,0.036223160969787456
+"Clone,Freeze,Giant,Giant Skeleton,Minions,P.E.K.K.A,Witch,Wizard",5,1,4,0.2,0.036223160969787456
+"Elite Barbarians,Firecracker,Golden Knight,Hunter,Mega Knight,Mini P.E.K.K.A,Valkyrie,Witch",5,1,4,0.2,0.036223160969787456
+"Baby Dragon,Boss Bandit,Executioner,Mega Knight,Minions,Mirror,Skeleton Army,Witch",5,1,4,0.2,0.036223160969787456
+"Dark Prince,Electro Wizard,Goblin Giant,Mega Minion,Mini P.E.K.K.A,Rage,Sparky,Zap",5,1,4,0.2,0.036223160969787456
+"Arrows,Barbarians,Elixir Golem,Firecracker,Ice Wizard,Skeleton Army,Skeleton King,Witch",5,1,4,0.2,0.036223160969787456
 "Golden Knight,Hog Rider,Hunter,Mega Minion,Skeleton Army,Skeleton Barrel,Skeleton Dragons,Wizard",5,1,4,0.2,0.036223160969787456
-"Baby Dragon,Dark Prince,Golem,Ice Wizard,Lightning,Mini P.E.K.K.A,Tornado,Valkyrie",5,1,4,0.2,0.036223160969787456
-"Executioner,Golden Knight,Mega Knight,Mini P.E.K.K.A,Mirror,Sparky,Valkyrie,Witch",5,1,4,0.2,0.036223160969787456
-"Archer Queen,Giant Skeleton,Little Prince,Mega Knight,Mother Witch,P.E.K.K.A,Spirit Empress,Three Musketeers",5,1,4,0.2,0.036223160969787456
-"Barbarians,Goblin Curse,Goblin Gang,Goblin Hut,Ice Wizard,Inferno Dragon,Mini P.E.K.K.A,Princess",5,1,4,0.2,0.036223160969787456
-"Dark Prince,Elixir Collector,Golden Knight,Minions,Mirror,Princess,Witch,Wizard",5,1,4,0.2,0.036223160969787456
-"Elite Barbarians,Freeze,Furnace,Lightning,Minion Horde,Ram Rider,Royal Giant,Valkyrie",5,1,4,0.2,0.036223160969787456
-"Bats,Fireball,Firecracker,Goblin Barrel,Mega Knight,Miner,Valkyrie,Witch",6,1,5,0.16666666666666666,0.030052585871730285
-"Bats,Clone,Fisherman,Giant Skeleton,Giant Snowball,Hunter,Miner,Skeleton Barrel",6,1,5,0.16666666666666666,0.030052585871730285
-"Electro Dragon,Electro Giant,Executioner,Golem,Mega Knight,Mirror,Sparky,Tornado",6,1,5,0.16666666666666666,0.030052585871730285
-"Elite Barbarians,Executioner,Mini P.E.K.K.A,Minion Horde,Prince,Rage,Skeleton Army,Valkyrie",6,1,5,0.16666666666666666,0.030052585871730285
+"Archers,Cannon,Hog Rider,Ice Spirit,Magic Archer,Mega Knight,Ronin,The Log",5,1,4,0.2,0.036223160969787456
+"Firecracker,Goblins,Hunter,Inferno Tower,Monk,Rocket,Royal Giant,Zap",5,1,4,0.2,0.036223160969787456
+"Elixir Golem,Goblin Curse,Inferno Dragon,Mega Knight,Mirror,Monk,Mother Witch,Wizard",16,2,14,0.125,0.034976749337057134
 "Boss Bandit,Electro Dragon,Fire Spirit,Ronin,Skeletons,The Log,Vines,X-Bow",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Balloon,Bats,Inferno Dragon,Mega Knight,Mini P.E.K.K.A,Skeleton Army,Wizard",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Baby Dragon,Barbarians,Clone,Dark Prince,Giant Skeleton,Skeleton Army,Wizard",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Balloon,Bats,Executioner,Mega Knight,Mirror,Skeleton Army,Sparky",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Baby Dragon,Dart Goblin,Lightning,Mirror,P.E.K.K.A,Prince,Rage",6,1,5,0.16666666666666666,0.030052585871730285
-"Baby Dragon,Barbarians,Electro Wizard,Mini P.E.K.K.A,Prince,Skeleton Army,Spear Goblins,Zap",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Balloon,Bomber,Goblins,Inferno Dragon,Lava Hound,Valkyrie,Void",6,1,5,0.16666666666666666,0.030052585871730285
-"Barbarians,Bats,Freeze,Golden Knight,Hunter,Mini P.E.K.K.A,Rage,Royal Hogs",6,1,5,0.16666666666666666,0.030052585871730285
-"Elixir Golem,Furnace,Lightning,Miner,Night Witch,Poison,Skeleton Barrel,Tombstone",6,1,5,0.16666666666666666,0.030052585871730285
-"Arrows,Balloon,Clone,Mighty Miner,Minion Horde,Skeleton Army,Sparky,Wizard",7,1,6,0.14285714285714285,0.02567895594897479
-"Barbarians,Elixir Golem,Inferno Dragon,P.E.K.K.A,Sparky,Valkyrie,Witch,Wizard",7,1,6,0.14285714285714285,0.02567895594897479
-"Goblin Curse,Goblin Demolisher,Little Prince,Magic Archer,Poison,Spirit Empress,Valkyrie,Vines",7,1,6,0.14285714285714285,0.02567895594897479
+"Bowler,Cannon,Dark Prince,Elite Barbarians,Freeze,Graveyard,Minion Horde,Monk",6,1,5,0.16666666666666666,0.030052585871730285
+"Bats,Clone,Firecracker,Giant Skeleton,Lumberjack,Skeleton Army,Sparky,Witch",6,1,5,0.16666666666666666,0.030052585871730285
+"Bowler,Clone,Giant Skeleton,Mega Knight,Mirror,P.E.K.K.A,Three Musketeers,Wizard",6,1,5,0.16666666666666666,0.030052585871730285
+"Baby Dragon,Clone,Mega Knight,Mirror,Mother Witch,Ram Rider,Royal Hogs,Wall Breakers",6,1,5,0.16666666666666666,0.030052585871730285
+"Freeze,Magic Archer,Mega Knight,Mighty Miner,Mini P.E.K.K.A,Rage,Royal Delivery,Witch",6,1,5,0.16666666666666666,0.030052585871730285
+"Elixir Golem,Flying Machine,Mirror,Mother Witch,Poison,Tombstone,Witch,Zap",6,1,5,0.16666666666666666,0.030052585871730285
+"Executioner,Golden Knight,Mega Knight,Mini P.E.K.K.A,Mirror,Sparky,Valkyrie,Witch",6,1,5,0.16666666666666666,0.030052585871730285
+"Bats,Cannon Cart,Clone,Dart Goblin,Giant Skeleton,Mirror,Skeleton Army,Skeleton Barrel",6,1,5,0.16666666666666666,0.030052585871730285
+"Elite Barbarians,Golden Knight,Mega Knight,Mini P.E.K.K.A,Mother Witch,Royal Hogs,Skeleton Army,Witch",6,1,5,0.16666666666666666,0.030052585871730285
+"Bats,Fireball,Firecracker,Goblin Barrel,Mega Knight,Miner,Valkyrie,Witch",6,1,5,0.16666666666666666,0.030052585871730285
+"Barbarian Barrel,Goblin Hut,Graveyard,Ice Wizard,Poison,Valkyrie,Vines,Witch",19,2,17,0.10526315789473684,0.029357941395096582
+"Baby Dragon,Bandit,Electro Giant,Firecracker,Flying Machine,Goblin Cage,Ram Rider,Skeleton Army",7,1,6,0.14285714285714285,0.02567895594897479
+"Archer Queen,Arrows,Bandit,Bats,Mega Knight,Prince,Wall Breakers,Zap",7,1,6,0.14285714285714285,0.02567895594897479
+"Arrows,Baby Dragon,Barbarians,Clone,Dark Prince,Giant Skeleton,Skeleton Army,Wizard",7,1,6,0.14285714285714285,0.02567895594897479
+"Bats,Clone,Fisherman,Giant Skeleton,Giant Snowball,Hunter,Miner,Skeleton Barrel",7,1,6,0.14285714285714285,0.02567895594897479
+"Barbarians,Goblin Curse,Goblin Gang,Goblin Hut,Ice Wizard,Inferno Dragon,Mini P.E.K.K.A,Princess",7,1,6,0.14285714285714285,0.02567895594897479
+"Arrows,Balloon,Bomber,Goblins,Inferno Dragon,Lava Hound,Valkyrie,Void",7,1,6,0.14285714285714285,0.02567895594897479
+"Arrows,Balloon,Bats,Executioner,Mega Knight,Mirror,Skeleton Army,Sparky",7,1,6,0.14285714285714285,0.02567895594897479
+"Arrows,Baby Dragon,Dart Goblin,Lightning,Mirror,P.E.K.K.A,Prince,Rage",7,1,6,0.14285714285714285,0.02567895594897479
 "Archer Queen,Arrows,Bandit,Barbarians,Battle Ram,Elixir Collector,Heal Spirit,Royal Ghost",7,1,6,0.14285714285714285,0.02567895594897479
-"Balloon,Bandit,Fire Spirit,Inferno Dragon,Mirror,Poison,Rage,Skeleton Army",7,1,6,0.14285714285714285,0.02567895594897479
-"Barbarian Hut,Elite Barbarians,Freeze,Furnace,Mirror,Rocket,Royal Hogs,Royal Recruits",24,2,22,0.08333333333333333,0.023158327842973517
-"Baby Dragon,Berserker,Inferno Dragon,Mega Knight,Ram Rider,Vines,Witch,Wizard",8,1,7,0.125,0.02241690886329618
-"Arrows,Battle Healer,Electro Dragon,Elixir Golem,Firecracker,Goblin Curse,Mirror,Rage",8,1,7,0.125,0.02241690886329618
-"Berserker,Dart Goblin,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Vines,Wall Breakers",8,1,7,0.125,0.02241690886329618
-"Berserker,Furnace,Giant Skeleton,Giant Snowball,Goblin Curse,Goblin Hut,Graveyard,Zappies",8,1,7,0.125,0.02241690886329618
-"Barbarians,Clone,Inferno Dragon,Mega Knight,Skeleton Army,Skeleton King,Sparky,Witch",8,1,7,0.125,0.02241690886329618
-"Bowler,Giant,Giant Snowball,Graveyard,Mini P.E.K.K.A,Minions,Vines,Witch",8,1,7,0.125,0.02241690886329618
-"Bomb Tower,Bomber,Fire Spirit,Firecracker,Magic Archer,Royal Hogs,Skeleton Army,Tornado",8,1,7,0.125,0.02241690886329618
-"Bats,Clone,Giant Skeleton,Miner,Royal Ghost,Skeleton Army,Valkyrie,Wizard",8,1,7,0.125,0.02241690886329618
-"Bats,Boss Bandit,Firecracker,Mini P.E.K.K.A,Mother Witch,Skeleton Barrel,Valkyrie,Wall Breakers",9,1,8,0.1111111111111111,0.019890371327130518
-"Bats,Bomber,Electro Giant,Electro Wizard,Furnace,Lumberjack,Mini P.E.K.K.A,Vines",9,1,8,0.1111111111111111,0.019890371327130518
-"Arrows,Elixir Golem,Executioner,Mega Knight,Mini P.E.K.K.A,Mirror,Three Musketeers,Witch",9,1,8,0.1111111111111111,0.019890371327130518
-"Dart Goblin,Fire Spirit,Goblins,Skeleton Army,Skeleton Barrel,Skeleton King,Suspicious Bush,Vines",9,1,8,0.1111111111111111,0.019890371327130518
+"Balloon,Electro Giant,Inferno Tower,P.E.K.K.A,Ram Rider,Rocket,Skeleton Army,Sparky",7,1,6,0.14285714285714285,0.02567895594897479
+"Barbarians,Elixir Golem,Inferno Dragon,P.E.K.K.A,Sparky,Valkyrie,Witch,Wizard",8,1,7,0.125,0.02241690886329618
+"Lightning,Mega Knight,Rocket,Royal Recruits,Skeleton King,Three Musketeers,Vines,Void",8,1,7,0.125,0.02241690886329618
+"Goblin Curse,Goblin Demolisher,Little Prince,Magic Archer,Poison,Spirit Empress,Valkyrie,Vines",8,1,7,0.125,0.02241690886329618
+"Bats,Dart Goblin,Elixir Collector,Elixir Golem,Rage,Three Musketeers,Tornado,Vines",8,1,7,0.125,0.02241690886329618
+"Arrows,Balloon,Clone,Mighty Miner,Minion Horde,Skeleton Army,Sparky,Wizard",8,1,7,0.125,0.02241690886329618
+"Baby Dragon,Barbarians,Bomber,Firecracker,Goblin Barrel,Golden Knight,Hunter,Lumberjack",8,1,7,0.125,0.02241690886329618
+"Arrows,Battle Healer,Electro Dragon,Elixir Golem,Firecracker,Goblin Curse,Mirror,Rage",9,1,8,0.1111111111111111,0.019890371327130518
+"Barbarians,Bats,Freeze,Golden Knight,Hunter,Mini P.E.K.K.A,Rage,Royal Hogs",9,1,8,0.1111111111111111,0.019890371327130518
 "Baby Dragon,Barbarian Barrel,Battle Healer,Electro Dragon,Elixir Collector,Golem,Mini P.E.K.K.A,Tornado",9,1,8,0.1111111111111111,0.019890371327130518
-"Barbarian Barrel,Bomb Tower,Dart Goblin,Rascals,Royal Ghost,Skeleton Barrel,Vines,Wall Breakers",9,1,8,0.1111111111111111,0.019890371327130518
-"Electro Giant,Graveyard,Lightning,Mega Knight,Mirror,P.E.K.K.A,Witch,Wizard",10,1,9,0.1,0.01787574951572113
-"Balloon,Clone,Elixir Golem,Minion Horde,Mirror,Poison,Three Musketeers,Witch",10,1,9,0.1,0.01787574951572113
-"Arrows,Giant,Miner,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Valkyrie,Wizard",10,1,9,0.1,0.01787574951572113
-"Barbarians,Firecracker,Freeze,Golden Knight,Prince,Royal Hogs,Skeleton Army,Wizard",10,1,9,0.1,0.01787574951572113
-"Arrows,Balloon,Battle Healer,Goblin Demolisher,Graveyard,Royal Delivery,Royal Giant,Void",14,1,13,0.07142857142857142,0.012721886112291648
-"Mini P.E.K.K.A,Minion Horde,Minions,Poison,Ram Rider,Royal Giant,Skeleton Barrel,Tombstone",18,1,17,0.05555555555555555,0.009874935830924522
-"Balloon,Bats,Bomber,Fire Spirit,Rage,Royal Giant,Spear Goblins,Vines",34,1,33,0.029411764705882353,0.005210771925596655
-"Baby Dragon,Electro Wizard,Mega Knight,Mini P.E.K.K.A,Prince,Ram Rider,Skeleton Army,Valkyrie",11,0,11,0.0,2.057132194452876e-17
-"Battle Healer,Clone,Electro Dragon,Elixir Golem,Giant Skeleton,Mini P.E.K.K.A,Mirror,Tornado",9,0,9,0.0,0.0
-"Bats,Dark Prince,Magic Archer,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Sparky,Wizard",7,0,7,0.0,0.0
-"Bats,Dart Goblin,Elixir Collector,Elixir Golem,Rage,Three Musketeers,Tornado,Vines",7,0,7,0.0,0.0
-"Electro Spirit,Fisherman,Guards,Hunter,Lightning,Monk,Royal Giant,The Log",13,0,13,0.0,0.0
-"Boss Bandit,Electro Giant,Executioner,Lightning,Minion Horde,Ram Rider,Royal Recruits,Wizard",7,0,7,0.0,0.0
-"Dart Goblin,Firecracker,Goblin Giant,Miner,Mirror,Poison,Rage,Tombstone",7,0,7,0.0,0.0
-"Dart Goblin,Goblinstein,Guards,Miner,Poison,Royal Ghost,Spirit Empress,Vines",8,0,8,0.0,0.0
-"Earthquake,Firecracker,Goblin Giant,Hunter,Mirror,Rascals,Royal Hogs,Valkyrie",7,0,7,0.0,0.0
-"Electro Dragon,Goblin Barrel,Goblin Gang,Minions,Mother Witch,Prince,Tombstone,X-Bow",5,0,5,0.0,0.0
-"Clone,Mega Knight,Minion Horde,Mirror,Mother Witch,Ram Rider,Royal Hogs,Wall Breakers",7,0,7,0.0,0.0
-"Clone,Giant Skeleton,Hunter,Magic Archer,Mirror,Monk,Tombstone,Zap",6,0,6,0.0,0.0
-"Bats,Elite Barbarians,Inferno Dragon,Mighty Miner,Mini P.E.K.K.A,Skeleton Army,Witch,Zap",5,0,5,0.0,0.0
-"Bats,Boss Bandit,Goblin Barrel,Goblin Curse,Ice Golem,Night Witch,Royal Hogs,Valkyrie",5,0,5,0.0,0.0
-"Bats,Dark Prince,Furnace,Golden Knight,Royal Delivery,Royal Giant,Valkyrie,Wizard",9,0,9,0.0,0.0
-"Electro Wizard,Executioner,Guards,Mega Knight,Mini P.E.K.K.A,Poison,Royal Hogs,Tornado",6,0,6,0.0,0.0
-"Balloon,Barbarians,Electro Giant,Firecracker,Giant,Mega Knight,Royal Recruits,Wizard",8,0,8,0.0,0.0
-"Elixir Golem,Golden Knight,Mega Knight,Minion Horde,Mirror,Royal Hogs,Witch,Wizard",8,0,8,0.0,0.0
-"Barbarians,Elixir Collector,Golem,Mirror,Rocket,Royal Hogs,Three Musketeers,X-Bow",19,0,19,0.0,0.0
-"Barbarian Hut,Furnace,Goblin Hut,Inferno Tower,Minion Horde,Princess,Rocket,Skeleton Army",7,0,7,0.0,0.0
-"Barbarian Barrel,Berserker,Furnace,Goblin Hut,Graveyard,Poison,Valkyrie,Vines",6,0,6,0.0,0.0
-"Baby Dragon,Clone,Mega Knight,Mirror,Mother Witch,Ram Rider,Royal Hogs,Wall Breakers",5,0,5,0.0,0.0
-"Balloon,Battle Healer,Elite Barbarians,Firecracker,Freeze,Inferno Dragon,Mirror,Rage",16,0,16,0.0,0.0
-"Baby Dragon,Barbarians,Golden Knight,Inferno Dragon,Lumberjack,Minions,Poison,Royal Hogs",8,0,8,0.0,0.0
-"Arrows,Bats,Electro Giant,Electro Wizard,Elixir Golem,Firecracker,Mini P.E.K.K.A,Wizard",5,0,5,0.0,0.0
-"Arrows,Balloon,Lava Hound,Lightning,Mega Minion,Minions,Skeleton Army,Tombstone",8,0,8,0.0,0.0
+"Bats,Clone,Giant Skeleton,Miner,Royal Ghost,Skeleton Army,Valkyrie,Wizard",9,1,8,0.1111111111111111,0.019890371327130518
+"Berserker,Dart Goblin,Mother Witch,Skeleton Army,Skeleton Barrel,Skeleton King,Vines,Wall Breakers",9,1,8,0.1111111111111111,0.019890371327130518
+"Berserker,Furnace,Giant Skeleton,Giant Snowball,Goblin Curse,Goblin Hut,Graveyard,Zappies",9,1,8,0.1111111111111111,0.019890371327130518
+"Barbarians,Clone,Inferno Dragon,Mega Knight,Skeleton Army,Skeleton King,Sparky,Witch",10,1,9,0.1,0.01787574951572113
+"Bowler,Giant,Giant Snowball,Graveyard,Mini P.E.K.K.A,Minions,Vines,Witch",10,1,9,0.1,0.01787574951572113
+"Clone,Mega Knight,Minion Horde,Mirror,Mother Witch,Ram Rider,Royal Hogs,Wall Breakers",11,1,10,0.09090909090909091,0.016231752262825985
+"Bats,Bomber,Electro Giant,Electro Wizard,Furnace,Lumberjack,Mini P.E.K.K.A,Vines",11,1,10,0.09090909090909091,0.016231752262825985
+"Bats,Boss Bandit,Firecracker,Mini P.E.K.K.A,Mother Witch,Skeleton Barrel,Valkyrie,Wall Breakers",12,1,11,0.08333333333333333,0.014864709450773488
+"Barbarian Barrel,Berserker,Furnace,Goblin Hut,Graveyard,Poison,Valkyrie,Vines",12,1,11,0.08333333333333333,0.014864709450773488
+"Baby Dragon,Electro Wizard,Mega Knight,Mini P.E.K.K.A,Prince,Ram Rider,Skeleton Army,Valkyrie",12,1,11,0.08333333333333333,0.014864709450773488
+"Balloon,Clone,Elixir Golem,Minion Horde,Mirror,Poison,Three Musketeers,Witch",12,1,11,0.08333333333333333,0.014864709450773488
+"Earthquake,Firecracker,Goblin Giant,Hunter,Mirror,Rascals,Royal Hogs,Valkyrie",10,0,10,0.0,0.0
+"Earthquake,Little Prince,Mighty Miner,Mother Witch,Sparky,Suspicious Bush,Vines,Wizard",6,0,6,0.0,0.0
 "Archers,Bats,Battle Healer,Berserker,Elixir Golem,Ice Golem,Night Witch,Witch",5,0,5,0.0,0.0
+"Dart Goblin,Firecracker,Goblin Giant,Miner,Mirror,Poison,Rage,Tombstone",8,0,8,0.0,0.0
+"Clone,Giant Skeleton,Hunter,Magic Archer,Mirror,Monk,Tombstone,Zap",7,0,7,0.0,0.0
+"Goblin Curse,Golem,Inferno Dragon,Miner,Night Witch,Skeleton King,Witch,Zap",6,0,6,0.0,0.0
+"Dart Goblin,Goblin Hut,Mini P.E.K.K.A,Minion Horde,Mirror,Ram Rider,Royal Hogs,Wizard",5,0,5,0.0,0.0
+"Arrows,Balloon,Lava Hound,Lightning,Mega Minion,Minions,Skeleton Army,Tombstone",8,0,8,0.0,0.0
+"Dart Goblin,Goblinstein,Guards,Miner,Poison,Royal Ghost,Spirit Empress,Vines",8,0,8,0.0,0.0
+"Arrows,Bats,Electro Giant,Electro Wizard,Elixir Golem,Firecracker,Mini P.E.K.K.A,Wizard",6,0,6,0.0,0.0
+"Boss Bandit,Electro Giant,Executioner,Lightning,Minion Horde,Ram Rider,Royal Recruits,Wizard",8,0,8,0.0,0.0
+"Earthquake,Elixir Collector,Goblinstein,Golden Knight,Rocket,The Log,Vines,Wizard",32,0,32,0.0,0.0
+"Electro Dragon,Goblin Barrel,Goblin Gang,Minions,Mother Witch,Prince,Tombstone,X-Bow",7,0,7,0.0,0.0
+"Electro Spirit,Goblins,Ice Golem,Minions,Skeletons,Spear Goblins,Tombstone,Zap",6,0,6,0.0,0.0
+"Bats,Elite Barbarians,Inferno Dragon,Mighty Miner,Mini P.E.K.K.A,Skeleton Army,Witch,Zap",7,0,7,0.0,0.0
+"Bats,Dark Prince,Furnace,Golden Knight,Royal Delivery,Royal Giant,Valkyrie,Wizard",9,0,9,0.0,0.0
+"Bats,Dark Prince,Magic Archer,Mini P.E.K.K.A,Minion Horde,Skeleton Army,Sparky,Wizard",7,0,7,0.0,0.0
+"Electro Wizard,Executioner,Guards,Mega Knight,Mini P.E.K.K.A,Poison,Royal Hogs,Tornado",6,0,6,0.0,0.0
+"Barbarians,Elixir Collector,Golem,Mirror,Rocket,Royal Hogs,Three Musketeers,X-Bow",23,0,23,0.0,0.0
+"Elixir Golem,Golden Knight,Mega Knight,Minion Horde,Mirror,Royal Hogs,Witch,Wizard",10,0,10,0.0,0.0
+"Arrows,Balloon,Barbarian Hut,Executioner,Mega Knight,Mirror,Three Musketeers,Wizard",6,0,6,0.0,0.0
+"Barbarian Hut,Furnace,Goblin Hut,Inferno Tower,Minion Horde,Princess,Rocket,Skeleton Army",7,0,7,0.0,0.0
+"Balloon,Barbarians,Electro Giant,Firecracker,Giant,Mega Knight,Royal Recruits,Wizard",9,0,9,0.0,0.0
+"Baby Dragon,Clone,Firecracker,Giant Skeleton,Lava Hound,Mini P.E.K.K.A,Mirror,Witch",6,0,6,0.0,0.0
+"Baby Dragon,Barbarians,Golden Knight,Inferno Dragon,Lumberjack,Minions,Poison,Royal Hogs",9,0,9,0.0,0.0
 "Giant Skeleton,Goblin Giant,Graveyard,Princess,Rocket,Royal Giant,Rune Giant,Wall Breakers",7,0,7,0.0,0.0
-"Lightning,Mega Knight,Rocket,Royal Recruits,Skeleton King,Three Musketeers,Vines,Void",7,0,7,0.0,0.0
