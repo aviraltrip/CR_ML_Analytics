@@ -50,23 +50,32 @@ def main():
     for _, row in df.iterrows():
         p1_cards = row["p1_deck"].split(",")
         p2_cards = row["p2_deck"].split(",")
+        p1_levels = [float(lvl) for lvl in str(row["p1_levels"]).split(",")]
+        p2_levels = [float(lvl) for lvl in str(row["p2_levels"]).split(",")]
         p1_won = row["p1_won"]
 
-        # Create multi-hot vectors for both players
+        # Create presence and level vectors for both players
         p1_vec = np.zeros(num_cards)
         p2_vec = np.zeros(num_cards)
+        p1_lvl_vec = np.zeros(num_cards)
+        p2_lvl_vec = np.zeros(num_cards)
 
-        for card in p1_cards:
+        for card, lvl in zip(p1_cards, p1_levels):
             if card in card_vocab:
-                p1_vec[card_vocab[card]] = 1.0
+                idx = card_vocab[card]
+                p1_vec[idx] = 1.0
+                p1_lvl_vec[idx] = lvl
 
-        for card in p2_cards:
+        for card, lvl in zip(p2_cards, p2_levels):
             if card in card_vocab:
-                p2_vec[card_vocab[card]] = 1.0
+                idx = card_vocab[card]
+                p2_vec[idx] = 1.0
+                p2_lvl_vec[idx] = lvl
 
-        # Feature vector represents the presence difference
-        # +1 if P1 has it, -1 if P2 has it, 0 if both or neither have it
-        feature_vec = p1_vec - p2_vec
+        # Feature vector represents presence difference followed by card level difference
+        presence_diff = p1_vec - p2_vec
+        level_diff = p1_lvl_vec - p2_lvl_vec
+        feature_vec = np.concatenate([presence_diff, level_diff])
         X.append(feature_vec)
         y.append(p1_won)
 
@@ -121,15 +130,25 @@ def main():
     # 7. Print card coefficients (weights)
     print("\n=== Feature Coefficients (Impact on Win Probability) ===")
     coefs = model.coef_[0]
-    card_impacts = [(card, coefs[idx]) for card, idx in card_vocab.items()]
-    card_impacts = sorted(card_impacts, key=lambda x: x[1], reverse=True)
+    presence_coefs = coefs[:num_cards]
+    level_coefs = coefs[num_cards:]
 
-    print("\nTop 5 Cards increasing Win Probability:")
-    for card, weight in card_impacts[:5]:
+    card_presence_impacts = [(card, presence_coefs[idx]) for card, idx in card_vocab.items()]
+    card_presence_impacts = sorted(card_presence_impacts, key=lambda x: x[1], reverse=True)
+
+    card_level_impacts = [(card, level_coefs[idx]) for card, idx in card_vocab.items()]
+    card_level_impacts = sorted(card_level_impacts, key=lambda x: x[1], reverse=True)
+
+    print("\nTop 5 Cards increasing Win Probability (Presence difference):")
+    for card, weight in card_presence_impacts[:5]:
         print(f" - {card}: weight = {weight:+.4f}")
 
-    print("\nTop 5 Cards decreasing Win Probability:")
-    for card, weight in card_impacts[-5:]:
+    print("\nTop 5 Cards decreasing Win Probability (Presence difference):")
+    for card, weight in card_presence_impacts[-5:]:
+        print(f" - {card}: weight = {weight:+.4f}")
+
+    print("\nTop 5 Cards where Level Difference increases Win Probability the most:")
+    for card, weight in card_level_impacts[:5]:
         print(f" - {card}: weight = {weight:+.4f}")
 
 
