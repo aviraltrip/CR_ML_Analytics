@@ -7,6 +7,25 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import json
+import pickle
+import numpy as np
+
+# Load ML Model
+@st.cache_resource
+def load_ml_model():
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(base_dir, "models", "matchup_predictor.pkl")
+    vocab_path = os.path.join(base_dir, "models", "card_vocab.json")
+    if not os.path.exists(model_path) or not os.path.exists(vocab_path):
+        return None, None
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+    with open(vocab_path, "r", encoding="utf-8") as f:
+        vocab = json.load(f)
+    return model, vocab
+
+model, card_vocab = load_ml_model()
 
 # Set page configuration
 st.set_page_config(
@@ -177,10 +196,11 @@ with col4:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # Tabs setup
-tab_leaderboard, tab_cards, tab_evaluator = st.tabs([
+tab_leaderboard, tab_cards, tab_evaluator, tab_predictor = st.tabs([
     "🏆 Deck Leaderboard", 
     "📈 Overrated vs. Underrated Cards", 
-    "🔍 Deck Evaluator"
+    "🔍 Deck Evaluator",
+    "🔮 Matchup Predictor"
 ])
 
 # TAB 1: DECK LEADERBOARD
@@ -403,3 +423,139 @@ with tab_evaluator:
             st.info("🛡️ **Stable Meta Deck**: Your deck relies heavily on highly-played, strong meta cards. It is statistically stable but highly predictable.")
         else:
             st.write("⚖️ **Balanced Deck**: A mix of card types with standard baseline performance.")
+
+# TAB 4: MATCHUP PREDICTOR
+with tab_predictor:
+    st.markdown("### 🔮 Matchup Predictor (Machine Learning Model)")
+    st.write(
+        "This tool uses a trained **Logistic Regression** model (accuracy: 59.08%) to predict "
+        "the win probability between two decks based on individual card coefficients and matchups."
+    )
+    
+    if model is None or card_vocab is None:
+        st.warning("⚠️ Machine learning model artifacts are missing. Run `python src/train_model.py` to train the model first.")
+    else:
+        all_cards_list = sorted(list(card_vocab.keys()))
+        
+        col_deck1, col_deck2 = st.columns(2)
+        
+        with col_deck1:
+            st.markdown("#### 👤 Your Deck")
+            deck1_selection = st.multiselect(
+                "Select 8 cards for Your Deck:",
+                options=all_cards_list,
+                key="p1_select",
+                max_selections=8
+            )
+            
+        with col_deck2:
+            st.markdown("#### 👿 Opponent's Deck")
+            deck2_selection = st.multiselect(
+                "Select 8 cards for Opponent's Deck:",
+                options=all_cards_list,
+                key="p2_select",
+                max_selections=8
+            )
+            
+        if len(deck1_selection) == 8 and len(deck2_selection) == 8:
+            # Multi-hot vector encoding
+            num_features = len(card_vocab)
+            v1 = np.zeros(num_features)
+            v2 = np.zeros(num_features)
+            
+            for c in deck1_selection:
+                v1[card_vocab[c]] = 1.0
+            for c in deck2_selection:
+                v2[card_vocab[c]] = 1.0
+                
+            # X_input = v1 - v2
+            x_input = (v1 - v2).reshape(1, -1)
+            
+            # Predict
+            prob = model.predict_proba(x_input)[0][1]
+            
+            # Visual display
+            st.markdown("---")
+            st.markdown("#### 🔮 Prediction Outcome")
+            
+            fig_gauge = go.Figure(go.Indicator(
+                mode = "gauge+number",
+                value = prob * 100,
+                domain = {'x': [0, 1], 'y': [0, 1]},
+                title = {'text': "Win Probability (%)", 'font': {'size': 20, 'family': 'Outfit'}},
+                gauge = {
+                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "white"},
+                    'bar': {'color': "#FFD700"}, # Gold
+                    'bgcolor': "rgba(0,0,0,0)",
+                    'borderwidth': 2,
+                    'bordercolor': "gray",
+                    'steps': [
+                        {'range': [0, 45], 'color': 'rgba(231, 76, 60, 0.2)'},
+                        {'range': [45, 55], 'color': 'rgba(241, 196, 15, 0.2)'},
+                        {'range': [55, 100], 'color': 'rgba(46, 204, 113, 0.2)'}
+                    ]
+                }
+            ))
+            
+            fig_gauge.update_layout(
+                template="plotly_dark",
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                height=250,
+                margin=dict(l=10, r=10, t=40, b=10)
+            )
+            
+            st.plotly_chart(fig_gauge, use_container_width=True)
+            
+            # Text verdict
+            if prob > 0.55:
+                st.success(f"🚀 **Favorable Matchup**: You have a **{prob:.1%}** chance of winning this match! Your deck has a solid statistical advantage.")
+            elif prob < 0.45:
+                st.error(f"⚠️ **Unfavorable Matchup**: You have only a **{prob:.1%}** chance of winning. Your opponent's cards have strong counter weights against your deck.")
+            else:
+                st.info(f"⚖️ **Even Matchup**: You have a **{prob:.1%}** chance of winning. This matchup is a coin flip and will rely heavily on in-game skill and play style.")
+                
+            # Cards contribution analysis
+            st.markdown("#### 🧬 Matchup Analysis (Why?)")
+            
+            # Extract coefficients
+            coefs = model.coef_[0]
+            
+            # Display My Deck strengths vs weaknesses
+            contribs = []
+            for c in deck1_selection:
+                weight = coefs[card_vocab[c]]
+                contribs.append({"card": c, "owner": "You", "impact": weight})
+            for c in deck2_selection:
+                weight = -coefs[card_vocab[c]] # Negative impact since it's opponent's card
+                contribs.append({"card": c, "owner": "Opponent", "impact": weight})
+                
+            contrib_df = pd.DataFrame(contribs).sort_values("impact", ascending=False)
+            
+            c_left, c_right = st.columns(2)
+            with c_left:
+                st.markdown("**👍 Your Key Matchup Advantages:**")
+                advs = contrib_df[contrib_df["impact"] > 0].head(3)
+                if len(advs) > 0:
+                    for _, row in advs.iterrows():
+                        if row["owner"] == "You":
+                            st.write(f" - **{row['card']}** in your deck provides a positive boost (`{row['impact']:+.3f}`).")
+                        else:
+                            st.write(f" - **{row['card']}** in opponent's deck is historically weak against you (`{row['impact']:+.3f}`).")
+                else:
+                    st.write("No clear advantages detected.")
+                    
+            with c_right:
+                st.markdown("**👎 Your Key Matchup Disadvantages:**")
+                disadvs = contrib_df[contrib_df["impact"] < 0].tail(3)
+                disadvs = disadvs.sort_values("impact")
+                if len(disadvs) > 0:
+                    for _, row in disadvs.iterrows():
+                        if row["owner"] == "Opponent":
+                            st.write(f" - Opponent's **{row['card']}** is statistically strong in this matchup (`{row['impact']:.3f}`).")
+                        else:
+                            st.write(f" - Your **{row['card']}** has a negative weight in this matchup (`{row['impact']:.3f}`).")
+                else:
+                    st.write("No clear disadvantages detected.")
+        else:
+            st.info("💡 Select exactly 8 cards for both decks to run the matchup prediction.")
