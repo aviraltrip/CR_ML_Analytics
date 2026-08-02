@@ -1,11 +1,4 @@
 import React from 'react'
-import {
-  GaugeChart,
-  Gauge,
-  GaugeLabel,
-  GaugePointer,
-  GaugeValue,
-} from 'recharts'
 
 /**
  * Win rate gauge chart using Recharts.
