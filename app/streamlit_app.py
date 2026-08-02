@@ -433,7 +433,47 @@ with tab_evaluator:
             with c3:
                 st.metric("Wilson Score", f"{match_row['wilson_score']:.3f}")
         else:
-            st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
+            if model is not None and card_vocab is not None and df_model_leaderboard is not None:
+                # Run a simulated evaluation against the top 200 meta decks
+                meta_decks = df_model_leaderboard["deck"].tolist()
+                num_meta = len(meta_decks)
+                
+                # Multi-hot vector for selected deck
+                v_sel = np.zeros(len(card_vocab))
+                for card in selected_cards:
+                    if card in card_vocab:
+                        v_sel[card_vocab[card]] = 1.0
+                        
+                X_eval = []
+                for opponent_deck in meta_decks:
+                    v_opp = np.zeros(len(card_vocab))
+                    for card in opponent_deck.split(","):
+                        if card in card_vocab:
+                            v_opp[card_vocab[card]] = 1.0
+                    X_eval.append(v_sel - v_opp)
+                    
+                X_eval = np.array(X_eval)
+                probs = model.predict_proba(X_eval)[:, 1]
+                pred_win_rate = np.mean(probs)
+                
+                # Estimate Rank among the 200 meta decks
+                meta_rates = df_model_leaderboard["simulated_win_rate"].tolist()
+                estimated_rank = 1
+                for rate in meta_rates:
+                    if pred_win_rate < rate:
+                        estimated_rank += 1
+                    else:
+                        break
+                        
+                st.info("ℹ️ This exact deck has no historical battles in the database. I have calculated its predicted strength using the ML Synergy Model:")
+                
+                c1, c2 = st.columns(2)
+                with c1:
+                    st.metric("Predicted Win Rate against Meta", f"{pred_win_rate:.1%}")
+                with c2:
+                    st.metric("Estimated ML Rank", f"#{estimated_rank} / {num_meta}")
+            else:
+                st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
 
         # Card-by-card stats breakdown
         st.markdown("#### 🃏 Individual Card Breakdown")
