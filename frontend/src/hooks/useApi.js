@@ -9,12 +9,15 @@ export function useApi(apiFn, immediate = true) {
   const [error, setError] = useState(null)
   const mountedRef = useRef(true)
 
+  const apiFnRef = useRef(apiFn)
+  apiFnRef.current = apiFn
+
   const execute = useCallback(
     async (...args) => {
       setLoading(true)
       setError(null)
       try {
-        const response = await apiFn(...args)
+        const response = await apiFnRef.current(...args)
         if (mountedRef.current) {
           setData(response)
           setLoading(false)
@@ -28,7 +31,7 @@ export function useApi(apiFn, immediate = true) {
         throw err
       }
     },
-    [apiFn]
+    []
   )
 
   useEffect(() => {
@@ -52,11 +55,14 @@ export function usePost(apiFn) {
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
 
+  const apiFnRef = useRef(apiFn)
+  apiFnRef.current = apiFn
+
   const execute = useCallback(async (payload) => {
     setLoading(true)
     setError(null)
     try {
-      const response = await apiFn(payload)
+      const response = await apiFnRef.current(payload)
       setData(response)
       setLoading(false)
       return response
@@ -66,7 +72,7 @@ export function usePost(apiFn) {
       setLoading(false)
       throw err
     }
-  }, [apiFn])
+  }, [])
 
   return { data, loading, error, execute }
 }
