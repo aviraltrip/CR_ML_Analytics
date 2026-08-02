@@ -428,8 +428,8 @@ with tab_evaluator:
 with tab_predictor:
     st.markdown("### 🔮 Matchup Predictor (Machine Learning Model)")
     st.write(
-        "This tool uses a trained **Logistic Regression** model (accuracy: 61.88%) to predict "
-        "the win probability between two decks based on individual card presence and card level differences."
+        "This tool uses a trained **Logistic Regression** model (accuracy: 59.08%) to predict "
+        "the win probability between two decks based on individual card coefficients and matchups."
     )
     
     if model is None or card_vocab is None:
@@ -448,17 +448,6 @@ with tab_predictor:
                 max_selections=8
             )
             
-            deck1_levels = {}
-            if len(deck1_selection) == 8:
-                with st.expander("Adjust Your Card Levels (Defaults to 11)"):
-                    level_cols = st.columns(4)
-                    for i, card in enumerate(deck1_selection):
-                        col_idx = i % 4
-                        with level_cols[col_idx]:
-                            deck1_levels[card] = st.number_input(
-                                f"{card}", min_value=1, max_value=16, value=11, key=f"p1_lvl_{card}"
-                            )
-            
         with col_deck2:
             st.markdown("#### 👿 Opponent's Deck")
             deck2_selection = st.multiselect(
@@ -468,42 +457,19 @@ with tab_predictor:
                 max_selections=8
             )
             
-            deck2_levels = {}
-            if len(deck2_selection) == 8:
-                with st.expander("Adjust Opponent's Card Levels (Defaults to 11)"):
-                    level_cols = st.columns(4)
-                    for i, card in enumerate(deck2_selection):
-                        col_idx = i % 4
-                        with level_cols[col_idx]:
-                            deck2_levels[card] = st.number_input(
-                                f"{card}", min_value=1, max_value=16, value=11, key=f"p2_lvl_{card}"
-                            )
-            
         if len(deck1_selection) == 8 and len(deck2_selection) == 8:
-            # Multi-hot vector and level vector encoding
-            num_cards = len(card_vocab)
-            
-            p1_vec = np.zeros(num_cards)
-            p2_vec = np.zeros(num_cards)
-            p1_lvl_vec = np.zeros(num_cards)
-            p2_lvl_vec = np.zeros(num_cards)
+            # Multi-hot vector encoding
+            num_features = len(card_vocab)
+            v1 = np.zeros(num_features)
+            v2 = np.zeros(num_features)
             
             for c in deck1_selection:
-                if c in card_vocab:
-                    idx = card_vocab[c]
-                    p1_vec[idx] = 1.0
-                    p1_lvl_vec[idx] = deck1_levels.get(c, 11.0)
-                    
+                v1[card_vocab[c]] = 1.0
             for c in deck2_selection:
-                if c in card_vocab:
-                    idx = card_vocab[c]
-                    p2_vec[idx] = 1.0
-                    p2_lvl_vec[idx] = deck2_levels.get(c, 11.0)
-                    
-            presence_diff = p1_vec - p2_vec
-            level_diff = p1_lvl_vec - p2_lvl_vec
-            
-            x_input = np.concatenate([presence_diff, level_diff]).reshape(1, -1)
+                v2[card_vocab[c]] = 1.0
+                
+            # X_input = v1 - v2
+            x_input = (v1 - v2).reshape(1, -1)
             
             # Predict
             prob = model.predict_proba(x_input)[0][1]
@@ -554,29 +520,16 @@ with tab_predictor:
             
             # Extract coefficients
             coefs = model.coef_[0]
-            presence_coefs = coefs[:num_cards]
-            level_coefs = coefs[num_cards:]
             
+            # Display My Deck strengths vs weaknesses
             contribs = []
-            all_selected = set(deck1_selection).union(set(deck2_selection))
-            for c in all_selected:
-                idx = card_vocab[c]
-                p1_has = c in deck1_selection
-                p2_has = c in deck2_selection
+            for c in deck1_selection:
+                weight = coefs[card_vocab[c]]
+                contribs.append({"card": c, "owner": "You", "impact": weight})
+            for c in deck2_selection:
+                weight = -coefs[card_vocab[c]] # Negative impact since it's opponent's card
+                contribs.append({"card": c, "owner": "Opponent", "impact": weight})
                 
-                lvl_p1 = deck1_levels.get(c, 0.0) if p1_has else 0.0
-                lvl_p2 = deck2_levels.get(c, 0.0) if p2_has else 0.0
-                
-                pres_diff = (1.0 if p1_has else 0.0) - (1.0 if p2_has else 0.0)
-                lvl_diff = lvl_p1 - lvl_p2
-                
-                card_contrib = presence_coefs[idx] * pres_diff + level_coefs[idx] * lvl_diff
-                
-                if card_contrib > 0:
-                    contribs.append({"card": c, "owner": "You (Advantage)" if p1_has else "Opponent (Weakness)", "impact": card_contrib})
-                elif card_contrib < 0:
-                    contribs.append({"card": c, "owner": "Opponent (Advantage)" if p2_has else "You (Weakness)", "impact": card_contrib})
-                    
             contrib_df = pd.DataFrame(contribs).sort_values("impact", ascending=False)
             
             c_left, c_right = st.columns(2)
@@ -585,16 +538,23 @@ with tab_predictor:
                 advs = contrib_df[contrib_df["impact"] > 0].head(3)
                 if len(advs) > 0:
                     for _, row in advs.iterrows():
-                        st.write(f" - **{row['card']}**: impact = `{row['impact']:+.3f}` ({row['owner']})")
+                        if row["owner"] == "You":
+                            st.write(f" - **{row['card']}** in your deck provides a positive boost (`{row['impact']:+.3f}`).")
+                        else:
+                            st.write(f" - **{row['card']}** in opponent's deck is historically weak against you (`{row['impact']:+.3f}`).")
                 else:
                     st.write("No clear advantages detected.")
                     
             with c_right:
                 st.markdown("**👎 Your Key Matchup Disadvantages:**")
-                disadvs = contrib_df[contrib_df["impact"] < 0].sort_values("impact", ascending=True).head(3)
+                disadvs = contrib_df[contrib_df["impact"] < 0].tail(3)
+                disadvs = disadvs.sort_values("impact")
                 if len(disadvs) > 0:
                     for _, row in disadvs.iterrows():
-                        st.write(f" - **{row['card']}**: impact = `{row['impact']:.3f}` ({row['owner']})")
+                        if row["owner"] == "Opponent":
+                            st.write(f" - Opponent's **{row['card']}** is statistically strong in this matchup (`{row['impact']:.3f}`).")
+                        else:
+                            st.write(f" - Your **{row['card']}** has a negative weight in this matchup (`{row['impact']:.3f}`).")
                 else:
                     st.write("No clear disadvantages detected.")
         else:
