@@ -82,10 +82,15 @@ def main():
                 p2_vec[idx] = 1.0
                 p2_lvl_vec[idx] = lvl
 
-        # Concatenate presence differences and card level differences
+        # Extract starting trophies and construct scaled trophy difference
+        p1_tr = float(row.get("p1_trophies", 0) if pd.notna(row.get("p1_trophies")) else 0.0)
+        p2_tr = float(row.get("p2_trophies", 0) if pd.notna(row.get("p2_trophies")) else 0.0)
+        trophy_diff = (p1_tr - p2_tr) / 1000.0
+
+        # Concatenate presence differences, card level differences, and scaled trophy differences
         presence_diff = p1_vec - p2_vec
         level_diff = p1_lvl_vec - p2_lvl_vec
-        feature_vec = np.concatenate([presence_diff, level_diff])
+        feature_vec = np.concatenate([presence_diff, level_diff, [trophy_diff]])
         X.append(feature_vec)
         y.append(p1_won)
 

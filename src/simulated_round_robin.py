@@ -11,6 +11,21 @@ import numpy as np
 import pandas as pd
 
 
+def calculate_aec(deck_str: str, card_elixir: dict) -> float:
+    cards = deck_str.split(",")
+    costs = [card_elixir.get(c, 3.5) for c in cards]
+    return sum(costs) / len(costs)
+
+
+def calculate_elixir_penalty(aec: float) -> float:
+    if 2.8 <= aec <= 4.2:
+        return 0.0
+    elif aec < 2.8:
+        return ((2.8 - aec) ** 2) * 0.15
+    else:
+        return ((aec - 4.2) ** 2) * 0.15
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--in-leaderboard", default="data/deck_leaderboard.csv",
@@ -57,6 +72,16 @@ def main():
         card_vocab = json.load(f)
     num_cards = len(card_vocab)
 
+    # Load card elixir mapping
+    elixir_path = os.path.join(os.path.dirname(args.vocab_path), "card_elixir.json")
+    if os.path.exists(elixir_path):
+        print(f"Loading card elixir database from {elixir_path}...")
+        with open(elixir_path, "r", encoding="utf-8") as f:
+            card_elixir = json.load(f)
+    else:
+        print("Warning: card_elixir.json not found. Elixir regularization will default all cards to 3.5 cost.")
+        card_elixir = {}
+
     # 1. Build all matchup feature vectors
     print("Generating simulated round-robin matchups...")
     X_matchups = []
@@ -83,10 +108,10 @@ def main():
                     v_j[card_vocab[card]] = 1.0
                     v_j_lvl[card_vocab[card]] = 11.0
 
-            # Feature vector: presence difference followed by card level difference
+            # Feature vector: presence difference, card level difference, and equal trophy diff (0.0)
             presence_diff = v_i - v_j
             level_diff = v_i_lvl - v_j_lvl
-            X_matchups.append(np.concatenate([presence_diff, level_diff]))
+            X_matchups.append(np.concatenate([presence_diff, level_diff, [0.0]]))
             matchup_pairs.append((i, j))
 
     X_matchups = np.array(X_matchups)
@@ -106,8 +131,19 @@ def main():
 
     expected_win_rates = win_sums / counts
 
+    # Apply elixir penalty and compute elixir costs
+    penalized_win_rates = []
+    elixir_costs = []
+    for idx, deck_str in enumerate(decks):
+        aec = calculate_aec(deck_str, card_elixir)
+        penalty = calculate_elixir_penalty(aec)
+        penalized_wr = max(0.0, min(1.0, expected_win_rates[idx] - penalty))
+        penalized_win_rates.append(penalized_wr)
+        elixir_costs.append(aec)
+
     # 4. Create new leaderboard dataframe
-    df_meta["simulated_win_rate"] = expected_win_rates
+    df_meta["simulated_win_rate"] = penalized_win_rates
+    df_meta["elixir_cost"] = elixir_costs
     
     # Sort by simulated win rate descending
     df_predicted_leaderboard = df_meta.sort_values(by="simulated_win_rate", ascending=False).reset_index(drop=True)
