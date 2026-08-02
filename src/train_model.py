@@ -84,17 +84,23 @@ def main():
     model.fit(X_train, y_train)
 
     # 5. Evaluate Model
-    y_pred = model.predict(X_test)
-    y_pred_proba = model.predict_proba(X_test)[:, 1]
+    y_train_pred = model.predict(X_train)
+    y_train_pred_proba = model.predict_proba(X_train)[:, 1]
+    y_test_pred = model.predict(X_test)
+    y_test_pred_proba = model.predict_proba(X_test)[:, 1]
 
-    accuracy = accuracy_score(y_test, y_pred)
-    roc_auc = roc_auc_score(y_test, y_pred_proba)
+    train_accuracy = accuracy_score(y_train, y_train_pred)
+    test_accuracy = accuracy_score(y_test, y_test_pred)
+    train_roc_auc = roc_auc_score(y_train, y_train_pred_proba)
+    test_roc_auc = roc_auc_score(y_test, y_test_pred_proba)
 
     print("\n=== Model Performance ===")
-    print(f"Accuracy: {accuracy:.2%}")
-    print(f"ROC-AUC:  {roc_auc:.3f}")
-    print("\nClassification Report:")
-    print(classification_report(y_test, y_pred))
+    print(f"Train Accuracy: {train_accuracy:.2%}")
+    print(f"Test Accuracy:  {test_accuracy:.2%}")
+    print(f"Train ROC-AUC:  {train_roc_auc:.3f}")
+    print(f"Test ROC-AUC:   {test_roc_auc:.3f}")
+    print("\nTest Classification Report:")
+    print(classification_report(y_test, y_test_pred))
 
     # 6. Save artifacts
     os.makedirs(args.out_dir, exist_ok=True)
