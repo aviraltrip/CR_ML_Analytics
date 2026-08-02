@@ -15,7 +15,7 @@ import numpy as np
 @st.cache_resource
 def load_ml_model():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    model_path = os.path.join(base_dir, "models", "synergy_predictor.pkl")
+    model_path = os.path.join(base_dir, "models", "matchup_predictor.pkl")
     vocab_path = os.path.join(base_dir, "models", "card_vocab.json")
     if not os.path.exists(model_path) or not os.path.exists(vocab_path):
         return None, None
@@ -115,24 +115,18 @@ def load_data():
     processed_path = os.path.join(base_dir, "data", "processed_battles.csv")
     leaderboard_path = os.path.join(base_dir, "data", "deck_leaderboard.csv")
     card_stats_path = os.path.join(base_dir, "data", "card_stats.csv")
-    model_leaderboard_path = os.path.join(base_dir, "data", "model_leaderboard.csv")
     
     # Check if files exist
     if not os.path.exists(processed_path) or not os.path.exists(leaderboard_path) or not os.path.exists(card_stats_path):
-        return None, None, None, None
+        return None, None, None
         
     df_battles = pd.read_csv(processed_path)
     df_leaderboard = pd.read_csv(leaderboard_path)
     df_card_stats = pd.read_csv(card_stats_path)
     
-    if os.path.exists(model_leaderboard_path):
-        df_model_leaderboard = pd.read_csv(model_leaderboard_path)
-    else:
-        df_model_leaderboard = None
-        
-    return df_battles, df_leaderboard, df_card_stats, df_model_leaderboard
+    return df_battles, df_leaderboard, df_card_stats
 
-df_battles, df_leaderboard, df_card_stats, df_model_leaderboard = load_data()
+df_battles, df_leaderboard, df_card_stats = load_data()
 
 # Render fallbacks if data is missing
 if df_battles is None or df_leaderboard is None or df_card_stats is None:
@@ -211,110 +205,51 @@ tab_leaderboard, tab_cards, tab_evaluator, tab_predictor = st.tabs([
 
 # TAB 1: DECK LEADERBOARD
 with tab_leaderboard:
-    st.markdown("### 🏆 Deck Leaderboards")
-    
-    leaderboard_type = st.radio(
-        "Select Leaderboard View:",
-        options=["Historical (Wilson Score Adjusted)", "ML-Predicted (Simulated Round-Robin Synergy)"],
-        horizontal=True
+    st.markdown("### 🏆 Confidence-Adjusted Deck Leaderboard")
+    st.write(
+        "Decks are ranked by the **Wilson Score Lower Bound** of their win rate. "
+        "This prevents low-sample flukes (like a deck going 2-0) from dominating the leaderboard "
+        "and prioritizes decks that win consistently over a larger number of matches."
     )
     
-    if leaderboard_type == "Historical (Wilson Score Adjusted)":
-        st.write(
-            "Decks are ranked by the **Wilson Score Lower Bound** of their historical win rate. "
-            "This prevents low-sample flukes (like a deck going 2-0) from dominating the leaderboard "
-            "and prioritizes decks that win consistently over a larger number of matches."
+    # Format table for display
+    display_df = df_leaderboard_filtered.copy()
+    display_df["win_rate"] = display_df["win_rate"].map(lambda x: f"{x:.1%}")
+    display_df["wilson_score"] = display_df["wilson_score"].map(lambda x: f"{x:.3f}")
+    
+    # Show main table
+    st.dataframe(
+        display_df[["Rank", "wilson_score", "win_rate", "matches_played", "wins", "losses", "deck"]],
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
+            "wilson_score": st.column_config.NumberColumn("Wilson Score", help="Adjusted win rate lower bound"),
+            "win_rate": st.column_config.NumberColumn("Raw Win Rate"),
+            "matches_played": st.column_config.NumberColumn("Matches"),
+        }
+    )
+    
+    # Inspector
+    st.markdown("#### 🔍 Deck Inspector")
+    selected_rank = st.number_input("Enter Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_leaderboard_filtered)), value=1)
+    
+    if len(df_leaderboard_filtered) > 0:
+        selected_deck_row = df_leaderboard_filtered.iloc[selected_rank - 1]
+        cards = selected_deck_row["deck"].split(",")
+        
+        st.markdown(f"**Deck Rank #{selected_rank} Roster:**")
+        
+        # Display cards as custom HTML badges
+        badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
+        st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
+        
+        # Mini stat callout
+        st.markdown(
+            f"**Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
+            f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**. "
+            f"Wilson Confidence Score: `{selected_deck_row['wilson_score']:.3f}`."
         )
-        
-        # Format table for display
-        display_df = df_leaderboard_filtered.copy()
-        display_df["win_rate"] = display_df["win_rate"].map(lambda x: f"{x:.1%}")
-        display_df["wilson_score"] = display_df["wilson_score"].map(lambda x: f"{x:.3f}")
-        
-        # Show main table
-        st.dataframe(
-            display_df[["Rank", "wilson_score", "win_rate", "matches_played", "wins", "losses", "deck"]],
-            use_container_width=True,
-            hide_index=True,
-            column_config={
-                "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
-                "wilson_score": st.column_config.NumberColumn("Wilson Score", help="Adjusted win rate lower bound"),
-                "win_rate": st.column_config.NumberColumn("Raw Win Rate"),
-                "matches_played": st.column_config.NumberColumn("Matches"),
-            }
-        )
-        
-        # Inspector
-        st.markdown("#### 🔍 Deck Inspector")
-        selected_rank = st.number_input("Enter Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_leaderboard_filtered)), value=1, key="hist_inspect")
-        
-        if len(df_leaderboard_filtered) > 0:
-            selected_deck_row = df_leaderboard_filtered.iloc[selected_rank - 1]
-            cards = selected_deck_row["deck"].split(",")
-            
-            st.markdown(f"**Deck Rank #{selected_rank} Roster:**")
-            
-            # Display cards as custom HTML badges
-            badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
-            st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
-            
-            # Mini stat callout
-            st.markdown(
-                f"**Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
-                f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**. "
-                f"Wilson Confidence Score: `{selected_deck_row['wilson_score']:.3f}`."
-            )
-    else:
-        if df_model_leaderboard is None:
-            st.warning("⚠️ ML-Predicted Leaderboard data is missing! Please run `python src/simulated_round_robin.py` to generate it first.")
-        else:
-            st.write(
-                "Decks are ranked by their **Expected Win Rate** against the rest of the meta, "
-                "simulated using our trained non-linear **MLP Synergy Model**. "
-                "This highlights decks with strong overall synergy and counter-matchup profiles."
-            )
-            
-            # Filter model leaderboard dynamically based on minimum games slider
-            df_model_filtered = df_model_leaderboard[df_model_leaderboard["matches_played"] >= min_games].copy().reset_index(drop=True)
-            df_model_filtered["Predictive_Rank"] = df_model_filtered.index + 1
-            
-            display_model_df = df_model_filtered.copy()
-            display_model_df["simulated_win_rate"] = display_model_df["simulated_win_rate"].map(lambda x: f"{x:.1%}")
-            display_model_df["win_rate"] = display_model_df["win_rate"].map(lambda x: f"{x:.1%}")
-            
-            st.dataframe(
-                display_model_df[["Predictive_Rank", "simulated_win_rate", "win_rate", "matches_played", "wins", "losses", "deck"]],
-                use_container_width=True,
-                hide_index=True,
-                column_config={
-                    "Predictive_Rank": st.column_config.NumberColumn("ML Rank"),
-                    "deck": st.column_config.TextColumn("Deck Roster (Cards)"),
-                    "simulated_win_rate": st.column_config.NumberColumn("Simulated Win Rate", help="Model-predicted expected win rate against the meta"),
-                    "win_rate": st.column_config.NumberColumn("Historical Win Rate"),
-                    "matches_played": st.column_config.NumberColumn("Historical Matches"),
-                }
-            )
-            
-            # Inspector
-            st.markdown("#### 🔍 Deck Inspector (ML Ranked)")
-            selected_rank_ml = st.number_input("Enter ML Deck Rank to inspect its cards:", min_value=1, max_value=max(1, len(df_model_filtered)), value=1, key="ml_inspect")
-            
-            if len(df_model_filtered) > 0:
-                selected_deck_row = df_model_filtered.iloc[selected_rank_ml - 1]
-                cards = selected_deck_row["deck"].split(",")
-                
-                st.markdown(f"**ML Deck Rank #{selected_rank_ml} Roster:**")
-                
-                # Display cards as custom HTML badges
-                badge_html = "".join([f'<span class="card-badge">{c}</span>' for c in cards])
-                st.markdown(f'<div class="deck-container">{badge_html}</div>', unsafe_allow_html=True)
-                
-                # Mini stat callout
-                st.markdown(
-                    f"**Simulated Win Rate against Meta**: `{selected_deck_row['simulated_win_rate']:.1%}`. "
-                    f"**Historical Stats**: **{selected_deck_row['wins']} Wins** / **{selected_deck_row['losses']} Losses** "
-                    f"({selected_deck_row['win_rate']:.1%} raw win rate) across **{selected_deck_row['matches_played']} matches**."
-                )
 
 # TAB 2: OVERRATED VS UNDERRATED CARDS
 with tab_cards:
@@ -426,19 +361,200 @@ with tab_evaluator:
             )
             
             c1, c2, c3 = st.columns(3)
+            with c1:
+                st.metric("Matches Played", int(match_row["matches_played"]))
+            with c2:
+                st.metric("Win Rate", f"{match_row['win_rate']:.1%}")
+            with c3:
+                st.metric("Wilson Score", f"{match_row['wilson_score']:.3f}")
+        else:
+            st.info("ℹ️ This exact 8-card deck was not found in our leaderboard dataset (it may have been played fewer than 5 times or not recorded yet). Let's check card synergy!")
+
+        # Card-by-card stats breakdown
+        st.markdown("#### 🃏 Individual Card Breakdown")
+        
+        # Filter stats for selected cards
+        selected_stats = df_card_stats[df_card_stats["card"].isin(selected_cards)].copy()
+        
+        # Sort by win rate descending
+        selected_stats = selected_stats.sort_values(by="win_rate", ascending=False)
+        
+        # Display selected cards table
+        display_selected = selected_stats.copy()
+        display_selected["win_rate"] = display_selected["win_rate"].map(lambda x: f"{x:.1%}")
+        display_selected["popularity"] = display_selected["popularity"].map(lambda x: f"{x:.2%}")
+        display_selected["win_rate_diff"] = display_selected["win_rate_diff"].map(lambda x: f"{x:+.1%}")
+        
+        st.dataframe(
+            display_selected[["card", "status", "popularity", "win_rate", "win_rate_diff"]],
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "card": "Card Name",
+                "status": "Classification",
+                "popularity": "Popularity",
+                "win_rate": "Win Rate",
+                "win_rate_diff": "Win Rate Diff vs Avg"
+            }
+        )
+        
+        # Calculate deck summary metrics
+        avg_wr = selected_stats["win_rate"].mean()
+        num_underrated = len(selected_stats[selected_stats["status"] == "Underrated"])
+        num_overrated = len(selected_stats[selected_stats["status"] == "Overrated"])
+        num_meta = len(selected_stats[selected_stats["status"] == "Strong/Meta"])
+        
+        st.markdown("#### 🧪 Synergy Summary")
+        sc1, sc2, sc3 = st.columns(3)
+        with sc1:
+            st.metric("Average Card Win Rate", f"{avg_wr:.1%}")
+        with sc2:
+            st.metric("Underrated Cards", num_underrated, help="Rare but highly successful cards")
+        with sc3:
+            st.metric("Overrated Cards", num_overrated, help="Common but statistically lower win rate cards")
+            
+        # Synergy verdict
+        st.markdown("**Deck Verdict:**")
+        if num_overrated >= 3:
+            st.warning("⚠️ **Highly Overrated Elements**: Your deck contains multiple popular cards that statistically underperform. Consider swapping them out for high-win-rate niche alternatives.")
+        elif num_underrated >= 2:
+            st.success("🚀 **Secret Powerhouse**: Your deck utilizes multiple underrated cards that win more than average but aren't widely played. This can catch opponents off guard!")
+        elif num_meta >= 4:
+            st.info("🛡️ **Stable Meta Deck**: Your deck relies heavily on highly-played, strong meta cards. It is statistically stable but highly predictable.")
+        else:
+            st.write("⚖️ **Balanced Deck**: A mix of card types with standard baseline performance.")
+
+# TAB 4: MATCHUP PREDICTOR
+with tab_predictor:
+    st.markdown("### 🔮 Matchup Predictor (Machine Learning Model)")
+    st.write(
+        "This tool uses a trained **Logistic Regression** model (accuracy: 59.08%) to predict "
+        "the win probability between two decks based on individual card coefficients and matchups."
+    )
+    
+    if model is None or card_vocab is None:
+        st.warning("⚠️ Machine learning model artifacts are missing. Run `python src/train_model.py` to train the model first.")
+    else:
+        all_cards_list = sorted(list(card_vocab.keys()))
+        
+        col_deck1, col_deck2 = st.columns(2)
+        
+        with col_deck1:
+            st.markdown("#### 👤 Your Deck")
+            deck1_selection = st.multiselect(
+                "Select 8 cards for Your Deck:",
+                options=all_cards_list,
+                key="p1_select",
+                max_selections=8
+            )
+            
+        with col_deck2:
+            st.markdown("#### 👿 Opponent's Deck")
+            deck2_selection = st.multiselect(
+                "Select 8 cards for Opponent's Deck:",
+                options=all_cards_list,
+                key="p2_select",
+                max_selections=8
+            )
+            
+        if len(deck1_selection) == 8 and len(deck2_selection) == 8:
+            # Multi-hot vector encoding
+            num_features = len(card_vocab)
+            v1 = np.zeros(num_features)
+            v2 = np.zeros(num_features)
+            
+            for c in deck1_selection:
+                v1[card_vocab[c]] = 1.0
+            for c in deck2_selection:
+                v2[card_vocab[c]] = 1.0
+                
+            # X_input = v1 - v2
+            x_input = (v1 - v2).reshape(1, -1)
+            
+            # Predict
+            prob = model.predict_proba(x_input)[0][1]
+            
+            # Visual display
+            st.markdown("---")
+            st.markdown("#### 🔮 Prediction Outcome")
+            
+            fig_gauge = go.Figure(go.Indicator(
+                mode = "gauge+number",
+                value = prob * 100,
+                domain = {'x': [0, 1], 'y': [0, 1]},
+                title = {'text': "Win Probability (%)", 'font': {'size': 20, 'family': 'Outfit'}},
+                gauge = {
+                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "white"},
+                    'bar': {'color': "#FFD700"}, # Gold
+                    'bgcolor': "rgba(0,0,0,0)",
+                    'borderwidth': 2,
+                    'bordercolor': "gray",
+                    'steps': [
+                        {'range': [0, 45], 'color': 'rgba(231, 76, 60, 0.2)'},
+                        {'range': [45, 55], 'color': 'rgba(241, 196, 15, 0.2)'},
+                        {'range': [55, 100], 'color': 'rgba(46, 204, 113, 0.2)'}
+                    ]
+                }
+            ))
+            
+            fig_gauge.update_layout(
+                template="plotly_dark",
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                height=250,
+                margin=dict(l=10, r=10, t=40, b=10)
+            )
+            
+            st.plotly_chart(fig_gauge, use_container_width=True)
+            
+            # Text verdict
+            if prob > 0.55:
+                st.success(f"🚀 **Favorable Matchup**: You have a **{prob:.1%}** chance of winning this match! Your deck has a solid statistical advantage.")
+            elif prob < 0.45:
+                st.error(f"⚠️ **Unfavorable Matchup**: You have only a **{prob:.1%}** chance of winning. Your opponent's cards have strong counter weights against your deck.")
+            else:
+                st.info(f"⚖️ **Even Matchup**: You have a **{prob:.1%}** chance of winning. This matchup is a coin flip and will rely heavily on in-game skill and play style.")
+                
+            # Cards contribution analysis
+            st.markdown("#### 🧬 Matchup Analysis (Why?)")
+            
+            # Extract coefficients
+            coefs = model.coef_[0]
+            
+            # Display My Deck strengths vs weaknesses
+            contribs = []
+            for c in deck1_selection:
+                weight = coefs[card_vocab[c]]
+                contribs.append({"card": c, "owner": "You", "impact": weight})
+            for c in deck2_selection:
+                weight = -coefs[card_vocab[c]] # Negative impact since it's opponent's card
+                contribs.append({"card": c, "owner": "Opponent", "impact": weight})
+                
+            contrib_df = pd.DataFrame(contribs).sort_values("impact", ascending=False)
+            
+            c_left, c_right = st.columns(2)
+            with c_left:
+                st.markdown("**👍 Your Key Matchup Advantages:**")
                 advs = contrib_df[contrib_df["impact"] > 0].head(3)
                 if len(advs) > 0:
                     for _, row in advs.iterrows():
-                        st.write(f" - **{row['card']}**: impact = `{row['impact']:+.1%}` ({row['owner']})")
+                        if row["owner"] == "You":
+                            st.write(f" - **{row['card']}** in your deck provides a positive boost (`{row['impact']:+.3f}`).")
+                        else:
+                            st.write(f" - **{row['card']}** in opponent's deck is historically weak against you (`{row['impact']:+.3f}`).")
                 else:
                     st.write("No clear advantages detected.")
                     
             with c_right:
-                st.markdown("**👎 Key Matchup Disadvantages:**")
-                disadvs = contrib_df[contrib_df["impact"] < 0].sort_values("impact", ascending=True).head(3)
+                st.markdown("**👎 Your Key Matchup Disadvantages:**")
+                disadvs = contrib_df[contrib_df["impact"] < 0].tail(3)
+                disadvs = disadvs.sort_values("impact")
                 if len(disadvs) > 0:
                     for _, row in disadvs.iterrows():
-                        st.write(f" - **{row['card']}**: impact = `{row['impact']:.1%}` ({row['owner']})")
+                        if row["owner"] == "Opponent":
+                            st.write(f" - Opponent's **{row['card']}** is statistically strong in this matchup (`{row['impact']:.3f}`).")
+                        else:
+                            st.write(f" - Your **{row['card']}** has a negative weight in this matchup (`{row['impact']:.3f}`).")
                 else:
                     st.write("No clear disadvantages detected.")
         else:
