@@ -76,10 +76,10 @@ CR scraper/
 │   ├── train_model.py        # Trains Logistic Regression matchup predictor
 │   ├── train_synergy_model.py  # Trains MLP synergy predictor (primary model)
 │   ├── simulated_round_robin.py  # Simulates meta matchups for model leaderboard
-│   └── save_player_page.py   # (legacy / utility)
+│   └── save_player_page.py   # Utility for saving a RoyaleAPI page for offline inspection
 │
 ├── app/
-│   └── streamlit_app.py      # Original Streamlit dashboard (reference)
+│   └── (legacy Streamlit artifacts removed)
 │
 ├── models/                   # Trained ML artifacts
 │   ├── synergy_predictor.pkl
