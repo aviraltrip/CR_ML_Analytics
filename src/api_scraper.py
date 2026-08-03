@@ -10,6 +10,8 @@ from collections import deque
 
 import requests
 
+from pipeline_config import CR_API_TOKEN_ENV, DEFAULT_MAX_PLAYERS, DEFAULT_SEED_TAGS, DEFAULT_SLEEP_SECONDS, RAW_BATTLELOG_PATH
+
 API_BASE = "https://api.clashroyale.com/v1"
 
 
@@ -90,19 +92,19 @@ def extract_battle_rows(tag: str, battles: list) -> list[dict]:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--seed", required=True,
+    parser.add_argument("--seed", default=DEFAULT_SEED_TAGS,
                          help="Comma-separated seed player tags, e.g. '#2Y0V8PG,#PP8L02Y'")
-    parser.add_argument("--max-players", type=int, default=2000,
+    parser.add_argument("--max-players", type=int, default=DEFAULT_MAX_PLAYERS,
                          help="Stop after visiting this many distinct player tags")
-    parser.add_argument("--out", default="../data/raw_battlelog.jsonl",
+    parser.add_argument("--out", default=str(RAW_BATTLELOG_PATH),
                          help="Output path (JSON Lines, one battle row per line)")
-    parser.add_argument("--sleep", type=float, default=0.3,
+    parser.add_argument("--sleep", type=float, default=DEFAULT_SLEEP_SECONDS,
                          help="Seconds to sleep between requests (be a good citizen)")
     args = parser.parse_args()
 
-    token = os.environ.get("CR_API_TOKEN")
+    token = os.environ.get(CR_API_TOKEN_ENV)
     if not token:
-        raise SystemExit("Set CR_API_TOKEN env var with your Clash Royale API token first.")
+        raise SystemExit(f"Set {CR_API_TOKEN_ENV} env var with your Clash Royale API token first.")
 
     session = requests.Session()
     session.headers.update({"Authorization": f"Bearer {token}"})

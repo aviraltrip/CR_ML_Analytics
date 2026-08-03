@@ -8,6 +8,8 @@ import os
 
 import pandas as pd
 
+from pipeline_config import DECK_LEADERBOARD_PATH, PROCESSED_BATTLES_PATH
+
 
 def wilson_score_lower_bound(wins: int, total: int, z: float = 1.96) -> float:
     """
@@ -27,12 +29,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--in-csv",
-        default="../data/processed_battles.csv",
+        default=str(PROCESSED_BATTLES_PATH),
         help="Input path to processed battles CSV",
     )
     parser.add_argument(
         "--out-csv",
-        default="../data/deck_leaderboard.csv",
+        default=str(DECK_LEADERBOARD_PATH),
         help="Output path for deck leaderboard CSV",
     )
     parser.add_argument(

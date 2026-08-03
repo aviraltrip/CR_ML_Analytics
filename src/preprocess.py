@@ -8,6 +8,8 @@ import os
 
 import pandas as pd
 
+from pipeline_config import PROCESSED_BATTLES_PATH, RAW_BATTLELOG_PATH
+
 
 def get_canonical_battle(row: dict) -> dict:
     """
@@ -66,12 +68,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--in-file",
-        default="../data/raw_battlelog.jsonl",
+        default=str(RAW_BATTLELOG_PATH),
         help="Input path to raw JSONL battle logs",
     )
     parser.add_argument(
         "--out-csv",
-        default="../data/processed_battles.csv",
+        default=str(PROCESSED_BATTLES_PATH),
         help="Output path for processed CSV battles",
     )
     args = parser.parse_args()
