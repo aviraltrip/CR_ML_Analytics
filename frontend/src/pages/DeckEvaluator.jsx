@@ -182,6 +182,21 @@ export function DeckEvaluator() {
     return <ErrorDisplay message={statsError} />
   }
 
+  if (allCardsList.length === 0) {
+    return (
+      <div className="space-y-6 animate-fade-in">
+        <div className="glass-card p-8 text-center">
+          <h2 className="text-lg font-semibold text-white">Card data is not available yet</h2>
+          <p className="text-sm text-dark-400 mt-2">
+            Run the data pipeline to populate the card catalog before evaluating a deck.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  const VerdictIcon = verdict.icon
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
@@ -283,7 +298,7 @@ export function DeckEvaluator() {
                 </div>
 
                 <div className={`p-4 border rounded-lg flex gap-3 ${verdict.color}`}>
-                  <verdict.icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <VerdictIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold block mb-0.5">Verdict</span>
                     <span className="text-sm">{verdict.text}</span>

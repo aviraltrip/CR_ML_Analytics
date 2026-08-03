@@ -134,71 +134,82 @@ export function CardAnalysis() {
         ))}
       </div>
 
-      {/* Chart */}
-      <div className="glass-card p-4">
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart
-            data={chartData}
-            layout="vertical"
-            margin={{ top: 5, right: 30, left: 100, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis
-              type="number"
-              label={{
-                value: 'Win Rate Margin vs 50% Average (%)',
-                position: 'insideBottom',
-                offset: -5,
-                fill: '#A0AEC0',
-                fontSize: 12,
-              }}
-              tick={{ fill: '#A0AEC0', fontSize: 11 }}
-            />
-            <YAxis
-              type="category"
-              dataKey="name"
-              tick={{ fill: '#E2E8F0', fontSize: 11 }}
-              width={100}
-            />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: 'rgba(26, 32, 44, 0.95)',
-                border: '1px solid rgba(255, 215, 0, 0.2)',
-                borderRadius: '8px',
-                color: '#E2E8F0',
-              }}
-              formatter={(value, name) => [`${value}%`, name]}
-            />
-            <ReferenceLine x={0} stroke="#888" strokeDasharray="3 3" />
-            <Bar
-              dataKey="winRateDiff"
-              radius={[0, 4, 4, 0]}
-              fill="#8884d8"
-            >
-              {chartData.map((entry, index) => {
-                const colors = {
-                  Underrated: '#22c55e',
-                  'Strong/Meta': '#3b82f6',
-                  'Weak/Niche': '#6b7280',
-                  Overrated: '#ef4444',
-                }
-                return (
-                  <rect
-                    key={index}
-                    fill={colors[entry.status] || '#8884d8'}
-                  />
-                )
-              })}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      {filteredCards.length > 0 ? (
+        <>
+          {/* Chart */}
+          <div className="glass-card p-4">
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart
+                data={chartData}
+                layout="vertical"
+                margin={{ top: 5, right: 30, left: 100, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                <XAxis
+                  type="number"
+                  label={{
+                    value: 'Win Rate Margin vs 50% Average (%)',
+                    position: 'insideBottom',
+                    offset: -5,
+                    fill: '#A0AEC0',
+                    fontSize: 12,
+                  }}
+                  tick={{ fill: '#A0AEC0', fontSize: 11 }}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  tick={{ fill: '#E2E8F0', fontSize: 11 }}
+                  width={100}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'rgba(26, 32, 44, 0.95)',
+                    border: '1px solid rgba(255, 215, 0, 0.2)',
+                    borderRadius: '8px',
+                    color: '#E2E8F0',
+                  }}
+                  formatter={(value, name) => [`${value}%`, name]}
+                />
+                <ReferenceLine x={0} stroke="#888" strokeDasharray="3 3" />
+                <Bar
+                  dataKey="winRateDiff"
+                  radius={[0, 4, 4, 0]}
+                  fill="#8884d8"
+                >
+                  {chartData.map((entry, index) => {
+                    const colors = {
+                      Underrated: '#22c55e',
+                      'Strong/Meta': '#3b82f6',
+                      'Weak/Niche': '#6b7280',
+                      Overrated: '#ef4444',
+                    }
+                    return (
+                      <rect
+                        key={index}
+                        fill={colors[entry.status] || '#8884d8'}
+                      />
+                    )
+                  })}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-      {/* Table */}
-      <div>
-        <h2 className="text-lg font-semibold mb-3">Full Card Statistics</h2>
-        <DataTable columns={columns} data={filteredCards} />
-      </div>
+          {/* Table */}
+          <div>
+            <h2 className="text-lg font-semibold mb-3">Full Card Statistics</h2>
+            <DataTable columns={columns} data={filteredCards} />
+          </div>
+        </>
+      ) : (
+        <div className="glass-card p-8 text-center">
+          <p className="text-white font-semibold">No cards match this filter yet.</p>
+          <p className="text-sm text-dark-400 mt-1">
+            Try switching to a broader status view or re-running the pipeline to refresh the card stats.
+          </p>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Crown, Trophy, TrendingUp, Zap, Search } from 'lucide-react'
+import { Crown, Trophy, TrendingUp, Zap, Search, Info } from 'lucide-react'
 import { MetricCard } from '../components/MetricCard'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorDisplay } from '../components/ErrorDisplay'
@@ -50,6 +50,24 @@ export function Dashboard() {
           Scraped match statistics & confidence-adjusted rankings of decks using
           the official Clash Royale API.
         </p>
+      </div>
+
+      <div className="glass-card p-4 border-crown-500/20">
+        <div className="flex items-start gap-3">
+          <Info className="w-5 h-5 text-crown-400 mt-0.5 flex-shrink-0" />
+          <div>
+            <p className="text-sm font-semibold text-white">
+              {model_loaded
+                ? 'Model ready for deck evaluation and matchup prediction.'
+                : 'The ML model is not currently loaded, so predictive features will be limited until the pipeline finishes training.'}
+            </p>
+            <p className="text-sm text-dark-400 mt-1">
+              {card_stats?.length
+                ? `${card_stats.length} cards and ${leaderboard?.length || 0} decks are ready to explore.`
+                : 'The dataset is still empty. Run the pipeline to populate the scraped results and rankings.'}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Quick Actions */}

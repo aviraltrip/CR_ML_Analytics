@@ -137,6 +137,19 @@ export function MatchupPredictor() {
     return <ErrorDisplay message={statsError} />
   }
 
+  if (allCardsList.length === 0) {
+    return (
+      <div className="space-y-6 animate-fade-in">
+        <div className="glass-card p-8 text-center">
+          <h2 className="text-lg font-semibold text-white">Card data is not available yet</h2>
+          <p className="text-sm text-dark-400 mt-2">
+            Populate the card catalog first so matchup predictions can be computed.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}

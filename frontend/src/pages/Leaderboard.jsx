@@ -35,6 +35,9 @@ export function Leaderboard() {
 
   const formatWinRate = (val) => `${(val * 100).toFixed(1)}%`
   const formatScore = (val) => val.toFixed(3)
+  const activeRows = activeTab === 'historical'
+    ? histData?.leaderboard || []
+    : mlData?.model_leaderboard || []
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -108,45 +111,54 @@ export function Leaderboard() {
             low-sample flukes from dominating.
           </p>
 
-          <div className="table-wrapper">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-dark-200/20 text-dark-400 uppercase text-xs">
-                  <th className="px-4 py-3 text-left">Rank</th>
-                  <th className="px-4 py-3 text-left">Wilson Score</th>
-                  <th className="px-4 py-3 text-left">Win Rate</th>
-                  <th className="px-4 py-3 text-left">Matches</th>
-                  <th className="px-4 py-3 text-left">W</th>
-                  <th className="px-4 py-3 text-left">L</th>
-                  <th className="px-4 py-3 text-left">Deck</th>
-                </tr>
-              </thead>
-              <tbody>
-                {histData.leaderboard?.map((row) => (
-                  <tr
-                    key={row.Rank}
-                    className="border-b border-dark-200/10 hover:bg-dark-50/5 transition-colors"
-                  >
-                    <td className="px-4 py-3 font-mono text-crown-400">
-                      #{row.Rank}
-                    </td>
-                    <td className="px-4 py-3 font-mono">
-                      {formatScore(row.wilson_score)}
-                    </td>
-                    <td className="px-4 py-3">
-                      {formatWinRate(row.win_rate)}
-                    </td>
-                    <td className="px-4 py-3">{row.matches_played}</td>
-                    <td className="px-4 py-3 text-green-400">{row.wins}</td>
-                    <td className="px-4 py-3 text-red-400">{row.losses}</td>
-                    <td className="px-4 py-3">
-                      <DeckBadge cards={row.deck?.split(',') || []} />
-                    </td>
+          {activeRows.length > 0 ? (
+            <div className="table-wrapper">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-dark-200/20 text-dark-400 uppercase text-xs">
+                    <th className="px-4 py-3 text-left">Rank</th>
+                    <th className="px-4 py-3 text-left">Wilson Score</th>
+                    <th className="px-4 py-3 text-left">Win Rate</th>
+                    <th className="px-4 py-3 text-left">Matches</th>
+                    <th className="px-4 py-3 text-left">W</th>
+                    <th className="px-4 py-3 text-left">L</th>
+                    <th className="px-4 py-3 text-left">Deck</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {activeRows.map((row) => (
+                    <tr
+                      key={row.Rank}
+                      className="border-b border-dark-200/10 hover:bg-dark-50/5 transition-colors"
+                    >
+                      <td className="px-4 py-3 font-mono text-crown-400">
+                        #{row.Rank}
+                      </td>
+                      <td className="px-4 py-3 font-mono">
+                        {formatScore(row.wilson_score)}
+                      </td>
+                      <td className="px-4 py-3">
+                        {formatWinRate(row.win_rate)}
+                      </td>
+                      <td className="px-4 py-3">{row.matches_played}</td>
+                      <td className="px-4 py-3 text-green-400">{row.wins}</td>
+                      <td className="px-4 py-3 text-red-400">{row.losses}</td>
+                      <td className="px-4 py-3">
+                        <DeckBadge cards={row.deck?.split(',') || []} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="glass-card p-8 text-center">
+              <p className="text-white font-semibold">No historical deck data is available yet.</p>
+              <p className="text-sm text-dark-400 mt-1">
+                Try lowering the minimum-match threshold or re-running the scraper pipeline to refresh the dataset.
+              </p>
+            </div>
+          )}
         </div>
       )}
 
@@ -158,43 +170,52 @@ export function Leaderboard() {
             simulated using the trained MLP Synergy Model.
           </p>
 
-          <div className="table-wrapper">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-dark-200/20 text-dark-400 uppercase text-xs">
-                  <th className="px-4 py-3 text-left">ML Rank</th>
-                  <th className="px-4 py-3 text-left">Simulated WR</th>
-                  <th className="px-4 py-3 text-left">Avg Elixir</th>
-                  <th className="px-4 py-3 text-left">Hist. WR</th>
-                  <th className="px-4 py-3 text-left">Matches</th>
-                  <th className="px-4 py-3 text-left">Deck</th>
-                </tr>
-              </thead>
-              <tbody>
-                {mlData.model_leaderboard?.map((row) => (
-                  <tr
-                    key={row.Predictive_Rank}
-                    className="border-b border-dark-200/10 hover:bg-dark-50/5 transition-colors"
-                  >
-                    <td className="px-4 py-3 font-mono text-crown-400">
-                      #{row.Predictive_Rank}
-                    </td>
-                    <td className="px-4 py-3 font-mono">
-                      {formatWinRate(row.simulated_win_rate)}
-                    </td>
-                    <td className="px-4 py-3">{row.elixir_cost?.toFixed(2)}</td>
-                    <td className="px-4 py-3">
-                      {formatWinRate(row.win_rate)}
-                    </td>
-                    <td className="px-4 py-3">{row.matches_played}</td>
-                    <td className="px-4 py-3">
-                      <DeckBadge cards={row.deck?.split(',') || []} />
-                    </td>
+          {activeRows.length > 0 ? (
+            <div className="table-wrapper">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-dark-200/20 text-dark-400 uppercase text-xs">
+                    <th className="px-4 py-3 text-left">ML Rank</th>
+                    <th className="px-4 py-3 text-left">Simulated WR</th>
+                    <th className="px-4 py-3 text-left">Avg Elixir</th>
+                    <th className="px-4 py-3 text-left">Hist. WR</th>
+                    <th className="px-4 py-3 text-left">Matches</th>
+                    <th className="px-4 py-3 text-left">Deck</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {activeRows.map((row) => (
+                    <tr
+                      key={row.Predictive_Rank}
+                      className="border-b border-dark-200/10 hover:bg-dark-50/5 transition-colors"
+                    >
+                      <td className="px-4 py-3 font-mono text-crown-400">
+                        #{row.Predictive_Rank}
+                      </td>
+                      <td className="px-4 py-3 font-mono">
+                        {formatWinRate(row.simulated_win_rate)}
+                      </td>
+                      <td className="px-4 py-3">{row.elixir_cost?.toFixed(2)}</td>
+                      <td className="px-4 py-3">
+                        {formatWinRate(row.win_rate)}
+                      </td>
+                      <td className="px-4 py-3">{row.matches_played}</td>
+                      <td className="px-4 py-3">
+                        <DeckBadge cards={row.deck?.split(',') || []} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="glass-card p-8 text-center">
+              <p className="text-white font-semibold">No ML predictions are available yet.</p>
+              <p className="text-sm text-dark-400 mt-1">
+                Train the model and rerun the pipeline to populate the predictive leaderboard.
+              </p>
+            </div>
+          )}
         </div>
       )}
     </div>
