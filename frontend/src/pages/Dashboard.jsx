@@ -93,28 +93,6 @@ export function Dashboard() {
             {card_stats?.length || 0} cards analyzed
           </p>
         </Link>
-
-        <Link
-          to="/evaluator"
-          className="glass-card p-4 hover:border-crown-500/30 transition-colors cursor-pointer group"
-        >
-          <Search className="w-6 h-6 text-blue-400 mb-2 group-hover:scale-110 transition-transform" />
-          <h3 className="font-semibold text-sm">Deck Evaluator</h3>
-          <p className="text-xs text-dark-400 mt-1">
-            Analyze your 8-card deck
-          </p>
-        </Link>
-
-        <Link
-          to="/matchup"
-          className="glass-card p-4 hover:border-crown-500/30 transition-colors cursor-pointer group"
-        >
-          <Zap className="w-6 h-6 text-purple-400 mb-2 group-hover:scale-110 transition-transform" />
-          <h3 className="font-semibold text-sm">Matchup Predictor</h3>
-          <p className="text-xs text-dark-400 mt-1">
-            ML-powered predictions
-          </p>
-        </Link>
       </div>
 
       {/* Metrics Row */}
