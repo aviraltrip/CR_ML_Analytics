@@ -1,43 +1,17 @@
-"""
-FastAPI backend for Clash Royale Deck Analytics.
-Wraps existing ML logic in REST endpoints without modifying any prediction,
-preprocessing, or inference functions.
-"""
+"""Compatibility entry point for the FastAPI backend."""
 
-import json
-import os
-import pickle
-from typing import Optional
+import sys
+from pathlib import Path
 
-import numpy as np
-import pandas as pd
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-# ---------------------------------------------------------------------------
-# App definition (must come before decorators that reference it)
-# ---------------------------------------------------------------------------
-app = FastAPI(
-    title="Clash Royale Deck Analytics API",
-    description="REST API for Clash Royale deck analysis, matchup prediction, and deck evaluation.",
-    version="1.0.0",
-)
+from app import app  # noqa: F401
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODELS_DIR = os.path.join(BASE_DIR, "models")
-DATA_DIR = os.path.join(BASE_DIR, "data")
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
 
 # ---------------------------------------------------------------------------
 # Load ML model and vocab (cached at startup)
