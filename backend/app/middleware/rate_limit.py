@@ -1,16 +1,11 @@
-"""
-Simple in-memory rate-limiting middleware.
-Tracks request counts per client IP within a sliding window.
-"""
+"""Simple in-memory rate-limiting middleware for API requests."""
 
 import time
 from collections import defaultdict
 from typing import Callable
 
-from fastapi import Request, HTTPException
+from fastapi import HTTPException, Request
 from starlette.middleware.base import BaseHTTPMiddleware
-
-from app.config import settings
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):

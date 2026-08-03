@@ -1,9 +1,8 @@
-"""Route registration — import all route modules and include their routers."""
+"""Route registration for the API."""
 
 from fastapi import FastAPI
 
-from app.routes import health, data, leaderboard, card_stats, model_leaderboard
-from app.routes import evaluate, matchup, swaps
+from . import card_stats, data, evaluate, health, leaderboard, matchup, model_leaderboard, swaps
 
 
 def register_routes(app: FastAPI) -> None:

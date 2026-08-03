@@ -1,15 +1,10 @@
-"""
-Simple in-memory caching middleware.
-Caches GET responses keyed by the full request URL for a configurable TTL.
-"""
+"""Simple in-memory caching middleware for GET requests."""
 
 import time
 from typing import Callable
 
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
-
-from app.config import settings
 
 
 class CacheMiddleware(BaseHTTPMiddleware):

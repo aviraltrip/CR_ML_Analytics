@@ -1,16 +1,13 @@
-"""
-Clash Royale Deck Analytics — FastAPI Application.
-
-App factory and package initialization.
-"""
+"""Clash Royale Deck Analytics — FastAPI application factory."""
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import settings
-from app.middleware.rate_limit import RateLimitMiddleware
-from app.middleware.cache import CacheMiddleware
-from app.routes import register_routes
+from .config import settings
+from .dependencies import load_card_elixir, load_model_and_vocab
+from .middleware.cache import CacheMiddleware
+from .middleware.rate_limit import RateLimitMiddleware
+from .routes import register_routes
 
 
 def create_app() -> FastAPI:
@@ -23,7 +20,6 @@ def create_app() -> FastAPI:
         version=settings.APP_VERSION,
     )
 
-    # --- CORS ---
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.CORS_ORIGINS,
@@ -32,12 +28,19 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # --- Custom Middleware ---
-    app.add_middleware(RateLimitMiddleware, max_requests=settings.RATE_LIMIT_MAX, window_seconds=settings.RATE_LIMIT_WINDOW)
+    app.add_middleware(
+        RateLimitMiddleware,
+        max_requests=settings.RATE_LIMIT_MAX,
+        window_seconds=settings.RATE_LIMIT_WINDOW,
+    )
     app.add_middleware(CacheMiddleware, default_ttl=settings.CACHE_TTL)
 
-    # --- Routes ---
     register_routes(app)
+
+    @app.on_event("startup")
+    def _load_models() -> None:
+        load_model_and_vocab()
+        load_card_elixir()
 
     return app
 

@@ -1,20 +1,15 @@
-"""
-Shared ML model state — loaded once at startup, reused across all routes.
-"""
+"""Shared ML model state and data-loading helpers."""
 
 import json
 import os
 import pickle
 from typing import Optional
 
-import numpy as np
 import pandas as pd
+from fastapi import HTTPException
 
-from app.config import settings
+from .config import settings
 
-# ---------------------------------------------------------------------------
-# Global state (populated at startup)
-# ---------------------------------------------------------------------------
 model: Optional[object] = None
 card_vocab: Optional[dict] = None
 card_elixir: dict = {}
@@ -43,13 +38,9 @@ def load_card_elixir() -> None:
 def ensure_model_loaded() -> None:
     """Raise 503 if the ML model is not available."""
     if model is None or card_vocab is None:
-        from fastapi import HTTPException
         raise HTTPException(status_code=503, detail="ML model not loaded. Train models first.")
 
 
-# ---------------------------------------------------------------------------
-# Helper functions (preserved from original main.py)
-# ---------------------------------------------------------------------------
 def calculate_aec(deck_cards: list[str], card_elixir_map: dict) -> float:
     costs = [card_elixir_map.get(c, 3.5) for c in deck_cards]
     return sum(costs) / len(costs)
@@ -58,15 +49,20 @@ def calculate_aec(deck_cards: list[str], card_elixir_map: dict) -> float:
 def calculate_elixir_penalty(aec: float) -> float:
     if 2.8 <= aec <= 4.2:
         return 0.0
-    elif aec < 2.8:
+    if aec < 2.8:
         return ((2.8 - aec) ** 2) * 0.15
-    else:
-        return ((aec - 4.2) ** 2) * 0.15
+    return ((aec - 4.2) ** 2) * 0.15
+
+
+def _resolve_path(path: str) -> str:
+    if os.path.isabs(path):
+        return path
+    return os.path.join(settings.PROJECT_ROOT, path)
 
 
 def load_csv(path: str) -> pd.DataFrame:
     """Load a CSV file, raising 404 if missing."""
-    from fastapi import HTTPException
-    if not os.path.exists(path):
-        raise HTTPException(status_code=404, detail=f"Data file not found: {os.path.basename(path)}")
-    return pd.read_csv(path)
+    absolute_path = _resolve_path(path)
+    if not os.path.exists(absolute_path):
+        raise HTTPException(status_code=404, detail=f"Data file not found: {os.path.basename(absolute_path)}")
+    return pd.read_csv(absolute_path)
