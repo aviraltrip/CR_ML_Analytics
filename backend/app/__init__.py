@@ -2,14 +2,16 @@
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from .config import settings
 from .dependencies import load_card_elixir, load_model_and_vocab
 from .middleware.cache import CacheMiddleware
 from .middleware.rate_limit import RateLimitMiddleware
 from .routes import register_routes
+from .services.errors import ApiError
 
 
 @asynccontextmanager
@@ -44,6 +46,20 @@ def create_app() -> FastAPI:
         window_seconds=settings.RATE_LIMIT_WINDOW,
     )
     app.add_middleware(CacheMiddleware, default_ttl=settings.CACHE_TTL)
+
+    @app.exception_handler(ApiError)
+    async def api_error_handler(_: Request, exc: ApiError) -> JSONResponse:
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"error": {"code": exc.code, "message": exc.message}},
+        )
+
+    @app.exception_handler(Exception)
+    async def generic_exception_handler(_: Request, exc: Exception) -> JSONResponse:
+        return JSONResponse(
+            status_code=500,
+            content={"error": {"code": "INTERNAL_SERVER_ERROR", "message": str(exc)}},
+        )
 
     register_routes(app)
 
