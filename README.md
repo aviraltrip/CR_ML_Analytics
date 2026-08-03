@@ -24,7 +24,7 @@ A full-stack web application for analyzing Clash Royale decks, predicting matchu
 | **Backend** | FastAPI (Python 3.10+) |
 | **ML / Data** | scikit-learn, pandas, numpy |
 | **API** | REST (JSON), CORS-enabled, Axios client with interceptors |
-| **Data Source** | Clash Royale official API (raw battle logs → processed CSVs) |
+| **Data Source** | Clash Royale official API — snowball scraping of ladder battle logs → processed CSVs → ML models |
 
 ---
 
@@ -69,13 +69,13 @@ CR scraper/
 │           └── MatchupPredictor.jsx
 │
 ├── src/                      # Data pipeline & ML training scripts
-│   ├── api_scraper.py        # Fetches raw battle logs from Clash Royale API
-│   ├── preprocess.py         # Cleans & transforms raw data into CSVs
+│   ├── api_scraper.py        # 🔌 Snowball scraper — fetches raw battle logs from Clash Royale API
+│   ├── preprocess.py         # Cleans, deduplicates & canonicalizes raw logs → CSV
 │   ├── aggregate_decks.py    # Aggregates deck signatures from battle logs
-│   ├── card_stats.py         # Computes per-card win rates & popularity
-│   ├── train_model.py        # Trains the MLP synergy prediction model
-│   ├── train_synergy_model.py# Trains the deck-level synergy classifier
-│   ├── simulated_round_robin.py  # Simulates meta matchups for leaderboard
+│   ├── card_stats.py         # Computes per-card win rates, popularity, overrated/underrated
+│   ├── train_model.py        # Trains Logistic Regression matchup predictor
+│   ├── train_synergy_model.py  # Trains MLP synergy predictor (primary model)
+│   ├── simulated_round_robin.py  # Simulates meta matchups for model leaderboard
 │   └── save_player_page.py   # (legacy / utility)
 │
 ├── app/
@@ -96,6 +96,24 @@ CR scraper/
 │
 └── README.md
 ```
+
+---
+
+## 🔌 Scraping Pipeline
+
+Battle data is collected from the **Clash Royale official API** (`https://api.clashroyale.com/v1`) using a snowball scraping strategy:
+
+1. **Seed** — Provide one or more player tags as starting points
+2. **Crawl** — Fetch each player's battlelog, extract opponent tags, and queue them
+3. **Filter** — Only keep 1v1 ladder battles with complete 8-card decks
+4. **Store** — Raw JSONL output (`data/raw_battlelog.jsonl`)
+5. **Process** — Canonicalize, deduplicate, and transform into ML-ready CSVs
+
+**Key scraper behavior:**
+- Respects rate limits with exponential backoff on `429` responses
+- Canonicalizes battles by sorting player tags to avoid duplicate entries
+- Skips 2v2, challenge, and non-standard game modes
+- Requires `CR_API_TOKEN` environment variable (Bearer token from [CR API portal](https://developer.riotgames.com/))
 
 ---
 
@@ -121,18 +139,48 @@ npm run dev
 
 The dev server runs on `http://127.0.0.1:3000` and proxies `/api` requests to the FastAPI backend automatically via Vite's dev proxy.
 
-### 3. Data Pipeline (one-time setup)
+### 3. Data Collection & Scraping (one-time setup)
 
-Before using the ML features, run the data pipeline:
+The scraper collects real 1v1 ladder battle logs from the Clash Royale API using a **snowball approach**:
+
+1. Start with one or more seed player tags
+2. Fetch each player's battlelog
+3. Extract opponent tags from each battle and queue them for scraping
+4. Continue until the target player count is reached
 
 ```bash
 cd src
-python api_scraper.py       # Fetch raw battle logs
-python preprocess.py        # Generate processed CSVs
-python aggregate_decks.py   # Build deck signatures
-python card_stats.py        # Compute card-level stats
-python train_model.py       # Train ML models
-python simulated_round_robin.py  # Simulate meta matchups
+
+# Set your Clash Royale API token (required)
+export CR_API_TOKEN="your_bearer_token_here"
+
+# Scrape battle logs (snowball from seed players)
+python api_scraper.py \
+  --seed "#2Y0V8PG,#PP8L02Y" \
+  --max-players 2000 \
+  --sleep 0.3 \
+  --out ../data/raw_battlelog.jsonl
+```
+
+**Scraping details:**
+- Only collects **1v1 ladder** battles (`PvP`, `PathOfLegend`) with complete 8-card decks on both sides
+- Handles rate limiting (`429`) with exponential backoff
+- Skips malformed rows and deduplicates battles canonically (sorted player tags)
+- Output: `data/raw_battlelog.jsonl` — one JSON battle row per line
+
+### 4. Data Pipeline (one-time setup)
+
+After scraping, transform raw logs into ML-ready datasets:
+
+```bash
+cd src
+
+python preprocess.py        # Clean, deduplicate, canonicalize → processed_battles.csv
+python aggregate_decks.py   # Build deck signatures for leaderboard ranking
+python card_stats.py        # Per-card win rates, popularity, overrated/underrated classification
+python train_model.py       # Train Logistic Regression matchup predictor
+python train_synergy_model.py  # Train MLP synergy predictor (primary model)
+python simulated_round_robin.py  # Simulate meta matchups for model leaderboard
 ```
 
 ---
