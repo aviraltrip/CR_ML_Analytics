@@ -9,8 +9,8 @@ A clean full-stack app for Clash Royale deck ranking, matchup prediction, and de
 - Dashboard with totals, top decks, card stats, and model status
 - Leaderboard with win rate, Wilson score ranking, and min-games filtering
 - Card analysis for popularity, win rate, and overrated/underrated status
-- Deck evaluator with historical lookup, synergy score, and swap recommendations
-- Matchup predictor with deck-vs-deck win probability and meta-aware output
+- Deck evaluator with historical deck lookup, predicted win rate, and swap recommendations
+- Matchup predictor with deck-vs-deck win probability, contributions, and matchup insights
 
 ---
 
@@ -32,7 +32,20 @@ CR scraper/
 │       ├── hooks/useApi.js
 │       ├── utils/constants.js
 │       ├── components/
+│       │   ├── DeckBadge.jsx
+│       │   ├── DeckSelector.jsx
+│       │   ├── ErrorDisplay.jsx
+│       │   ├── Layout.jsx
+│       │   ├── LoadingSpinner.jsx
+│       │   ├── MetricCard.jsx
+│       │   ├── WinRateGauge.jsx
+│       │   └── DataTable.jsx
 │       └── pages/
+│           ├── Dashboard.jsx
+│           ├── Leaderboard.jsx
+│           ├── CardAnalysis.jsx
+│           ├── DeckEvaluator.jsx
+│           └── MatchupPredictor.jsx
 ├── src/              # Data pipeline and ML scripts
 │   ├── api_scraper.py
 │   ├── preprocess.py

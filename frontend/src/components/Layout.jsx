@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Crown, Home, Trophy, BarChart3 } from 'lucide-react'
+import { Crown, Home, Trophy, BarChart3, ShieldCheck, Sparkles } from 'lucide-react'
 
 const navItems = [
   { path: '/', label: 'Dashboard', icon: Home },
   { path: '/leaderboard', label: 'Leaderboard', icon: Trophy },
   { path: '/cards', label: 'Card Analysis', icon: BarChart3 },
+  { path: '/evaluator', label: 'Deck Evaluator', icon: Sparkles },
+  { path: '/matchup', label: 'Matchup Predictor', icon: ShieldCheck },
 ]
 
 export function Layout({ children }) {
