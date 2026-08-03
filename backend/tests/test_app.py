@@ -1,8 +1,12 @@
+import sys
 import unittest
+from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from backend.main import app
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from main import app
 
 
 class AppTests(unittest.TestCase):
