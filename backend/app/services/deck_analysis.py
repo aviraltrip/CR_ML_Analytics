@@ -25,7 +25,7 @@ class DeckAnalysisService:
         normalized_levels = normalize_levels(levels, cards)
         search_sig = ",".join(sorted(cards))
 
-        df_leaderboard = pd.read_csv("data/deck_leaderboard.csv")
+        df_leaderboard = dependencies.load_csv("data/deck_leaderboard.csv")
         deck_match = df_leaderboard[df_leaderboard["deck"] == search_sig]
 
         result = {"found_in_history": False, "cards": cards, "signature": search_sig}
@@ -47,7 +47,7 @@ class DeckAnalysisService:
         if self.model is None or self.card_vocab is None:
             raise ApiError("ML model not loaded. Train models first.", code="MODEL_UNAVAILABLE")
 
-        df_model_leaderboard = pd.read_csv("data/model_leaderboard.csv")
+        df_model_leaderboard = dependencies.load_csv("data/model_leaderboard.csv")
         meta_decks = df_model_leaderboard["deck"].tolist()
         num_cards = len(self.card_vocab)
 
@@ -177,7 +177,7 @@ class DeckAnalysisService:
         if self.model is None or self.card_vocab is None:
             raise ApiError("ML model not loaded. Train models first.", code="MODEL_UNAVAILABLE")
 
-        df_model_leaderboard = pd.read_csv("data/model_leaderboard.csv")
+        df_model_leaderboard = dependencies.load_csv("data/model_leaderboard.csv")
         meta_decks = df_model_leaderboard["deck"].tolist()
         num_cards = len(self.card_vocab)
 
