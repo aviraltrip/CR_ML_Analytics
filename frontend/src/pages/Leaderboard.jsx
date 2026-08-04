@@ -29,19 +29,22 @@ function getDeckArchetype(avgElixir) {
   return { archetype: 'Heavy Beatdown', difficulty: 'Easy', color: 'text-red-400' }
 }
 
-// Helper to get meta tier based on win rate
-function getMetaTier(winRate) {
-  const wr = parseFloat(winRate)
-  if (wr >= 0.55) return { name: 'S-TIER', color: 'bg-red-500/10 text-red-400 border-red-500/30' }
-  if (wr >= 0.52) return { name: 'A-TIER', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/30' }
-  if (wr >= 0.49) return { name: 'B-TIER', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' }
-  return { name: 'C-TIER', color: 'bg-slate-500/10 text-slate-400 border-slate-500/30' }
+// Helper to get meta tier based on leaderboard rank
+function getMetaTier(rank) {
+  const r = parseInt(rank) || 20
+  if (r <= 5) return { name: 'S-TIER', color: 'bg-red-500/10 text-red-400 border-red-500/30' }
+  if (r <= 12) return { name: 'A-TIER', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/30' }
+  return { name: 'B-TIER', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' }
 }
 
 export function Leaderboard() {
   const navigate = useNavigate()
   const minGames = 5
   const [activeTab, setActiveTab] = useState('historical')
+  
+  // Fetch static data to calculate elixir costs dynamically
+  const { data: allData } = useApi(() => api.getAllData())
+  const cardElixirMap = allData?.card_elixir || {}
 
   const {
     data: histData,
@@ -149,11 +152,13 @@ export function Leaderboard() {
             {activeRows.map((row, index) => {
               const cardsList = row.deck?.split(',') || []
               const rankVal = activeTab === 'historical' ? row.Rank : row.Predictive_Rank
-              const wrVal = activeTab === 'historical' ? row.win_rate : row.simulated_win_rate
-              const elixirCost = row.elixir_cost || (cardsList.length ? 3.5 : 0) // fallback if not present on hist
+              
+              // Dynamically calculate average elixir cost from the cardElixirMap
+              const costs = cardsList.map(c => cardElixirMap[c] || 3.5)
+              const elixirCost = costs.reduce((sum, val) => sum + val, 0) / (cardsList.length || 1)
               
               const { archetype, difficulty, color: arcColor } = getDeckArchetype(elixirCost)
-              const metaTier = getMetaTier(wrVal)
+              const metaTier = getMetaTier(rankVal)
 
               return (
                 <div
