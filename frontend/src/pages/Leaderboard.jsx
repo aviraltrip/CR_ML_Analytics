@@ -198,15 +198,6 @@ export function Leaderboard() {
                       </div>
                     </div>
                     
-                    {/* Match count and Elixir cost stats */}
-                    <div className="text-right">
-                      <span className="text-sm font-black text-white block">
-                        {row.matches_played} Matches
-                      </span>
-                      <span className="text-[10px] text-slate-450 font-bold block">
-                        AEC: {parseFloat(elixirCost).toFixed(1)}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Deck Cards Grid (4x2 layout) */}
@@ -222,15 +213,7 @@ export function Leaderboard() {
                   </div>
 
                   {/* Deck Footer Actions */}
-                  <div className="flex items-center justify-between border-t border-slate-800/30 pt-4 mt-4 text-xs font-semibold text-slate-400">
-                    <div className="flex gap-4">
-                      {activeTab === 'historical' ? (
-                        <span>Wilson score: <strong className="text-white">{row.wilson_score?.toFixed(3)}</strong></span>
-                      ) : (
-                        <span>Model Prediction: <strong className="text-white">Active</strong></span>
-                      )}
-                    </div>
-                    
+                  <div className="flex items-center justify-end border-t border-slate-800/30 pt-4 mt-4 text-xs font-semibold text-slate-400">
                     {/* Navigation Buttons */}
                     <div className="flex gap-2">
                       <button
