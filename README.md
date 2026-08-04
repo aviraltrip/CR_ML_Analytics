@@ -1,140 +1,41 @@
 # Clash Royale Deck Analytics
 
-A clean full-stack app for Clash Royale deck ranking, matchup prediction, and deck evaluation.
+A clean, full-stack application that provides Clash Royale deck ranking, card stats, matchup predictions, and deck evaluation using machine learning synergy models.
 
 ---
 
-## Features
+## 🌟 Features
 
-- Dashboard with totals, top decks, card stats, and model status
-- Leaderboard with win rate, Wilson score ranking, and min-games filtering
-- Card analysis for popularity, win rate, and overrated/underrated status
-- Deck evaluator with historical deck lookup, predicted win rate, and swap recommendations
-- Matchup predictor with deck-vs-deck win probability, contributions, and matchup insights
+* **Dashboard & Stats:** Real-time summary metrics, top-performing decks, card usage statistics, and ML model loaded status.
+* **Deck Leaderboard:** Performance ranking of popular decks with filtering options and Wilson score intervals for statistical validation.
+* **Card Analytics:** Popularity and win rate analysis mapping overperforming (overrated) or underperforming (underrated) cards in the current meta.
+* **Deck Evaluator:** Input any custom 8-card combination to calculate its simulated win rate against the meta and receive optimal card swap recommendations.
+* **Matchup Predictor:** Input two custom decks to predict win probability, analyze key match advantages/threats, and review card-by-card matchup contributions.
 
 ---
 
-## Project Structure
+## 🛠️ Tech Stack
 
-```
-CR scraper/
-├── backend/          # FastAPI backend
-│   ├── main.py
-│   └── requirements.txt
-├── frontend/         # React + Vite UI
-│   ├── index.html
-│   ├── package.json
-│   └── src/
-│       ├── App.jsx
-│       ├── main.jsx
-│       ├── index.css
-│       ├── services/api.js
-│       ├── hooks/useApi.js
-│       ├── utils/constants.js
-│       ├── components/
-│       │   ├── DeckBadge.jsx
-│       │   ├── DeckSelector.jsx
-│       │   ├── ErrorDisplay.jsx
-│       │   ├── Layout.jsx
-│       │   ├── LoadingSpinner.jsx
-│       │   ├── MetricCard.jsx
-│       │   ├── WinRateGauge.jsx
-│       │   └── DataTable.jsx
-│       └── pages/
-│           ├── Dashboard.jsx
-│           ├── Leaderboard.jsx
-│           ├── CardAnalysis.jsx
-│           ├── DeckEvaluator.jsx
-│           └── MatchupPredictor.jsx
-├── src/              # Data pipeline and ML scripts
-│   ├── api_scraper.py
-│   ├── preprocess.py
-│   ├── aggregate_decks.py
-│   ├── card_stats.py
-│   ├── train_model.py
-│   ├── train_synergy_model.py
-│   └── simulated_round_robin.py
-├── data/             # Processed CSV datasets
-├── models/           # Trained model artifacts
-└── README.md
+* **Frontend:** React, Vite, Tailwind CSS, Recharts, Lucide React.
+* **Backend:** FastAPI, Uvicorn, Pandas, NumPy, Scikit-Learn.
+* **Data & ML Pipeline:** Python scraper, Pandas preprocessing, Logistic Regression classification models for deck-vs-deck synergy prediction.
+
+---
+
+## 🔄 Data & Application Flow
+
+```mermaid
+graph TD
+    A[CR API Scraper] -->|Raw Battlelogs| B[Data Preprocessing]
+    B -->|Cleaned Battles CSV| C[Aggregations & Leaderboards]
+    B -->|Cleaned Battles CSV| D[Model Training]
+    C -->|Processed Data CSVs| E[FastAPI Backend]
+    D -->|ML Synergy Model & Vocab| E
+    E -->|REST API JSON| F[React UI Dashboard]
 ```
 
----
-
-## Quick Start
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### Data pipeline
-
-```bash
-cd src
-python api_scraper.py --seed "#2Y0V8PG" --max-players 1000 --out ../data/raw_battlelog.jsonl
-python preprocess.py --in-file ../data/raw_battlelog.jsonl --out-csv ../data/processed_battles.csv
-python aggregate_decks.py --in-csv ../data/processed_battles.csv --out-csv ../data/deck_leaderboard.csv
-python card_stats.py --in-csv ../data/processed_battles.csv --out-csv ../data/card_stats.csv
-python train_model.py
-python train_synergy_model.py
-python simulated_round_robin.py --out-csv ../data/model_leaderboard.csv
-```
-
----
-
-## API Endpoints
-
-- `GET /health`
-- `GET /data`
-- `GET /leaderboard`
-- `GET /card-stats`
-- `GET /model-leaderboard`
-- `POST /evaluate-deck`
-- `POST /predict-matchup`
-- `POST /find-swaps`
-
----
-
-## Production Deployment
-
-This project is set up to be deployed as a separated frontend and backend (Approach B) from this single repository.
-
-### Backend (Render)
-1. Create a new **Web Service** pointing to your repository.
-2. Configure settings:
-   - **Root Directory:** *(leave blank / default)*
-   - **Build Command:** `pip install -r backend/requirements.txt`
-   - **Start Command:** `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 2`
-3. Add **Environment Variables**:
-   - `PYTHONPATH` = `backend`
-   - `CORS_ORIGINS` = `https://your-frontend.vercel.app` (your live frontend URL)
-   - `CR_API_TOKEN` = *(your Clash Royale API key if running the scraper)*
-4. Set the **Health Check Path** to `/health`.
-
-### Frontend (Vercel)
-1. Import the repository in Vercel.
-2. Edit **Configure Project** settings:
-   - **Root Directory:** `frontend`
-3. Add **Environment Variables**:
-   - `VITE_API_URL` = `https://your-backend.onrender.com` (your live Render backend URL, without `/api` at the end)
-4. Trigger a deploy.
-
----
-
-## Notes
-
-- Frontend: React, Vite, Tailwind, Recharts
-- Backend: FastAPI, CSV-backed data, model inference
-- Pipeline: scraper, preprocess, deck aggregation, card stats, model training
+1. **Ingestion:** The scraper (`api_scraper.py`) queries the official Clash Royale API using a seed player tag to crawl standard 1v1 ladder battles.
+2. **Processing & Aggregation:** Raw battle logs are cleaned and preprocessed into structured CSV datasets representing battles, aggregated deck win rates, and card statistics.
+3. **Model Training:** A machine learning synergy model (`train_synergy_model.py`) is trained on level-adjusted deck matchups to predict the win probability of one deck signature against another.
+4. **API Services:** The FastAPI backend loads the trained model artifacts and processed datasets into memory on startup to serve fast, stateless REST endpoints.
+5. **User Interface:** The responsive React dashboard consumes the API to display metadata leaderboards and run interactive deck simulations.
