@@ -198,13 +198,13 @@ export function Leaderboard() {
                       </div>
                     </div>
                     
-                    {/* Win rate badge */}
+                    {/* Match count and Elixir cost stats */}
                     <div className="text-right">
                       <span className="text-sm font-black text-white block">
-                        {formatWinRate(wrVal)} WR
+                        {row.matches_played} Matches
                       </span>
-                      <span className="text-[10px] text-slate-400 font-bold block">
-                        {row.matches_played} matches
+                      <span className="text-[10px] text-slate-450 font-bold block">
+                        AEC: {parseFloat(elixirCost).toFixed(1)}
                       </span>
                     </div>
                   </div>
@@ -224,9 +224,10 @@ export function Leaderboard() {
                   {/* Deck Footer Actions */}
                   <div className="flex items-center justify-between border-t border-slate-800/30 pt-4 mt-4 text-xs font-semibold text-slate-400">
                     <div className="flex gap-4">
-                      <span>Avg Elixir: <strong className="text-white">{parseFloat(elixirCost).toFixed(1)}</strong></span>
-                      {activeTab === 'historical' && (
+                      {activeTab === 'historical' ? (
                         <span>Wilson score: <strong className="text-white">{row.wilson_score?.toFixed(3)}</strong></span>
+                      ) : (
+                        <span>Model Prediction: <strong className="text-white">Active</strong></span>
                       )}
                     </div>
                     
