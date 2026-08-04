@@ -76,3 +76,19 @@ export const TROPHY_RANGE = {
 // Required deck size
 // ---------------------------------------------------------------------------
 export const DECK_SIZE = 8
+
+// ---------------------------------------------------------------------------
+// Helper to get card rarity by name
+// ---------------------------------------------------------------------------
+export function getCardRarity(cardName) {
+  const champions = ["Archer Queen", "Golden Knight", "Mighty Miner", "Monk", "Little Prince", "Berserker", "Goblinstein"]
+  const legendaries = ["Bandit", "Electro Wizard", "Fisherman", "Ice Wizard", "Inferno Dragon", "Lumberjack", "Magic Archer", "Mega Knight", "Miner", "Mother Witch", "Night Witch", "Phoenix", "Princess", "Ram Rider", "Royal Ghost", "Sparky", "The Log", "Lava Hound", "Graveyard"]
+  const epics = ["Baby Dragon", "Balloon", "Bowler", "Clone", "Dark Prince", "Executioner", "Freeze", "Giant Skeleton", "Goblin Barrel", "Goblin Drill", "Guards", "Hunter", "Mirror", "P.E.K.K.A", "Poison", "Prince", "Rage", "Tornado", "Witch", "X-Bow", "Skeleton Army", "Electro Dragon"]
+  const rares = ["Battle Healer", "Bomb Tower", "Dart Goblin", "Elixir Collector", "Elixir Golem", "Flying Machine", "Furnace", "Giant", "Goblin Cage", "Goblin Hut", "Hog Rider", "Ice Golem", "Inferno Tower", "Mini P.E.K.K.A", "Musketeer", "Royal Hogs", "Three Musketeers", "Tombstone", "Valkyrie", "Wizard", "Heal Spirit", "Battle Ram", "Earthquake"]
+  
+  if (champions.includes(cardName)) return 'champion'
+  if (legendaries.includes(cardName)) return 'legendary'
+  if (epics.includes(cardName)) return 'epic'
+  if (rares.includes(cardName)) return 'rare'
+  return 'common'
+}

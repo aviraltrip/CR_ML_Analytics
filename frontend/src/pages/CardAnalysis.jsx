@@ -1,31 +1,37 @@
 import React, { useState } from 'react'
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  Tooltip, 
+  ResponsiveContainer, 
   ReferenceLine,
-  CartesianGrid,
+  Cell
 } from 'recharts'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { DataTable } from '../components/DataTable'
-import { STATUS_COLORS } from '../utils/constants'
+import { CardImage } from '../components/CardImage'
+import { STATUS_COLORS, getCardRarity } from '../utils/constants'
 import { useApi } from '../hooks/useApi'
 import { api } from '../services/api'
+import { Grid, List, BarChart3, TrendingUp, Sparkles } from 'lucide-react'
 
-const STATUS_ORDER = {
-  Underrated: 0,
-  'Strong/Meta': 1,
-  'Weak/Niche': 2,
-  Overrated: 3,
+// Helper to get meta tier for card based on win rate
+function getCardMetaRating(winRate) {
+  const wr = parseFloat(winRate)
+  if (wr >= 0.53) return 'S'
+  if (wr >= 0.50) return 'A'
+  if (wr >= 0.47) return 'B'
+  return 'C'
 }
 
 export function CardAnalysis() {
   const { data, loading, error, execute } = useApi(() => api.getCardStats())
   const [statusFilter, setStatusFilter] = useState('All')
+  const [viewMode, setViewMode] = useState('grid') // 'grid' | 'table'
 
   const cardStats = data?.card_stats || []
 
@@ -34,11 +40,11 @@ export function CardAnalysis() {
       ? cardStats
       : cardStats.filter((c) => c.status === statusFilter)
 
-  const chartData = filteredCards
+  // Data sorted for chart display
+  const chartData = [...filteredCards]
     .sort((a, b) => a.win_rate_diff - b.win_rate_diff)
     .map((c) => ({
-      name: c.card.length > 15 ? c.card.slice(0, 15) + '…' : c.card,
-      fullName: c.card,
+      name: c.card,
       winRateDiff: +(c.win_rate_diff * 100).toFixed(1),
       popularity: +(c.popularity * 100).toFixed(1),
       winRate: +(c.win_rate * 100).toFixed(1),
@@ -54,8 +60,21 @@ export function CardAnalysis() {
     Overrated: cardStats.filter((c) => c.status === 'Overrated').length,
   }
 
+  // Columns for Table View
   const columns = [
-    { key: 'card', label: 'Card' },
+    { 
+      key: 'card', 
+      label: 'Card',
+      render: (val) => {
+        const rarity = getCardRarity(val)
+        return (
+          <div className="flex items-center gap-3">
+            <CardImage name={val} rarity={rarity} className="h-10 w-8 flex-shrink-0" />
+            <span className="font-bold text-white text-sm">{val}</span>
+          </div>
+        )
+      }
+    },
     {
       key: 'status',
       label: 'Status',
@@ -63,7 +82,7 @@ export function CardAnalysis() {
         const colors = STATUS_COLORS[val] || {}
         return (
           <span
-            className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} border ${colors.border}`}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase border ${colors.bg} ${colors.text} ${colors.border}`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
             {val}
@@ -74,143 +93,271 @@ export function CardAnalysis() {
     {
       key: 'popularity',
       label: 'Popularity',
+      align: 'right',
       render: (val) => `${(val * 100).toFixed(2)}%`,
     },
     {
       key: 'win_rate',
       label: 'Win Rate',
+      align: 'right',
       render: (val) => `${(val * 100).toFixed(1)}%`,
     },
     {
       key: 'win_rate_diff',
       label: 'Win Rate Diff',
+      align: 'right',
       render: (val) => (
-        <span className={val >= 0 ? 'text-green-400' : 'text-red-400'}>
+        <span className={`font-mono font-bold ${val >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
           {val >= 0 ? '+' : ''}
           {(val * 100).toFixed(1)}%
         </span>
       ),
     },
-    { key: 'matches_played', label: 'Matches' },
+    { 
+      key: 'matches_played', 
+      label: 'Matches', 
+      align: 'right',
+      render: (val) => val.toLocaleString() 
+    },
   ]
 
   if (loading) {
-    return <LoadingSpinner message="Loading card statistics..." />
+    return <LoadingSpinner message="Analyzing card popularity and win rates..." />
   }
 
   if (error) {
-    return (
-      <ErrorDisplay message={error} onRetry={() => execute()} />
-    )
+    return <ErrorDisplay message={error} onRetry={() => execute()} />
   }
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      {/* Header */}
-      <div>
-        <h1 className="font-display font-extrabold text-2xl sm:text-3xl gradient-text">
-          Overrated vs. Underrated Cards
-        </h1>
-        <p className="text-dark-400 mt-1">
-          Cards are classified by popularity and win rate differential.
-          Underrated cards have high win rates but low usage.
-        </p>
-      </div>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-8"
+    >
+      
+      {/* 1. View Toggles & Status Filters */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {/* Status Pills */}
+        <div className="flex flex-wrap gap-1.5 p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit">
+          {Object.entries(statusCounts).map(([status, count]) => {
+            const isActive = statusFilter === status
+            return (
+              <button
+                key={status}
+                onClick={() => setStatusFilter(status)}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${
+                  isActive
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                {status} ({count})
+              </button>
+            )
+          })}
+        </div>
 
-      {/* Status Filters */}
-      <div className="flex flex-wrap gap-2">
-        {Object.entries(statusCounts).map(([status, count]) => (
+        {/* View Mode (Grid vs Table) */}
+        <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit self-end md:self-auto">
           <button
-            key={status}
-            onClick={() => setStatusFilter(status)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-              statusFilter === status
-                ? 'bg-crown-500/20 text-crown-400 border border-crown-500/30'
-                : 'bg-dark-50/50 text-dark-400 border border-dark-200/20 hover:text-white'
+            onClick={() => setViewMode('grid')}
+            className={`p-2.5 rounded-lg transition-all ${
+              viewMode === 'grid' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
             }`}
+            title="Grid View"
           >
-            {status} ({count})
+            <Grid className="w-4 h-4" />
           </button>
-        ))}
+          <button
+            onClick={() => setViewMode('table')}
+            className={`p-2.5 rounded-lg transition-all ${
+              viewMode === 'table' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
+            }`}
+            title="Table View"
+          >
+            <List className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {filteredCards.length > 0 ? (
-        <>
-          {/* Chart */}
-          <div className="glass-card p-4">
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart
-                data={chartData}
-                layout="vertical"
-                margin={{ top: 5, right: 30, left: 100, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                <XAxis
-                  type="number"
-                  label={{
-                    value: 'Win Rate Margin vs 50% Average (%)',
-                    position: 'insideBottom',
-                    offset: -5,
-                    fill: '#A0AEC0',
-                    fontSize: 12,
-                  }}
-                  tick={{ fill: '#A0AEC0', fontSize: 11 }}
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  tick={{ fill: '#E2E8F0', fontSize: 11 }}
-                  width={100}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'rgba(26, 32, 44, 0.95)',
-                    border: '1px solid rgba(255, 215, 0, 0.2)',
-                    borderRadius: '8px',
-                    color: '#E2E8F0',
-                  }}
-                  formatter={(value, name) => [`${value}%`, name]}
-                />
-                <ReferenceLine x={0} stroke="#888" strokeDasharray="3 3" />
-                <Bar
-                  dataKey="winRateDiff"
-                  radius={[0, 4, 4, 0]}
-                  fill="#8884d8"
+        <div className="space-y-8">
+          
+          {/* 2. Visual Horizontal Bar Chart of Win Rate Diff */}
+          <div className="glass-panel p-6 rounded-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="w-4 h-4 text-indigo-400" />
+              <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
+                Win Rate Margin vs 50% Baseline
+              </span>
+            </div>
+            
+            <div className="w-full h-[380px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={chartData}
+                  layout="vertical"
+                  margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 >
-                  {chartData.map((entry, index) => {
-                    const colors = {
-                      Underrated: '#22c55e',
-                      'Strong/Meta': '#3b82f6',
-                      'Weak/Niche': '#6b7280',
-                      Overrated: '#ef4444',
-                    }
-                    return (
-                      <rect
-                        key={index}
-                        fill={colors[entry.status] || '#8884d8'}
-                      />
-                    )
-                  })}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+                  <XAxis
+                    type="number"
+                    stroke="#64748b"
+                    fontSize={10}
+                    tickLine={false}
+                    tickFormatter={(val) => `${val >= 0 ? '+' : ''}${val}%`}
+                  />
+                  <YAxis
+                    type="category"
+                    dataKey="name"
+                    stroke="#64748b"
+                    fontSize={9}
+                    tickLine={false}
+                    width={90}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#0c1220',
+                      borderColor: '#1e293b',
+                      borderRadius: '12px',
+                    }}
+                    itemStyle={{ color: '#fff' }}
+                    labelStyle={{ color: '#818cf8', fontWeight: 'bold' }}
+                    formatter={(value) => [`${value}%`, 'Win Rate Margin']}
+                  />
+                  <ReferenceLine x={0} stroke="#475569" strokeDasharray="3 3" />
+                  <Bar dataKey="winRateDiff" radius={[0, 4, 4, 0]}>
+                    {chartData.map((entry, index) => {
+                      // Apply custom colors based on meta status
+                      let barColor = '#64748b' // default grey
+                      if (entry.status === 'Underrated') barColor = '#10b981' // emerald
+                      else if (entry.status === 'Strong/Meta') barColor = '#3b82f6' // royal blue
+                      else if (entry.status === 'Overrated') barColor = '#ef4444' // red
+                      
+                      return (
+                        <Cell key={`cell-${index}`} fill={barColor} />
+                      )
+                    })}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
-          {/* Table */}
-          <div>
-            <h2 className="text-lg font-semibold mb-3">Full Card Statistics</h2>
-            <DataTable columns={columns} data={filteredCards} />
-          </div>
-        </>
+          {/* 3. Cards Grid View or Data Table View */}
+          <AnimatePresence mode="wait">
+            {viewMode === 'grid' ? (
+              <motion.div
+                key="grid-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4"
+              >
+                {filteredCards.map((c, index) => {
+                  const colors = STATUS_COLORS[c.status] || {}
+                  const rarity = getCardRarity(c.card)
+                  const metaRating = getCardMetaRating(c.win_rate)
+
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: Math.min(0.2, index * 0.02) }}
+                      whileHover={{ y: -4 }}
+                      key={c.card}
+                      className="glass-panel p-4 rounded-2xl flex flex-col justify-between items-center group relative text-center border border-slate-800/60"
+                    >
+                      {/* Top rating badge */}
+                      <div className="absolute top-2.5 right-2.5 z-10 font-black font-mono text-xs rounded-full bg-slate-900 border border-indigo-500/30 text-indigo-400 w-6 h-6 flex items-center justify-center shadow-lg">
+                        {metaRating}
+                      </div>
+
+                      {/* Official Card Artwork frame */}
+                      <CardImage
+                        name={c.card}
+                        rarity={rarity}
+                        className="h-28 w-20 mb-3"
+                      />
+
+                      {/* Card Title */}
+                      <h4 className="font-extrabold text-sm text-white truncate max-w-full">
+                        {c.card}
+                      </h4>
+
+                      {/* Overrated / Underrated status */}
+                      <span className={`mt-1.5 px-2 py-0.5 rounded text-[8px] font-black uppercase border tracking-wider leading-none ${colors.bg} ${colors.text} ${colors.border}`}>
+                        {c.status}
+                      </span>
+
+                      {/* Stats columns */}
+                      <div className="grid grid-cols-2 gap-2 mt-4 pt-3.5 border-t border-slate-800/40 w-full text-[10px] font-semibold text-slate-400">
+                        <div>
+                          <span className="block text-slate-500 text-[8px] uppercase tracking-wide">Usage</span>
+                          <span className="text-white font-mono font-bold mt-0.5 block">
+                            {(c.popularity * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                        <div>
+                          <span className="block text-slate-500 text-[8px] uppercase tracking-wide">Win Rate</span>
+                          <span className="text-white font-mono font-bold mt-0.5 block">
+                            {(c.win_rate * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Hidden stats overlay on hover */}
+                      <div className="absolute inset-0 bg-[#0c1220]/95 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+                        <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5">
+                          Detailed Stats
+                        </span>
+                        <p className="text-xs font-bold text-white">{c.card}</p>
+                        <p className="text-[10px] text-slate-400 mt-0.5 uppercase tracking-wide">{rarity} rarity</p>
+                        
+                        <div className="space-y-1.5 mt-4 text-xs w-full text-left bg-slate-950/40 p-2.5 rounded-lg border border-slate-900 font-medium">
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Margin vs 50%:</span>
+                            <span className={c.win_rate_diff >= 0 ? 'text-emerald-400 font-bold' : 'text-red-400 font-bold'}>
+                              {c.win_rate_diff >= 0 ? '+' : ''}{(c.win_rate_diff * 100).toFixed(1)}%
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Total Matches:</span>
+                            <span className="text-white font-mono font-bold">{c.matches_played.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="table-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+                className="space-y-4"
+              >
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                  Full Card Statistics Table
+                </h3>
+                <DataTable columns={columns} data={filteredCards} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+        </div>
       ) : (
-        <div className="glass-card p-8 text-center">
-          <p className="text-white font-semibold">No cards match this filter yet.</p>
-          <p className="text-sm text-dark-400 mt-1">
-            Try switching to a broader status view or re-running the pipeline to refresh the card stats.
-          </p>
+        <div className="glass-card p-12 text-center rounded-2xl border border-slate-800">
+          <p className="text-white font-semibold">No cards meet the current filter criteria.</p>
         </div>
       )}
-    </div>
+
+    </motion.div>
   )
 }
 
