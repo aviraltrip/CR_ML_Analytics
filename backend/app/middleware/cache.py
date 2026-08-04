@@ -16,6 +16,10 @@ class CacheMiddleware(BaseHTTPMiddleware):
         self._cache: dict[str, tuple[float, Response]] = {}
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        # Do not cache health check endpoint
+        if request.url.path == "/health":
+            return await call_next(request)
+
         # Only cache GET requests
         if request.method != "GET":
             return await call_next(request)

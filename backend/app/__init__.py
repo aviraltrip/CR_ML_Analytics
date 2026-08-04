@@ -33,6 +33,15 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    # Register cache and rate-limiting first
+    app.add_middleware(CacheMiddleware, default_ttl=settings.CACHE_TTL)
+    app.add_middleware(
+        RateLimitMiddleware,
+        max_requests=settings.RATE_LIMIT_MAX,
+        window_seconds=settings.RATE_LIMIT_WINDOW,
+    )
+
+    # CORSMiddleware must be added last to wrap all responses (including cached and throttled ones)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.CORS_ORIGINS,
@@ -40,13 +49,6 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-
-    app.add_middleware(
-        RateLimitMiddleware,
-        max_requests=settings.RATE_LIMIT_MAX,
-        window_seconds=settings.RATE_LIMIT_WINDOW,
-    )
-    app.add_middleware(CacheMiddleware, default_ttl=settings.CACHE_TTL)
 
     @app.exception_handler(ApiError)
     async def api_error_handler(_: Request, exc: ApiError) -> JSONResponse:
