@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Crown, Trophy, TrendingUp, Zap, Search, Info } from 'lucide-react'
+import { Crown, Trophy, TrendingUp, Zap, Search, Info, Sparkles, ShieldCheck } from 'lucide-react'
 import { MetricCard } from '../components/MetricCard'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorDisplay } from '../components/ErrorDisplay'
