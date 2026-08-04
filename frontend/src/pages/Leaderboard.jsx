@@ -40,7 +40,7 @@ function getMetaTier(winRate) {
 
 export function Leaderboard() {
   const navigate = useNavigate()
-  const [minGames, setMinGames] = useState(5)
+  const minGames = 5
   const [activeTab, setActiveTab] = useState('historical')
 
   const {
@@ -79,7 +79,7 @@ export function Leaderboard() {
     >
       
       {/* 1. Toggle Controls & Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex justify-start">
         {/* Tab Buttons */}
         <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit">
           <button
@@ -104,22 +104,6 @@ export function Leaderboard() {
             <BrainCircuit className="w-4 h-4" />
             ML-Predicted (Synergy)
           </button>
-        </div>
-
-        {/* Min Matches Slider Filter */}
-        <div className="flex items-center gap-4 bg-slate-900/40 border border-slate-850 px-4 py-2.5 rounded-xl w-fit">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Min Matches:</span>
-          <input
-            type="range"
-            min="2"
-            max="20"
-            value={minGames}
-            onChange={(e) => setMinGames(Number(e.target.value))}
-            className="w-28 accent-indigo-500 h-1.5 bg-slate-950 rounded-lg cursor-pointer"
-          />
-          <span className="text-sm font-mono font-bold text-white bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
-            {minGames}
-          </span>
         </div>
       </div>
 
