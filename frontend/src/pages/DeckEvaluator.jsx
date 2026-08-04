@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { BarChart3, Sparkles } from 'lucide-react'
-import { usePost } from '../hooks/useApi'
+import React, { useState, useEffect, useMemo } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  Sparkles, 
+  BarChart3, 
+  ArrowLeft, 
+  HelpCircle, 
+  ShieldCheck, 
+  Gauge, 
+  AlertTriangle,
+  RotateCcw,
+  Search,
+  CheckCircle,
+  HelpCircle as QuestionIcon,
+  Flame,
+  Wand2
+} from 'lucide-react'
+import { useApi, usePost } from '../hooks/useApi'
 import { api } from '../services/api'
 import { DeckSelector } from '../components/DeckSelector'
+import { WinRateGauge } from '../components/WinRateGauge'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorDisplay } from '../components/ErrorDisplay'
-import { DeckBadge } from '../components/DeckBadge'
+import { getCardRarity } from '../utils/constants'
+import { CardImage } from '../components/CardImage'
 
 const DEFAULT_CARDS = [
   'Arrows',
@@ -19,139 +36,347 @@ const DEFAULT_CARDS = [
   'Tombstone',
 ]
 
+// Lists for dynamic deck metrics
+const AIR_CARDS = ["Archers", "Baby Dragon", "Bats", "Dart Goblin", "Electro Dragon", "Electro Wizard", "Executioner", "Firecracker", "Flying Machine", "Hunter", "Ice Wizard", "Inferno Dragon", "Magic Archer", "Minions", "Minion Horde", "Musketeer", "Phoenix", "Princess", "Spear Goblins", "Three Musketeers", "Witch", "Wizard", "Tesla", "Inferno Tower", "Archer Queen", "Little Prince", "Electro Spirit", "Ice Spirit", "Void", "Arrows", "Fireball", "Rocket", "Zap", "Lightning", "Poison", "Giant Snowball", "Tornado"]
+const SPELLS = ["Arrows", "Earthquake", "Fireball", "Freeze", "Lightning", "Poison", "Rage", "Rocket", "The Log", "Tornado", "Zap", "Giant Snowball", "Void", "Goblin Curse", "Clone", "Mirror"]
+const TANKS = ["Giant", "Golem", "Lava Hound", "P.E.K.K.A", "Mega Knight", "Giant Skeleton", "Royal Giant", "Electro Giant", "Goblin Giant", "Rune Giant", "Mighty Miner"]
+
 export function DeckEvaluator() {
+  const location = useLocation()
   const [cards, setCards] = useState(DEFAULT_CARDS)
   const [levels, setLevels] = useState({})
+  
+  // Fetch static resources (all cards lists, elixir map, etc.) from /data
+  const { data: allData } = useApi(() => api.getAllData())
+  
+  // POST request to evaluate a deck
   const { data, loading, error, execute } = usePost((payload) => api.evaluateDeck(payload))
 
-  const handleEvaluate = async () => {
-    if (cards.length !== 8) {
-      return
+  const availableCardsList = useMemo(() => {
+    return allData?.card_elixir ? Object.keys(allData.card_elixir) : []
+  }, [allData])
+
+  const cardElixirMap = useMemo(() => {
+    return allData?.card_elixir || {}
+  }, [allData])
+
+  // Parse URL deck parameter on mount
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const deckParam = params.get('deck')
+    if (deckParam) {
+      const parsed = deckParam.split(',')
+      if (parsed.length === 8) {
+        setCards(parsed)
+      }
     }
-    await execute({ cards, levels })
+  }, [location.search])
+
+  const handleEvaluate = async (deckOverride = null) => {
+    const targetCards = deckOverride || cards
+    if (targetCards.length !== 8) return
+    
+    // Auto-fill levels for cards that don't have them set yet (default level 11)
+    const resolvedLevels = {}
+    targetCards.forEach(c => {
+      resolvedLevels[c] = levels[c] !== undefined ? levels[c] : 11
+    })
+    
+    await execute({ cards: targetCards, levels: resolvedLevels })
+  }
+
+  // Auto-evaluate when deck loads from query param
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    if (params.get('deck') && availableCardsList.length > 0) {
+      handleEvaluate()
+    }
+  }, [location.search, availableCardsList])
+
+  // Calculate live deck statistics before calling the API
+  const liveStats = useMemo(() => {
+    if (cards.length === 0) return { aec: 0, cycle: 0, air: 0, spells: 0, tanks: 0 }
+    
+    const costs = cards.map(c => cardElixirMap[c] || 3.5)
+    const aec = costs.reduce((a, b) => a + b, 0) / cards.length
+    
+    const sortedCosts = [...costs].sort((a, b) => a - b)
+    const cycle = sortedCosts.slice(0, Math.min(4, sortedCosts.length)).reduce((a, b) => a + b, 0) / Math.min(4, sortedCosts.length)
+    
+    const air = cards.filter(c => AIR_CARDS.includes(c)).length
+    const spellsCount = cards.filter(c => SPELLS.includes(c)).length
+    const tanksCount = cards.filter(c => TANKS.includes(c)).length
+    
+    return { aec, cycle, air, spells: spellsCount, tanks: tanksCount }
+  }, [cards, cardElixirMap])
+
+  // Perform swap action (replace weakest card with suggestion and evaluate)
+  const handlePerformSwap = (weakestCard, replacementCard) => {
+    const nextCards = cards.map(c => c === weakestCard ? replacementCard : c)
+    setCards(nextCards)
+    handleEvaluate(nextCards)
   }
 
   return (
-    <div className="space-y-8 animate-fade-in">
-      <div>
-        <h1 className="font-display font-extrabold text-3xl sm:text-4xl gradient-text">
-          Deck Evaluator
-        </h1>
-        <p className="text-dark-400 mt-2">
-          Analyze a deck with historical ranking, predicted win rate, and swap suggestions.
-        </p>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-[360px_minmax(0,1fr)]">
-        <div className="space-y-4">
-          <DeckSelector
-            label="Your Deck"
-            cards={cards}
-            setCards={setCards}
-            description="Add or remove cards to build an 8-card deck. Use the built-in deck selector to manage your cards."
-          />
-
-          <div className="glass-card p-5 space-y-3">
-            <h2 className="text-lg font-semibold text-white">Card Levels</h2>
-            <p className="text-sm text-dark-400">
-              Optional levels can help the model better predict your deck strength.
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {cards.map((card) => (
-                <label key={card} className="block text-sm">
-                  <span className="text-dark-300">{card}</span>
-                  <input
-                    type="number"
-                    value={levels[card] ?? 11}
-                    onChange={(e) =>
-                      setLevels({
-                        ...levels,
-                        [card]: Math.max(1, Math.min(16, Number(e.target.value))),
-                      })
-                    }
-                    className="mt-2 w-full rounded-lg border border-dark-200/20 bg-dark-900 px-3 py-2 text-white focus:border-crown-500/60 focus:outline-none"
-                    min="1"
-                    max="16"
-                  />
-                </label>
-              ))}
-            </div>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-8"
+    >
+      
+      <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+        
+        {/* LEFT COLUMN: Deck Builder & Inputs */}
+        <div className="space-y-6">
+          
+          {/* Deck Selector Card Grid */}
+          <div className="glass-panel p-5 sm:p-6 rounded-3xl border border-slate-800/60">
+            <DeckSelector
+              label="Interactive Deck Builder"
+              cards={cards}
+              setCards={setCards}
+              availableCards={availableCardsList}
+              cardElixirMap={cardElixirMap}
+              description="Click slots to remove cards. Select cards from the grid database below to complete your 8-card combination."
+            />
           </div>
 
-          <div className="flex flex-col gap-3">
-            <button
-              onClick={handleEvaluate}
-              disabled={cards.length !== 8 || loading}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-crown-600 px-5 py-3 text-sm font-semibold text-white hover:bg-crown-500 disabled:cursor-not-allowed disabled:opacity-60 transition-colors"
-            >
-              <Sparkles className="w-4 h-4" />
-              Evaluate Deck
-            </button>
-            <Link
-              to="/leaderboard"
-              className="text-sm text-crown-400 hover:text-crown-300"
-            >
-              Browse leaderboard decks and compare scores →
-            </Link>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {loading && <LoadingSpinner message="Evaluating deck..." />}
-          {error && <ErrorDisplay message={error} />}
-
-          {data && (
-            <div className="glass-card p-5 space-y-4">
-              <div className="flex items-center gap-3">
-                <BarChart3 className="w-6 h-6 text-crown-400" />
-                <div>
-                  <p className="text-sm text-dark-400">Evaluation Results</p>
-                  <h2 className="text-xl font-semibold text-white">{data.found_in_history ? 'Historical Match Found' : 'Predicted Outcome'}</h2>
-                </div>
+          {/* Card Levels Editor */}
+          {cards.length > 0 && (
+            <div className="glass-panel p-6 rounded-2xl space-y-4">
+              <div>
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Gauge className="w-4 h-4 text-indigo-400" />
+                  Customize Card Levels
+                </h3>
+                <p className="text-[11px] text-slate-400 mt-1">
+                  Adjust levels (1–16) of individual cards to refine the ML model predictions based on card level differences.
+                </p>
               </div>
 
-              {data.found_in_history ? (
-                <div className="space-y-3">
-                  <p className="text-sm text-dark-400">This deck was found in historical rankings.</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl bg-dark-900 p-4">
-                      <div className="text-sm text-dark-400">Rank</div>
-                      <div className="text-2xl font-semibold text-white">#{data.rank}</div>
-                    </div>
-                    <div className="rounded-xl bg-dark-900 p-4">
-                      <div className="text-sm text-dark-400">Win Rate</div>
-                      <div className="text-2xl font-semibold text-white">{(data.win_rate * 100).toFixed(1)}%</div>
-                    </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {cards.map((card) => (
+                  <div key={card} className="p-3 bg-slate-950/40 rounded-xl border border-slate-900 flex flex-col justify-between">
+                    <span className="text-[10px] font-bold text-slate-300 truncate block mb-1">
+                      {card}
+                    </span>
+                    <input
+                      type="number"
+                      value={levels[card] ?? 11}
+                      onChange={(e) =>
+                        setLevels({
+                          ...levels,
+                          [card]: Math.max(1, Math.min(16, Number(e.target.value))),
+                        })
+                      }
+                      className="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-indigo-500/50 focus:outline-none text-center font-mono font-bold"
+                      min="1"
+                      max="16"
+                    />
                   </div>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl bg-dark-900 p-4">
-                      <div className="text-sm text-dark-400">Estimated Win Rate</div>
-                      <div className="text-2xl font-semibold text-white">{(data.predicted_win_rate * 100).toFixed(1)}%</div>
-                    </div>
-                    <div className="rounded-xl bg-dark-900 p-4">
-                      <div className="text-sm text-dark-400">Estimated Meta Rank</div>
-                      <div className="text-2xl font-semibold text-white">#{data.estimated_rank}</div>
-                    </div>
-                  </div>
-                  <div className="rounded-xl bg-dark-900 p-4">
-                    <div className="text-sm text-dark-400">Average Elixir</div>
-                    <div className="text-xl font-semibold text-white">{data.avg_elixir_cost}</div>
-                  </div>
-                </div>
-              )}
-
-              <div className="space-y-3">
-                <h3 className="text-sm text-dark-400">Deck</h3>
-                <DeckBadge cards={cards} />
+                ))}
               </div>
             </div>
           )}
+
+          {/* Run Button */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => handleEvaluate()}
+              disabled={cards.length !== 8 || loading}
+              className="flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-indigo-600 hover:bg-indigo-500 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black uppercase text-sm rounded-xl tracking-wider shadow-lg shadow-indigo-950/40 transition-all"
+            >
+              <Wand2 className="w-4 h-4" />
+              Evaluate Synergy
+            </button>
+            
+            {cards.length === 8 && (
+              <button 
+                onClick={() => {
+                  setCards(DEFAULT_CARDS)
+                  setLevels({})
+                }}
+                className="p-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-400 hover:text-white transition-all"
+                title="Reset Deck"
+              >
+                <RotateCcw className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+
         </div>
+
+        {/* RIGHT COLUMN: Output & Predictive Recommendations */}
+        <div className="space-y-6">
+          
+          {/* Default state when not evaluated yet */}
+          {!loading && !data && !error && (
+            <div className="glass-panel p-8 rounded-3xl text-center h-full flex flex-col items-center justify-center border border-slate-800/40">
+              <div className="p-4 bg-indigo-500/10 rounded-full border border-indigo-500/20 text-indigo-400 mb-4">
+                <Sparkles className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg font-black text-white uppercase tracking-wider">Ready for Simulation</h3>
+              <p className="text-slate-400 text-xs mt-2 max-w-xs mx-auto leading-relaxed">
+                Build an 8-card deck and click the **Evaluate Synergy** button. The server will run a simulated round-robin against meta decks.
+              </p>
+            </div>
+          )}
+
+          {/* Loading spinner overlay */}
+          {loading && (
+            <div className="glass-panel p-8 rounded-3xl h-full flex items-center justify-center">
+              <LoadingSpinner message="Calculating winrate matrix & card synergy deltas..." />
+            </div>
+          )}
+
+          {/* Error message */}
+          {error && <ErrorDisplay message={error} />}
+
+          {/* Evaluation Outputs Dashboard */}
+          <AnimatePresence>
+            {!loading && data && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                {/* 1. Win Rate Radial Gauge */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Gauge */}
+                  <WinRateGauge 
+                    probability={data.found_in_history ? data.win_rate : data.predicted_win_rate} 
+                  />
+
+                  {/* Estimated Meta Rank */}
+                  <div className="glass-card p-6 rounded-2xl flex flex-col justify-between border-l-[3px] border-l-cyan-500">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
+                        Meta Placement
+                      </span>
+                      <h3 className="text-3xl font-black font-mono text-white mt-2 leading-none">
+                        #{data.found_in_history ? data.rank : data.estimated_rank}
+                      </h3>
+                      <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-wide">
+                        Status: {data.found_in_history ? 'HISTORICAL MATCH' : 'PREDICTIVE SIMULATION'}
+                      </p>
+                    </div>
+
+                    <p className="text-xs text-slate-400 mt-4 leading-normal">
+                      {data.found_in_history
+                        ? `This deck was parsed directly from matches. It recorded ${data.wins} wins and ${data.losses} losses.`
+                        : `Estimated meta ranking out of ${data.total_meta_decks} parsed deck models in the round-robin pool.`}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2. Live Composition Stats */}
+                <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    Deck Statistics Breakdown
+                  </h4>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    {/* AEC */}
+                    <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
+                      <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Avg Elixir</span>
+                      <span className="block text-lg font-black text-white font-mono mt-0.5">{liveStats.aec.toFixed(1)}</span>
+                    </div>
+
+                    {/* Cycle */}
+                    <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
+                      <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Cycle Cost</span>
+                      <span className="block text-lg font-black text-indigo-400 font-mono mt-0.5">{liveStats.cycle.toFixed(1)}</span>
+                    </div>
+
+                    {/* Air Def */}
+                    <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
+                      <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Air Defense</span>
+                      <span className={`block text-lg font-black font-mono mt-0.5 ${liveStats.air >= 2 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {liveStats.air} / 8
+                      </span>
+                    </div>
+
+                    {/* Tank/Spell */}
+                    <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
+                      <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Spells / Tanks</span>
+                      <span className="block text-xs font-black text-white mt-1.5 uppercase font-mono">
+                        {liveStats.spells}S | {liveStats.tanks}T
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Swap Suggestions Cards */}
+                {!data.found_in_history && data.top_swaps && data.top_swaps.length > 0 && (
+                  <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        Synergy Recommendations
+                      </h4>
+                      <p className="text-[10px] text-slate-450 mt-1 leading-normal">
+                        LOO (Leave-One-Out) metrics identified **{data.weakest_card}** as the weakest card in this deck combination (Impact: {data.weakest_impact}). Swap it to improve:
+                      </p>
+                    </div>
+
+                    <div className="space-y-2.5">
+                      {data.top_swaps.map((swap, idx) => {
+                        const isPositive = swap.improvement > 0
+                        const swapRarity = getCardRarity(swap.candidate)
+
+                        return (
+                          <div 
+                            key={swap.candidate}
+                            className="p-3 rounded-xl border border-slate-800 bg-slate-950/40 hover:border-slate-750 transition-all flex items-center justify-between gap-4"
+                          >
+                            <div className="flex items-center gap-3">
+                              {/* Swapped Card image */}
+                              <CardImage 
+                                name={swap.candidate} 
+                                rarity={swapRarity} 
+                                className="h-12 w-9 flex-shrink-0"
+                              />
+                              <div>
+                                <h5 className="font-bold text-sm text-white">{swap.candidate}</h5>
+                                <p className="text-[10px] text-slate-400 font-medium">Elixir cost: {swap.elixir_cost}</p>
+                              </div>
+                            </div>
+
+                            {/* Improvement stat and Swap button */}
+                            <div className="flex items-center gap-3">
+                              <div className="text-right">
+                                <span className={`text-xs font-black font-mono block ${isPositive ? 'text-emerald-400' : 'text-slate-400'}`}>
+                                  {isPositive ? '+' : ''}{(swap.improvement * 100).toFixed(1)}% WR
+                                </span>
+                                <span className="text-[9px] text-slate-500 font-bold block uppercase tracking-wider">
+                                  Improvement
+                                </span>
+                              </div>
+
+                              <button
+                                onClick={() => handlePerformSwap(data.weakest_card, swap.candidate)}
+                                className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-[10px] font-bold uppercase tracking-wider text-white rounded-lg transition-all"
+                              >
+                                Swap Card
+                              </button>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+        </div>
+
       </div>
-    </div>
+
+    </motion.div>
   )
 }
 
