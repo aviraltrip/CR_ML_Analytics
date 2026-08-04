@@ -1,16 +1,24 @@
 import numpy as np
 import pandas as pd
 
-from app.dependencies import calculate_aec, calculate_elixir_penalty, card_elixir, card_vocab, model
+from app import dependencies
+from app.dependencies import calculate_aec, calculate_elixir_penalty
 from app.services.errors import ApiError
 from app.services.validation import normalize_levels, validate_deck
 
 
 class DeckAnalysisService:
-    def __init__(self) -> None:
-        self.model = model
-        self.card_vocab = card_vocab
-        self.card_elixir = card_elixir
+    @property
+    def model(self):
+        return dependencies.model
+
+    @property
+    def card_vocab(self):
+        return dependencies.card_vocab
+
+    @property
+    def card_elixir(self):
+        return dependencies.card_elixir
 
     def evaluate_deck(self, cards: list[str], levels: dict[str, int] | None) -> dict:
         validate_deck(cards)

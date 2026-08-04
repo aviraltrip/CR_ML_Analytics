@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.dependencies import model, card_vocab
+from app import dependencies
 
 router = APIRouter()
 
@@ -9,6 +9,7 @@ router = APIRouter()
 def health() -> dict:
     return {
         "status": "ok",
-        "model_loaded": model is not None,
-        "vocab_loaded": card_vocab is not None,
+        "model_loaded": dependencies.model is not None,
+        "vocab_loaded": dependencies.card_vocab is not None,
     }
+
