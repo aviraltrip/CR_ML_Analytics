@@ -22,6 +22,7 @@ async def lifespan(app: FastAPI):
 
 
 def create_app() -> FastAPI:
+    print(f"INFO: Configured CORS allowed origins: {settings.CORS_ORIGINS}")
     app = FastAPI(
         title="Clash Royale Deck Analytics API",
         description=(

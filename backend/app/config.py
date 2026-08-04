@@ -10,7 +10,7 @@ class Settings:
     PROJECT_ROOT = PROJECT_ROOT
     APP_VERSION = "1.0.0"
     CORS_ORIGINS = [
-        origin.strip()
+        origin.strip().strip('"').strip("'")
         for origin in os.getenv("CORS_ORIGINS", "*").split(",")
         if origin.strip()
     ]
