@@ -107,6 +107,32 @@ python simulated_round_robin.py --out-csv ../data/model_leaderboard.csv
 
 ---
 
+## Production Deployment
+
+This project is set up to be deployed as a separated frontend and backend (Approach B) from this single repository.
+
+### Backend (Render)
+1. Create a new **Web Service** pointing to your repository.
+2. Configure settings:
+   - **Root Directory:** *(leave blank / default)*
+   - **Build Command:** `pip install -r backend/requirements.txt`
+   - **Start Command:** `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 2`
+3. Add **Environment Variables**:
+   - `PYTHONPATH` = `backend`
+   - `CORS_ORIGINS` = `https://your-frontend.vercel.app` (your live frontend URL)
+   - `CR_API_TOKEN` = *(your Clash Royale API key if running the scraper)*
+4. Set the **Health Check Path** to `/health`.
+
+### Frontend (Vercel)
+1. Import the repository in Vercel.
+2. Edit **Configure Project** settings:
+   - **Root Directory:** `frontend`
+3. Add **Environment Variables**:
+   - `VITE_API_URL` = `https://your-backend.onrender.com` (your live Render backend URL, without `/api` at the end)
+4. Trigger a deploy.
+
+---
+
 ## Notes
 
 - Frontend: React, Vite, Tailwind, Recharts
