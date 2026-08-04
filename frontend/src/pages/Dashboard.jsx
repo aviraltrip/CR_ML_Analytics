@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-serif' // wait, Link is from react-router-dom, let's make sure it's correct
-import { Link as RouterLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
   Crown, 
@@ -113,13 +112,13 @@ export function Dashboard() {
                 </div>
 
                 {/* Launch CTA */}
-                <RouterLink 
+                <Link 
                   to={sec.to}
                   className="flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors mt-4 w-fit group/btn"
                 >
                   Launch Service 
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </RouterLink>
+                </Link>
               </motion.div>
             )
           })}
