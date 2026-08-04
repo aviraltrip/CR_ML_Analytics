@@ -9,10 +9,14 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 class Settings:
     PROJECT_ROOT = PROJECT_ROOT
     APP_VERSION = "1.0.0"
-    CORS_ORIGINS = ["*"]
-    RATE_LIMIT_MAX = 100
-    RATE_LIMIT_WINDOW = 60
-    CACHE_TTL = 300
+    CORS_ORIGINS = [
+        origin.strip()
+        for origin in os.getenv("CORS_ORIGINS", "*").split(",")
+        if origin.strip()
+    ]
+    RATE_LIMIT_MAX = int(os.getenv("RATE_LIMIT_MAX", "100"))
+    RATE_LIMIT_WINDOW = int(os.getenv("RATE_LIMIT_WINDOW", "60"))
+    CACHE_TTL = int(os.getenv("CACHE_TTL", "300"))
     MODELS_DIR = os.path.join(PROJECT_ROOT, "models")
     DATA_DIR = os.path.join(PROJECT_ROOT, "data")
     MODEL_PATH = os.path.join(MODELS_DIR, "synergy_predictor.pkl")
