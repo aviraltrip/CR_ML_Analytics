@@ -11,7 +11,8 @@ import {
   Flame,
   ArrowRight,
   ShieldAlert,
-  Gauge
+  Gauge,
+  ShieldCheck
 } from 'lucide-react'
 import { CardImage } from '../components/CardImage'
 import { LoadingSpinner } from '../components/LoadingSpinner'
