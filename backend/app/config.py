@@ -7,6 +7,7 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 
 class Settings:
+    PROJECT_ROOT = PROJECT_ROOT
     APP_VERSION = "1.0.0"
     CORS_ORIGINS = ["*"]
     RATE_LIMIT_MAX = 100

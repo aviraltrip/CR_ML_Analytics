@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
+from app import dependencies
 from app.dependencies import load_csv, ensure_model_loaded
 from app.models import DataFilter
 
@@ -76,8 +77,8 @@ def get_data(filter: DataFilter = Depends()) -> DataResponse:
             card_stats_total=len(df_card_stats),
             model_leaderboard_page=mlb_page,
             model_leaderboard_total=mlb_total,
-            card_elixir=card_elixir,
-            model_loaded=model is not None,
+            card_elixir=dependencies.card_elixir,
+            model_loaded=dependencies.model is not None,
         )
     except HTTPException:
         raise
