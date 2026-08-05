@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   BarChart, 
@@ -32,6 +32,13 @@ export function CardAnalysis() {
   const { data, loading, error, execute } = useApi(() => api.getCardStats())
   const [statusFilter, setStatusFilter] = useState('All')
   const [viewMode, setViewMode] = useState('grid') // 'grid' | 'table'
+  const [currentPage, setCurrentPage] = useState(1)
+  const pageSize = 12
+
+  // Reset to page 1 when statusFilter changes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [statusFilter])
 
   const cardStats = data?.card_stats || []
 
@@ -39,6 +46,13 @@ export function CardAnalysis() {
     statusFilter === 'All'
       ? cardStats
       : cardStats.filter((c) => c.status === statusFilter)
+
+  const totalCards = filteredCards.length
+  const totalPages = Math.ceil(totalCards / pageSize)
+  const paginatedCards = filteredCards.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  )
 
   // Data sorted for chart display
   const sortedCards = [...filteredCards].sort((a, b) => b.win_rate_diff - a.win_rate_diff)
@@ -290,7 +304,7 @@ export function CardAnalysis() {
                 transition={{ duration: 0.25 }}
                 className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4"
               >
-                {filteredCards.map((c, index) => {
+                {paginatedCards.map((c, index) => {
                   const colors = STATUS_COLORS[c.status] || {}
                   const rarity = getCardRarity(c.card)
                   const metaRating = getCardMetaRating(c.win_rate)
@@ -380,10 +394,66 @@ export function CardAnalysis() {
                 <h3 className="text-sm font-bold text-white uppercase tracking-wider">
                   Full Card Statistics Table
                 </h3>
-                <DataTable columns={columns} data={filteredCards} />
+                <DataTable columns={columns} data={paginatedCards} />
               </motion.div>
             )}
           </AnimatePresence>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800/40 mt-8">
+              <span className="text-xs font-bold text-slate-400">
+                Showing <strong className="text-white">{(currentPage - 1) * pageSize + 1}</strong> to{' '}
+                <strong className="text-white">{Math.min(currentPage * pageSize, totalCards)}</strong> of{' '}
+                <strong className="text-white">{totalCards}</strong> cards
+              </span>
+              
+              <div className="flex items-center gap-1.5">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  className="px-3.5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-slate-800/50 bg-slate-900/60 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800/60"
+                >
+                  Prev
+                </button>
+                
+                {/* Dynamic Page Numbers */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((p) => {
+                    return p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1
+                  })
+                  .map((p, idx, arr) => {
+                    const showEllipsis = idx > 0 && p - arr[idx - 1] > 1
+                    
+                    return (
+                      <React.Fragment key={p}>
+                        {showEllipsis && (
+                          <span className="px-2 text-slate-500 text-xs font-bold">...</span>
+                        )}
+                        <button
+                          onClick={() => setCurrentPage(p)}
+                          className={`w-9 h-9 rounded-xl text-xs font-bold transition-all border ${
+                            currentPage === p
+                              ? 'bg-indigo-600 border-indigo-500 text-white shadow-[0_0_12px_rgba(79,70,229,0.4)]'
+                              : 'border-slate-800 bg-slate-900/40 text-slate-400 hover:text-white hover:bg-slate-800/40'
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      </React.Fragment>
+                    )
+                  })}
+
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  className="px-3.5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-slate-800/50 bg-slate-900/60 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800/60"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
 
         </div>
       ) : (
