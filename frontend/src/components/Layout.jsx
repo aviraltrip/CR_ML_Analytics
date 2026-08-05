@@ -8,7 +8,6 @@ import {
   ShieldCheck, 
   Sparkles, 
   Activity, 
-  Database,
   BrainCircuit,
   Menu,
   X
@@ -68,6 +67,9 @@ export function Layout({ children }) {
               </span>
               <span className="font-extrabold text-sm tracking-tight text-white -mt-1">
                 Analytics
+              </span>
+              <span className="text-[9px] font-semibold text-slate-500 tracking-tight leading-none mt-1.5 max-w-[150px]">
+                ML Matchup & Deck Assistant
               </span>
             </div>
           </div>
@@ -168,19 +170,13 @@ export function Layout({ children }) {
               <h1 className="text-lg md:text-xl font-extrabold text-white leading-none">
                 {activeItem.label}
               </h1>
-              <p className="text-[11px] text-slate-400 mt-1 hidden md:block">
-                Clash Royale ML Matchup & Deck Assistant
-              </p>
+
             </div>
           </div>
 
           {/* Right Header Controls / Quick Badges */}
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/60 border border-slate-800/50 text-[11px] font-bold text-slate-400">
-              <Database className="w-3.5 h-3.5 text-indigo-400" />
-              <span>DATASET ACTIVE</span>
-            </div>
-            
+
             {/* Mobile Header Crown */}
             <div className="lg:hidden flex items-center gap-2 bg-slate-900 px-2 py-1.5 rounded-lg border border-slate-800">
               <img src="/logo.png" alt="Logo" className="w-5 h-5 object-contain" />
