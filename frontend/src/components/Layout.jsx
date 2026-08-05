@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  Crown, 
   Home, 
   Trophy, 
   BarChart3, 
@@ -60,9 +59,9 @@ export function Layout({ children }) {
         <div>
           {/* Logo Brand */}
           <div className="h-20 flex items-center px-6 border-b border-slate-800/40 gap-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-yellow-500/20 blur-md rounded-full"></div>
-              <Crown className="w-8 h-8 text-yellow-500 relative z-10 animate-pulse" />
+            <div className="relative flex-shrink-0">
+              <div className="absolute inset-0 bg-indigo-500/15 blur-md rounded-full"></div>
+              <img src="/logo.png" alt="Royale Analytics Logo" className="w-9 h-9 object-contain relative z-10" />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-black text-sm tracking-wider text-yellow-500 font-mono">
@@ -196,8 +195,8 @@ export function Layout({ children }) {
             </div>
             
             {/* Mobile Header Crown */}
-            <div className="lg:hidden flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-              <Crown className="w-4 h-4 text-yellow-500 animate-pulse" />
+            <div className="lg:hidden flex items-center gap-2 bg-slate-900 px-2 py-1.5 rounded-lg border border-slate-800">
+              <img src="/logo.png" alt="Logo" className="w-5 h-5 object-contain" />
               <span className="text-xs font-black text-white">CR</span>
             </div>
           </div>
