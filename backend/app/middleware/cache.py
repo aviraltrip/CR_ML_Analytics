@@ -13,7 +13,7 @@ class CacheMiddleware(BaseHTTPMiddleware):
     def __init__(self, app, default_ttl: int = 300):
         super().__init__(app)
         self.default_ttl = default_ttl
-        self._cache: dict[str, tuple[float, Response]] = {}
+        self._cache: dict[str, tuple[float, int, bytes, dict, str]] = {}
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         # Do not cache health check endpoint
@@ -29,9 +29,14 @@ class CacheMiddleware(BaseHTTPMiddleware):
 
         # Check for cached response
         if cache_key in self._cache:
-            cached_at, cached_response = self._cache[cache_key]
+            cached_at, status_code, body, headers, media_type = self._cache[cache_key]
             if now - cached_at < self.default_ttl:
-                return cached_response
+                return Response(
+                    content=body,
+                    status_code=status_code,
+                    headers=headers,
+                    media_type=media_type,
+                )
             # Expired — remove it
             del self._cache[cache_key]
 
@@ -44,14 +49,22 @@ class CacheMiddleware(BaseHTTPMiddleware):
             body = b""
             async for chunk in response.body_iterator:
                 body += chunk
-            # Reconstruct response with cached body
-            cached_response = Response(
+            
+            headers = dict(response.headers)
+            headers.pop("content-length", None)
+            
+            self._cache[cache_key] = (
+                now,
+                response.status_code,
+                body,
+                headers,
+                response.media_type,
+            )
+            return Response(
                 content=body,
                 status_code=response.status_code,
-                headers=dict(response.headers),
+                headers=headers,
                 media_type=response.media_type,
             )
-            self._cache[cache_key] = (now, cached_response)
-            return cached_response
 
         return response

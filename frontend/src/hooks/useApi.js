@@ -10,7 +10,9 @@ export function useApi(apiFn, immediate = true) {
   const mountedRef = useRef(true)
 
   const apiFnRef = useRef(apiFn)
-  apiFnRef.current = apiFn
+  useEffect(() => {
+    apiFnRef.current = apiFn
+  })
 
   const execute = useCallback(
     async (...args) => {
@@ -56,7 +58,9 @@ export function usePost(apiFn) {
   const [data, setData] = useState(null)
 
   const apiFnRef = useRef(apiFn)
-  apiFnRef.current = apiFn
+  useEffect(() => {
+    apiFnRef.current = apiFn
+  })
 
   const execute = useCallback(async (payload) => {
     setLoading(true)

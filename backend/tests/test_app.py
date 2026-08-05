@@ -28,6 +28,17 @@ class AppTests(unittest.TestCase):
         self.assertEqual(payload["error"]["code"], "INVALID_REQUEST")
         self.assertIn("Exactly 8 cards", payload["error"]["message"])
 
+    def test_caching_middleware_successive_requests(self) -> None:
+        response1 = self.client.get("/data?min_games=5")
+        self.assertEqual(response1.status_code, 200)
+        payload1 = response1.json()
+
+        response2 = self.client.get("/data?min_games=5")
+        self.assertEqual(response2.status_code, 200)
+        payload2 = response2.json()
+
+        self.assertEqual(payload1, payload2)
+
 
 if __name__ == "__main__":
     unittest.main()

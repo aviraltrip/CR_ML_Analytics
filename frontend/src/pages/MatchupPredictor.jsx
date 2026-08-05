@@ -249,6 +249,7 @@ export function MatchupPredictor() {
                 {/* Progress bar line */}
                 <div className="h-6 w-full rounded-full bg-red-600/80 overflow-hidden flex relative shadow-inner">
                   <motion.div 
+                    layout
                     initial={{ width: '50%' }}
                     animate={{ width: `${winPercentage}%` }}
                     transition={{ duration: 1.2, ease: 'easeOut' }}
