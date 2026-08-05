@@ -7,7 +7,6 @@ import {
   BarChart3, 
   ShieldCheck, 
   Sparkles, 
-  Github, 
   Activity, 
   Database,
   BrainCircuit,
@@ -147,18 +146,6 @@ export function Layout({ children }) {
             </div>
           </div>
 
-          {/* Social info */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-800/30">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-white transition-colors"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <span className="text-[10px] text-slate-500 font-medium">v{status.loading ? '...' : '1.0.0'}</span>
-          </div>
         </div>
       </aside>
 
