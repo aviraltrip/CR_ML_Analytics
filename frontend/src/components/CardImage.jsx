@@ -59,7 +59,9 @@ export function CardImage({
 }) {
   const [hasError, setHasError] = useState(false)
   const slug = getCardSlug(name)
-  const imageUrl = `https://royaleapi.github.io/cr-api-assets/cards/${slug}.png`
+  const imageUrl = name === 'Ronin'
+    ? '/ronin.png'
+    : `https://royaleapi.github.io/cr-api-assets/cards/${slug}.png`
   
   const borderClass = getRarityBorder(rarity)
 
