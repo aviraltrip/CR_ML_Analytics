@@ -193,8 +193,8 @@ export function CardAnalysis() {
               </span>
             </div>
             
-            <div className="w-full h-[380px]">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="w-full max-h-[550px] overflow-y-auto pr-2 border border-slate-800/40 rounded-xl bg-slate-950/30 p-2 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+              <ResponsiveContainer width="100%" height={Math.max(chartData.length * 24, 300)}>
                 <BarChart
                   data={chartData}
                   layout="vertical"
@@ -213,7 +213,8 @@ export function CardAnalysis() {
                     stroke="#64748b"
                     fontSize={9}
                     tickLine={false}
-                    width={90}
+                    width={110}
+                    interval={0}
                   />
                   <Tooltip
                     contentStyle={{
