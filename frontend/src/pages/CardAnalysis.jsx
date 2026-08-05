@@ -41,16 +41,21 @@ export function CardAnalysis() {
       : cardStats.filter((c) => c.status === statusFilter)
 
   // Data sorted for chart display
-  const chartData = [...filteredCards]
-    .sort((a, b) => a.win_rate_diff - b.win_rate_diff)
-    .map((c) => ({
-      name: c.card,
-      winRateDiff: +(c.win_rate_diff * 100).toFixed(1),
-      popularity: +(c.popularity * 100).toFixed(1),
-      winRate: +(c.win_rate * 100).toFixed(1),
-      status: c.status,
-      matches: c.matches_played,
-    }))
+  const sortedCards = [...filteredCards].sort((a, b) => b.win_rate_diff - a.win_rate_diff)
+
+  const mapCardData = (c) => ({
+    name: c.card,
+    winRateDiff: +(c.win_rate_diff * 100).toFixed(1),
+    popularity: +(c.popularity * 100).toFixed(1),
+    winRate: +(c.win_rate * 100).toFixed(1),
+    status: c.status,
+    matches: c.matches_played,
+  })
+
+  const shouldSplit = filteredCards.length > 20
+  const overperformingData = sortedCards.slice(0, 15).map(mapCardData)
+  const underperformingData = [...sortedCards].reverse().slice(0, 15).map(mapCardData)
+  const singleChartData = sortedCards.map(mapCardData)
 
   const statusCounts = {
     All: cardStats.length,
@@ -121,6 +126,53 @@ export function CardAnalysis() {
     },
   ]
 
+  const renderBarChart = (chartData, height) => (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart
+        data={chartData}
+        layout="vertical"
+        margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
+      >
+        <XAxis
+          type="number"
+          stroke="#64748b"
+          fontSize={10}
+          tickLine={false}
+          tickFormatter={(val) => `${val >= 0 ? '+' : ''}${val}%`}
+        />
+        <YAxis
+          type="category"
+          dataKey="name"
+          stroke="#64748b"
+          fontSize={9}
+          tickLine={false}
+          width={110}
+          interval={0}
+        />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: '#0c1220',
+            borderColor: '#1e293b',
+            borderRadius: '12px',
+          }}
+          itemStyle={{ color: '#fff' }}
+          labelStyle={{ color: '#818cf8', fontWeight: 'bold' }}
+          formatter={(value) => [`${value}%`, 'Win Rate Margin']}
+        />
+        <ReferenceLine x={0} stroke="#475569" strokeDasharray="3 3" />
+        <Bar dataKey="winRateDiff" radius={[0, 4, 4, 0]}>
+          {chartData.map((entry, index) => {
+            let barColor = '#64748b'
+            if (entry.status === 'Underrated') barColor = '#10b981'
+            else if (entry.status === 'Strong/Meta') barColor = '#3b82f6'
+            else if (entry.status === 'Overrated') barColor = '#ef4444'
+            return <Cell key={`cell-${index}`} fill={barColor} />
+          })}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  )
+
   if (loading) {
     return <LoadingSpinner message="Analyzing card popularity and win rates..." />
   }
@@ -185,65 +237,47 @@ export function CardAnalysis() {
         <div className="space-y-8">
           
           {/* 2. Visual Horizontal Bar Chart of Win Rate Diff */}
-          <div className="glass-panel p-6 rounded-2xl">
-            <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="w-4 h-4 text-indigo-400" />
-              <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
-                Win Rate Margin vs 50% Baseline
-              </span>
+          {shouldSplit ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Overperforming Cards */}
+              <div className="glass-panel p-6 rounded-2xl flex flex-col">
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingUp className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
+                    Top 15 Overperforming Cards
+                  </span>
+                </div>
+                <div className="w-full border border-slate-800/40 rounded-xl bg-slate-950/30 p-2">
+                  {renderBarChart(overperformingData, 380)}
+                </div>
+              </div>
+
+              {/* Underperforming Cards */}
+              <div className="glass-panel p-6 rounded-2xl flex flex-col">
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingUp className="w-4 h-4 text-red-400 rotate-180" />
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
+                    Top 15 Underperforming Cards
+                  </span>
+                </div>
+                <div className="w-full border border-slate-800/40 rounded-xl bg-slate-950/30 p-2">
+                  {renderBarChart(underperformingData, 380)}
+                </div>
+              </div>
             </div>
-            
-            <div className="w-full max-h-[550px] overflow-y-auto pr-2 border border-slate-800/40 rounded-xl bg-slate-950/30 p-2 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
-              <ResponsiveContainer width="100%" height={Math.max(chartData.length * 24, 300)}>
-                <BarChart
-                  data={chartData}
-                  layout="vertical"
-                  margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
-                >
-                  <XAxis
-                    type="number"
-                    stroke="#64748b"
-                    fontSize={10}
-                    tickLine={false}
-                    tickFormatter={(val) => `${val >= 0 ? '+' : ''}${val}%`}
-                  />
-                  <YAxis
-                    type="category"
-                    dataKey="name"
-                    stroke="#64748b"
-                    fontSize={9}
-                    tickLine={false}
-                    width={110}
-                    interval={0}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: '#0c1220',
-                      borderColor: '#1e293b',
-                      borderRadius: '12px',
-                    }}
-                    itemStyle={{ color: '#fff' }}
-                    labelStyle={{ color: '#818cf8', fontWeight: 'bold' }}
-                    formatter={(value) => [`${value}%`, 'Win Rate Margin']}
-                  />
-                  <ReferenceLine x={0} stroke="#475569" strokeDasharray="3 3" />
-                  <Bar dataKey="winRateDiff" radius={[0, 4, 4, 0]}>
-                    {chartData.map((entry, index) => {
-                      // Apply custom colors based on meta status
-                      let barColor = '#64748b' // default grey
-                      if (entry.status === 'Underrated') barColor = '#10b981' // emerald
-                      else if (entry.status === 'Strong/Meta') barColor = '#3b82f6' // royal blue
-                      else if (entry.status === 'Overrated') barColor = '#ef4444' // red
-                      
-                      return (
-                        <Cell key={`cell-${index}`} fill={barColor} />
-                      )
-                    })}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+          ) : (
+            <div className="glass-panel p-6 rounded-2xl">
+              <div className="flex items-center gap-2 mb-4">
+                <BarChart3 className="w-4 h-4 text-indigo-400" />
+                <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
+                  Win Rate Margin vs 50% Baseline
+                </span>
+              </div>
+              <div className="w-full max-h-[550px] overflow-y-auto pr-2 border border-slate-800/40 rounded-xl bg-slate-950/30 p-2 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+                {renderBarChart(singleChartData, Math.max(singleChartData.length * 24, 300))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* 3. Cards Grid View or Data Table View */}
           <AnimatePresence mode="wait">
