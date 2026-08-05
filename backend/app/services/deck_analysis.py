@@ -134,8 +134,8 @@ class DeckAnalysisService:
         contribs = []
         base_prob = float(prob)
         for card in deck1_cards:
-            v1_mod = np.zeros(num_cards)
-            v1_lvl_mod = np.zeros(num_cards)
+            v1_mod = v1.copy()
+            v1_lvl_mod = v1_lvl.copy()
             v1_mod[self.card_vocab[card]] = 0.0
             v1_lvl_mod[self.card_vocab[card]] = 0.0
             presence_diff_mod = v1_mod - v2
@@ -146,15 +146,15 @@ class DeckAnalysisService:
             contribs.append({"card": card, "owner": "You (Advantage)" if impact >= 0 else "You (Disadvantage)", "impact": round(impact, 4)})
 
         for card in deck2_cards:
-            v2_mod = np.zeros(num_cards)
-            v2_lvl_mod = np.zeros(num_cards)
+            v2_mod = v2.copy()
+            v2_lvl_mod = v2_lvl.copy()
             v2_mod[self.card_vocab[card]] = 0.0
             v2_lvl_mod[self.card_vocab[card]] = 0.0
             presence_diff_mod = v1 - v2_mod
             level_diff_mod = v1_lvl - v2_lvl_mod
             x_mod = np.concatenate([presence_diff_mod, level_diff_mod, [trophy_diff]]).reshape(1, -1)
             prob_mod = self.model.predict_proba(x_mod)[0][1]
-            impact = float(prob_mod) - base_prob
+            impact = base_prob - float(prob_mod)
             contribs.append({"card": card, "owner": "Opponent (Weakness)" if impact >= 0 else "Opponent (Threat)", "impact": round(impact, 4)})
 
         contribs_sorted = sorted(contribs, key=lambda x: x["impact"], reverse=True)
