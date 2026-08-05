@@ -121,8 +121,7 @@ export function Layout({ children }) {
               {status.loading ? (
                 <span className="h-2 w-2 rounded-full bg-slate-500 animate-pulse"></span>
               ) : status.online ? (
-                <span className="flex items-center gap-1 text-emerald-400 font-bold">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
+                <span className="text-emerald-400 font-bold">
                   ONLINE
                 </span>
               ) : (
