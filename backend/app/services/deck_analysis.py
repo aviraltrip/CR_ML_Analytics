@@ -28,12 +28,24 @@ class DeckAnalysisService:
         df_leaderboard = dependencies.load_csv("data/deck_leaderboard.csv")
         deck_match = df_leaderboard[df_leaderboard["deck"] == search_sig]
 
-        result = {"found_in_history": False, "cards": cards, "signature": search_sig}
+        result = {
+            "found_in_history": False,
+            "cards": cards,
+            "signature": search_sig,
+            "historical": None
+        }
+
         if len(deck_match) > 0:
             row = deck_match.iloc[0]
-            result.update(
-                {
-                    "found_in_history": True,
+            result.update({
+                "found_in_history": True,
+                "rank": int(df_leaderboard[df_leaderboard["deck"] == search_sig].index[0]) + 1,
+                "matches_played": int(row["matches_played"]),
+                "win_rate": float(row["win_rate"]),
+                "wilson_score": float(row["wilson_score"]),
+                "wins": int(row["wins"]),
+                "losses": int(row["losses"]),
+                "historical": {
                     "rank": int(df_leaderboard[df_leaderboard["deck"] == search_sig].index[0]) + 1,
                     "matches_played": int(row["matches_played"]),
                     "win_rate": float(row["win_rate"]),
@@ -41,8 +53,7 @@ class DeckAnalysisService:
                     "wins": int(row["wins"]),
                     "losses": int(row["losses"]),
                 }
-            )
-            return result
+            })
 
         if self.model is None or self.card_vocab is None:
             raise ApiError("ML model not loaded. Train models first.", code="MODEL_UNAVAILABLE")
@@ -89,7 +100,6 @@ class DeckAnalysisService:
 
         result.update(
             {
-                "found_in_history": False,
                 "predicted_win_rate": round(pred_win_rate, 4),
                 "estimated_rank": estimated_rank,
                 "total_meta_decks": len(meta_decks),
@@ -97,6 +107,13 @@ class DeckAnalysisService:
                 "elixir_penalty": round(penalty, 4),
             }
         )
+
+        try:
+            swaps = self.find_swaps(cards, normalized_levels)
+            result.update(swaps)
+        except Exception:
+            pass
+
         return result
 
     def predict_matchup(self, deck1_cards: list[str], deck1_levels: dict[str, int] | None, deck1_trophies: int, deck2_cards: list[str], deck2_levels: dict[str, int] | None, deck2_trophies: int) -> dict:
