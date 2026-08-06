@@ -14,7 +14,8 @@ import {
   CheckCircle,
   HelpCircle as QuestionIcon,
   Flame,
-  Wand2
+  Wand2,
+  Trophy
 } from 'lucide-react'
 import { useApi, usePost } from '../hooks/useApi'
 import { api } from '../services/api'
@@ -242,11 +243,32 @@ export function DeckEvaluator() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
+                {/* Historical Meta Deck Trophy Banner */}
+                {data.found_in_history && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 to-indigo-500/10 border border-amber-500/25 flex items-start gap-4 shadow-xl"
+                  >
+                    <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 text-amber-400 flex-shrink-0 animate-pulse">
+                      <Trophy className="w-6 h-6" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Active Historical Meta Deck
+                      </h4>
+                      <p className="text-xs text-slate-200 leading-relaxed font-semibold">
+                        This deck is active in match history: <span className="text-amber-400">{data.wins}W - {data.losses}L</span> ({(data.win_rate * 100).toFixed(1)}%) in <span className="text-indigo-400">{data.matches_played}</span> matches. Wilson Score: <span className="font-mono text-cyan-400">{data.wilson_score}</span>
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
                 {/* 1. Win Rate Radial Gauge */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Gauge */}
                   <WinRateGauge 
-                    probability={data.found_in_history ? data.win_rate : data.predicted_win_rate} 
+                    probability={data.predicted_win_rate} 
                   />
 
                   {/* Estimated Meta Rank */}
@@ -255,17 +277,30 @@ export function DeckEvaluator() {
                       <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
                         Meta Placement
                       </span>
-                      <h3 className="text-3xl font-black font-mono text-white mt-2 leading-none">
-                        #{data.found_in_history ? data.rank : data.estimated_rank}
-                      </h3>
-                      <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-wide">
-                        Status: {data.found_in_history ? 'HISTORICAL MATCH' : 'PREDICTIVE SIMULATION'}
+                      <div className="flex items-baseline gap-4 mt-2">
+                        <div>
+                          <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Simulated</span>
+                          <h3 className="text-3xl font-black font-mono text-white leading-none mt-1">
+                            #{data.estimated_rank}
+                          </h3>
+                        </div>
+                        {data.found_in_history && (
+                          <div className="border-l border-slate-800 pl-4">
+                            <span className="text-[9px] uppercase font-bold text-amber-400 tracking-wider">Historical</span>
+                            <h3 className="text-2xl font-black font-mono text-amber-300 leading-none mt-1">
+                              #{data.rank}
+                            </h3>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-slate-400 mt-3.5 font-bold uppercase tracking-wide">
+                        Status: {data.found_in_history ? 'ACTIVE IN META' : 'PREDICTIVE SIMULATION'}
                       </p>
                     </div>
 
                     <p className="text-xs text-slate-400 mt-4 leading-normal">
                       {data.found_in_history
-                        ? `This deck was parsed directly from matches. It recorded ${data.wins} wins and ${data.losses} losses.`
+                        ? `ML estimated rank is #${data.estimated_rank} in simulated tournament, and actual match history rank is #${data.rank}.`
                         : `Estimated meta ranking out of ${data.total_meta_decks} parsed deck models in the round-robin pool.`}
                     </p>
                   </div>
@@ -309,7 +344,7 @@ export function DeckEvaluator() {
                 </div>
 
                 {/* 3. Swap Suggestions Cards */}
-                {!data.found_in_history && data.top_swaps && data.top_swaps.length > 0 && (
+                {data.top_swaps && data.top_swaps.length > 0 && (
                   <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
                     <div>
                       <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">

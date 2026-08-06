@@ -186,7 +186,33 @@ export function Leaderboard() {
                         </p>
                       </div>
                     </div>
-                    
+
+                    {/* Stats display */}
+                    <div className="text-right">
+                      {activeTab === 'historical' ? (
+                        <div className="flex flex-col items-end gap-1">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-black bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                            WR: {formatWinRate(row.win_rate)}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-medium">
+                            Matches: {row.matches_played}
+                          </span>
+                          <span className="text-[9px] text-slate-500">
+                            Wilson: {parseFloat(row.wilson_score).toFixed(3)}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-end gap-1">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-black bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            Sim WR: {formatWinRate(row.simulated_win_rate)}
+                          </span>
+                          <div className="flex flex-col items-end text-[10px] text-slate-400 font-medium">
+                            <span>Actual WR: {formatWinRate(row.win_rate)}</span>
+                            <span className="text-[9px] text-slate-500 mt-0.5">{row.matches_played} matches</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Deck Cards Grid (4x2 layout) */}
