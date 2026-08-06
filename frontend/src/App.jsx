@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import Leaderboard from './pages/Leaderboard'
@@ -19,6 +20,7 @@ export function App() {
         {/* Fallback to dashboard */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Analytics />
     </Layout>
   )
 }
