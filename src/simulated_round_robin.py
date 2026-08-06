@@ -69,19 +69,28 @@ def main():
                 print(f"Error: {path_attr} file {path_val} not found.")
                 return
 
-    print(f"Loading top {args.num_decks} decks from {args.in_leaderboard}...")
+    print(f"Loading decks from {args.in_leaderboard}...")
     df_leaderboard = pd.read_csv(args.in_leaderboard)
 
-    # Filter to top N decks based on matches played or historical performance to represent the meta
-    # We will pick the top N decks sorted by matches played (representing popularity in the meta)
-    # or sorted by Wilson score. Sorting by matches played ensures we play against the most common decks.
-    df_meta = (
-        df_leaderboard.sort_values(by="matches_played", ascending=False)
-        .head(args.num_decks)
-        .copy()
-    )
+    # To build a comprehensive tournament, we select:
+    # 1. Top 100 most popular decks by matches_played descending.
+    # 2. Top 100 highest performing decks by wilson_score descending (with matches_played >= 15).
+    # This guarantees elite/successful decks (e.g. Deck #1 with 30 matches) are simulated,
+    # alongside the most common meta decks.
+    df_popular = df_leaderboard.sort_values(by="matches_played", ascending=False).head(100).copy()
+    
+    # Exclude decks already in the popular list to avoid duplication
+    popular_decks = set(df_popular["deck"])
+    df_remaining = df_leaderboard[~df_leaderboard["deck"].isin(popular_decks)]
+    
+    # Filter remaining decks to those with a minimum match volume to avoid noisy fluke decks
+    df_remaining_filtered = df_remaining[df_remaining["matches_played"] >= 15]
+    df_elite = df_remaining_filtered.sort_values(by="wilson_score", ascending=False).head(100).copy()
+    
+    df_meta = pd.concat([df_popular, df_elite], ignore_index=True)
     decks = df_meta["deck"].tolist()
     num_decks = len(decks)
+    print(f"Selected {len(df_popular)} popular decks and {len(df_elite)} elite performing decks.")
     print(f"Running tournament with {num_decks} unique decks...")
 
     print(f"Loading synergy model from {args.model_path}...")
