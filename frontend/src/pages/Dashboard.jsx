@@ -56,20 +56,19 @@ export function Dashboard() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.08, duration: 0.4 }}
-            whileHover={{ y: -6, scale: 1.01 }}
             key={sec.to}
             className="flex"
           >
             <Link
               to={sec.to}
-              className="relative flex flex-col w-full rounded-2xl bg-[#0c1220]/50 border border-slate-800/80 hover:border-indigo-500/30 shadow-xl transition-all duration-300 group overflow-hidden"
+              className="relative flex flex-col w-full rounded-2xl bg-[#0c1220]/50 border border-slate-800/80 hover:border-indigo-500/30 shadow-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.01] transform-gpu will-change-transform group overflow-hidden"
             >
               {/* 1. Visual Thumbnail Photo */}
               <div className="aspect-[16/10] w-full overflow-hidden bg-slate-950/40 relative border-b border-slate-800/40">
                 <img 
                   src={sec.image} 
                   alt={sec.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out transform-gpu" 
                 />
               </div>
 
@@ -87,10 +86,9 @@ export function Dashboard() {
                   </p>
                 </div>
 
-                {/* Launch Action */}
-                <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-indigo-400 group-hover:text-indigo-300 transition-colors duration-300">
-                  <span>Launch Tool</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5 text-slate-600 group-hover:text-indigo-450" />
+                {/* Launch Action - Arrow only */}
+                <div className="flex justify-end items-center pt-1">
+                  <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 text-slate-500 group-hover:text-indigo-400" />
                 </div>
               </div>
             </Link>
