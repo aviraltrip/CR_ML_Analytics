@@ -11,10 +11,10 @@ export class DashboardPage {
   constructor(page: Page) {
     this.page = page;
     this.headerTitle = page.locator('h2', { hasText: 'Clash Royale' });
-    this.deckLeaderboardCard = page.locator('a[href="/leaderboard"]');
-    this.cardAnalyticsCard = page.locator('a[href="/cards"]');
-    this.deckEvaluatorCard = page.locator('a[href="/evaluator"]');
-    this.matchupPredictorCard = page.locator('a[href="/matchup"]');
+    this.deckLeaderboardCard = page.locator('main a[href="/leaderboard"]');
+    this.cardAnalyticsCard = page.locator('main a[href="/cards"]');
+    this.deckEvaluatorCard = page.locator('main a[href="/evaluator"]');
+    this.matchupPredictorCard = page.locator('main a[href="/matchup"]');
   }
 
   async goto() {

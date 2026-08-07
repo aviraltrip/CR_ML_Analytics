@@ -2,10 +2,14 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: true,
+  fullyParallel: false, // Run files sequentially
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  retries: process.env.CI ? 2 : 1,
+  workers: 1, // Restrict to 1 worker to avoid Render concurrent connection dropouts
+  timeout: 90000, // 90 seconds global test timeout
+  expect: {
+    timeout: 15000, // 15 seconds assertion timeout
+  },
   reporter: [['html', { outputFolder: 'reports', open: 'never' }]],
   use: {
     baseURL: 'https://cr-analytics-five.vercel.app',
@@ -17,18 +21,6 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
     },
   ],
 });

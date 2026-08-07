@@ -3,25 +3,43 @@ import { SECURITY_PAYLOADS } from '../utils/security-payloads';
 
 test.describe('Security & Vulnerability Scans', () => {
 
+  test.beforeAll(async ({ request }) => {
+    let healthy = false;
+    console.log('Checking backend service status for security tests...');
+    for (let i = 0; i < 20; i++) {
+      try {
+        const response = await request.get('https://cr-ml-analytics-backend.onrender.com/health');
+        if (response.status() === 200) {
+          healthy = true;
+          console.log('Backend service is online and ready.');
+          break;
+        }
+      } catch {
+        // Suppress and wait
+      }
+      console.log(`Backend is starting up... Waiting 5s (Attempt ${i + 1}/20)`);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+    if (!healthy) {
+      throw new Error('Backend failed to respond. Aborting test suite.');
+    }
+  });
+
   test('Should analyze security headers on response', async ({ page }) => {
     const response = await page.goto('/');
     expect(response).not.toBeNull();
     
     const headers = response!.headers();
 
-    // Check clickjacking protection
     const frameOptions = headers['x-frame-options'];
     console.log(`Security Header Check [X-Frame-Options]: ${frameOptions || 'MISSING'}`);
     
-    // Check MIME sniffing protection
     const contentTypeOptions = headers['x-content-type-options'];
     console.log(`Security Header Check [X-Content-Type-Options]: ${contentTypeOptions || 'MISSING'}`);
 
-    // Check Content Security Policy
     const csp = headers['content-security-policy'];
     console.log(`Security Header Check [Content-Security-Policy]: ${csp || 'MISSING'}`);
 
-    // Check Referrer Policy
     const referrerPolicy = headers['referrer-policy'];
     console.log(`Security Header Check [Referrer-Policy]: ${referrerPolicy || 'MISSING'}`);
   });
@@ -43,8 +61,6 @@ test.describe('Security & Vulnerability Scans', () => {
 
   test('Should sanitize search input fields against XSS/HTML/SQL injections without DOM crash', async ({ cardsPage, page }) => {
     await cardsPage.goto();
-    
-    // Switch to table view
     await cardsPage.switchView('table');
 
     const testPayloads = [

@@ -2,6 +2,28 @@ import { test, expect } from '../fixtures/test-fixtures';
 
 test.describe('Performance Metrics & Caching Audits', () => {
 
+  test.beforeAll(async ({ request }) => {
+    let healthy = false;
+    console.log('Checking backend service status for performance tests...');
+    for (let i = 0; i < 20; i++) {
+      try {
+        const response = await request.get('https://cr-ml-analytics-backend.onrender.com/health');
+        if (response.status() === 200) {
+          healthy = true;
+          console.log('Backend service is online and ready.');
+          break;
+        }
+      } catch {
+        // Suppress and wait
+      }
+      console.log(`Backend is starting up... Waiting 5s (Attempt ${i + 1}/20)`);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+    if (!healthy) {
+      throw new Error('Backend failed to respond. Aborting test suite.');
+    }
+  });
+
   test('Should measure page load timings for all major routes', async ({ page }) => {
     const routes = ['/', '/leaderboard', '/cards', '/evaluator', '/matchup'];
     const performanceLog: Record<string, any> = {};
@@ -55,7 +77,7 @@ test.describe('Performance Metrics & Caching Audits', () => {
 
     console.log('API Latency Benchmarks (ms):', latencies);
     for (const [name, ms] of Object.entries(latencies)) {
-      expect(ms).toBeLessThan(1500); // Increased limit slightly to account for Render cold starts/network latency
+      expect(ms).toBeLessThan(1500); // 1.5s max threshold
     }
   });
 
