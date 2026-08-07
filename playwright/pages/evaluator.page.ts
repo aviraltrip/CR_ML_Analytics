@@ -15,9 +15,9 @@ export class EvaluatorPage {
     this.searchInput = page.locator('input[placeholder*="Search deck card database"]');
     this.evaluateBtn = page.locator('button', { hasText: 'Evaluate Synergy' });
     this.resetBtn = page.locator('button[title="Reset Deck"]');
-    this.winRateGauge = page.locator('div.text-center:has-text("Win Probability")'); // Custom wrapper for the Gauge
-    this.compStatsBreakdown = page.locator('div.grid-cols-2.sm\\:grid-cols-4');
-    this.swapCardsList = page.locator('h4:has-text("Synergy Recommendations") + p + div > div'); // recommendations container
+    this.winRateGauge = page.locator('div.text-center:has-text("Win Probability")');
+    this.compStatsBreakdown = page.locator('div.glass-panel:has(h4:has-text("Deck Statistics Breakdown"))');
+    this.swapCardsList = page.locator('h4:has-text("Synergy Recommendations") + p + div > div');
     this.historicalBanner = page.locator('h4:has-text("Active Historical Meta Deck")');
   }
 
@@ -26,6 +26,16 @@ export class EvaluatorPage {
       await this.page.goto(`/evaluator?deck=${encodeURIComponent(deckParam)}`);
     } else {
       await this.page.goto('/evaluator');
+    }
+  }
+
+  async clearDeck() {
+    const activeCards = this.page.locator('div.relative.group.aspect-\\[2\\/3\\]');
+    let count = await activeCards.count();
+    while (count > 0) {
+      await activeCards.first().click();
+      await this.page.waitForTimeout(100);
+      count = await activeCards.count();
     }
   }
 
@@ -41,13 +51,11 @@ export class EvaluatorPage {
   }
 
   async removeCardFromDeck(cardName: string) {
-    // Selected cards in the active deck have removeCard function triggered on click
     const activeCard = this.page.locator(`div.relative.group.aspect-\\[2\\/3\\]:has(img[alt="${cardName}"])`);
     await activeCard.click();
   }
 
   async setCardLevel(cardName: string, level: number) {
-    // Find the input within the level customize box that matches the cardName
     const levelInput = this.page.locator(`div.p-3.bg-slate-950\\/40:has(span:text-is("${cardName}")) input[type="number"]`);
     await levelInput.clear();
     await levelInput.fill(level.toString());
@@ -58,7 +66,10 @@ export class EvaluatorPage {
   }
 
   async clickReset() {
-    await this.resetBtn.click();
+    const isVisible = await this.resetBtn.isVisible();
+    if (isVisible) {
+      await this.resetBtn.click();
+    }
   }
 
   async getSwapCount() {

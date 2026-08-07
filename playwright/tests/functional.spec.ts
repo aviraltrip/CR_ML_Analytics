@@ -122,8 +122,8 @@ test.describe('E2E Functional User Journeys', () => {
     // Check initial state
     await expect(page.locator('h3:has-text("Ready for Simulation")')).toBeVisible();
 
-    // Perform reset to clear default deck
-    await evaluatorPage.clickReset();
+    // Clear the default deck to build a custom one
+    await evaluatorPage.clearDeck();
 
     // Re-build deck card-by-card from list
     const newDeck = TEST_DATA.validDeck2;

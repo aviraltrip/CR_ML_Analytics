@@ -45,23 +45,20 @@ test.describe('Security & Vulnerability Scans', () => {
   });
 
   test('Should verify CORS policy headers for API requests', async ({ page }) => {
-    await page.goto('/');
-    const corsHeaders = await page.evaluate(async () => {
-      const response = await fetch('https://cr-ml-analytics-backend.onrender.com/health');
-      const headersObj: Record<string, string> = {};
-      response.headers.forEach((value, name) => {
-        headersObj[name] = value;
-      });
-      return headersObj;
+    const response = await page.request.get('https://cr-ml-analytics-backend.onrender.com/health', {
+      headers: {
+        'Origin': 'https://cr-analytics-five.vercel.app'
+      }
     });
-
-    console.log('API CORS Headers:', corsHeaders);
-    expect(corsHeaders['access-control-allow-origin']).toBeDefined();
+    const headers = response.headers();
+    
+    console.log('API CORS Headers:', headers);
+    expect(headers['access-control-allow-origin']).toBeDefined();
   });
 
-  test('Should sanitize search input fields against XSS/HTML/SQL injections without DOM crash', async ({ cardsPage, page }) => {
-    await cardsPage.goto();
-    await cardsPage.switchView('table');
+  test('Should sanitize search input fields against XSS/HTML/SQL injections without DOM crash', async ({ evaluatorPage, page }) => {
+    await evaluatorPage.goto();
+    await expect(page.locator('h3:has-text("Ready for Simulation")')).toBeVisible();
 
     const testPayloads = [
       ...SECURITY_PAYLOADS.xss,
@@ -72,15 +69,15 @@ test.describe('Security & Vulnerability Scans', () => {
     const inputField = page.locator('input[placeholder*="Search deck card database"]');
     
     for (const payload of testPayloads) {
-      await cardsPage.goto();
-      await page.waitForSelector('input[placeholder*="Search deck card database"]');
-      
       await inputField.fill(payload);
       
-      const noResultsMsg = page.locator('text=/No matching card found|No cards meet the current filter criteria/i');
+      // Verify empty state triggers correctly
+      const noResultsMsg = page.locator('text=/No matching card found/i');
       await expect(noResultsMsg).toBeVisible();
       
-      await expect(page.locator('h1')).toHaveText('Card Analytics');
+      // Verify app did not crash
+      await expect(page.locator('h1')).toHaveText('Deck Evaluator');
+      await inputField.clear();
     }
   });
 
