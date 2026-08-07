@@ -11,7 +11,7 @@ class Settings:
     APP_VERSION = "1.0.0"
     CORS_ORIGINS = [
         origin.strip().strip('"').strip("'")
-        for origin in os.getenv("CORS_ORIGINS", "*").split(",")
+        for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173,https://cr-analytics-five.vercel.app").split(",")
         if origin.strip()
     ]
     RATE_LIMIT_MAX = int(os.getenv("RATE_LIMIT_MAX", "100"))

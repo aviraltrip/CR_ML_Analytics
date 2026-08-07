@@ -154,3 +154,12 @@
 .animate-pulse-glow {
   animation: pulseGlow 3s infinite;
 }
+
+/* Color overrides to pass WCAG AA color contrast checks */
+.text-slate-500 {
+  color: #94a3b8 !important;
+}
+.text-slate-400 {
+  color: #cbd5e1 !important;
+}
+

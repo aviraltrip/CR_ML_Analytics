@@ -136,6 +136,7 @@ export function MatchupPredictor() {
             <div className="flex items-center gap-3">
               <input
                 type="range"
+                aria-label="Your Trophies"
                 min="1000"
                 max="15000"
                 step="500"
@@ -177,6 +178,7 @@ export function MatchupPredictor() {
             <div className="flex items-center gap-3">
               <input
                 type="range"
+                aria-label="Opponent Trophies"
                 min="1000"
                 max="15000"
                 step="500"
