@@ -9,7 +9,6 @@ test.describe('Performance Metrics & Caching Audits', () => {
     for (const route of routes) {
       await page.goto(route);
       
-      // Extract PerformanceNavigationTiming metrics
       const timing = await page.evaluate(() => {
         const [nav] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
         if (!nav) return null;
@@ -39,9 +38,9 @@ test.describe('Performance Metrics & Caching Audits', () => {
     
     const latencies = await page.evaluate(async () => {
       const endpoints = [
-        { name: 'Health check', url: '/api/health' },
-        { name: 'Leaderboards stats', url: '/api/leaderboard?min_games=5' },
-        { name: 'Card Stats list', url: '/api/card-stats' }
+        { name: 'Health check', url: 'https://cr-ml-analytics-backend.onrender.com/health' },
+        { name: 'Leaderboards stats', url: 'https://cr-ml-analytics-backend.onrender.com/leaderboard?min_games=5' },
+        { name: 'Card Stats list', url: 'https://cr-ml-analytics-backend.onrender.com/card-stats' }
       ];
       
       const records: Record<string, number> = {};
@@ -56,14 +55,13 @@ test.describe('Performance Metrics & Caching Audits', () => {
 
     console.log('API Latency Benchmarks (ms):', latencies);
     for (const [name, ms] of Object.entries(latencies)) {
-      expect(ms).toBeLessThan(1000); // Standard threshold of 1s latency max
+      expect(ms).toBeLessThan(1500); // Increased limit slightly to account for Render cold starts/network latency
     }
   });
 
   test('Should inspect Cache-Control headers on static page assets', async ({ page }) => {
     const assetRequests: { url: string; cacheControl: string }[] = [];
     
-    // Listen to network asset requests
     page.on('response', (response) => {
       const url = response.url();
       const headers = response.headers();
@@ -78,7 +76,7 @@ test.describe('Performance Metrics & Caching Audits', () => {
     });
 
     await page.goto('/');
-    await page.waitForTimeout(1000); // Wait briefly for all resources to download
+    await page.waitForTimeout(1000);
 
     console.log('Static Assets Caching Headers:', assetRequests);
   });
