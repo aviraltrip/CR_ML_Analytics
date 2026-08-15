@@ -37,7 +37,7 @@ const DEFAULT_CARDS = [
   'Tombstone',
 ]
 
-// Lists for dynamic deck metrics
+
 const AIR_CARDS = ["Archers", "Baby Dragon", "Bats", "Dart Goblin", "Electro Dragon", "Electro Wizard", "Executioner", "Firecracker", "Flying Machine", "Hunter", "Ice Wizard", "Inferno Dragon", "Magic Archer", "Minions", "Minion Horde", "Musketeer", "Phoenix", "Princess", "Spear Goblins", "Three Musketeers", "Witch", "Wizard", "Tesla", "Inferno Tower", "Archer Queen", "Little Prince", "Electro Spirit", "Ice Spirit", "Void", "Arrows", "Fireball", "Rocket", "Zap", "Lightning", "Poison", "Giant Snowball", "Tornado"]
 const SPELLS = ["Arrows", "Earthquake", "Fireball", "Freeze", "Lightning", "Poison", "Rage", "Rocket", "The Log", "Tornado", "Zap", "Giant Snowball", "Void", "Goblin Curse", "Clone", "Mirror"]
 const TANKS = ["Giant", "Golem", "Lava Hound", "P.E.K.K.A", "Mega Knight", "Giant Skeleton", "Royal Giant", "Electro Giant", "Goblin Giant", "Rune Giant", "Mighty Miner"]
@@ -47,10 +47,10 @@ export function DeckEvaluator() {
   const [cards, setCards] = useState(DEFAULT_CARDS)
   const [levels, setLevels] = useState({})
   
-  // Fetch static resources (all cards lists, elixir map, etc.) from /data
+  
   const { data: allData } = useApi(() => api.getAllData())
   
-  // POST request to evaluate a deck
+  
   const { data, loading, error, execute } = usePost((payload) => api.evaluateDeck(payload))
 
   const availableCardsList = useMemo(() => {
@@ -61,7 +61,7 @@ export function DeckEvaluator() {
     return allData?.card_elixir || {}
   }, [allData])
 
-  // Parse URL deck parameter on mount
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     const deckParam = params.get('deck')
@@ -77,7 +77,7 @@ export function DeckEvaluator() {
     const targetCards = deckOverride || cards
     if (targetCards.length !== 8) return
     
-    // Auto-fill levels for cards that don't have them set yet (default level 11)
+    
     const resolvedLevels = {}
     targetCards.forEach(c => {
       resolvedLevels[c] = levels[c] !== undefined ? levels[c] : 11
@@ -86,7 +86,7 @@ export function DeckEvaluator() {
     await execute({ cards: targetCards, levels: resolvedLevels })
   }
 
-  // Auto-evaluate when deck loads from query param
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (params.get('deck') && availableCardsList.length > 0) {
@@ -94,7 +94,7 @@ export function DeckEvaluator() {
     }
   }, [location.search, availableCardsList])
 
-  // Calculate live deck statistics before calling the API
+  
   const liveStats = useMemo(() => {
     if (cards.length === 0) return { aec: 0, cycle: 0, air: 0, spells: 0, tanks: 0 }
     
@@ -111,7 +111,7 @@ export function DeckEvaluator() {
     return { aec, cycle, air, spells: spellsCount, tanks: tanksCount }
   }, [cards, cardElixirMap])
 
-  // Perform swap action (replace weakest card with suggestion and evaluate)
+  
   const handlePerformSwap = (weakestCard, replacementCard) => {
     const nextCards = cards.map(c => c === weakestCard ? replacementCard : c)
     setCards(nextCards)
@@ -127,10 +127,10 @@ export function DeckEvaluator() {
       
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
         
-        {/* LEFT COLUMN: Deck Builder & Inputs */}
+        
         <div className="space-y-6">
           
-          {/* Deck Selector Card Grid */}
+          
           <div className="glass-panel p-5 sm:p-6 rounded-3xl border border-slate-800/60">
             <DeckSelector
               label="Interactive Deck Builder"
@@ -142,7 +142,7 @@ export function DeckEvaluator() {
             />
           </div>
 
-          {/* Card Levels Editor */}
+          
           {cards.length > 0 && (
             <div className="glass-panel p-6 rounded-2xl space-y-4">
               <div>
@@ -180,7 +180,7 @@ export function DeckEvaluator() {
             </div>
           )}
 
-          {/* Run Button */}
+          
           <div className="flex items-center gap-4">
             <button
               onClick={() => handleEvaluate()}
@@ -207,10 +207,10 @@ export function DeckEvaluator() {
 
         </div>
 
-        {/* RIGHT COLUMN: Output & Predictive Recommendations */}
+        
         <div className="space-y-6">
           
-          {/* Default state when not evaluated yet */}
+          
           {!loading && !data && !error && (
             <div className="glass-panel p-8 rounded-3xl text-center h-full flex flex-col items-center justify-center border border-slate-800/40">
               <div className="p-4 bg-indigo-500/10 rounded-full border border-indigo-500/20 text-indigo-400 mb-4">
@@ -223,17 +223,17 @@ export function DeckEvaluator() {
             </div>
           )}
 
-          {/* Loading spinner overlay */}
+          
           {loading && (
             <div className="glass-panel p-8 rounded-3xl h-full flex items-center justify-center">
               <LoadingSpinner message="Calculating winrate matrix & card synergy deltas..." />
             </div>
           )}
 
-          {/* Error message */}
+          
           {error && <ErrorDisplay message={error} />}
 
-          {/* Evaluation Outputs Dashboard */}
+          
           <AnimatePresence>
             {!loading && data && (
               <motion.div
@@ -243,7 +243,7 @@ export function DeckEvaluator() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                {/* Historical Meta Deck Trophy Banner */}
+                
                 {data.found_in_history && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -264,14 +264,14 @@ export function DeckEvaluator() {
                   </motion.div>
                 )}
 
-                {/* 1. Win Rate Radial Gauge */}
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Gauge */}
+                  
                   <WinRateGauge 
                     probability={data.predicted_win_rate} 
                   />
 
-                  {/* Estimated Meta Rank */}
+                  
                   <div className="glass-card p-6 rounded-2xl flex flex-col justify-between border-l-[3px] border-l-cyan-500">
                     <div>
                       <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
@@ -306,26 +306,26 @@ export function DeckEvaluator() {
                   </div>
                 </div>
 
-                {/* 2. Live Composition Stats */}
+                
                 <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                     Deck Statistics Breakdown
                   </h4>
                   
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    {/* AEC */}
+                    
                     <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
                       <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Avg Elixir</span>
                       <span className="block text-lg font-black text-white font-mono mt-0.5">{liveStats.aec.toFixed(1)}</span>
                     </div>
 
-                    {/* Cycle */}
+                    
                     <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
                       <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Cycle Cost</span>
                       <span className="block text-lg font-black text-indigo-400 font-mono mt-0.5">{liveStats.cycle.toFixed(1)}</span>
                     </div>
 
-                    {/* Air Def */}
+                    
                     <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
                       <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Air Defense</span>
                       <span className={`block text-lg font-black font-mono mt-0.5 ${liveStats.air >= 2 ? 'text-emerald-400' : 'text-red-400'}`}>
@@ -333,7 +333,7 @@ export function DeckEvaluator() {
                       </span>
                     </div>
 
-                    {/* Tank/Spell */}
+                    
                     <div className="p-3 bg-slate-950/30 rounded-xl border border-slate-900 text-center">
                       <span className="text-[9px] uppercase font-bold text-slate-500 tracking-wider">Spells / Tanks</span>
                       <span className="block text-xs font-black text-white mt-1.5 uppercase font-mono">
@@ -343,7 +343,7 @@ export function DeckEvaluator() {
                   </div>
                 </div>
 
-                {/* 3. Swap Suggestions Cards */}
+                
                 {data.top_swaps && data.top_swaps.length > 0 && (
                   <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
                     <div>
@@ -366,7 +366,7 @@ export function DeckEvaluator() {
                             className="p-3 rounded-xl border border-slate-800 bg-slate-950/40 hover:border-slate-750 transition-all flex items-center justify-between gap-4"
                           >
                             <div className="flex items-center gap-3">
-                              {/* Swapped Card image */}
+                              
                               <CardImage 
                                 name={swap.candidate} 
                                 rarity={swapRarity} 
@@ -378,7 +378,7 @@ export function DeckEvaluator() {
                               </div>
                             </div>
 
-                            {/* Improvement stat and Swap button */}
+                            
                             <div className="flex items-center gap-3">
                               <div className="text-right">
                                 <span className={`text-xs font-black font-mono block ${isPositive ? 'text-emerald-400' : 'text-slate-400'}`}>

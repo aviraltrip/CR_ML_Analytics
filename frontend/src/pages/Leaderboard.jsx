@@ -20,7 +20,7 @@ import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useApi } from '../hooks/useApi'
 import { api } from '../services/api'
 
-// Helper to determine Clash Royale archetype and difficulty based on average elixir cost
+
 function getDeckArchetype(avgElixir) {
   const elixir = parseFloat(avgElixir) || 3.5
   if (elixir < 3.0) return { archetype: 'Fast Cycle', difficulty: 'Hard', color: 'text-cyan-400' }
@@ -29,7 +29,7 @@ function getDeckArchetype(avgElixir) {
   return { archetype: 'Heavy Beatdown', difficulty: 'Easy', color: 'text-red-400' }
 }
 
-// Helper to get meta tier based on leaderboard rank
+
 function getMetaTier(rank) {
   const r = parseInt(rank) || 20
   if (r <= 5) return { name: 'S-TIER', color: 'bg-red-500/10 text-red-400 border-red-500/30' }
@@ -42,7 +42,7 @@ export function Leaderboard() {
   const minGames = 5
   const [activeTab, setActiveTab] = useState('historical')
   
-  // Fetch static data to calculate elixir costs dynamically
+  
   const { data: allData } = useApi(() => api.getAllData())
   const cardElixirMap = allData?.card_elixir || {}
 
@@ -60,7 +60,7 @@ export function Leaderboard() {
     execute: executeMl,
   } = useApi(() => api.getModelLeaderboard(minGames), false)
 
-  // Fetch when tab or minGames filter changes
+  
   useEffect(() => {
     if (activeTab === 'historical') {
       executeHist()
@@ -81,9 +81,9 @@ export function Leaderboard() {
       className="space-y-8"
     >
       
-      {/* 1. Toggle Controls & Header */}
+      
       <div className="flex justify-start">
-        {/* Tab Buttons */}
+        
         <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit">
           <button
             onClick={() => setActiveTab('historical')}
@@ -110,7 +110,7 @@ export function Leaderboard() {
         </div>
       </div>
 
-      {/* Info card describing the current ranking metric */}
+      
       <div className="p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 flex items-start gap-3">
         <Info className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
         <div className="text-xs">
@@ -127,10 +127,10 @@ export function Leaderboard() {
         </div>
       </div>
 
-      {/* Loading States */}
+      
       {(histLoading || mlLoading) && <LoadingSpinner message="Re-calculating meta rankings..." />}
 
-      {/* Error Displays */}
+      
       {histError && activeTab === 'historical' && (
         <ErrorDisplay message={histError} onRetry={() => executeHist()} />
       )}
@@ -138,7 +138,7 @@ export function Leaderboard() {
         <ErrorDisplay message={mlError} onRetry={() => executeMl()} />
       )}
 
-      {/* Grid of Decks */}
+      
       <AnimatePresence mode="wait">
         {!histLoading && !mlLoading && activeRows.length > 0 && (
           <motion.div
@@ -153,7 +153,7 @@ export function Leaderboard() {
               const cardsList = row.deck?.split(',') || []
               const rankVal = activeTab === 'historical' ? row.Rank : row.Predictive_Rank
               
-              // Dynamically calculate average elixir cost from the cardElixirMap
+              
               const costs = cardsList.map(c => cardElixirMap[c] || 3.5)
               const elixirCost = costs.reduce((sum, val) => sum + val, 0) / (cardsList.length || 1)
               
@@ -166,7 +166,7 @@ export function Leaderboard() {
                   className="glass-panel p-5 sm:p-6 rounded-2xl flex flex-col justify-between hover:scale-[1.01] transition-transform duration-300 relative border-l-4 border-l-indigo-500/60"
                 >
                   
-                  {/* Deck Header: Rank and statistics */}
+                  
                   <div className="flex justify-between items-start border-b border-slate-800/40 pb-4 mb-4">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl font-black font-mono text-indigo-400">
@@ -187,7 +187,7 @@ export function Leaderboard() {
                       </div>
                     </div>
 
-                    {/* Stats display */}
+                    
                     <div className="text-right">
                       {activeTab === 'historical' ? (
                         <div className="flex flex-col items-end gap-1">
@@ -215,7 +215,7 @@ export function Leaderboard() {
                     </div>
                   </div>
 
-                  {/* Deck Cards Grid (4x2 layout) */}
+                  
                   <div className="grid grid-cols-4 gap-2.5 max-w-sm">
                     {cardsList.map((card) => (
                       <CardImage
@@ -227,9 +227,9 @@ export function Leaderboard() {
                     ))}
                   </div>
 
-                  {/* Deck Footer Actions */}
+                  
                   <div className="flex items-center justify-end border-t border-slate-800/30 pt-4 mt-4 text-xs font-semibold text-slate-400">
-                    {/* Navigation Buttons */}
+                    
                     <div className="flex gap-2">
                       <button
                         onClick={() => navigate(`/evaluator?deck=${encodeURIComponent(row.deck)}`)}
@@ -254,7 +254,7 @@ export function Leaderboard() {
           </motion.div>
         )}
 
-        {/* Empty States */}
+        
         {!histLoading && !mlLoading && activeRows.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}

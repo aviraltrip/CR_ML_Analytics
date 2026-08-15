@@ -18,7 +18,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         self._requests: dict[str, list[float]] = defaultdict(list)
 
     async def dispatch(self, request: Request, call_next: Callable) -> object:
-        # Get client IP, checking X-Forwarded-For header first (useful behind reverse proxies)
+
         forwarded_for = request.headers.get("x-forwarded-for")
         if forwarded_for:
             client_ip = forwarded_for.split(",")[0].strip()
@@ -26,7 +26,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             client_ip = request.client.host if request.client else "unknown"
         now = time.time()
 
-        # Prune timestamps outside the window
+
         window_start = now - self.window_seconds
         self._requests[client_ip] = [
             ts for ts in self._requests[client_ip] if ts > window_start

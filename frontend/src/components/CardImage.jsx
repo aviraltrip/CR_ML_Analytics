@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
-/**
- * Normalizes card names to match RoyaleAPI cr-api-assets naming conventions.
- */
+
 export function getCardSlug(cardName) {
   if (!cardName) return ''
   
@@ -67,21 +65,21 @@ export function CardImage({
 
   return (
     <div className={`relative flex flex-col items-center justify-center rounded-xl border-2 transition-all duration-300 hover:scale-105 group overflow-visible ${borderClass} ${className}`}>
-      {/* Elixir Cost Bubble */}
+      
       {elixir !== null && (
         <div className="absolute -top-2 -left-2 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-magenta-500 border border-magenta-300 shadow-[0_2px_5px_rgba(0,0,0,0.4)] text-[11px] font-bold text-white bg-gradient-to-br from-pink-500 to-purple-600">
           {elixir}
         </div>
       )}
       
-      {/* Level Tag */}
+      
       {level !== null && (
         <div className="absolute -bottom-2 right-1 z-10 rounded bg-slate-950/80 border border-slate-700 px-1 py-0.5 text-[9px] font-mono font-bold text-cyan-300">
           Lvl {level}
         </div>
       )}
 
-      {/* Card Artwork */}
+      
       <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-[10px]">
         {hasError || !name ? (
           // Fallback Placeholder
@@ -101,7 +99,7 @@ export function CardImage({
         )}
       </div>
 
-      {/* Optional Card Name Label */}
+      
       {showName && name && (
         <div className="w-full text-center mt-1 py-0.5 px-1 truncate bg-slate-950/70 text-[10px] font-semibold text-slate-200 border-t border-slate-800">
           {name}

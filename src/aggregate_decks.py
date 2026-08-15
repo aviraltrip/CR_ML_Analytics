@@ -52,8 +52,8 @@ def main():
     print(f"Reading processed battles from {args.in_csv}...")
     df = pd.read_csv(args.in_csv)
 
-    # Each battle contains two decks: p1 and p2. We want to record both.
-    # Create two dataframes and concatenate them to get all deck plays.
+
+
     df_p1 = pd.DataFrame({"deck": df["p1_deck"], "won": df["p1_won"]})
 
     df_p2 = pd.DataFrame({"deck": df["p2_deck"], "won": 1 - df["p1_won"]})
@@ -62,7 +62,7 @@ def main():
 
     print(f"Total deck plays observed: {len(all_plays)}")
 
-    # Group by deck and aggregate
+
     grouped = (
         all_plays.groupby("deck")
         .agg(matches_played=("won", "count"), wins=("won", "sum"))
@@ -72,7 +72,7 @@ def main():
     grouped["losses"] = grouped["matches_played"] - grouped["wins"]
     grouped["win_rate"] = grouped["wins"] / grouped["matches_played"]
 
-    # Calculate Wilson Score
+
     grouped["wilson_score"] = grouped.apply(
         lambda row: wilson_score_lower_bound(
             int(row["wins"]), int(row["matches_played"])
@@ -80,15 +80,15 @@ def main():
         axis=1,
     )
 
-    # Filter by minimum matches threshold
+
     filtered_grouped = grouped[grouped["matches_played"] >= args.min_matches].copy()
 
-    # Sort by Wilson score descending
+
     leaderboard = filtered_grouped.sort_values(
         by="wilson_score", ascending=False
     ).reset_index(drop=True)
 
-    # Ensure output directory exists
+
     out_dir = os.path.dirname(args.out_csv)
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)

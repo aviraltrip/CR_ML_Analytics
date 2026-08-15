@@ -42,7 +42,7 @@ def create_app() -> FastAPI:
         response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none';"
         return response
 
-    # Register cache and rate-limiting first
+
     app.add_middleware(CacheMiddleware, default_ttl=settings.CACHE_TTL)
     app.add_middleware(
         RateLimitMiddleware,
@@ -50,7 +50,7 @@ def create_app() -> FastAPI:
         window_seconds=settings.RATE_LIMIT_WINDOW,
     )
 
-    # CORSMiddleware must be added last to wrap all responses (including cached and throttled ones)
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.CORS_ORIGINS,

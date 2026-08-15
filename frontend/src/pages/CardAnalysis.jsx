@@ -19,7 +19,7 @@ import { useApi } from '../hooks/useApi'
 import { api } from '../services/api'
 import { Grid, List, BarChart3, TrendingUp, Sparkles } from 'lucide-react'
 
-// Helper to get meta tier for card based on win rate
+
 function getCardMetaRating(winRate) {
   const wr = parseFloat(winRate)
   if (wr >= 0.53) return 'S'
@@ -31,11 +31,11 @@ function getCardMetaRating(winRate) {
 export function CardAnalysis() {
   const { data, loading, error, execute } = useApi(() => api.getCardStats())
   const [statusFilter, setStatusFilter] = useState('All')
-  const [viewMode, setViewMode] = useState('grid') // 'grid' | 'table'
+  const [viewMode, setViewMode] = useState('grid') 
   const [currentPage, setCurrentPage] = useState(1)
   const pageSize = 12
 
-  // Reset to page 1 when statusFilter changes
+  
   useEffect(() => {
     setCurrentPage(1)
   }, [statusFilter])
@@ -54,7 +54,7 @@ export function CardAnalysis() {
     currentPage * pageSize
   )
 
-  // Data sorted for chart display
+  
   const sortedCards = [...filteredCards].sort((a, b) => b.win_rate_diff - a.win_rate_diff)
 
   const mapCardData = (c) => ({
@@ -79,7 +79,7 @@ export function CardAnalysis() {
     Overrated: cardStats.filter((c) => c.status === 'Overrated').length,
   }
 
-  // Columns for Table View
+  
   const columns = [
     { 
       key: 'card', 
@@ -202,9 +202,9 @@ export function CardAnalysis() {
       className="space-y-8"
     >
       
-      {/* 1. View Toggles & Status Filters */}
+      
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-        {/* Status Pills */}
+        
         <div className="flex flex-wrap gap-1.5 p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit">
           {Object.entries(statusCounts).map(([status, count]) => {
             const isActive = statusFilter === status
@@ -224,7 +224,7 @@ export function CardAnalysis() {
           })}
         </div>
 
-        {/* View Mode (Grid vs Table) */}
+        
         <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit self-end md:self-auto">
           <button
             onClick={() => setViewMode('grid')}
@@ -250,10 +250,10 @@ export function CardAnalysis() {
       {filteredCards.length > 0 ? (
         <div className="space-y-8">
           
-          {/* 2. Visual Horizontal Bar Chart of Win Rate Diff */}
+          
           {shouldSplit ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Overperforming Cards */}
+              
               <div className="glass-panel p-6 rounded-2xl flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="w-4 h-4 text-emerald-400" />
@@ -266,7 +266,7 @@ export function CardAnalysis() {
                 </div>
               </div>
 
-              {/* Underperforming Cards */}
+              
               <div className="glass-panel p-6 rounded-2xl flex flex-col">
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="w-4 h-4 text-red-400 rotate-180" />
@@ -293,7 +293,7 @@ export function CardAnalysis() {
             </div>
           )}
 
-          {/* 3. Cards Grid View or Data Table View */}
+          
           <AnimatePresence mode="wait">
             {viewMode === 'grid' ? (
               <motion.div
@@ -318,29 +318,29 @@ export function CardAnalysis() {
                       key={c.card}
                       className="glass-panel p-4 rounded-2xl flex flex-col justify-between items-center group relative text-center border border-slate-800/60"
                     >
-                      {/* Top rating badge */}
+                      
                       <div className="absolute top-2.5 right-2.5 z-10 font-black font-mono text-xs rounded-full bg-slate-900 border border-indigo-500/30 text-indigo-400 w-6 h-6 flex items-center justify-center shadow-lg">
                         {metaRating}
                       </div>
 
-                      {/* Official Card Artwork frame */}
+                      
                       <CardImage
                         name={c.card}
                         rarity={rarity}
                         className="h-28 w-20 mb-3"
                       />
 
-                      {/* Card Title */}
+                      
                       <h4 className="font-extrabold text-sm text-white truncate max-w-full">
                         {c.card}
                       </h4>
 
-                      {/* Overrated / Underrated status */}
+                      
                       <span className={`mt-1.5 px-2 py-0.5 rounded text-[8px] font-black uppercase border tracking-wider leading-none ${colors.bg} ${colors.text} ${colors.border}`}>
                         {c.status}
                       </span>
 
-                      {/* Stats columns */}
+                      
                       <div className="grid grid-cols-2 gap-2 mt-4 pt-3.5 border-t border-slate-800/40 w-full text-[10px] font-semibold text-slate-400">
                         <div>
                           <span className="block text-slate-500 text-[8px] uppercase tracking-wide">Usage</span>
@@ -356,7 +356,7 @@ export function CardAnalysis() {
                         </div>
                       </div>
 
-                      {/* Hidden stats overlay on hover */}
+                      
                       <div className="absolute inset-0 bg-[#0c1220]/95 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
                         <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-1.5">
                           Detailed Stats
@@ -399,7 +399,7 @@ export function CardAnalysis() {
             )}
           </AnimatePresence>
 
-          {/* Pagination Controls */}
+          
           {totalPages > 1 && (
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800/40 mt-8">
               <span className="text-xs font-bold text-slate-400">
@@ -417,7 +417,7 @@ export function CardAnalysis() {
                   Prev
                 </button>
                 
-                {/* Dynamic Page Numbers */}
+                
                 {Array.from({ length: totalPages }, (_, i) => i + 1)
                   .filter((p) => {
                     return p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1

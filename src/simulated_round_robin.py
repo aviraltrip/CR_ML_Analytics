@@ -57,11 +57,11 @@ def main():
     )
     args = parser.parse_args()
 
-    # Verify input paths
+
     for path_attr in ["in_leaderboard", "model_path", "vocab_path"]:
         path_val = getattr(args, path_attr)
         if not os.path.exists(path_val):
-            # Try relative to script path if running from subfolder
+
             alt_path = os.path.join(os.path.dirname(__file__), "..", path_val)
             if os.path.exists(alt_path):
                 setattr(args, path_attr, alt_path)
@@ -72,18 +72,18 @@ def main():
     print(f"Loading decks from {args.in_leaderboard}...")
     df_leaderboard = pd.read_csv(args.in_leaderboard)
 
-    # To build a comprehensive tournament, we select:
-    # 1. Top 100 most popular decks by matches_played descending.
-    # 2. Top 100 highest performing decks by wilson_score descending (with matches_played >= 15).
-    # This guarantees elite/successful decks (e.g. Deck #1 with 30 matches) are simulated,
-    # alongside the most common meta decks.
+
+
+
+
+
     df_popular = df_leaderboard.sort_values(by="matches_played", ascending=False).head(100).copy()
     
-    # Exclude decks already in the popular list to avoid duplication
+
     popular_decks = set(df_popular["deck"])
     df_remaining = df_leaderboard[~df_leaderboard["deck"].isin(popular_decks)]
     
-    # Filter remaining decks to those with a minimum match volume to avoid noisy fluke decks
+
     df_remaining_filtered = df_remaining[df_remaining["matches_played"] >= 15]
     df_elite = df_remaining_filtered.sort_values(by="wilson_score", ascending=False).head(100).copy()
     
@@ -102,7 +102,7 @@ def main():
         card_vocab = json.load(f)
     num_cards = len(card_vocab)
 
-    # Load card elixir mapping
+
     elixir_path = os.path.join(os.path.dirname(args.vocab_path), "card_elixir.json")
     if os.path.exists(elixir_path):
         print(f"Loading card elixir database from {elixir_path}...")
@@ -114,7 +114,7 @@ def main():
         )
         card_elixir = {}
 
-    # 1. Build all matchup feature vectors
+
     print("Generating simulated round-robin matchups...")
     X_matchups = []
     matchup_pairs = []
@@ -124,7 +124,7 @@ def main():
             if i == j:
                 continue
 
-            # Encode deck i
+
             v_i = np.zeros(num_cards)
             v_i_lvl = np.zeros(num_cards)
             for card in decks[i].split(","):
@@ -132,7 +132,7 @@ def main():
                     v_i[card_vocab[card]] = 1.0
                     v_i_lvl[card_vocab[card]] = 11.0
 
-            # Encode deck j
+
             v_j = np.zeros(num_cards)
             v_j_lvl = np.zeros(num_cards)
             for card in decks[j].split(","):
@@ -140,7 +140,7 @@ def main():
                     v_j[card_vocab[card]] = 1.0
                     v_j_lvl[card_vocab[card]] = 11.0
 
-            # Feature vector: presence difference, card level difference, and equal trophy diff (0.0)
+
             presence_diff = v_i - v_j
             level_diff = v_i_lvl - v_j_lvl
             X_matchups.append(np.concatenate([presence_diff, level_diff, [0.0]]))
@@ -149,11 +149,11 @@ def main():
     X_matchups = np.array(X_matchups)
     print(f"Total simulated matches: {len(X_matchups):,}")
 
-    # 2. Predict win probabilities in batch
+
     print("Predicting match outcomes...")
     probs = model.predict_proba(X_matchups)[:, 1]
 
-    # 3. Aggregate results
+
     win_sums = np.zeros(num_decks)
     counts = np.zeros(num_decks)
 
@@ -163,7 +163,7 @@ def main():
 
     expected_win_rates = win_sums / counts
 
-    # Apply elixir penalty and compute elixir costs
+
     penalized_win_rates = []
     elixir_costs = []
     for idx, deck_str in enumerate(decks):
@@ -173,11 +173,11 @@ def main():
         penalized_win_rates.append(penalized_wr)
         elixir_costs.append(aec)
 
-    # 4. Create new leaderboard dataframe
+
     df_meta["simulated_win_rate"] = penalized_win_rates
     df_meta["elixir_cost"] = elixir_costs
 
-    # Sort by simulated win rate descending
+
     df_predicted_leaderboard = df_meta.sort_values(
         by="simulated_win_rate", ascending=False
     ).reset_index(drop=True)
@@ -185,7 +185,7 @@ def main():
         0, "Predictive_Rank", df_predicted_leaderboard.index + 1
     )
 
-    # Save to CSV
+
     out_dir = os.path.dirname(args.out_csv)
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)

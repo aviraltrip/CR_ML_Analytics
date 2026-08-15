@@ -44,7 +44,7 @@ def fetch_battlelog(session: requests.Session, tag: str) -> list | None:
                 return None
             print(f"  unexpected status {resp.status_code} for {tag}")
             return None
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             print(f"  error fetching {tag}: {e}")
             time.sleep(2)
     return None
@@ -64,13 +64,13 @@ def extract_battle_rows(tag: str, battles: list) -> list[dict]:
         team = b.get("team", [])
         opponent = b.get("opponent", [])
         if len(team) != 1 or len(opponent) != 1:
-            continue  # skip 2v2 / non-standard formats
+            continue
         
         my_side, opp_side = team[0], opponent[0]
         my_cards = my_side.get("cards", [])
         opp_cards = opp_side.get("cards", [])
         if len(my_cards) != 8 or len(opp_cards) != 8:
-            continue  # incomplete deck data, skip
+            continue
 
         rows.append({
             "battle_time": b.get("battleTime"),

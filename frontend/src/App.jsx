@@ -17,7 +17,7 @@ export function App() {
         <Route path="/cards" element={<CardAnalysis />} />
         <Route path="/evaluator" element={<DeckEvaluator />} />
         <Route path="/matchup" element={<MatchupPredictor />} />
-        {/* Fallback to dashboard */}
+        
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />

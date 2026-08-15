@@ -28,7 +28,7 @@ export function Layout({ children }) {
   const [status, setStatus] = useState({ online: false, modelLoaded: false, loading: true })
 
   useEffect(() => {
-    // Check API health status
+    
     api.health()
       .then((res) => {
         setStatus({
@@ -46,16 +46,16 @@ export function Layout({ children }) {
       })
   }, [])
 
-  // Find active item
+  
   const activeItem = navItems.find((item) => item.path === location.pathname) || navItems[0]
 
   return (
     <div className="flex min-h-screen bg-[#070b13] text-slate-100 overflow-x-hidden">
       
-      {/* 1. Sidebar for Desktop */}
+      
       <aside className="hidden lg:flex flex-col w-64 fixed inset-y-0 left-0 bg-[#0c1220] border-r border-slate-800/60 z-30 justify-between">
         <div>
-          {/* Logo Brand */}
+          
           <div className="h-20 flex items-center px-6 border-b border-slate-800/40 gap-3">
             <div className="relative flex-shrink-0">
               <div className="absolute inset-0 bg-indigo-500/15 blur-md rounded-full"></div>
@@ -74,7 +74,7 @@ export function Layout({ children }) {
             </div>
           </div>
 
-          {/* Navigation Links */}
+          
           <nav className="p-4 space-y-1.5 mt-4">
             {navItems.map((item) => {
               const Icon = item.icon
@@ -85,7 +85,7 @@ export function Layout({ children }) {
                   to={item.path}
                   className="relative flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all group overflow-hidden"
                 >
-                  {/* Selected Pill Background Animation */}
+                  
                   {isActive && (
                     <motion.div
                       layoutId="sidebar-active"
@@ -109,9 +109,9 @@ export function Layout({ children }) {
           </nav>
         </div>
 
-        {/* Footer info in sidebar */}
+        
         <div className="p-4 border-t border-slate-800/40 bg-slate-950/20 space-y-3.5">
-          {/* Status info */}
+          
           <div className="space-y-2">
             <div className="flex items-center justify-between text-[11px] text-slate-400">
               <span className="flex items-center gap-1.5">
@@ -150,13 +150,13 @@ export function Layout({ children }) {
         </div>
       </aside>
 
-      {/* Main Panel Wrapper */}
+      
       <div className="flex-1 lg:pl-64 flex flex-col min-h-screen">
         
-        {/* 2. Top Navigation Header (Desktop / Mobile) */}
+        
         <header className="h-20 border-b border-slate-800/40 bg-[#070b13]/85 backdrop-blur-md flex items-center justify-between px-6 md:px-8 sticky top-0 z-20">
           <div className="flex items-center gap-4">
-            {/* Mobile Burger Menu Button */}
+            
             <button 
               onClick={() => setMobileMenuOpen(prev => !prev)}
               className="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:text-white"
@@ -164,7 +164,7 @@ export function Layout({ children }) {
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            {/* Current Route Title */}
+            
             <div>
               <h1 className="text-lg md:text-xl font-extrabold text-white leading-none">
                 {activeItem.label}
@@ -173,10 +173,10 @@ export function Layout({ children }) {
             </div>
           </div>
 
-          {/* Right Header Controls / Quick Badges */}
+          
           <div className="flex items-center gap-3">
 
-            {/* Mobile Header Crown */}
+            
             <div className="lg:hidden flex items-center gap-2 bg-slate-900 px-2 py-1.5 rounded-lg border border-slate-800">
               <img src="/logo.png" alt="Logo" className="w-5 h-5 object-contain" />
               <span className="text-xs font-black text-white">CR</span>
@@ -184,7 +184,7 @@ export function Layout({ children }) {
           </div>
         </header>
 
-        {/* 3. Mobile Menu Overlay Nav Drawer */}
+        
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div 
@@ -217,13 +217,13 @@ export function Layout({ children }) {
           )}
         </AnimatePresence>
 
-        {/* 4. Page Main Frame Content */}
+        
         <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto pb-24 md:pb-8">
           {children}
         </main>
       </div>
 
-      {/* 5. Mobile Sticky Bottom Nav Bar */}
+      
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0c1220]/95 backdrop-blur-lg border-t border-slate-800/80 z-30 flex justify-around py-3 px-2 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
         {navItems.slice(0, 5).map((item) => {
           const Icon = item.icon

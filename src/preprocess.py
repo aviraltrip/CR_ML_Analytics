@@ -36,11 +36,11 @@ def get_canonical_battle(row: dict) -> dict:
         p1_levels, p2_levels = row["opponent_deck_levels"], row["player_deck_levels"]
         p1_won = not row["player_won"]
 
-    # Decks need canonical representations. Sort cards alphabetically to create signatures.
+
     p1_deck_sorted = sorted(p1_deck)
     p2_deck_sorted = sorted(p2_deck)
 
-    # We map levels to the sorted cards.
+
     p1_card_levels_paired = sorted(zip(p1_deck, p1_levels), key=lambda x: x[0])
     p2_card_levels_paired = sorted(zip(p2_deck, p2_levels), key=lambda x: x[0])
 
@@ -117,7 +117,7 @@ def main():
             canonical = get_canonical_battle(b)
             key = (canonical["battle_time"], canonical["p1_tag"], canonical["p2_tag"])
             canonical_battles[key] = canonical
-        except Exception:  # noqa: BLE001
+        except Exception:
             skipped_malformed += 1
 
     unique_battles = list(canonical_battles.values())

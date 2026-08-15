@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 SRC_DIR = ROOT_DIR / "src"
 
-# Load environment variables from .env file if present
+
 env_path = ROOT_DIR / ".env"
 if env_path.exists():
     with open(env_path, "r", encoding="utf-8") as f:

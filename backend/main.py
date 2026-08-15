@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from app import app  # noqa: F401
+from app import app
 
 
 if __name__ == "__main__":

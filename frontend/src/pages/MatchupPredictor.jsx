@@ -52,7 +52,7 @@ export function MatchupPredictor() {
   const [trophies1, setTrophies1] = useState(11500)
   const [trophies2, setTrophies2] = useState(11500)
   
-  // Fetch static resources from /data
+  
   const { data: allData } = useApi(() => api.getAllData())
   const { data, loading, error, execute } = usePost((payload) => api.predictMatchup(payload))
 
@@ -64,7 +64,7 @@ export function MatchupPredictor() {
     return allData?.card_elixir || {}
   }, [allData])
 
-  // Parse URL deck1 query param
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     const deck1Param = params.get('deck1')
@@ -79,7 +79,7 @@ export function MatchupPredictor() {
   const handlePredict = async () => {
     if (deck1.length !== 8 || deck2.length !== 8) return
 
-    // Auto-fill levels for cards that don't have them set yet (default level 11)
+    
     const fillLevels = (deck, lvls) => {
       const resolved = {}
       deck.forEach(c => {
@@ -98,7 +98,7 @@ export function MatchupPredictor() {
     })
   }
 
-  // Auto-predict if deck1 query parameter is loaded
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (params.get('deck1') && availableCardsList.length > 0) {
@@ -115,10 +115,10 @@ export function MatchupPredictor() {
       className="space-y-8"
     >
       
-      {/* Dynamic VS Arena layout */}
+      
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto_1fr] gap-6 items-center">
         
-        {/* BLUE CORNER: Your Deck */}
+        
         <div className="glass-panel p-5 sm:p-6 rounded-3xl border border-blue-500/10 bg-gradient-to-b from-blue-950/10 to-transparent space-y-4">
           <DeckSelector
             label="Blue Corner (Your Deck)"
@@ -151,7 +151,7 @@ export function MatchupPredictor() {
           </div>
         </div>
 
-        {/* CENTER VS SECTION */}
+        
         <div className="flex flex-col items-center justify-center py-4">
           <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-slate-900 border-2 border-slate-800 shadow-2xl">
             <span className="font-display font-black text-lg italic tracking-tight text-yellow-500">VS</span>
@@ -160,7 +160,7 @@ export function MatchupPredictor() {
           <div className="h-10 w-0.5 bg-gradient-to-b from-slate-800 to-transparent mt-2 hidden xl:block"></div>
         </div>
 
-        {/* RED CORNER: Opponent Deck */}
+        
         <div className="glass-panel p-5 sm:p-6 rounded-3xl border border-red-500/10 bg-gradient-to-b from-red-950/10 to-transparent space-y-4">
           <DeckSelector
             label="Red Corner (Opponent Deck)"
@@ -195,7 +195,7 @@ export function MatchupPredictor() {
 
       </div>
 
-      {/* Prediction Trigger Button */}
+      
       <div className="max-w-xs mx-auto flex gap-4">
         <button
           onClick={handlePredict}
@@ -219,7 +219,7 @@ export function MatchupPredictor() {
         )}
       </div>
 
-      {/* RESULTS DISPLAY PANEL */}
+      
       <div className="space-y-6">
         
         {loading && (
@@ -240,7 +240,7 @@ export function MatchupPredictor() {
               className="space-y-6"
             >
               
-              {/* 1. Dynamic Split Win Probability Bar */}
+              
               <div className="glass-panel p-6 rounded-3xl relative overflow-hidden">
                 <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
                   <span>Your Deck (Blue Corner)</span>
@@ -248,7 +248,7 @@ export function MatchupPredictor() {
                   <span>Opponent Deck (Red Corner)</span>
                 </div>
 
-                {/* Progress bar line */}
+                
                 <div className="h-6 w-full rounded-full bg-red-600/80 overflow-hidden flex relative shadow-inner">
                   <motion.div 
                     layout
@@ -262,7 +262,7 @@ export function MatchupPredictor() {
                   <div className="flex-1 flex items-center pl-4 text-xs font-mono font-black text-white">
                     {100 - winPercentage}%
                   </div>
-                  {/* Split divider marker */}
+                  
                   <div className="absolute top-0 bottom-0 w-1 bg-white left-[50%] -translate-x-1/2 opacity-30"></div>
                 </div>
 
@@ -279,10 +279,10 @@ export function MatchupPredictor() {
                 </div>
               </div>
 
-              {/* 2. Advantage vs. Threat breakdown */}
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                {/* Advantages Panel (Blue) */}
+                
                 <div className="glass-panel p-6 rounded-2xl border border-emerald-500/10 space-y-4">
                   <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-2">
                     <Target className="w-4 h-4" />
@@ -311,7 +311,7 @@ export function MatchupPredictor() {
                   )}
                 </div>
 
-                {/* Threats Panel (Red) */}
+                
                 <div className="glass-panel p-6 rounded-2xl border border-red-500/10 space-y-4">
                   <h4 className="text-xs font-bold text-red-400 uppercase tracking-widest flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4" />
@@ -342,7 +342,7 @@ export function MatchupPredictor() {
 
               </div>
 
-              {/* 3. Detailed Card Contributions list */}
+              
               {data.contributions && data.contributions.length > 0 && (
                 <div className="glass-panel p-6 rounded-2xl">
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">

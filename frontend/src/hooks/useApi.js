@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 
-/**
- * Generic API hook with loading, error, and data state management.
- */
+
 export function useApi(apiFn, immediate = true) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(immediate)
@@ -49,9 +47,7 @@ export function useApi(apiFn, immediate = true) {
   return { data, loading, error, execute, setData }
 }
 
-/**
- * Hook for POST requests with loading and error state.
- */
+
 export function usePost(apiFn) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)

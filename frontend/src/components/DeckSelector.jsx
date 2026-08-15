@@ -8,19 +8,19 @@ export function DeckSelector({
   label, 
   cards = [], 
   setCards, 
-  availableCards = [], // Array of string names
+  availableCards = [], 
   cardElixirMap = {}, 
   maxCards = DECK_SIZE, 
   description 
 }) {
   const [searchQuery, setSearchQuery] = useState('')
 
-  // Remove card from active deck
+  
   const removeCard = (cardToRemove) => {
     setCards(cards.filter((card) => card !== cardToRemove))
   }
 
-  // Add card to active deck
+  
   const addCard = (cardToAdd) => {
     if (cards.length >= maxCards) return
     if (!cards.includes(cardToAdd)) {
@@ -28,7 +28,7 @@ export function DeckSelector({
     }
   }
 
-  // Filter available cards based on search query
+  
   const filteredAvailableCards = useMemo(() => {
     return availableCards
       .filter((card) => card.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -38,7 +38,7 @@ export function DeckSelector({
   return (
     <div className="space-y-6">
       
-      {/* 1. Header with active count */}
+      
       <div className="flex items-center justify-between border-b border-slate-800/40 pb-4">
         <div>
           <h2 className="text-lg font-black text-white uppercase tracking-tight flex items-center gap-2">
@@ -52,7 +52,7 @@ export function DeckSelector({
         </span>
       </div>
 
-      {/* 2. Visual 8-Slot Deck Builder */}
+      
       <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
         {Array.from({ length: maxCards }).map((_, index) => {
           const card = cards[index]
@@ -67,7 +67,7 @@ export function DeckSelector({
                 className="relative group aspect-[2/3] cursor-pointer"
                 onClick={() => removeCard(card)}
               >
-                {/* Visual card */}
+                
                 <CardImage 
                   name={card} 
                   rarity={rarity} 
@@ -75,7 +75,7 @@ export function DeckSelector({
                   className="w-full h-full"
                 />
                 
-                {/* Remove button hover overlay */}
+                
                 <div className="absolute inset-0 bg-red-950/80 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center border border-red-500/30">
                   <X className="w-5 h-5 text-red-400 font-bold" />
                 </div>
@@ -94,10 +94,10 @@ export function DeckSelector({
         })}
       </div>
 
-      {/* 3. Search and Card Collection Selection Grid */}
+      
       <div className="glass-panel p-5 rounded-2xl border border-slate-800/40 space-y-4">
         
-        {/* Search input bar */}
+        
         <div className="relative">
           <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
           <input
@@ -116,7 +116,7 @@ export function DeckSelector({
           )}
         </div>
 
-        {/* Card search results collection */}
+        
         <div className="h-64 overflow-y-auto gaming-scroll pr-1">
           {filteredAvailableCards.length === 0 ? (
             <div className="h-full flex items-center justify-center text-xs font-bold text-slate-500 uppercase tracking-widest">

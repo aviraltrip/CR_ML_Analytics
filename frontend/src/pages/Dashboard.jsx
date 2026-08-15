@@ -38,7 +38,7 @@ export function Dashboard() {
       className="max-w-6xl mx-auto space-y-8 pt-2 pb-10"
     >
       
-      {/* Sleek Header Title & Subtitle */}
+      
       <div className="space-y-3.5 text-center md:text-left max-w-3xl">
         <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight font-display uppercase leading-tight">
           Clash Royale <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Analysis Engine</span>
@@ -49,7 +49,7 @@ export function Dashboard() {
         </p>
       </div>
 
-      {/* 4-column responsive grid layout with high-quality photography */}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {sections.map((sec, idx) => (
           <motion.div
@@ -63,7 +63,7 @@ export function Dashboard() {
               to={sec.to}
               className="relative flex flex-col w-full rounded-2xl bg-[#0c1220]/50 border border-slate-800/80 hover:border-indigo-500/30 shadow-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.01] transform-gpu will-change-transform group overflow-hidden"
             >
-              {/* 1. Visual Thumbnail Photo */}
+              
               <div className="aspect-[16/10] w-full overflow-hidden bg-slate-950/40 relative border-b border-slate-800/40">
                 <img 
                   src={sec.image} 
@@ -72,21 +72,21 @@ export function Dashboard() {
                 />
               </div>
 
-              {/* 2. Content Details */}
+              
               <div className="p-5 flex-1 flex flex-col justify-between gap-5">
                 <div className="space-y-3">
-                  {/* Title */}
+                  
                   <h3 className="text-xs font-black text-white uppercase tracking-tight group-hover:text-indigo-400 transition-colors">
                     {sec.title}
                   </h3>
 
-                  {/* Description */}
+                  
                   <p className="text-[11px] text-slate-400 leading-relaxed font-medium">
                     {sec.description}
                   </p>
                 </div>
 
-                {/* Launch Action - Arrow only */}
+                
                 <div className="flex justify-end items-center pt-1">
                   <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 text-slate-500 group-hover:text-indigo-400" />
                 </div>

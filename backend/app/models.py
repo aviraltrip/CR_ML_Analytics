@@ -7,9 +7,9 @@ from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
-# ---------------------------------------------------------------------------
-# Request bodies
-# ---------------------------------------------------------------------------
+
+
+
 class DeckRequest(BaseModel):
     model_config = ConfigDict(
         json_schema_extra={
@@ -77,9 +77,9 @@ class SwapRequest(BaseModel):
     levels: Optional[dict[str, int]] = None
 
 
-# ---------------------------------------------------------------------------
-# Query parameters
-# ---------------------------------------------------------------------------
+
+
+
 class PaginationParams(BaseModel):
     page: int = Field(default=1, ge=1, description="Page number (1-indexed)")
     page_size: int = Field(default=20, ge=1, le=200, description="Items per page")

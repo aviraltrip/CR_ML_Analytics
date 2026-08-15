@@ -10,7 +10,7 @@ export function LoadingSpinner({ message = 'Loading intelligence...', size = 'md
 
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      {/* Outer spinning ring with glow */}
+      
       <div className="relative">
         <div className="absolute inset-0 rounded-full bg-indigo-500/10 blur-xl"></div>
         <Loader2 className={`animate-spin text-indigo-500 relative z-10 ${

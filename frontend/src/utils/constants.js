@@ -1,6 +1,6 @@
-// ---------------------------------------------------------------------------
-// Card status classification colors
-// ---------------------------------------------------------------------------
+
+
+
 export const STATUS_COLORS = {
   Underrated: {
     bg: 'bg-green-900/30',
@@ -28,58 +28,58 @@ export const STATUS_COLORS = {
   },
 }
 
-// ---------------------------------------------------------------------------
-// Default card elixir costs (fallback)
-// ---------------------------------------------------------------------------
+
+
+
 export const DEFAULT_ELIXIR_COST = 3.5
 
-// ---------------------------------------------------------------------------
-// Elixir penalty thresholds
-// ---------------------------------------------------------------------------
+
+
+
 export const ELIXIR_THRESHOLDS = {
   low: 2.8,
   high: 4.2,
   penaltyFactor: 0.15,
 }
 
-// ---------------------------------------------------------------------------
-// Prediction thresholds
-// ---------------------------------------------------------------------------
+
+
+
 export const PREDICTION_THRESHOLDS = {
   favorable: 0.55,
   unfavorable: 0.45,
 }
 
-// ---------------------------------------------------------------------------
-// Default card level for prediction
-// ---------------------------------------------------------------------------
+
+
+
 export const DEFAULT_CARD_LEVEL = 11
 
-// ---------------------------------------------------------------------------
-// Min / Max card levels
-// ---------------------------------------------------------------------------
+
+
+
 export const CARD_LEVEL_RANGE = {
   min: 1,
   max: 16,
 }
 
-// ---------------------------------------------------------------------------
-// Min / Max trophies
-// ---------------------------------------------------------------------------
+
+
+
 export const TROPHY_RANGE = {
   min: 1000,
   max: 15000,
   default: 11500,
 }
 
-// ---------------------------------------------------------------------------
-// Required deck size
-// ---------------------------------------------------------------------------
+
+
+
 export const DECK_SIZE = 8
 
-// ---------------------------------------------------------------------------
-// Helper to get card rarity by name
-// ---------------------------------------------------------------------------
+
+
+
 export function getCardRarity(cardName) {
   const champions = ["Archer Queen", "Golden Knight", "Mighty Miner", "Monk", "Little Prince", "Berserker", "Goblinstein"]
   const legendaries = ["Bandit", "Electro Wizard", "Fisherman", "Ice Wizard", "Inferno Dragon", "Lumberjack", "Magic Archer", "Mega Knight", "Miner", "Mother Witch", "Night Witch", "Phoenix", "Princess", "Ram Rider", "Royal Ghost", "Sparky", "The Log", "Lava Hound", "Graveyard"]

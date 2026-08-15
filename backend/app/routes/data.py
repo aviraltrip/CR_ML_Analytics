@@ -36,7 +36,7 @@ def get_data(filter: DataFilter = Depends()) -> DataResponse:
         except HTTPException:
             pass
 
-        # Filter leaderboard by min_games
+
         df_leaderboard_filtered = (
             df_leaderboard[df_leaderboard["matches_played"] >= filter.min_games]
             .copy()
@@ -44,11 +44,11 @@ def get_data(filter: DataFilter = Depends()) -> DataResponse:
         )
         df_leaderboard_filtered.insert(0, "Rank", df_leaderboard_filtered.index + 1)
 
-        # Full datasets for dashboard stats
+
         lb_list = df_leaderboard_filtered.to_dict(orient="records")
         cs_list = df_card_stats.to_dict(orient="records")
 
-        # Model leaderboard
+
         mlb_list = None
         mlb_total = None
         if model_lb_exists and df_model_leaderboard is not None:
