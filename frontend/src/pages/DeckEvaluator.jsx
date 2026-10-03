@@ -163,6 +163,7 @@ export function DeckEvaluator() {
                     </span>
                     <input
                       type="number"
+                      aria-label={`${card} level`}
                       value={levels[card] ?? 11}
                       onChange={(e) =>
                         setLevels({

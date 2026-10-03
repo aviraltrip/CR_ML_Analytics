@@ -101,6 +101,7 @@ export function DeckSelector({
         <div className="relative">
           <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
           <input
+            aria-label="Search deck card database"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search deck card database (e.g. Hog Rider, Zap)..."

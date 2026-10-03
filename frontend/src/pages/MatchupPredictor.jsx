@@ -130,11 +130,12 @@ export function MatchupPredictor() {
           />
           
           <div className="pt-2">
-            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <label htmlFor="deck1-trophies" className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
               Your Trophies
             </label>
             <div className="flex items-center gap-3">
               <input
+                id="deck1-trophies"
                 type="range"
                 aria-label="Your Trophies"
                 min="1000"
@@ -172,11 +173,12 @@ export function MatchupPredictor() {
           />
           
           <div className="pt-2">
-            <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <label htmlFor="deck2-trophies" className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
               Opponent Trophies
             </label>
             <div className="flex items-center gap-3">
               <input
+                id="deck2-trophies"
                 type="range"
                 aria-label="Opponent Trophies"
                 min="1000"
