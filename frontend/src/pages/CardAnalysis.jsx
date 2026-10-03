@@ -1,15 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 import { m, AnimatePresence } from 'framer-motion'
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  Tooltip, 
-  ResponsiveContainer, 
-  ReferenceLine,
-  Cell
-} from 'recharts'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { DataTable } from '../components/DataTable'
@@ -18,6 +8,8 @@ import { STATUS_COLORS, getCardRarity } from '../utils/constants'
 import { useApi } from '../hooks/useApi'
 import { api } from '../services/api'
 import { Grid, List, BarChart3, TrendingUp, Sparkles } from 'lucide-react'
+
+const CardPerformanceChart = lazy(() => import('../components/CardPerformanceChart'))
 
 
 function getCardMetaRating(winRate) {
@@ -140,53 +132,6 @@ export function CardAnalysis() {
     },
   ]
 
-  const renderBarChart = (chartData, height) => (
-    <ResponsiveContainer width="100%" height={height}>
-      <BarChart
-        data={chartData}
-        layout="vertical"
-        margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
-      >
-        <XAxis
-          type="number"
-          stroke="#64748b"
-          fontSize={10}
-          tickLine={false}
-          tickFormatter={(val) => `${val >= 0 ? '+' : ''}${val}%`}
-        />
-        <YAxis
-          type="category"
-          dataKey="name"
-          stroke="#64748b"
-          fontSize={9}
-          tickLine={false}
-          width={110}
-          interval={0}
-        />
-        <Tooltip
-          contentStyle={{
-            backgroundColor: '#0c1220',
-            borderColor: '#1e293b',
-            borderRadius: '12px',
-          }}
-          itemStyle={{ color: '#fff' }}
-          labelStyle={{ color: '#818cf8', fontWeight: 'bold' }}
-          formatter={(value) => [`${value}%`, 'Win Rate Margin']}
-        />
-        <ReferenceLine x={0} stroke="#475569" strokeDasharray="3 3" />
-        <Bar dataKey="winRateDiff" radius={[0, 4, 4, 0]}>
-          {chartData.map((entry, index) => {
-            let barColor = '#64748b'
-            if (entry.status === 'Underrated') barColor = '#10b981'
-            else if (entry.status === 'Strong/Meta') barColor = '#3b82f6'
-            else if (entry.status === 'Overrated') barColor = '#ef4444'
-            return <Cell key={`cell-${index}`} fill={barColor} />
-          })}
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
-  )
-
   if (loading) {
     return <LoadingSpinner message="Analyzing card popularity and win rates..." />
   }
@@ -265,7 +210,9 @@ export function CardAnalysis() {
                   </span>
                 </div>
                 <div className="w-full border border-slate-800/40 rounded-xl bg-slate-950/30 p-2">
-                  {renderBarChart(overperformingData, 380)}
+                  <Suspense fallback={<div className="h-[380px] flex items-center justify-center text-slate-500 text-xs">Loading performance chart...</div>}>
+                    <CardPerformanceChart chartData={overperformingData} height={380} />
+                  </Suspense>
                 </div>
               </div>
 
@@ -278,7 +225,9 @@ export function CardAnalysis() {
                   </span>
                 </div>
                 <div className="w-full border border-slate-800/40 rounded-xl bg-slate-950/30 p-2">
-                  {renderBarChart(underperformingData, 380)}
+                  <Suspense fallback={<div className="h-[380px] flex items-center justify-center text-slate-500 text-xs">Loading performance chart...</div>}>
+                    <CardPerformanceChart chartData={underperformingData} height={380} />
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -291,7 +240,9 @@ export function CardAnalysis() {
                 </span>
               </div>
               <div className="w-full max-h-[550px] overflow-y-auto pr-2 border border-slate-800/40 rounded-xl bg-slate-950/30 p-2 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
-                {renderBarChart(singleChartData, Math.max(singleChartData.length * 24, 300))}
+                <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500 text-xs">Loading performance chart...</div>}>
+                  <CardPerformanceChart chartData={singleChartData} height={Math.max(singleChartData.length * 24, 300)} />
+                </Suspense>
               </div>
             </div>
           )}
