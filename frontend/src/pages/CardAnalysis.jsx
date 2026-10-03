@@ -422,14 +422,12 @@ export function CardAnalysis() {
                 </button>
                 
                 
-                {Array.from({ length: totalPages }, (_, i) => i + 1)
-                  .filter((p) => {
-                    return p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1
-                  })
-                  .map((p, idx, arr) => {
-                    const showEllipsis = idx > 0 && p - arr[idx - 1] > 1
-                    
-                    return (
+                {Array.from({ length: totalPages }, (_, i) => i + 1).reduce((acc, p) => {
+                  if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1) {
+                    const lastPage = acc.lastPage
+                    const showEllipsis = lastPage !== undefined && p - lastPage > 1
+                    acc.lastPage = p
+                    acc.items.push(
                       <React.Fragment key={p}>
                         {showEllipsis && (
                           <span className="px-2 text-slate-500 text-xs font-bold">...</span>
@@ -447,7 +445,9 @@ export function CardAnalysis() {
                         </button>
                       </React.Fragment>
                     )
-                  })}
+                  }
+                  return acc
+                }, { items: [], lastPage: undefined }).items}
 
                 <button
                   type="button"
