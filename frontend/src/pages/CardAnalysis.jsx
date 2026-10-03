@@ -36,10 +36,10 @@ export function CardAnalysis() {
   const [currentPage, setCurrentPage] = useState(1)
   const pageSize = 12
 
-  
-  useEffect(() => {
+  const handleStatusChange = (status) => {
+    setStatusFilter(status)
     setCurrentPage(1)
-  }, [statusFilter])
+  }
 
   const cardStats = data?.card_stats || []
 
@@ -157,7 +157,7 @@ export function CardAnalysis() {
               <button
                 key={status}
                 type="button"
-                onClick={() => setStatusFilter(status)}
+                onClick={() => handleStatusChange(status)}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${
                   isActive
                     ? 'bg-indigo-600 text-white'
