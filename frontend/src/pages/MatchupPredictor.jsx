@@ -44,7 +44,7 @@ const DEFAULT_DECK_2 = [
 ]
 
 export function MatchupPredictor() {
-  const location = useLocation()
+  const { search } = useLocation()
   const [deck1, setDeck1] = useState(DEFAULT_DECK_1)
   const [deck2, setDeck2] = useState(DEFAULT_DECK_2)
   const [deck1Levels, setDeck1Levels] = useState({})
@@ -64,20 +64,8 @@ export function MatchupPredictor() {
     return allData?.card_elixir || {}
   }, [allData])
 
-  
-  useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const deck1Param = params.get('deck1')
-    if (deck1Param) {
-      const parsed = deck1Param.split(',')
-      if (parsed.length === 8) {
-        setDeck1(parsed)
-      }
-    }
-  }, [location.search])
-
-  const handlePredict = async () => {
-    if (deck1.length !== 8 || deck2.length !== 8) return
+  const handlePredict = React.useCallback(async (d1 = deck1, d2 = deck2) => {
+    if (d1.length !== 8 || d2.length !== 8) return
 
     
     const fillLevels = (deck, lvls) => {
@@ -89,22 +77,34 @@ export function MatchupPredictor() {
     }
 
     await execute({
-      deck1_cards: deck1,
-      deck1_levels: fillLevels(deck1, deck1Levels),
+      deck1_cards: d1,
+      deck1_levels: fillLevels(d1, deck1Levels),
       deck1_trophies: trophies1,
-      deck2_cards: deck2,
-      deck2_levels: fillLevels(deck2, deck2Levels),
+      deck2_cards: d2,
+      deck2_levels: fillLevels(d2, deck2Levels),
       deck2_trophies: trophies2,
     })
-  }
+  }, [deck1, deck2, deck1Levels, deck2Levels, trophies1, trophies2, execute])
 
   
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
+    const params = new URLSearchParams(search)
+    const deck1Param = params.get('deck1')
+    if (deck1Param) {
+      const parsed = deck1Param.split(',')
+      if (parsed.length === 8) {
+        setDeck1(parsed)
+      }
+    }
+  }, [search])
+
+  
+  useEffect(() => {
+    const params = new URLSearchParams(search)
     if (params.get('deck1') && availableCardsList.length > 0) {
       handlePredict()
     }
-  }, [location.search, availableCardsList])
+  }, [search, availableCardsList, handlePredict])
 
   const winPercentage = data ? Math.round(data.win_probability * 100) : 50
 

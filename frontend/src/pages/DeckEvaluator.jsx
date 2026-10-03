@@ -43,7 +43,7 @@ const SPELLS = ["Arrows", "Earthquake", "Fireball", "Freeze", "Lightning", "Pois
 const TANKS = ["Giant", "Golem", "Lava Hound", "P.E.K.K.A", "Mega Knight", "Giant Skeleton", "Royal Giant", "Electro Giant", "Goblin Giant", "Rune Giant", "Mighty Miner"]
 
 export function DeckEvaluator() {
-  const location = useLocation()
+  const { search } = useLocation()
   const [cards, setCards] = useState(DEFAULT_CARDS)
   const [levels, setLevels] = useState({})
   
@@ -61,19 +61,7 @@ export function DeckEvaluator() {
     return allData?.card_elixir || {}
   }, [allData])
 
-  
-  useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const deckParam = params.get('deck')
-    if (deckParam) {
-      const parsed = deckParam.split(',')
-      if (parsed.length === 8) {
-        setCards(parsed)
-      }
-    }
-  }, [location.search])
-
-  const handleEvaluate = async (deckOverride = null) => {
+  const handleEvaluate = React.useCallback(async (deckOverride = null) => {
     const targetCards = deckOverride || cards
     if (targetCards.length !== 8) return
     
@@ -84,15 +72,27 @@ export function DeckEvaluator() {
     })
     
     await execute({ cards: targetCards, levels: resolvedLevels })
-  }
+  }, [cards, levels, execute])
 
   
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
+    const params = new URLSearchParams(search)
+    const deckParam = params.get('deck')
+    if (deckParam) {
+      const parsed = deckParam.split(',')
+      if (parsed.length === 8) {
+        setCards(parsed)
+      }
+    }
+  }, [search])
+
+  
+  useEffect(() => {
+    const params = new URLSearchParams(search)
     if (params.get('deck') && availableCardsList.length > 0) {
       handleEvaluate()
     }
-  }, [location.search, availableCardsList])
+  }, [search, availableCardsList, handleEvaluate])
 
   
   const liveStats = useMemo(() => {
