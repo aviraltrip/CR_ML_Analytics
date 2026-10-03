@@ -1,12 +1,13 @@
 import React from 'react'
 import { Loader2 } from 'lucide-react'
 
+const SIZE_CLASSES = {
+  sm: 'w-5 h-5 border-2',
+  md: 'w-10 h-10 border-[3px]',
+  lg: 'w-16 h-16 border-4',
+}
+
 export function LoadingSpinner({ message = 'Loading intelligence...', size = 'md' }) {
-  const sizeClasses = {
-    sm: 'w-5 h-5 border-2',
-    md: 'w-10 h-10 border-[3px]',
-    lg: 'w-16 h-16 border-4',
-  }
 
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
