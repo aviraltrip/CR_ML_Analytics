@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 export function DataTable({ columns, data, className = '' }) {
   if (!data || data.length === 0) {
@@ -28,7 +28,7 @@ export function DataTable({ columns, data, className = '' }) {
         </thead>
         <tbody className="divide-y divide-slate-800/30">
           {data.map((row, rowIndex) => (
-            <motion.tr
+            <m.tr
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: Math.min(0.2, rowIndex * 0.02) }}

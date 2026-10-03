@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Plus, X, Search, Sparkles } from 'lucide-react'
 import { DECK_SIZE, getCardRarity } from '../utils/constants'
 import { CardImage } from './CardImage'
@@ -63,7 +63,7 @@ export function DeckSelector({
             const rarity = getCardRarity(card)
             const elixir = cardElixirMap[card] || 3
             return (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 key={card}

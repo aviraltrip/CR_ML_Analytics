@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import Leaderboard from './pages/Leaderboard'
@@ -10,18 +10,20 @@ import MatchupPredictor from './pages/MatchupPredictor'
 
 export function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/cards" element={<CardAnalysis />} />
-        <Route path="/evaluator" element={<DeckEvaluator />} />
-        <Route path="/matchup" element={<MatchupPredictor />} />
-        
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-      <Analytics />
-    </Layout>
+    <LazyMotion features={domAnimation}>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/cards" element={<CardAnalysis />} />
+          <Route path="/evaluator" element={<DeckEvaluator />} />
+          <Route path="/matchup" element={<MatchupPredictor />} />
+          
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Analytics />
+      </Layout>
+    </LazyMotion>
   )
 }
 

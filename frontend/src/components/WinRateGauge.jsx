@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 export function WinRateGauge({ probability }) {
   const percentage = Math.round(probability * 100)
@@ -54,7 +54,7 @@ export function WinRateGauge({ probability }) {
             strokeWidth={strokeWidth}
           />
           
-          <motion.circle
+          <m.circle
             cx="72"
             cy="72"
             r={radius}
@@ -74,7 +74,7 @@ export function WinRateGauge({ probability }) {
 
         
         <div className="absolute flex flex-col items-center justify-center">
-          <motion.span 
+          <m.span 
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
