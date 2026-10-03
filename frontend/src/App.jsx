@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { LazyMotion, domAnimation } from 'framer-motion'
+import { Analytics } from '@vercel/analytics/react'
 import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import Leaderboard from './pages/Leaderboard'
