@@ -37,6 +37,8 @@ function getMetaTier(rank) {
   return { name: 'B-TIER', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' }
 }
 
+const formatWinRate = (val) => `${(val * 100).toFixed(1)}%`
+
 export function Leaderboard() {
   const navigate = useNavigate()
   const minGames = 5
@@ -69,7 +71,6 @@ export function Leaderboard() {
     }
   }, [activeTab, minGames, executeHist, executeMl])
 
-  const formatWinRate = (val) => `${(val * 100).toFixed(1)}%`
   const activeRows = activeTab === 'historical'
     ? histData?.leaderboard || []
     : mlData?.model_leaderboard || []
