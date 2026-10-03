@@ -28,6 +28,15 @@ function getCardMetaRating(winRate) {
   return 'C'
 }
 
+const mapCardData = (c) => ({
+  name: c.card,
+  winRateDiff: +(c.win_rate_diff * 100).toFixed(1),
+  popularity: +(c.popularity * 100).toFixed(1),
+  winRate: +(c.win_rate * 100).toFixed(1),
+  status: c.status,
+  matches: c.matches_played,
+})
+
 export function CardAnalysis() {
   const { data, loading, error, execute } = useApi(() => api.getCardStats())
   const [statusFilter, setStatusFilter] = useState('All')
@@ -56,15 +65,6 @@ export function CardAnalysis() {
 
   
   const sortedCards = [...filteredCards].sort((a, b) => b.win_rate_diff - a.win_rate_diff)
-
-  const mapCardData = (c) => ({
-    name: c.card,
-    winRateDiff: +(c.win_rate_diff * 100).toFixed(1),
-    popularity: +(c.popularity * 100).toFixed(1),
-    winRate: +(c.win_rate * 100).toFixed(1),
-    status: c.status,
-    matches: c.matches_played,
-  })
 
   const shouldSplit = filteredCards.length > 20
   const overperformingData = sortedCards.slice(0, 15).map(mapCardData)
