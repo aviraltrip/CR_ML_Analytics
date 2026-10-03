@@ -4,12 +4,15 @@ import { Plus, X, Search, Sparkles } from 'lucide-react'
 import { DECK_SIZE, getCardRarity } from '../utils/constants'
 import { CardImage } from './CardImage'
 
+const DEFAULT_EMPTY_ARRAY = []
+const DEFAULT_EMPTY_OBJECT = {}
+
 export function DeckSelector({ 
   label, 
-  cards = [], 
+  cards = DEFAULT_EMPTY_ARRAY, 
   setCards, 
-  availableCards = [], 
-  cardElixirMap = {}, 
+  availableCards = DEFAULT_EMPTY_ARRAY, 
+  cardElixirMap = DEFAULT_EMPTY_OBJECT, 
   maxCards = DECK_SIZE, 
   description 
 }) {
