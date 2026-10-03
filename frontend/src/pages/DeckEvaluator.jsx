@@ -264,7 +264,7 @@ export function DeckEvaluator() {
                         This deck is active in match history: <span className="text-amber-400">{data.wins}W - {data.losses}L</span> ({(data.win_rate * 100).toFixed(1)}%) in <span className="text-indigo-400">{data.matches_played}</span> matches. Wilson Score: <span className="font-mono text-cyan-400">{data.wilson_score}</span>
                       </p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
 
                 

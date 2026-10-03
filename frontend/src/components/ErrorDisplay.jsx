@@ -32,7 +32,7 @@ export function ErrorDisplay({ message, onRetry }) {
           Retry Request
         </button>
       )}
-    </motion.div>
+    </m.div>
   )
 }
 

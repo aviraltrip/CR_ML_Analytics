@@ -214,7 +214,7 @@ export function Layout({ children }) {
                   </Link>
                 )
               })}
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
 

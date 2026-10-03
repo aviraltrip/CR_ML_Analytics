@@ -47,7 +47,7 @@ export function DataTable({ columns, data, className = '' }) {
                     : row[col.key]}
                 </td>
               ))}
-            </motion.tr>
+            </m.tr>
           ))}
         </tbody>
       </table>

@@ -81,7 +81,7 @@ export function WinRateGauge({ probability }) {
             className="text-3xl font-black font-mono text-white tracking-tighter"
           >
             {percentage}%
-          </motion.span>
+          </m.span>
           <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full mt-1 bg-slate-900 border border-slate-800 ${textColor}`}>
             {labelText}
           </span>
