@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { 
   BarChart, 
   Bar, 
@@ -196,7 +196,7 @@ export function CardAnalysis() {
   }
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="space-y-8"
@@ -299,7 +299,7 @@ export function CardAnalysis() {
           
           <AnimatePresence mode="wait">
             {viewMode === 'grid' ? (
-              <motion.div
+              <m.div
                 key="grid-mode"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -313,7 +313,7 @@ export function CardAnalysis() {
                   const metaRating = getCardMetaRating(c.win_rate)
 
                   return (
-                    <motion.div
+                    <m.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: Math.min(0.2, index * 0.02) }}
@@ -381,12 +381,12 @@ export function CardAnalysis() {
                         </div>
                       </div>
 
-                    </motion.div>
+                    </m.div>
                   )
                 })}
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div
+              <m.div
                 key="table-mode"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -398,7 +398,7 @@ export function CardAnalysis() {
                   Full Card Statistics Table
                 </h3>
                 <DataTable columns={columns} data={paginatedCards} />
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
 
@@ -468,7 +468,7 @@ export function CardAnalysis() {
         </div>
       )}
 
-    </motion.div>
+    </m.div>
   )
 }
 

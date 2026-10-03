@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { 
   Trophy, 
   BrainCircuit, 
@@ -76,7 +76,7 @@ export function Leaderboard() {
     : mlData?.model_leaderboard || []
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="space-y-8"
@@ -144,7 +144,7 @@ export function Leaderboard() {
       
       <AnimatePresence mode="wait">
         {!histLoading && !mlLoading && activeRows.length > 0 && (
-          <motion.div
+          <m.div
             key={activeTab}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -256,12 +256,12 @@ export function Leaderboard() {
                 </div>
               )
             })}
-          </motion.div>
+          </m.div>
         )}
 
         
         {!histLoading && !mlLoading && activeRows.length === 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="glass-card p-12 text-center rounded-2xl border border-slate-800 max-w-lg mx-auto"
@@ -271,11 +271,11 @@ export function Leaderboard() {
             <p className="text-slate-400 text-xs mt-2 max-w-sm mx-auto leading-relaxed">
               No decks meet the requirement of having at least {minGames} matches played. Try lowering the match threshold slider.
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
-    </motion.div>
+    </m.div>
   )
 }
 

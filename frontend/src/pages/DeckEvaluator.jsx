@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { 
   Sparkles, 
   BarChart3, 
@@ -119,7 +119,7 @@ export function DeckEvaluator() {
   }
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="space-y-8"
@@ -239,7 +239,7 @@ export function DeckEvaluator() {
           
           <AnimatePresence>
             {!loading && data && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
@@ -248,7 +248,7 @@ export function DeckEvaluator() {
               >
                 
                 {data.found_in_history && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="p-5 rounded-2xl bg-gradient-to-r from-amber-500/10 to-indigo-500/10 border border-amber-500/25 flex items-start gap-4 shadow-xl"
@@ -407,7 +407,7 @@ export function DeckEvaluator() {
                   </div>
                 )}
 
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
 
@@ -415,7 +415,7 @@ export function DeckEvaluator() {
 
       </div>
 
-    </motion.div>
+    </m.div>
   )
 }
 

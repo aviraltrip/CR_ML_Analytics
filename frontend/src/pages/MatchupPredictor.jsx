@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { 
   ShieldCheck, 
   Zap, 
@@ -109,7 +109,7 @@ export function MatchupPredictor() {
   const winPercentage = data ? Math.round(data.win_probability * 100) : 50
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="space-y-8"
@@ -236,7 +236,7 @@ export function MatchupPredictor() {
 
         <AnimatePresence>
           {!loading && data && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
@@ -379,13 +379,13 @@ export function MatchupPredictor() {
                 </div>
               )}
 
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
 
       </div>
 
-    </motion.div>
+    </m.div>
   )
 }
 

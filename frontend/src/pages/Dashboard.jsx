@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 const DASHBOARD_SECTIONS = [
@@ -33,7 +33,7 @@ const DASHBOARD_SECTIONS = [
 export function Dashboard() {
 
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="max-w-6xl mx-auto space-y-8 pt-2 pb-10"
@@ -53,7 +53,7 @@ export function Dashboard() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {DASHBOARD_SECTIONS.map((sec, idx) => (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.08, duration: 0.4 }}
@@ -93,10 +93,10 @@ export function Dashboard() {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
