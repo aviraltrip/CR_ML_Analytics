@@ -3,33 +3,34 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
+const DASHBOARD_SECTIONS = [
+  {
+    to: '/leaderboard',
+    title: 'Deck Leaderboard',
+    image: '/mockups/leaderboard.jpg?v=3',
+    description: 'Explore statistically validated deck performance rankings using Wilson interval scoring to filter out low-sample flukes.'
+  },
+  {
+    to: '/cards',
+    title: 'Card Analytics',
+    image: '/mockups/cards.jpg?v=3',
+    description: 'Inspect popularity Win Rate vs. Usage dynamics and meta ratings of all 123 Clash Royale cards.'
+  },
+  {
+    to: '/evaluator',
+    title: 'Deck Evaluator',
+    image: '/mockups/evaluator.jpg?v=3',
+    description: 'Build any custom deck and receive optimal single-card swap recommendations powered by our ML neural networks.'
+  },
+  {
+    to: '/matchup',
+    title: 'Matchup Predictor',
+    image: '/mockups/matchup.jpg?v=3',
+    description: 'Predict win rate splits and analyze key counter-matching advantages between any two custom decks.'
+  }
+]
+
 export function Dashboard() {
-  const sections = [
-    {
-      to: '/leaderboard',
-      title: 'Deck Leaderboard',
-      image: '/mockups/leaderboard.jpg?v=3',
-      description: 'Explore statistically validated deck performance rankings using Wilson interval scoring to filter out low-sample flukes.'
-    },
-    {
-      to: '/cards',
-      title: 'Card Analytics',
-      image: '/mockups/cards.jpg?v=3',
-      description: 'Inspect popularity Win Rate vs. Usage dynamics and meta ratings of all 123 Clash Royale cards.'
-    },
-    {
-      to: '/evaluator',
-      title: 'Deck Evaluator',
-      image: '/mockups/evaluator.jpg?v=3',
-      description: 'Build any custom deck and receive optimal single-card swap recommendations powered by our ML neural networks.'
-    },
-    {
-      to: '/matchup',
-      title: 'Matchup Predictor',
-      image: '/mockups/matchup.jpg?v=3',
-      description: 'Predict win rate splits and analyze key counter-matching advantages between any two custom decks.'
-    }
-  ]
 
   return (
     <motion.div 
@@ -51,7 +52,7 @@ export function Dashboard() {
 
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {sections.map((sec, idx) => (
+        {DASHBOARD_SECTIONS.map((sec, idx) => (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
