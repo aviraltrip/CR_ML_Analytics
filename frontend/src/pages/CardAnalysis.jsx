@@ -211,6 +211,7 @@ export function CardAnalysis() {
             return (
               <button
                 key={status}
+                type="button"
                 onClick={() => setStatusFilter(status)}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${
                   isActive
@@ -227,6 +228,7 @@ export function CardAnalysis() {
         
         <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit self-end md:self-auto">
           <button
+            type="button"
             onClick={() => setViewMode('grid')}
             className={`p-2.5 rounded-lg transition-all ${
               viewMode === 'grid' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
@@ -236,6 +238,7 @@ export function CardAnalysis() {
             <Grid className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={() => setViewMode('table')}
             className={`p-2.5 rounded-lg transition-all ${
               viewMode === 'table' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
@@ -410,6 +413,7 @@ export function CardAnalysis() {
               
               <div className="flex items-center gap-1.5">
                 <button
+                  type="button"
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   className="px-3.5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-slate-800/50 bg-slate-900/60 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800/60"
@@ -431,6 +435,7 @@ export function CardAnalysis() {
                           <span className="px-2 text-slate-500 text-xs font-bold">...</span>
                         )}
                         <button
+                          type="button"
                           onClick={() => setCurrentPage(p)}
                           className={`w-9 h-9 rounded-xl text-xs font-bold transition-all border ${
                             currentPage === p
@@ -445,6 +450,7 @@ export function CardAnalysis() {
                   })}
 
                 <button
+                  type="button"
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   className="px-3.5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border border-slate-800/50 bg-slate-900/60 text-slate-400 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800/60"
