@@ -254,7 +254,7 @@ export function MatchupPredictor() {
 
                 
                 <div className="h-6 w-full rounded-full bg-red-600/80 overflow-hidden flex relative shadow-inner">
-                  <motion.div 
+                  <m.div 
                     layout
                     initial={{ width: '50%' }}
                     animate={{ width: `${winPercentage}%` }}
@@ -262,7 +262,7 @@ export function MatchupPredictor() {
                     className="h-full bg-blue-600/90 shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)] flex items-center justify-end pr-4 text-xs font-mono font-black text-white"
                   >
                     {winPercentage}%
-                  </motion.div>
+                  </m.div>
                   <div className="flex-1 flex items-center pl-4 text-xs font-mono font-black text-white">
                     {100 - winPercentage}%
                   </div>

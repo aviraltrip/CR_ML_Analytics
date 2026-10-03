@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { m, AnimatePresence } from 'framer-motion'
 import { 
   Home, 
   Trophy, 
@@ -86,7 +87,7 @@ export function Layout({ children }) {
                 >
                   
                   {isActive && (
-                    <motion.div
+                    <m.div
                       layoutId="sidebar-active"
                       className="absolute inset-0 bg-indigo-600/10 border-l-[3px] border-indigo-500"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
@@ -187,7 +188,7 @@ export function Layout({ children }) {
         
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
