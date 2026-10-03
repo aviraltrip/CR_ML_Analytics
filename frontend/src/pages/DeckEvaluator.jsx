@@ -101,7 +101,7 @@ export function DeckEvaluator() {
     const costs = cards.map(c => cardElixirMap[c] || 3.5)
     const aec = costs.reduce((a, b) => a + b, 0) / cards.length
     
-    const sortedCosts = [...costs].sort((a, b) => a - b)
+    const sortedCosts = costs.toSorted((a, b) => a - b)
     const cycle = sortedCosts.slice(0, Math.min(4, sortedCosts.length)).reduce((a, b) => a + b, 0) / Math.min(4, sortedCosts.length)
     
     const air = cards.filter(c => AIR_CARDS.includes(c)).length

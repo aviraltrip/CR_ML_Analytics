@@ -64,7 +64,7 @@ export function CardAnalysis() {
   )
 
   
-  const sortedCards = [...filteredCards].sort((a, b) => b.win_rate_diff - a.win_rate_diff)
+  const sortedCards = filteredCards.toSorted((a, b) => b.win_rate_diff - a.win_rate_diff)
 
   const shouldSplit = filteredCards.length > 20
   const overperformingData = sortedCards.slice(0, 15).map(mapCardData)
