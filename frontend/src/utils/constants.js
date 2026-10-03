@@ -31,50 +31,6 @@ export const STATUS_COLORS = {
 
 
 
-export const DEFAULT_ELIXIR_COST = 3.5
-
-
-
-
-export const ELIXIR_THRESHOLDS = {
-  low: 2.8,
-  high: 4.2,
-  penaltyFactor: 0.15,
-}
-
-
-
-
-export const PREDICTION_THRESHOLDS = {
-  favorable: 0.55,
-  unfavorable: 0.45,
-}
-
-
-
-
-export const DEFAULT_CARD_LEVEL = 11
-
-
-
-
-export const CARD_LEVEL_RANGE = {
-  min: 1,
-  max: 16,
-}
-
-
-
-
-export const TROPHY_RANGE = {
-  min: 1000,
-  max: 15000,
-  default: 11500,
-}
-
-
-
-
 export const DECK_SIZE = 8
 
 
