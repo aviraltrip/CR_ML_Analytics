@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export function getCardSlug(cardName) {
+function getCardSlug(cardName) {
   if (!cardName) return ''
   
   const specialCases = {
@@ -25,7 +25,7 @@ export function getCardSlug(cardName) {
 /**
  * Helper to get border colors matching Clash Royale rarity colors.
  */
-export function getRarityBorder(rarity) {
+function getRarityBorder(rarity) {
   const normalized = (rarity || '').toLowerCase()
   switch (normalized) {
     case 'common':
