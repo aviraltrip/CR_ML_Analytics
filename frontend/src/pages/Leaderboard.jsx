@@ -86,6 +86,7 @@ export function Leaderboard() {
         
         <div className="flex p-1 bg-slate-900/60 border border-slate-800 rounded-xl w-fit">
           <button
+            type="button"
             onClick={() => setActiveTab('historical')}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-all ${
               activeTab === 'historical'
@@ -97,6 +98,7 @@ export function Leaderboard() {
             Historical (Wilson Score)
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('ml')}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-all ${
               activeTab === 'ml'
@@ -232,6 +234,7 @@ export function Leaderboard() {
                     
                     <div className="flex gap-2">
                       <button
+                        type="button"
                         onClick={() => navigate(`/evaluator?deck=${encodeURIComponent(row.deck)}`)}
                         className="flex items-center gap-1 text-[11px] font-bold text-indigo-400 hover:text-indigo-300 transition-colors uppercase tracking-wider bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg"
                       >
@@ -239,6 +242,7 @@ export function Leaderboard() {
                         Evaluate
                       </button>
                       <button
+                        type="button"
                         onClick={() => navigate(`/matchup?deck1=${encodeURIComponent(row.deck)}`)}
                         className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-wider bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg"
                       >

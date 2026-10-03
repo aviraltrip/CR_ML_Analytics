@@ -198,6 +198,7 @@ export function MatchupPredictor() {
       
       <div className="max-w-xs mx-auto flex gap-4">
         <button
+          type="button"
           onClick={handlePredict}
           disabled={deck1.length !== 8 || deck2.length !== 8 || loading}
           className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-indigo-600 hover:bg-indigo-500 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black uppercase text-sm rounded-xl tracking-wider shadow-lg shadow-indigo-950/40 transition-all"
@@ -207,6 +208,7 @@ export function MatchupPredictor() {
         </button>
         {(deck1.length === 8 || deck2.length === 8) && (
           <button 
+            type="button"
             onClick={() => {
               setDeck1(DEFAULT_DECK_1)
               setDeck2(DEFAULT_DECK_2)
