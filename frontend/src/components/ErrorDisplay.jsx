@@ -24,6 +24,7 @@ export function ErrorDisplay({ message, onRetry }) {
 
       {onRetry && (
         <button
+          type="button"
           onClick={onRetry}
           className="inline-flex items-center gap-2.5 px-6 py-3 bg-red-600 hover:bg-red-500 active:scale-95 text-white font-bold rounded-xl shadow-lg shadow-red-900/30 transition-all text-sm uppercase tracking-wider"
         >

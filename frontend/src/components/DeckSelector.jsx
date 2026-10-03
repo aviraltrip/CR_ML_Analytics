@@ -108,6 +108,7 @@ export function DeckSelector({
           />
           {searchQuery && (
             <button 
+              type="button"
               onClick={() => setSearchQuery('')}
               className="absolute right-3.5 top-3 text-slate-500 hover:text-white"
             >
@@ -131,6 +132,7 @@ export function DeckSelector({
                 return (
                   <button
                     key={cardName}
+                    type="button"
                     onClick={() => isSelected ? removeCard(cardName) : addCard(cardName)}
                     className={`relative rounded-xl border p-0.5 aspect-[2/3] transition-all group overflow-hidden ${
                       isSelected 

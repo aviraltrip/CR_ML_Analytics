@@ -158,6 +158,7 @@ export function Layout({ children }) {
           <div className="flex items-center gap-4">
             
             <button 
+              type="button"
               onClick={() => setMobileMenuOpen(prev => !prev)}
               className="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:text-white"
             >
